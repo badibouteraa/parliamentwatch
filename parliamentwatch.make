@@ -28,7 +28,5 @@ libraries[civicrm][download][type] = "get"
 libraries[civicrm][download][url] = "http://sourceforge.net/projects/civicrm/files/latest/download"
 
 ; Themes
-; projects[] = omega
-; projects[theme_abgeordnetenwatch][type] = "theme"; 
-; projects[theme_abgeordnetenwatch][download][type] = "git"
-; projects[theme_abgeordnetenwatch][download][url] = "git@github.com:parliamentwatch/theme-abgeordnetenwatch.git"
+projects[] = omega
+
