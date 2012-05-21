@@ -1,0 +1,12 @@
+name = "Migrate Committee"
+description = "Migrate Committee"
+package = "Development"
+
+dependencies[] = migrate
+
+files[] = migrate_committee.module
+files[] = migrate_committee.inc
+
+version = "7.x-1.1-dev"
+core = "7.x"
+project = "migrate_committee"
