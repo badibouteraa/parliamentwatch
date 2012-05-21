@@ -21,14 +21,6 @@ projects[og][subdir] = "contrib"
 projects[module_filter][subdir] = "contrib"
 projects[relation][subdir] = "contrib"
 projects[ctools][subdir] = "contrib"
-; projects[addressfield][subdir] = "contrib"
-; projects[field_validation][subdir] = "contrib"
-
-; Custom
-projects[content-types][type] = "module"
-projects[content-types][subdir] = "custom/content-types"
-projects[content-types][download][type] = "git"
-projects[content-types][download][url] = "git@github.com:parliamentwatch/content-types.git"
 
 ; CiviCRM
 libraries[civicrm][directory_name] = "civicrm"
