@@ -15,7 +15,7 @@ echo "PLEASE ENTER YOUR WEBSITE ACCOUNT PASSWORD:"
 read SITE_PASS
 
 echo "RUNNING DRUSH MAKE FILE"
-drush make --yes --working-copy parliamentwatch.make
+drush make --yes --working-copy --contrib-destination=contrib parliamentwatch.make
 
 echo "INSTALLING SITE"
 drush site-install --yes standard --locale=de --account-name=root --account-pass=$SITE_PASS --account-mail=dummy@parliamentwatch.org --site-name=parliamentwatch.org --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME

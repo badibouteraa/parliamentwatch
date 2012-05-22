@@ -4,7 +4,7 @@ api = 2
 projects[drupal][version] = "7.12" 
 
 ; Modules
-projects[addthis][version] = "4.0-alpha1+3-dev"
+projects[addthis][version] = "7.x-4.0-alpha1"
 projects[admin_menu][version] = "3.0-rc2"
 projects[backup_migrate][version] = "2.2"
 projects[better_formats][version] = "1.x-dev"
