@@ -1,5 +1,12 @@
-echo "PLEASE ENTER DATABASE NAME:"
-read DB_NAME
+#!/bin/sh
+
+if [ ! -n "$1" ]
+	then
+		echo "PLEASE ENTER DATABASE NAME:"
+		read DB_NAME
+else
+	DB_NAME=${1//./_}	
+fi
 
 echo "PLEASE ENTER DATABASE PASSWORD:"
 read DB_PASS
