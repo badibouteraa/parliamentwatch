@@ -32,12 +32,14 @@ projects[inline_messages][version] = "1.0"
 projects[libraries][version] = "1.0"
 projects[link][version] = "1.0+10-dev"
 projects[masquerade][version] = "1.0-rc4"
-projects[media][version] = "7.x-2.0-unstable5"
-projects[menu_position][version] = "1.1"
+projects[media][version] = "7.x-2.x-dev"
+projects[menu_position][version] = "1.1" 
+projects[migrate][version] = "7.x-2.3"
+projects[migrate_extras][version] = "7.x-2.3"
 projects[module_filter][version] = "1.6"
 projects[nice_menus][version] = "2.1"
 projects[og][version] = "1.3"
-projects[omega_tools][version] = "3.0-rc4"
+projects[omega_tools][version] = "3.0-rc4" 
 projects[panels][version] = "3.2"
 projects[pathauto][version] = "1.0"
 projects[print][version] = "1.0"
@@ -57,11 +59,8 @@ projects[views][version] = "3.3"
 projects[views_slideshow][version] = "3.0"
 projects[webform][version] = "3.17"
 projects[webform_rules][version] = "1.3"
+projects[wordpress_migrate][version] = "7.x-2.0-rc2"
 projects[wysiwyg][version] = "2.1"
-
-projects[] = migrate
-projects[] = migrate_extras
-projects[] = wordpress_migrate
 
 ; CiviCRM
 libraries[civicrm][directory_name] = "civicrm"
