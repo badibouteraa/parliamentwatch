@@ -1,11 +1,8 @@
 ; make file for parliamentwatch
 core = 7.x
 api = 2
-projects[] = drupal
-; Contrib Modules
+projects[drupal][version] = "7.12" 
 
-api = 2
-projects[drupal][version] = "7.12"
 ; Modules
 projects[addthis][version] = "4.0-alpha1+3-dev"
 projects[admin_menu][version] = "3.0-rc2"
@@ -35,7 +32,7 @@ projects[inline_messages][version] = "1.0"
 projects[libraries][version] = "1.0"
 projects[link][version] = "1.0+10-dev"
 projects[masquerade][version] = "1.0-rc4"
-projects[media][version] = "2.0-unstable3+47-dev"
+projects[media][version] = "7.x-2.0-unstable5"
 projects[menu_position][version] = "1.1"
 projects[module_filter][version] = "1.6"
 projects[nice_menus][version] = "2.1"
@@ -62,14 +59,15 @@ projects[webform][version] = "3.17"
 projects[webform_rules][version] = "1.3"
 projects[wysiwyg][version] = "2.1"
 
-; projects[migrate][subdir] = "contrib"
-; projects[migrate_extras][subdir] = "contrib"
-; projects[wordpress_migrate][subdir] = "contrib"
+projects[] = migrate
+projects[] = migrate_extras
+projects[] = wordpress_migrate
 
 ; CiviCRM
 libraries[civicrm][directory_name] = "civicrm"
 libraries[civicrm][download][type] = "get"
 libraries[civicrm][download][url] = "http://sourceforge.net/projects/civicrm/files/latest/download"
+
 ; Themes
-projects[] = omega
+projects[omega][type] = "theme"
 
