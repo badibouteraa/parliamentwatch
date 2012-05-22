@@ -1,8 +1,0 @@
-core = "7.x"
-dependencies[] = "comment"
-dependencies[] = "php"
-dependencies[] = "rules"
-description = "This rule pushes the e-mail address to the OpenEMM database"
-features[rules_config][] = "rules_newsletter_subscription"
-name = "Rule Newsletter Subscription"
-package = "Features"

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Blogpost Type feature.
- */
-
-include_once('blogpost_type.features.inc');

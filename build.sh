@@ -5,20 +5,26 @@ if [ ! -n "$1" ]
 		echo "PLEASE ENTER DATABASE NAME:"
 		read DB_NAME
 else
-	DB_NAME=${1//./_}	
+	DB_NAME=${1//./_}
 fi
 
-echo "PLEASE ENTER DATABASE PASSWORD:"
-read DB_PASS
+if [ ! -n "$2" ]
+	then
+		echo "PLEASE ENTER DATABASE PASSWORD:"
+		read DB_PASS
 
-echo "PLEASE ENTER YOUR WEBSITE ACCOUNT PASSWORD:"
-read SITE_PASS
+		echo "PLEASE ENTER YOUR WEBSITE ACCOUNT PASSWORD:"
+		read SITE_PASS
+else
+	DB_PASS=$2
+	SITE_PASS=$2
+fi
 
 echo "RUNNING DRUSH MAKE FILE"
-drush make --yes --working-copy --contrib-destination=contrib parliamentwatch.make
+drush make --yes --working-copy --contrib-destination=sites/all/modules/contrib parliamentwatch.make
 
 echo "INSTALLING SITE"
-drush site-install --yes standard --locale=de --account-name=root --account-pass=$SITE_PASS --account-mail=dummy@parliamentwatch.org --site-name=parliamentwatch.org --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
+drush site-install standard --yes --locale=de --account-name=root --account-pass=$SITE_PASS --account-mail=dummy@parliamentwatch.org --site-name=parliamentwatch.org --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
 
 echo "DISABLING USELESS MODULES"
 drush dis --yes overlay toolbar
@@ -26,8 +32,14 @@ drush dis --yes overlay toolbar
 echo "ENABLING CONTRIBUTED MODULES"
 drush en --yes entity views views_ui admin_menu admin_menu_toolbar og og_access og_field_access og_ui og_register module_filter token pathauto migrate migrate_ui date date_api date_popup features masquerade taxonomy_manager relation* field_validation wordpress_migrate
 
+echo "CLONING CUSTOM MODULES FROM GIT"
+git clone git@github.com:parliamentwatch/custom_modules sites/all/modules/custom
+
 echo "ENABLING CUSTOM MODULES"
 drush en --yes constituency committee_type blogpost_type migrate_constituency migrate_committee migrate_party migrate_user
+
+echo "CLONING CUSTOM THEMES FROM GIT"
+git clone git@github.com:parliamentwatch/custom_themes sites/all/themes
 
 echo "ENABLING THEME"
 drush en --yes omega abgeordnetenwatch

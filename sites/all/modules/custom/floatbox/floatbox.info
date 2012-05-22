@@ -1,7 +1,0 @@
-name = Floatbox
-description = Floatbox allows site admin to add a text area field to a content type and enable Rich Text editor.
-package = User interface
-
-core = 7.x
-configure = admin/config/user-interface/floatbox
-dependencies[] = wysiwyg

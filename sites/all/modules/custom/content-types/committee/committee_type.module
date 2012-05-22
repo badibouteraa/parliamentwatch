@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Committee Type feature.
- */
-
-include_once('committee_type.features.inc');

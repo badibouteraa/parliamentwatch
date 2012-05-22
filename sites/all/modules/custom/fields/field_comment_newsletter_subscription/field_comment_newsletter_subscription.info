@@ -1,7 +1,0 @@
-core = "7.x"
-dependencies[] = "features"
-dependencies[] = "list"
-description = "Checkbox in comment forms to enable newsletter subscription"
-features[field][] = "comment-comment_node_blogpost-field_newsletter_subscribe"
-name = "Field Comment Newsletter Subscription"
-package = "Features"
