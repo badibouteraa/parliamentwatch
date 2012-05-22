@@ -1,7 +1,7 @@
 ; make file for parliamentwatch
 core = 7.x
 api = 2
-projects[drupal][version] = "7.12" 
+projects[] = "drupal"
 
 ; Modules
 projects[addthis][version] = "7.x-4.0-alpha1"
