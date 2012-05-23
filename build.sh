@@ -37,7 +37,7 @@ echo "DISABLING USELESS MODULES"
 drush dis --yes overlay toolbar
 
 echo "ENABLING CONTRIBUTED MODULES"
-drush en --yes entity views views_ui admin_menu admin_menu_toolbar og og_access og_field_access og_ui og_register module_filter token pathauto migrate migrate_ui date date_api date_popup features masquerade taxonomy_manager relation* field_validation wordpress_migrate
+drush en --yes entity views views_ui admin_menu admin_menu_toolbar og og_access og_field_access og_ui og_register module_filter token pathauto migrate migrate_ui migrate_extras date date_api date_popup features masquerade taxonomy_manager relation* field_validation wordpress_migrate
 
 echo "ENABLING CUSTOM MODULES"
 drush en --yes constituency committee_type blogpost_type migrate_constituency migrate_committee migrate_party migrate_user
@@ -54,3 +54,6 @@ drush vset --yes theme_default abgeordnetenwatch
 # set access rights
 echo "SETTING FILE SYSTEM PERMISSIONS TO root:www-data"
 chown -R root:www-data *
+
+echo "CLEARING CACHE"
+drush cc all 
