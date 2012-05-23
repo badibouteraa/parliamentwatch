@@ -20,13 +20,18 @@ else
 	SITE_PASS=$2
 fi
 
+# avoid overwriting of custom modules/themes
+mv sites custom
+
 echo "RUNNING DRUSH MAKE FILE"
 drush make --yes --working-copy parliamentwatch.make
 
 echo "INSTALLING SITE"
-mv sites custom_sites
 drush site-install standard --yes --locale=de --account-name=root --account-pass=$SITE_PASS --account-mail=dummy@parliamentwatch.org --site-name=parliamentwatch.org --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
-mv custom sites
+
+# bring back custom modules/themes
+cp -r custom/* sites
+rm -r custom
 
 echo "DISABLING USELESS MODULES"
 drush dis --yes overlay toolbar

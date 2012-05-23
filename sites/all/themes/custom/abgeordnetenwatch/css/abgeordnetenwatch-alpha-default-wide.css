@@ -1,0 +1,12 @@
+/* This file will hold styles that are loaded using the same media query as the wide grid. */
+
+#views_slideshow_cycle_main_slider-block,
+.views-slideshow-controls-top {
+    width: 760px;
+}
+.views-slideshow-controls-bottom {
+    width: 380px;
+}
+#block-views-slider-block .views-slideshow-controls-top {
+    width: 760px !important;
+}
