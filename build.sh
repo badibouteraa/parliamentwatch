@@ -50,6 +50,15 @@ drush vset --yes date_default_timezone "Europe/Berlin"
 drush vset --yes date_first_day 1
 drush vset --yes site_default_country "DE"
 drush vset --yes theme_default abgeordnetenwatch
+mkdir sites/default/files/private -m 0770
+# drush vset --yes file_private_path sites/default/files/private
+# drush vset --yes wordpress_migrate_category_vocabulary
+# drush vset --yes wordpress_migrate_tag_vocabulary
+# drush vset --yes wordpress_migrate_page_type
+# drush vset --yes wordpress_migrate_post_type
+# drush vset --yes wordpress_migrate_podcast_field
+# drush vset --yes wordpress_migrate_text_format
+# drush vset --yes wordpress_migrate_path_action
 
 # set access rights
 echo "SETTING FILE SYSTEM PERMISSIONS TO root:www-data"
