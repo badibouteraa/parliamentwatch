@@ -32,10 +32,10 @@
  *   into a string within the variable $classes.
  *
  * @see template_preprocess_comment_wrapper()
- * @see theme_comment_wrapper() //class="<?php print $classes; ?>"
+ * @see theme_comment_wrapper()
  */
 ?>
-<div id="comments" <?php print $attributes; ?>>
+<div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if ($content['comments'] && $node->type != 'forum'): ?>
     <?php print render($title_prefix); ?>
     <h2 class="title"><?php print t('Comments'); ?></h2>

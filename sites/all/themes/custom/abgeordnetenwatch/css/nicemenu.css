@@ -40,7 +40,7 @@
     border-left: 0;
 }
 #zone-menu ul.nice-menu a {
-    text-decoration: none;
+    font-weight: normal;
     color: #fff;
     padding: 0 33px;
 }

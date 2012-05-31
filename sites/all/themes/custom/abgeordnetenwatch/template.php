@@ -11,6 +11,17 @@
  * for more information on this topic.
  */
  
+
+/////////////////////////// customize comment form (ruth)
+//////////////////////////////////////////////////////
+
+function abgeordnetenwatch_form_comment_form_alter(&$form, &$form_state) {
+    global $user;
+    if ($user->uid) {
+        $form['author']['_author']['#title'] = t('You are logged in as');
+    }
+}
+
 /////////////////////////// customize RSS block (ruth)
 //////////////////////////////////////////////////////
 

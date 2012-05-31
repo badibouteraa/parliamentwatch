@@ -3,6 +3,14 @@
 body {
     padding: 5mm;
 }
+* {
+    color: #333 !important;
+}
+.item-list ul.pager li a,
+.item-list ul.pager li span,
+.item-list ul.pager li.pager-current {
+    color: #fff !important;
+}
 h1, h2, h3, h4, h5, h6 {
     color: #222 !important;
     font-weight: normal !important;
@@ -38,15 +46,15 @@ em.placeholder {
     color: #999 !important;
 }
 .print-hr,
-.views-exposed-form,
-.pager {
+.views-exposed-form {
     display: none;
 }
 .views-row {
     border-bottom: 1px dotted #333;
 }
-* {
-    color: #333 !important;
+.view-blog .views-row {
+    padding-bottom: 15px;
+    margin-bottom: 26px;
 }
 .print-logo {
     margin-bottom: 10px;
@@ -57,29 +65,4 @@ em.placeholder {
 .print-breadcrumb {
     font-weight: bold !important;
     margin-bottom: 2em;
-}
-
-.field-type-taxonomy-term-reference li,
-.field-type-taxonomy-term-reference li a {
-    float: left !important;
-    display: inline !important;
-}
-.field-type-taxonomy-term-reference li a:after {
-    content: ",";
-}
-.field-type-taxonomy-term-reference li a {
-    margin-right: 1ex;
-}
-.comment-count {
-    margin-bottom: 1em;
-}
-.group_blog_submitted {
-    margin-bottom: 1.5em;
-}
-
-.field-type-taxonomy-term-reference li:after {
-    content: ",\0000a0";
-}
-.field-type-taxonomy-term-reference li:last-child:after {
-    content: " ";
 }
