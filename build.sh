@@ -5,7 +5,7 @@ if [ ! -n "$1" ]
 		echo "PLEASE ENTER DATABASE NAME:"
 		read DB_NAME
 else
-  	DB_NAME=$(echo $1|sed 's/\./_/g')
+	DB_NAME=`echo $1 | sed 's/\./_/g'`
 fi
 
 if [ ! -n "$2" ]
@@ -37,7 +37,7 @@ echo "DISABLING USELESS MODULES"
 drush dis --yes overlay toolbar
 
 echo "ENABLING CONTRIBUTED MODULES"
-drush en --yes entity views views_ui admin_menu admin_menu_toolbar og og_access og_field_access og_ui og_register module_filter token pathauto migrate migrate_ui migrate_extras date date_api date_popup features masquerade taxonomy_manager relation* field_validation wordpress_migrate
+drush en --yes admin_devel admin_menu admin_menu_toolbar ctools page_manager views_content context context_layouts context_ui custom_search custom_search_blocks date date_all_day date_api devel ds ds_extras ds_search features addthis addthis_displays field_group link file_entity media mediafield i18n i18n_string i18n_variable og backup_migrate better_formats custom_breadcrumbs entity entity_token favicon feedback_simple forward inline_messages libraries masquerade menu_position module_filter nice_menus pathauto read_more subform text_resize token token_filter panels print rules rules_scheduler rules_admin secureshare secureshare_fields de_stemmer stemmer_api tagadelic delta delta_blocks delta_ui omega_tools token_insert_wysiwyg token_insert compact_forms wysiwyg variable variable_realm variable_store views views_slideshow views_slideshow_cycle views_ui webform webform_rules
 
 echo "ENABLING CUSTOM MODULES"
 drush en --yes constituency committee_type blogpost_type migrate_constituency migrate_committee migrate_party migrate_user
@@ -50,19 +50,10 @@ drush vset --yes date_default_timezone "Europe/Berlin"
 drush vset --yes date_first_day 1
 drush vset --yes site_default_country "DE"
 drush vset --yes theme_default abgeordnetenwatch
-mkdir sites/default/files/private -m 0770
-# drush vset --yes file_private_path sites/default/files/private
-# drush vset --yes wordpress_migrate_category_vocabulary
-# drush vset --yes wordpress_migrate_tag_vocabulary
-# drush vset --yes wordpress_migrate_page_type
-# drush vset --yes wordpress_migrate_post_type
-# drush vset --yes wordpress_migrate_podcast_field
-# drush vset --yes wordpress_migrate_text_format
-# drush vset --yes wordpress_migrate_path_action
 
 # set access rights
-echo "SETTING FILE SYSTEM PERMISSIONS TO root:www-data"
-chown -R root:www-data *
+# echo "SETTING FILE SYSTEM PERMISSIONS TO root:www-data"
+# chown -R root:www-data *
 
 echo "CLEARING CACHE"
 drush cc all 
