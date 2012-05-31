@@ -5,7 +5,7 @@ if [ ! -n "$1" ]
 		echo "PLEASE ENTER DATABASE NAME:"
 		read DB_NAME
 else
-	DB_NAME=${1//./_}
+  	DB_NAME=$(echo $1|sed 's/\./_/g')
 fi
 
 if [ ! -n "$2" ]
