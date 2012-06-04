@@ -6,7 +6,7 @@
  */
 
 // CONSTANTS
-define('CONTENT_TYPE','article_node_form'); // Node type for which we have to add this field. Currently selected is Article
+define('CONTENT_TYPE','blogpost_node_form'); // Node type for which we have to add this field. Currently selected is Article
 
 function floatbox_help($path, $arg) {
   switch ($path) {
@@ -124,17 +124,24 @@ function floatbox_node_update($node) {
  * Generate the output for the floatbox 
  */
 function floatbox($content) {
-	//for node type 
-	if (is_array($content)){
-	global $language;
-	$body = $content['comments']['comment_form']['#node']->body[$language->language][0]['value'];
-	} 
-	//for DS module 
-	else {
-		$body = $content;
-	}
+	//getting nid of node
 	$getNid = explode('/',$_GET['q']);
 	$nid = $getNid[1];
+	//getting node body value
+	$body_value = db_query("SELECT body_value FROM field_data_body WHERE entity_id=$nid")->fetchAssoc();
+	$body = $body_value['body_value'];
+	//for node type 
+//	if (is_array($content)){
+//	global $language;
+//	$body=$content['body']['#object']->body['und'][0]['value'];
+//	if ($body==""){
+//	$body = $content['comments']['comment_form']['#node']->body[$language->language][0]['value'];
+//	}
+//	} 
+//	//for DS module 
+//	else {
+//		$body = $content;
+//	}
 //	$floatbox = $content['content']['content']['system_main']['nodes'][$nid]['body']['#object']->floatbox;
 $floatbox = db_query("SELECT text_value FROM floatbox_fields WHERE nid=$nid")->fetchAssoc();
 $floatbox= $floatbox['text_value'];
