@@ -5,6 +5,8 @@ api = 2
 projects[drupal][version] = "7.12"
 
 ; Modules
+projects[addressfield][version] = "1.0-beta3"
+projects[addressfield][subdir] = "contrib" 
 projects[addthis][version] = "4.0-alpha1"
 projects[addthis][subdir] = "contrib" 
 projects[admin_menu][version] = "3.0-rc2"
