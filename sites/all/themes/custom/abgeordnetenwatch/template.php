@@ -10,7 +10,24 @@
  * for your subtheme grows. Please read the README.txt in the /preprocess and /process subfolders
  * for more information on this topic.
  */
- 
+function abgeordnetenwatch_addthis_element($variables) {
+  $element = $variables['addthis_element'];
+  $element['#attributes']['src'] = '/sites/all/themes/custom/abgeordnetenwatch/images/ic_share.png';
+  if (!isset($element['#value'])) {
+    return '<' . $element['#tag'] . drupal_attributes($element['#attributes']) . " />\n";
+  }
+
+  $output = '<' . $element['#tag'] . drupal_attributes($element['#attributes']) . '>';
+  if (isset($element['#value_prefix'])) {
+    $output .= $element['#value_prefix'];
+  }
+  $output .= $element['#value'];
+  if (isset($element['#value_suffix'])) {
+    $output .= $element['#value_suffix'];
+  }
+  $output .= '</' . $element['#tag'] . ">\n";
+  return $output;
+}
 
 /////////////////////////// customize comment form (ruth)
 //////////////////////////////////////////////////////

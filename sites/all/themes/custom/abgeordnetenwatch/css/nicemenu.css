@@ -1,31 +1,19 @@
-/*
-  This is the default layout template for nice menus, and will provide
-  a starting point for the look of your menus. To customize, it's
-  recommended to create a custom CSS file using this file as a template,
-  then configure the module to use your custom CSS file
-  (this is done in the global settings tab of the theme administration.)
-
-  See README.txt and the handbook page (http://drupal.org/node/185543)
-  for more information on using the CSS.
-*/
-/*
-  This file contains the basic logic for nice menus, and should not be
-  edited.  To customize the menus, it's recommended to create a custom CSS
-  file using nice_menus_default.css as a template, then configure the module
-  to use your custom CSS file (this is done in the global settings tab of
-  the theme administration.)
-*/
-
 /* Below should fix menu being a few pixels away in some themes, and menus disappearing behind other stuff. */
 
 /******************************
  Global CSS for ALL menu types
 ******************************/
-
+*+html #block-nice-menus-1,
+*+html #region-menu {
+    z-index: 100;
+    position: relative;
+}
 #zone-menu ul.nice-menu li {
     border-right: 1px solid #eee;
     font-size: 15px;
     line-height: 32px;
+    position: relative;
+    z-index: 100;
 }
 #zone-menu ul.nice-menu ul li {
     border-right: 0;
@@ -43,6 +31,8 @@
     font-weight: normal;
     color: #fff;
     padding: 0 33px;
+    position: relative;
+    z-index: 100;
 }
 #zone-menu ul.nice-menu ul li.last a {
     border-bottom: 0;
@@ -89,10 +79,14 @@
 .menu-1862 a { /* SH */
     background-position: -89px -681px;
 }
+ul.nice-menu {
+    z-index: 100;
+    position: relative;
+}
 ul.nice-menu,
 ul.nice-menu ul {
   list-style: none;
-    z-index: 23;
+    z-index: 100;
 }
 
 ul.nice-menu li {

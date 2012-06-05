@@ -1,4 +1,4 @@
-@import url("/sites/all/themes/omega/alpha/css/alpha-reset.css");
+@import url("/sites/all/themes/contrib/omega/alpha/css/alpha-reset.css");
 @import url("global.css");
 body {
     padding: 5mm;
@@ -49,12 +49,12 @@ em.placeholder {
 .views-exposed-form {
     display: none;
 }
-.views-row {
+.node-blogpost.node-teaser,
+.views-table tr.odd,
+.views-table tr.even,
+.node-results li,
+.group-result .panel-flexible {
     border-bottom: 1px dotted #333;
-}
-.view-blog .views-row {
-    padding-bottom: 15px;
-    margin-bottom: 26px;
 }
 .print-logo {
     margin-bottom: 10px;
