@@ -848,46 +848,46 @@ a#text_resize_increase:hover {
 /* //////////////////////////// floatbox /////////////////// */
 
 #floatbox {
-    background: #f4f4f4;
-    border: 1px solid #dedede;
-    width: 270px;
-    padding: 10px 15px 10px 10px;
-    -webkit-box-shadow: 0 0 3px 2px #ebebeb;
-    box-shadow: 0 0 3px 2px #ebebeb;        
+    background: #f4f4f4;
+    border: 1px solid #dedede;
+    width: 270px;
+    padding: 10px 15px 10px 10px;
+    -webkit-box-shadow: 0 0 3px 2px #ebebeb;
+    box-shadow: 0 0 3px 2px #ebebeb;        
 }
 #floatbox h3 {
-    background: url(../images/sprite.png) -810px -2688px;
-    padding-left: 20px;
-    color: #333;
-    font-size: 17px;
-    margin-bottom: 20px;
+    background: url(../images/sprite.png) -810px -2688px;
+    padding-left: 20px;
+    color: #333;
+    font-size: 17px;
+    margin-bottom: 20px;
 }
 #floatbox h4 {
-    font-family: 'Times New Roman',Georgia,serif;
-    font-size: 16px;
-    margin-bottom: 0;
+    font-family: 'Times New Roman',Georgia,serif;
+    font-size: 16px;
+    margin-bottom: 0;
 }
 #floatbox ul {
-    margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 #floatbox ul.arrow-items li {
-    padding: 3px inherit 3px inherit;
-    color: #666;
+    padding: 3px inherit 3px inherit;
+    color: #666;
 }
 #floatbox ul.arrow-items li a {
-    color: #333;
-    text-decoration: none;
+    color: #333;
+    text-decoration: none;
 }
 #floatbox ul.arrow-items li:hover {
-    background-color: #d5d5d5;
+    background-color: #d5d5d5;
 }
 .floatbox-right {
-    float: right;
-    margin: 4px 0 15px 20px;
+    float: right;
+    margin: 4px 0 15px 20px;
 }
 .floatbox-left {
-    float: left;
-    margin: 4px 20px 15px 0;
+    float: left;
+    margin: 4px 20px 15px 0;
 }
 
 /* /////////////////////////// views /////////////////// */
