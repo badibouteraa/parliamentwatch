@@ -1,0 +1,112 @@
+<?php
+
+/*
+ * Implement hook_permission().
+ */
+
+function views_user_revisions_permission() {
+    return array(
+        'access migration' => array(
+            'title' => t('Access Migration'),
+            'description' => t('Access Migration'),
+        )
+    );
+}
+
+/*
+ * Implement hook_menu()
+ */
+
+function migrate_user_revisions_menu() {
+    $items = array();
+    $items['admin/content/migrate_user_revisions'] = array(
+        'page callback' => 'migrate_user_revisions_callback',
+        'title' => 'Migrate User Revisions',
+        'access arguments' => array('access migration'),
+        'type' => MENU_LOCAL_TASK,
+    );
+    return $items;
+}
+
+/*
+ * Implement user_revisions_callback()
+ */
+
+function migrate_user_revisions_callback() {
+
+    return drupal_get_form('migrate_user_revisions_form');
+}
+
+/*
+ * Implement user_revisions_form()
+ */
+
+function migrate_user_revisions_form($form, &$form_state) {
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => t('Migrate Revisions')
+    );
+    return $form;
+}
+
+/*
+ * Implement user_revisions_form_submit()
+ */
+
+function migrate_user_revisions_form_submit($form, &$form_state) {
+
+    // Get instance of previous migration
+    $migration = MigrationBase::getInstance('politician');
+
+    // Load all users with specific role (politician)
+		$query = db_select('users', 'u');
+		#$query->join('users_roles', 'r', 'u.uid = r.uid');
+		#$query->fields('r', array('rid'));
+		$query->fields('u', array('uid'));
+    $result = $query->execute();
+    while($row = $result->fetchObject()) {
+      
+      // Load user
+      $user = user_load($row->uid);
+      
+      // Get mapping to legacy user
+      $migration_mapping = $migration->getMap()->lookupSourceID(array($user->uid));
+      $legacy_id = $migration_mapping['sourceid1'];
+      		  
+      // Load all profiles of legacy user exept the migrated one (see migrate_politician plugin)
+      $legacy_query = Database::getConnection('default', 'parlamentwatch')->select('legacy_user', 'u');
+      $legacy_query->join('legacy_projects', 'p', 'u.cmd = p.cmd');                                
+      $legacy_query->fields('u');
+      $legacy_query->fields('p', array('project'));
+      $legacy_query->condition('u.oldest', 0, '=');
+      $legacy_query->condition('u.id', $legacy_id, '=');
+      $legacy_query->orderBy('p.from, u.profile_id');
+      $legacy_result = $legacy_query->execute();
+      
+      // Go through legacy profiles and update user node to create revision for each old profile
+      while($profile = $legacy_result->fetchObject()) {
+        $a_edit = array();
+        $a_edit['mail'] = $profile->email;
+        $a_edit['field_user_childs'] = $profile->childs;
+        $a_edit['field_user_fname'] = $profile->first_name;
+        $a_edit['field_user_lname'] = $profile->last_name;
+        $a_edit['field_user_gender']['und'][0] = $profile->gender;
+        $a_edit['field_user_job_skills'] = $profile->job;
+        $a_edit['field_user_job_marriage_status'] = $profile->marriage;
+        
+        // Add term parliament
+        $voc_parliaments = taxonomy_vocabulary_machine_name_load('parliaments');
+        if(!taxonomy_get_term_by_name($profile->project, 'parliaments')){
+          $term = (object) array('vid' => $voc_parliaments->vid, 'name' => $profile->project, 'parent' => 0);
+          // $term->field_custom_field_name[LANGUAGE_NONE][0]['value'] = ‘Some value’; // OPTIONAL. If your term has a custom field attached it can added as simple as this
+          taxonomy_term_save($term);
+        }
+        $term = taxonomy_get_term_by_name($profile->project, 'parliaments');
+        $term = array_pop($term);
+        $a_edit['field_user_parliament']['und'][0] = array('tid' => $term->tid);
+      
+        // Save user
+        user_save($user, $a_edit);
+      }
+		}
+}

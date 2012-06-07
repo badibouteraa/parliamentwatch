@@ -1,0 +1,5 @@
+name = Migrate User Revisions
+description = Migrate User Revisions
+package = Development
+core = 7.x
+php = 5.2
