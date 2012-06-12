@@ -33,6 +33,12 @@ class PoliticianMigration extends BasicMigratePolitician {
                     ),
                     MigrateDestinationUser::getKeySchema()
     );
+    
+    // 
+    $query_role = db_select('{role}', 'r');
+    $query_role->fields('r', array('rid'));
+    $query_role->condition('r.name', 'politician', '=');
+    $role_id_politician = $query_role->execute()->fetchField();
 
     // Map old to new data fields
     $this->addFieldMapping('name', 'username')->dedupe('users', 'name');
@@ -44,7 +50,8 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->addFieldMapping('field_user_job_skills', 'job');
     $this->addFieldMapping('field_user_marriage_status', 'marriage');
     $this->addFieldMapping('language')->defaultValue('de');
-    $this->addFieldMapping('roles_name', 'politician');
+    $this->addFieldMapping('roles')->defaultValue($role_id_politician);
+    
     $this->addFieldMapping('field_user_parliament', 'project')->arguments(array('create_term' => TRUE));
   }
 
