@@ -10,6 +10,11 @@
  * for your subtheme grows. Please read the README.txt in the /preprocess and /process subfolders
  * for more information on this topic.
  */
+ 
+
+/////////////////////////// customize addthos button (ruth)
+//////////////////////////////////////////////////////
+
 function abgeordnetenwatch_addthis_element($variables) {
   $element = $variables['addthis_element'];
   $element['#attributes']['src'] = '/sites/all/themes/custom/abgeordnetenwatch/images/ic_share.png';
@@ -26,6 +31,48 @@ function abgeordnetenwatch_addthis_element($variables) {
     $output .= $element['#value_suffix'];
   }
   $output .= '</' . $element['#tag'] . ">\n";
+  return $output;
+}
+
+
+/////////////////////////// customize breadcrumb seperator (ruth)
+//////////////////////////////////////////////////////
+
+function abgeordnetenwatch_delta_blocks_breadcrumb($variables) {
+  $output = '';
+
+  if (!empty($variables['breadcrumb'])) {  
+    if ($variables['breadcrumb_current']) {
+      $variables['breadcrumb'][] = l(drupal_get_title(), current_path(), array('html' => TRUE));
+    }
+
+    $output = '<div id="breadcrumb" class="clearfix"><ul class="breadcrumb">';
+    $switch = array('odd' => 'even', 'even' => 'odd');
+    $zebra = 'even';
+    $last = count($variables['breadcrumb']) - 1;    
+
+    foreach ($variables['breadcrumb'] as $key => $item) {
+      $zebra = $switch[$zebra];
+      $attributes['class'] = array('depth-' . ($key + 1), $zebra);
+
+      if ($key == 0) {
+        $attributes['class'][] = 'first';
+      }
+
+      if ($key == $last) {
+        $attributes['class'][] = 'last';
+      }
+
+      if ($key != $last) {
+        $output .= '<li' . drupal_attributes($attributes) . '>' . $item . ' / </li>';
+        }else{
+        $output .= '<li' . drupal_attributes($attributes) . '>' . $item . '</li>';
+        }
+    }
+
+    $output .= '</ul></div>';
+  }
+
   return $output;
 }
 

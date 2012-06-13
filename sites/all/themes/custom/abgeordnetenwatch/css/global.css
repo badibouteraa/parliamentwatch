@@ -34,9 +34,6 @@ body {
 #region-content .region-content-inner {
     padding: 0 10px 0 0;
 }
-.page-node #region-content .region-content-inner {
-    padding: 0 10px;
-}
 #region-header-first {
     min-height: 20px;
 }
@@ -179,19 +176,14 @@ h1#page-title {
 #block-delta-blocks-breadcrumb {
     padding: 5px 0;
 }
-#block-delta-blocks-breadcrumb h2 {
-    float: left;
-    margin-right: 0.5ex;
-}
 #block-delta-blocks-breadcrumb,
 #block-delta-blocks-breadcrumb * {
     text-decoration: none;
     color: #b0b0b0;
-    font: 10px/1em Lucida Grande, Helvetica, Arial, sans-serif;
+    font: 11px/1em Lucida Grande, Helvetica, Arial, sans-serif;
 }
-#block-delta-blocks-breadcrumb a {
-    background: url(../images/sprite.png) no-repeat -968px -1700px;
-    padding-left: 15px;
+#block-delta-blocks-breadcrumb li {
+    margin-right: 0;
 }
 #block-delta-blocks-breadcrumb .first a {
     padding-left: 0;
