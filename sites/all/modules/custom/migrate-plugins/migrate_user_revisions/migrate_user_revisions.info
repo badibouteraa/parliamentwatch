@@ -1,5 +1,9 @@
-name = Migrate User Revisions
-description = Migrate User Revisions
-package = Development
-core = 7.x
-php = 5.2
+name = "Migrate User Revisions"
+description = "Migrate User Revisions"
+package = "Development"
+
+files[] = migrate_user_revisions.module
+
+version = "7.x-1.0-14062012"
+core = "7.x"
+project = "migrate_user_revisions"
