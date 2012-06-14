@@ -7,6 +7,6 @@ dependencies[] = migrate
 files[] = migrate_committee.module
 files[] = migrate_committee.inc
 
-version = "7.x-1.1-dev"
+version = "7.x-1.0-15062012"
 core = "7.x"
 project = "migrate_committee"
