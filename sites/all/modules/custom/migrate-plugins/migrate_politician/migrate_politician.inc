@@ -20,7 +20,6 @@ class PoliticianMigration extends BasicMigratePolitician {
     $query->fields('u', array('id', 'username', 'title', 'first_name', 'last_name', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage'));
     $query->fields('p', array('project', 'startdate'));
     $query->condition('u.oldest', 1, '=');
-    $query->condition('u.cmd', 650, '=');
 
     // Prepare mapping
     $this->source = new MigrateSourceSQL($query);
