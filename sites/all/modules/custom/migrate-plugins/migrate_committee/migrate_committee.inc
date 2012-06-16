@@ -18,6 +18,7 @@ class CommitteeMigration extends BasicMigrateCommittee {
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
     $query->fields('c', array('id', 'committee', 'txt'));
     $query->fields('p', array('project', 'startdate'));
+    $query->condition('p.project_cmd', array(132, 360));
 
     // Prepare mapping
     $this->source = new MigrateSourceSQL($query);
@@ -34,9 +35,9 @@ class CommitteeMigration extends BasicMigrateCommittee {
     $this->destination = new MigrateDestinationNode('committee');
     $this->addFieldMapping('title', 'committee');
     $this->addFieldMapping('body', 'txt');
-    $this->addFieldMapping('uid')->defaultValue(1);
+    $this->addFieldMapping('uid')->defaultValue(1); 
     $this->addFieldMapping('created', 'startdate');
-    $this->addFieldMapping('field_parliament', 'term_parliament')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
   }
 
   public function prepareRow($current_row) {
