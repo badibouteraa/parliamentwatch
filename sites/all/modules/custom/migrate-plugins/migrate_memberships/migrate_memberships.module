@@ -19,7 +19,7 @@ function views_memberships_permission() {
 
 function migrate_memberships_menu() {
   $items = array();
-  $items['admin/content/migrate_memberships'] = array(
+  $items['admin/content/migrate/migrate_memberships'] = array(
       'page callback' => 'migrate_memberships_callback',
       'title' => 'Migrate Memberships',
       'access arguments' => array('access migration'),
@@ -65,46 +65,58 @@ function migrate_memberships_form_submit($form, &$form_state) {
   $query->fields('u', array('uid'));
   $query->condition('r.name', 'Politician', '=');
   $result = $query->execute();
+  $result_count = $query->countQuery()->execute()->fetchField();
 
-  // Go through users with role politician
+  drupal_set_message("checking $result_count politicians");
+
+  // Loop through politicians
+  $count_memberships_created = 0;
   while ($row = $result->fetchObject()) {
 
-    // Load user
+    // Load userdata
     $user = user_load($row->uid);
 
     // Get mapping to legacy user
     $migration_mapping = $migration_user->getMap()->lookupSourceID(array($user->uid));
     $legacy_uid = $migration_mapping['sourceid1'];
 
-    // Load all profiles of legacy user exept the migrated one (see migrate_politician plugin)
+    // Load legacy memberships for migration
     $legacy_query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_membership', 'm');
     $legacy_query->fields('m');
     $legacy_query->condition('m.uid', $legacy_uid, '=');
     $legacy_result = $legacy_query->execute();
 
-    // Go through legacy memberships
+    // Loop through legacy memberships
     while ($legacy_membership = $legacy_result->fetchObject()) {
-      
-      // Get mapping to legacy group (committe, constiuency, ...)
+
+      // Get destination group id by loading migration data
       switch ($legacy_membership->type) {
         case 'committee':
           $migration_mapping = $migration_committee->getMap()->lookupDestinationID(array($legacy_membership->gid));
           $dest_gid = $migration_mapping['destid1'];
           break;
       }
-      $values = array(
-          'name' => OG_MEMBERSHIP_TYPE_DEFAULT,
-          'state' => OG_STATE_ACTIVE,
-          'created' => time(),
-      );
-      #$check = db_query("SELECT id FROM og_membership WHERE etid = $uid AND gid = $gid")->fetchField();
-      #if (empty($check)) {
-      $membership = og_membership_create($dest_gid, 'user', $user->uid, array());
-      og_membership_save($membership);
-      #}
+
+      // Check if membership exists
+      if ($dest_gid) {
+        $check_query = db_select('{og_membership}', 'm');
+        $check_query->condition('m.etid', $user->uid, '=');
+        $check_query->condition('m.entity_type', 'user', '=');
+        $check_query->condition('m.gid', $dest_gid, '=');
+        $check_count = $check_query->countQuery()->execute()->fetchField();
+
+        // Creating membership
+        if ($check_count == 0) {
+          $membership = og_membership_create($dest_gid, 'user', $user->uid);
+          og_membership_save($membership);
+          $og = og_load($dest_gid);
+          drupal_set_message("adding $user->name to $og->label");
+          $count_memberships_created++;
+        }
+      }
     }
-    break;
   }
+  drupal_set_message("$count_memberships_created memberships created!");
 }
 
