@@ -2,37 +2,47 @@
 
 abstract class BasicMigrateConstituency extends Migration {
 
-    public function __construct() {
-        parent::__construct();
-    }
+  public function __construct() {
+    parent::__construct();
+  }
+
 }
 
 class ConstituencyMigration extends BasicMigrateConstituency {
 
-    public function __construct() {
-        parent::__construct();
+  public function __construct() {
+    parent::__construct();
 
-		$query = Database::getConnection('default', 'parlamentwatch')
-									 	->select('aw_wahlkreise', 'aw')
-										->condition('aw.is_liste', 0, '=')
-										->condition('aw.term_parliament', 'Bundestag', '=')
-									 	->fields('aw', array('id', 'wahlkreis','term_parliament'));
+    $query = Database::getConnection('default', 'parlamentwatch')
+            ->select('legacy_constituency', 'c');
+    $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
+    $query->fields('c', array('id', 'constituency'));
+    $query->fields('p', array('project', 'startdate'));
+    #$query->condition('p.project_cmd', array(132, 360));
 
-        $this->source = new MigrateSourceSQL($query);
-        $this->map = new MigrateSQLMap($this->machineName,
-                        array(
-                            'id' => array(
-                                'type' => 'int',
-                                'not null' => TRUE,
-                            )
-                        ),
-                        MigrateDestinationNode::getKeySchema()
-        );
+    $this->source = new MigrateSourceSQL($query);
+    $this->map = new MigrateSQLMap($this->machineName,
+                    array(
+                        'id' => array(
+                            'type' => 'int',
+                            'not null' => TRUE,
+                        )
+                    ),
+                    MigrateDestinationNode::getKeySchema()
+    );
 
-        $this->destination = new MigrateDestinationNode('constituency');
-        $this->addFieldMapping('title', 'wahlkreis');
-		$this->addFieldMapping('uid')->defaultValue(1);
-		$this->addFieldMapping('field_parliament', 'term_parliament')->arguments(array('create_term' => TRUE));
+    $this->destination = new MigrateDestinationNode('constituency');
+    $this->addFieldMapping('title', 'constituency');
+    $this->addFieldMapping('uid')->defaultValue(1);
+    $this->addFieldMapping('created', 'startdate');
+    $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
+  }
+
+  public function prepareRow($current_row) {
+    if ($current_row->startdate < 1) {
+      $current_row->startdate = NULL;
     }
+  }
+
 }
 

@@ -7,6 +7,6 @@ dependencies[] = migrate
 files[] = migrate_constituency.module
 files[] = migrate_constituency.inc
 
-version = "7.x-1.0-dev"
+version = "7.x-1.0-16062012"
 core = "7.x"
 project = "migrate_constituency"
