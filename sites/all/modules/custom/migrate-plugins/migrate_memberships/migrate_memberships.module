@@ -57,6 +57,8 @@ function migrate_memberships_form_submit($form, &$form_state) {
   // Get instance of previous migration
   $migration_user = MigrationBase::getInstance('politician');
   $migration_committee = MigrationBase::getInstance('committee');
+  $migration_constituency = MigrationBase::getInstance('constituency');
+  $migration_party = MigrationBase::getInstance('party');
 
   // Load all users with specific role (politician)
   $query = db_select('users', 'u');
@@ -70,7 +72,7 @@ function migrate_memberships_form_submit($form, &$form_state) {
   drupal_set_message("checking $result_count politicians");
 
   // Loop through politicians
-  $count_memberships_created = 0;
+  $count_memberships_created = array('committee' => 0, 'constituency' => 0, 'party' => 0);
   while ($row = $result->fetchObject()) {
 
     // Load userdata
@@ -96,6 +98,14 @@ function migrate_memberships_form_submit($form, &$form_state) {
           $migration_mapping = $migration_committee->getMap()->lookupDestinationID(array($legacy_membership->gid));
           $dest_gid = $migration_mapping['destid1'];
           break;
+        case 'constituency':
+          $migration_mapping = $migration_constituency->getMap()->lookupDestinationID(array($legacy_membership->gid));
+          $dest_gid = $migration_mapping['destid1'];
+          break;
+        case 'party':
+          $migration_mapping = $migration_party->getMap()->lookupDestinationID(array($legacy_membership->gid));
+          $dest_gid = $migration_mapping['destid1'];
+          break;
       }
 
       // Check if membership exists
@@ -111,12 +121,16 @@ function migrate_memberships_form_submit($form, &$form_state) {
           $membership = og_membership_create($dest_gid, 'user', $user->uid);
           og_membership_save($membership);
           $og = og_load($dest_gid);
-          drupal_set_message("adding $user->name to $og->label");
-          $count_memberships_created++;
+          $l_name = l($user->name, "user/$user->uid");
+          $l_group = l($og->label, "node/$dest_gid");
+          drupal_set_message("adding $l_name to $l_group");
+          $count_memberships_created[$legacy_membership->type]++;
         }
       }
     }
   }
-  drupal_set_message("$count_memberships_created memberships created!");
+  foreach ($count_memberships_created as $type => $count) {
+    drupal_set_message("$count memberships of type $type created!");
+  }
 }
 
