@@ -2,34 +2,37 @@
 
 abstract class BasicMigrateParty extends Migration {
 
-    public function __construct() {
-        parent::__construct();
-    }
+  public function __construct() {
+    parent::__construct();
+  }
+
 }
 
 class PartyMigration extends BasicMigrateParty {
 
-    public function __construct() {
-        parent::__construct();
+  public function __construct() {
+    parent::__construct();
 
-		$query = Database::getConnection('default', 'parlamentwatch')
-									 	->select('aw_parteien', 'aw')
-									 	->fields('aw', array('id', 'partei'));
+    $query = Database::getConnection('default', 'parlamentwatch')
+            ->select('legacy_party', 'l');
+    $query->fields('l', array('id', 'party'));
 
-        $this->source = new MigrateSourceSQL($query);
-        $this->map = new MigrateSQLMap($this->machineName,
-                        array(
-                            'id' => array(
-                                'type' => 'int',
-                                'not null' => TRUE,
-                            )
-                        ),
-                        MigrateDestinationNode::getKeySchema(),
-						'parlamentwatch'
-        );
+    $this->source = new MigrateSourceSQL($query);
+    $this->map = new MigrateSQLMap($this->machineName,
+                    array(
+                        'id' => array(
+                            'type' => 'int',
+                            'not null' => TRUE,
+                        )
+                    ),
+                    MigrateDestinationNode::getKeySchema()
+    );
 
-        $this->destination = new MigrateDestinationNode('party');
-        $this->addFieldMapping('title', 'partei');
-	}
+    $this->destination = new MigrateDestinationNode('party');
+    $this->addFieldMapping('title', 'party');
+    $this->addFieldMapping('uid')->defaultValue(1);
+    $this->addFieldMapping('created')->defaultValue('2004-12-08');
+  }
+
 }
 
