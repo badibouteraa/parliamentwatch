@@ -39,5 +39,8 @@ drush en --yes admin_devel admin_menu admin_menu_toolbar ctools page_manager vie
 echo "DISABLING MODULES"
 drush dis --yes toolbar migrate_extras_profile2 print_pdf relation_select
 
+echo "SETTING PERMISSIONS FOR FILES FOLDER"
+chmod -R 0775 sites/default/files
+
 echo "CLEARING CACHE"
 drush cc all 
