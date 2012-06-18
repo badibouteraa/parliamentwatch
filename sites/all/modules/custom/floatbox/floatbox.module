@@ -123,34 +123,19 @@ function floatbox_node_update($node) {
 /**
  * Generate the output for the floatbox 
  */
-function floatbox($content) {
+function floatbox() {
+	//if node id is available then continue using float box
+	if (arg(0)=='node' && is_numeric(arg(1)) ){
 	//getting nid of node
-	$getNid = explode('/',$_GET['q']);
-	$nid = $getNid[1];
+	$nid = arg(1);
+
 	//getting node body value
 	$body_value = db_query("SELECT body_value FROM field_data_body WHERE entity_id=$nid")->fetchAssoc();
 	$body = $body_value['body_value'];
-	//for node type 
-//	if (is_array($content)){
-//	global $language;
-//	$body=$content['body']['#object']->body['und'][0]['value'];
-//	if ($body==""){
-//	$body = $content['comments']['comment_form']['#node']->body[$language->language][0]['value'];
-//	}
-//	} 
-//	//for DS module 
-//	else {
-//		$body = $content;
-//	}
-//	$floatbox = $content['content']['content']['system_main']['nodes'][$nid]['body']['#object']->floatbox;
+	//for floatbox value through node 
 $floatbox = db_query("SELECT text_value FROM floatbox_fields WHERE nid=$nid")->fetchAssoc();
 $floatbox= $floatbox['text_value'];
 	
-//	$body = $content['content']['content']['system_main']['nodes'][$nid]['body']['#object']->body['und'][0]['value'];
-	
-	//$body = $content['comments']['comment_form']['#node']->body['und'][0]['value'];
-//	echo '<pre>';
-//	print_r($content['content']);exit;
 
 	//check the floatig side
 	$rightSide = '[floatbox=right]';
@@ -159,22 +144,24 @@ $floatbox= $floatbox['text_value'];
 	$left = strpos($body,$leftSide);
 	$topSide = '[floatbox=top]';
 	$top = strpos($body,$topSide);
+	$defaultSide = '[floatbox]';
 
 	//apply the floatbox to the required content area (corner) left, right and so on
 	if ($right!=""){
 		 $floatbox = '<div id="floatbox" class="floatbox-right">'.$floatbox .'</div>';
-   return render(str_replace('[floatbox=right]',$floatbox,	$body));
+   return @render(str_replace($rightSide,$floatbox,	$body));
 	}
 	elseif ($left!=""){
 		 $floatbox = '<div id="floatbox" class="floatbox-left">'.$floatbox .'</div>';
-   return render(str_replace('[floatbox=left]',$floatbox,	$body));
+   return @render(str_replace($leftSide,$floatbox,	$body));
 	}
 	else if ($top!=""){
 		 $floatbox = '<div id="floatbox" class="floatbox-top">'.$floatbox .'</div>';
-   return render(str_replace('[floatbox=top]',$floatbox,	$body));
+   return @render(str_replace($topSide,$floatbox,	$body));
 	}
 	else{
 		 $floatbox = '<div id="floatbox" class="floatbox-top">'.$floatbox .'</div>';
-   return  render(str_replace('[floatbox]',$floatbox,	$body));
+   return  @render(str_replace($defaultSide,$floatbox,	$body));
+	}
 	}
 }

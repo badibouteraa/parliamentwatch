@@ -32,21 +32,23 @@ such as node.tpl.php
 <?php 
 //Floabbox content display condition
 						if(function_exists('floatbox')): // Floatbox Contents 
-						floatbox($content);
+						 print render(floatbox());
 						endif; 
 						if(!function_exists('floatbox')):
-							render($content);
+							print render($content);
 						endif;?>
-* If Display Suite (ds) module is enable then use its custom node files which is enable
+
+* NOTE: If Display Suite (ds) module is enabled then please use its custom node files to insert the code, instead of the node.tpl.php as adviced above. Following is the code you can place in /ds/layouts/ds_2col/ds-2col.tpl.php for example.
+
 <?php 
 //Floabbox content display condition
 						if(function_exists('floatbox')): // Floatbox Contents 
-						floatbox($right);
+						 print floatbox();
 						endif; 
 						if(!function_exists('floatbox')):
-							render($right);
+							print render($right);
 						endif;?> 
 -- IMPORTANT --
 
-Please make clear your site Cache in case you are not able to see floatbox contents or
+Please make sure to clear your site Cache in case you are not able to see floatbox contents or
 changes you make.
