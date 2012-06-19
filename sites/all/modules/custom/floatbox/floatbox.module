@@ -40,7 +40,7 @@ function floatbox_form_alter(&$form, &$form_state, $form_id) {
 	  
       $form["floatbox"] = array(
         '#title' => 'Floatbox Contents',
-	    '#description' => 'Please write contents that you would like to show in Floatbox with this content. You can use [floatbox] placeholder to display your content as well as you can use [floatbox=left] or [floatbox=right] or [floatbox=top] to display content to the respective side.',
+	    '#description' => 'Please write contents that you would like to show in Floatbox with this content. You can use [floatbox] placeholder to display your content as well as you can use [floatbox=left] or [floatbox=right] to display content to the respective side.',
         '#type' => 'text_format',
 		'#default_value' => isset($node->floatbox) ? $node->floatbox : '',
 		'#format' => $floatbox_field['format'],
@@ -68,7 +68,7 @@ function floatbox_node_insert($node) {
 /**
  * Implements hook_node_view().
  */
-function floatbox_node_view($node, $view_mode, $langcode) {
+/*function floatbox_node_view($node, $view_mode, $langcode) {
   $node_type = CONTENT_TYPE;
   $pos = strpos(CONTENT_TYPE,'_node_form');
   $node_type = substr($node_type,0,$pos);
@@ -79,9 +79,9 @@ function floatbox_node_view($node, $view_mode, $langcode) {
         '#markup' => theme('floatbox', array('floatbox' => $node->floatbox)), 
         '#weight' => 10,
       );
-	}
+    }
   }
-}
+}*/
 
 /**
  * Implements hook_node_load().
@@ -123,10 +123,11 @@ function floatbox_node_update($node) {
 /**
  * Generate the output for the floatbox 
  */
+
 function floatbox() {
 	//if node id is available then continue using float box
 	if (arg(0)=='node' && is_numeric(arg(1)) ){
-	//getting nid of node
+
 	$nid = arg(1);
 
 	//getting node body value
@@ -164,4 +165,48 @@ $floatbox= $floatbox['text_value'];
    return  @render(str_replace($defaultSide,$floatbox,	$body));
 	}
 	}
+}
+
+function floatbox_filter_info(){
+   $filters['filter_floatbox'] = array(
+    'title' => t('Floatbox token replacements'), 
+    'description' => t('Allows you to attach floatboxes into content body.'), 
+    'process callback' => 'floatbox_filter_floatbox_process', 
+    //'settings callback' => '_filter_floatbox_settings', 
+    //'default settings' => array(
+    //  'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd>', 
+    //  'filter_html_help' => 1, 
+    //  'filter_html_nofollow' => 0,
+    //), 
+    //'tips callback' => '_filter_html_tips',
+  );
+  return $filters;
+}
+
+function floatbox_filter_floatbox_process($text, $filter, $format, $langcode, $cache, $cache_id){
+  //print_r($text);
+  $floatbox_text = db_query("SELECT text_value FROM floatbox_fields WHERE nid=:nid",array(':nid'=>arg(1)))->fetchAssoc();
+  $floatbox_text = $floatbox_text['text_value'];
+  //check the floatig side
+	$rightSide = '[floatbox=right]';
+	$right = strpos($text,$rightSide);
+	$leftSide = '[floatbox=left]';
+	$left = strpos($text,$leftSide);
+	$topSide = '[floatbox=top]';
+	$top = strpos($text,$topSide);
+
+	//apply the floatbox to the required content area (corner) left, right and so on
+	if ($right!=""){
+		 $floatbox = '<div id="floatbox" class="floatbox-right">'.$floatbox_text .'</div>';
+     $text = str_replace('[floatbox=right]',$floatbox,	$text);
+	}
+	elseif ($left!=""){
+		 $floatbox = '<div id="floatbox" class="floatbox-left">'.$floatbox_text.'</div>';
+     $text = str_replace('[floatbox=left]',$floatbox,	$text);
+	}
+	else{
+		 $floatbox = '<div id="floatbox" class="floatbox-left">'.$floatbox_text .'</div>';
+     $text = str_replace('[floatbox]',$floatbox,	$text);
+	}
+  return $text;
 }
