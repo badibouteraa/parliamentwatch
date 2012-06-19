@@ -1,0 +1,40 @@
+diff --git a/webform.module b/webform.module
+index e6da934..b3118fa 100644
+--- a/webform.module
++++ b/webform.module
+@@ -2795,6 +2795,11 @@ function _webform_filter_values($string, $node = NULL, $submission = NULL, $emai
+             // incomplete objects (see http://php.net/is_object), so we check
+             // for simple types instead.
+             $replacement = (is_string($value) || is_bool($value) || is_numeric($value)) ? $value : '';
++
++             // Add support for arrays in token replacement
++            if(is_array($value)){
++                _webform_filter_values_array($replacements[$safe_state],$token,array($key),$value);               
++            }
+           }
+           $replacements[$safe_state][$token . '[' . $key . ']'] = $replacement;
+         }
+@@ -2835,6 +2840,23 @@ function _webform_filter_values($string, $node = NULL, $submission = NULL, $emai
+ }
+ 
+ /**
++ * Provides support for arrays in replacement tokens
++ * See: http://drupal.org/node/824606
++ */
++function _webform_filter_values_array(&$replacements,$token,$keys,$values){
++    if(is_array($values)){
++        foreach($values as $key => $value){
++            // Recursive behaviour
++            _webform_filter_values_array($replacements,$token,array_merge($keys,array($key)),$value);
++        }
++    }elseif(is_object($values)){
++        //$replacements[$token.'['.implode('][',$keys).']'] = '';
++    }else{
++        $replacements[$token.'['.implode('][',$keys).']'] = $values;
++    }
++}
++
++/**
+  * Filters all special tokens provided by webform, and allows basic layout in descriptions.
+  */
+ function _webform_filter_descriptions($string, $node = NULL, $submission = NULL) {

@@ -1,0 +1,14 @@
+diff --git a/inline_messages.module b/inline_messages.module
+index 89cb3b6..4459ac7 100644
+--- a/inline_messages.module
++++ b/inline_messages.module
+@@ -139,6 +139,9 @@ function inline_messages_form_id($form_id) {
+   if ($form_id == 'user_login_block') {
+     $form_id = 'user-login-form';
+   }
++  if (strstr($form_id, 'comment_')) {
++  	$form_id = 'comment_form';
++  }
+   return $form_id;
+ }
+ 

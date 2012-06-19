@@ -1,0 +1,15 @@
+diff --git a/text_resize.js b/text_resize.js
+index d3001fe..b394bdb 100644
+--- a/text_resize.js
++++ b/text_resize.js
+@@ -94,8 +94,8 @@
+           return false;
+         }
+         else if (reset_size_original == true) {
+-          element_to_resize.css('font-size', null);
+-          if (text_resize_line_height_allow) { element_to_resize.css('line-height', null); }
++          element_to_resize.css('font-size', '');
++          if (text_resize_line_height_allow) { element_to_resize.css('line-height', ''); }
+           return false;
+         }
+       });
