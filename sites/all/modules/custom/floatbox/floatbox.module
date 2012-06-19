@@ -185,33 +185,36 @@ function floatbox_filter_info(){
 
 function floatbox_filter_floatbox_process($text, $filter, $format, $langcode, $cache, $cache_id){
   //print_r($text);
+  $nid = NULL;
   if(arg(0) == 'node' && is_numeric(arg(1))){
     $nid = arg(1);
   }else if(arg(0) == 'comment' && arg(2)){
     $nid = arg(2);
   }
-  $floatbox_text = db_query("SELECT text_value FROM floatbox_fields WHERE nid=:nid",array(':nid'=>$nid))->fetchAssoc();
-  $floatbox_text = $floatbox_text['text_value'];
-  //check the floatig side
-	$rightSide = '[floatbox=right]';
-	$right = strpos($text,$rightSide);
-	$leftSide = '[floatbox=left]';
-	$left = strpos($text,$leftSide);
-	$topSide = '[floatbox=top]';
-	$top = strpos($text,$topSide);
+  if(is_numeric($nid)){
+    $floatbox_text = db_query("SELECT text_value FROM floatbox_fields WHERE nid=:nid",array(':nid'=>$nid))->fetchAssoc();
+    $floatbox_text = $floatbox_text['text_value'];
+    //check the floatig side
+    $rightSide = '[floatbox=right]';
+    $right = strpos($text,$rightSide);
+    $leftSide = '[floatbox=left]';
+    $left = strpos($text,$leftSide);
+    $topSide = '[floatbox=top]';
+    $top = strpos($text,$topSide);
 
-	//apply the floatbox to the required content area (corner) left, right and so on
-	if ($right!=""){
-		 $floatbox = '<div id="floatbox" class="floatbox-right">'.$floatbox_text .'</div>';
-     $text = str_replace('[floatbox=right]',$floatbox,	$text);
-	}
-	elseif ($left!=""){
-		 $floatbox = '<div id="floatbox" class="floatbox-left">'.$floatbox_text.'</div>';
-     $text = str_replace('[floatbox=left]',$floatbox,	$text);
-	}
-	else{
-		 $floatbox = '<div id="floatbox" class="floatbox-left">'.$floatbox_text .'</div>';
-     $text = str_replace('[floatbox]',$floatbox,	$text);
-	}
+    //apply the floatbox to the required content area (corner) left, right and so on
+    if ($right!=""){
+       $floatbox = '<div id="floatbox" class="floatbox-right">'.$floatbox_text .'</div>';
+       $text = str_replace('[floatbox=right]',$floatbox,	$text);
+    }
+    elseif ($left!=""){
+       $floatbox = '<div id="floatbox" class="floatbox-left">'.$floatbox_text.'</div>';
+       $text = str_replace('[floatbox=left]',$floatbox,	$text);
+    }
+    else{
+       $floatbox = '<div id="floatbox" class="floatbox-left">'.$floatbox_text .'</div>';
+       $text = str_replace('[floatbox]',$floatbox,	$text);
+    }
+  }
   return $text;
 }
