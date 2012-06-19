@@ -122,10 +122,31 @@ projects[wordpress_migrate][subdir] = "contrib"
 projects[wysiwyg][version] = "2.1"
 projects[wysiwyg][subdir] = "contrib" 
 
+
+; jQuery.cycle
+libraries[jquery_cycle][directory_name] = "jquery.cycle"
+libraries[jquery_cycle][download][type] = "git"
+libraries[jquery_cycle][download][url] = "https://github.com/malsup/cycle.git"
+
+; dompdf
+libraries[dompdf][directory_name] = "dompdf"
+libraries[dompdf][download][type] = "get"
+libraries[dompdf][download][url] = "http://dompdf.googlecode.com/files/dompdf-0.5.2.zip"
+
+; TinyMCE
+libraries[tinymce][directory_name] = "tinymce"
+libraries[tinymce][download][type] = "get"
+libraries[tinymce][download][url] = "https://github.com/tinymce/tinymce/zipball/3.5.2"
+
+; socialshareprivacy
+libraries[socialshareprivacy][directory_name] = "socialshareprivacy"
+libraries[socialshareprivacy][download][type] = "get"
+libraries[socialshareprivacy][download][url] = "http://www.heise.de/extras/socialshareprivacy/jquery.socialshareprivacy.zip"
+
 ; CiviCRM
-libraries[civicrm][directory_name] = "civicrm"
-libraries[civicrm][download][type] = "get"
-libraries[civicrm][download][url] = "http://sourceforge.net/projects/civicrm/files/latest/download"
+; libraries[civicrm][directory_name] = "civicrm"
+; libraries[civicrm][download][type] = "get"
+; libraries[civicrm][download][url] = "http://sourceforge.net/projects/civicrm/files/latest/download"
 
 ; Themes
 projects[omega][version] = "3.1"
