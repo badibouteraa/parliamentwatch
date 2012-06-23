@@ -153,6 +153,7 @@ function committee_type_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '15',
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => '',
@@ -221,7 +222,6 @@ function committee_type_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_parliament',
       'label' => 'Parliament',
@@ -230,10 +230,13 @@ function committee_type_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
         'weight' => '34',
       ),
     ),
