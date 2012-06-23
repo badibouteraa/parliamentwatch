@@ -18,7 +18,7 @@ class CommitteeMigration extends BasicMigrateCommittee {
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
     $query->fields('c', array('id', 'committee', 'txt'));
     $query->fields('p', array('project', 'startdate'));
-    #$query->condition('p.project_cmd', array(132, 360));
+    $query->condition('p.project_cmd', array(132, 360));
 
     // Prepare mapping
     $this->source = new MigrateSourceSQL($query);

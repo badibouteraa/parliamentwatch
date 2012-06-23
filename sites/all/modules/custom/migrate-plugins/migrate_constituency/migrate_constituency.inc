@@ -18,7 +18,7 @@ class ConstituencyMigration extends BasicMigrateConstituency {
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
     $query->fields('c', array('id', 'constituency'));
     $query->fields('p', array('project', 'startdate'));
-    #$query->condition('p.project_cmd', array(132, 360));
+    $query->condition('p.project_cmd', array(132, 360));
 
     $this->source = new MigrateSourceSQL($query);
     $this->map = new MigrateSQLMap($this->machineName,
