@@ -1,0 +1,57 @@
+<?php
+/**
+ * @file
+ * Code for the Custom Blocks.
+ */
+
+/**
+ * Implementation of hook_block_info
+ * @return type 
+ */
+
+function pw_blocks_block_info(){
+  $blocks['pw_taxonomy_menu'] = array(
+    'info' => t('Parliamentwatch: Taxonomy Profile Menu'), 
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view
+ * @param type $delta
+ * @return type 
+ */
+
+function pw_blocks_block_view($delta = ''){
+  switch($delta){
+    case 'pw_taxonomy_menu':
+      $uid = arg(1);
+      $tid = arg(2);
+      $vid = variable_get('pw_blocks_taxonomy_menu_vid',4);
+      $block['subject'] = t('Taxonomy Profile Menu');
+      $block['content'] =  pw_blocks_get_accordian_data($uid , $tid , $vid);
+  }
+  
+  return $block;
+}
+
+function pw_blocks_get_accordian_data($uid = NULL, $tid = NULL, $vid = NULL){
+  $user = user_load($uid);
+  /*$revs = user_revision_list($user);*/
+  $results = db_select('field_revision_field_user_parliament','up')
+  ->distinct()
+  ->fields('up',array('field_user_parliament_tid','revision_id'))
+  ->condition('entity_id',$uid,'=')
+  ->execute()
+  ->fetchAllAssoc('field_user_parliament_tid');
+  $output = '<ul id="pw-taxonomy-menu">';
+  foreach($results as $row){
+    $term = taxonomy_term_load($row->field_user_parliament_tid);
+    $output .= '<li class="pw-taxonomy-item">'.l($term->name,'user/'.$uid.'/revisions/'.$row->revision_id.'/view',array('title'=>$user->name)).'</li>';
+  }
+  $output .= '</ul>';
+  return $output;
+  
+}

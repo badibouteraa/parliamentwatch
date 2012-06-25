@@ -1,0 +1,4 @@
+core = "7.x"
+description = "Custom Blocks for Parliamentwatch Site"
+name = "Parliament Custom Blocks"
+package = "Parliamentwatch"
