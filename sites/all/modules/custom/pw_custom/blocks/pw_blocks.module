@@ -14,6 +14,15 @@ function pw_blocks_block_info(){
     'info' => t('Parliamentwatch: Taxonomy Profile Menu'), 
     'cache' => DRUPAL_NO_CACHE,
   );
+  $blocks['pw_total_votes'] = array(
+    'info' => t('AW: Total Votes per Poll'),
+    //'cache' => DRUPAL_CA,
+  );
+  
+  $blocks['pw_per_party_votes'] = array(
+    'info' => t('AW: Total Votes per Party'),
+    //'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
   
   return $blocks;
 }
@@ -32,6 +41,18 @@ function pw_blocks_block_view($delta = ''){
       $vid = variable_get('pw_blocks_taxonomy_menu_vid',4);
       $block['subject'] = t('Taxonomy Profile Menu');
       $block['content'] =  pw_blocks_get_accordian_data($uid , $tid , $vid);
+    break;
+    case 'pw_total_votes':
+      $nid = arg(1);
+      $block['subject'] = 'chart test';
+      $block['content'] = pw_blocks_get_chart($nid,'total');
+    break;
+    case 'pw_per_party_votes':
+      $nid = arg(1);
+      $block['subject'] = 'chart party';
+      $block['content'] = pw_blocks_get_chart($nid,'party');
+    break;
+  
   }
   
   return $block;
@@ -55,3 +76,91 @@ function pw_blocks_get_accordian_data($uid = NULL, $tid = NULL, $vid = NULL){
   return $output;
   
 }
+
+function pw_blocks_get_chart($nid = NULL, $type = 'total'){
+  $output = '';
+  $node = node_load($nid);
+  $widgets = rate_get_active_widgets('node',$node->type);
+  foreach($widgets[1]->options as $option){
+    $options[$option[0]] = $option[1];
+  }
+  
+  if($type == 'total'){
+    $chart = array(
+        '#type'=>CHART_TYPE_BAR_V,
+        '#chart_id'=>$type,
+        '#size' => chart_size(200, 200),
+        '#adjust_resolution' => TRUE,
+        '#data' => array(),
+        '#mixed_axis_labels' => array(
+          CHART_AXIS_Y_LEFT => array(),
+          CHART_AXIS_X_BOTTOM => array(),
+      ),
+    );
+    $query = "SELECT count(vv.vote_id) as votes, vv.value , count(*) as total
+              FROM votingapi_vote vv 
+            WHERE entity_type = 'node'
+              AND entity_id=:nid
+             GROUP BY value";
+    $args = array(
+        ':nid' => $node->nid,
+      );
+    $result = db_query($query,$args);
+    $max_count = 0;
+    while($rec = $result->fetchAssoc()){
+      //print_r($rec);
+      $chart['#data'][$rec['value']] = $rec['votes'];
+      $chart['#legends'][] = $options[$rec['value']];
+      //$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][] = chart_mixed_axis_label($options[$rec['value']]);
+      if($rec['votes'] > $max_count){
+        $max_count = $rec['votes'];
+      }
+    }
+   $output .= theme('chart', array('chart' => $chart));
+   
+  }else if($type == 'party'){
+    
+    $groups = og_get_group_ids();
+    foreach ($groups as $group){
+      $query = "SELECT count(vv.vote_id) as votes, vv.value , count(*) as total, om.gid
+              FROM votingapi_vote vv
+              JOIN og_membership om ON om.etid = vv.uid
+            WHERE vv.entity_type = 'node'
+              AND vv.entity_id=:nid
+              AND om.gid=:gid
+             GROUP BY om.gid, value";
+      $args = array(
+        ':nid' => $node->nid,
+        ':gid' => $group,
+      );
+      $chart = array(
+        '#type'=>CHART_TYPE_BAR_V,
+        '#chart_id'=>$type,
+        '#size' => chart_size(200, 200),
+        '#adjust_resolution' => TRUE,
+        '#data' => array(),
+        '#mixed_axis_labels' => array(
+          CHART_AXIS_Y_LEFT => array(),
+          CHART_AXIS_X_BOTTOM => array(),
+          ),
+        );
+      $result = db_query($query,$args);
+      while($rec = $result->fetchAssoc()){
+        
+        $chart['#data'][$rec['value']] = $rec['votes'];
+        $chart['#legends'][] = $options[$rec['value']];
+      //$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][] = chart_mixed_axis_label($options[$rec['value']]);
+        if($rec['votes'] > $max_count){
+          $max_count = $rec['votes'];
+        }
+        
+      }
+      $output .= theme('chart', array('chart' => $chart));
+    }
+  }
+  //$chart['#mixed_axis_labels'][CHART_AXIS_Y_LEFT][0][] = chart_mixed_axis_range_label(0, $max_count);
+  //$chart['#bar_size'] = chart_bar_size(, 0);
+  print $total;
+  return $output;
+}
+

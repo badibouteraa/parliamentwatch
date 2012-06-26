@@ -1,0 +1,8 @@
+name = Rate Vote As
+description = Provides an Interface to vote as any user
+core = 7.x
+package = Voting
+dependencies[] = votingapi
+dependencies[] = rate
+files[] = rate_voteas.module
+files[] = rate_voteas.page.inc
