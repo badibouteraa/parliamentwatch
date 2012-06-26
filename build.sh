@@ -33,13 +33,29 @@ drush site-install standard --yes --locale=de --account-name=root --account-pass
 cp -r custom/* sites
 rm -r custom
 
+# applying patches
+find . -name "*.patch" -printf "%f:%h\n" | while IFS=":" read FILE PATH
+do
+	echo "APPLYING PATCH $PATH/$FILE"
+ 	git apply -v --directory=$PATH $PATH/$FILE
+done
+
+
 echo "ENABLING MODULES"
-drush en --yes admin_devel admin_menu admin_menu_toolbar blogpost_type ctools page_manager views_content context context_layouts context_ui custom_search custom_search_blocks date date_all_day date_api date_migrate date_popup date_tools devel migrate migrate_committee migrate_extras migrate_memberships migrate_politician migrate_ui migrate_user_revisions ds ds_extras ds_search committee_type constituency features user_profile addressfield addthis addthis_displays field_group link file_entity media mediafield i18n_field i18n i18n_string i18n_variable og og_access og_context og_field_access og_migrate og_ui backup_migrate better_formats custom_breadcrumbs entity entity_token favicon feedback_simple forward inline_messages libraries masquerade menu_position module_filter nice_menus pathauto read_more subform text_resize token user_revision panels print rules rules_scheduler rules_admin secureshare secureshare_fields de_stemmer stemmer_api tagadelic delta delta_blocks delta_ui omega_tools compact_forms wysiwyg variable variable_realm variable_store views views_slideshow views_slideshow_cycle views_ui webform webform_rules  
+drush en --yes admin_devel admin_menu admin_menu_toolbar ctools page_manager views_content context context_layouts context_ui custom_search custom_search_blocks date date_all_day date_api date_migrate date_popup date_tools devel migrate migrate_committee migrate_constituency migrate_extras migrate_memberships migrate_party migrate_politician migrate_ui user_revision migrate_user_revisions ds ds_extras ds_search blogpost_type committee_type type_party constituency slider_item features user_profile_fields addressfield addthis addthis_displays field_group link file_entity media mediafield i18n_field i18n i18n_string i18n_variable og og_access og_context og_field_access og_migrate og_ui backup_migrate better_formats custom_breadcrumbs entity entity_token favicon feedback_simple forward inline_messages libraries masquerade menu_position module_filter nice_menus pathauto read_more subform text_resize token user_revision panels print rules rules_scheduler rules_admin secureshare secureshare_fields de_stemmer stemmer_api tagadelic delta delta_blocks delta_ui omega_tools php compact_forms wysiwyg variable variable_realm variable_store views views_slideshow views_slideshow_cycle views_ui webform webform_rules  
 
 echo "DISABLING MODULES"
 drush dis --yes toolbar migrate_extras_profile2 print_pdf
 
-echo "SETTING PERMISSIONS FOR FILES FOLDER"
+echo "ENABLING THEME"
+drush en -y omega abgeordnetenwatch
+drush vset -y theme_default abgeordnetenwatch
+
+echo "SETTING DATE/COUNTRY"
+drush vset --yes date_first_day 1
+drush vset --yes site_default_country "DE"
+
+echo "SETTING WRITE PERMISSIONS TO FILES FOLDER"
 chmod -R 0775 sites/default/files
 
 echo "CLEARING CACHE"
