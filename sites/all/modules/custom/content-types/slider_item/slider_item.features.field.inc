@@ -46,8 +46,9 @@ function slider_item_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'text_default',
           'weight' => '1',
         ),
         'full' => array(
@@ -125,7 +126,7 @@ function slider_item_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '11',
         ),
         'full' => array(
           'label' => 'above',
@@ -157,38 +158,39 @@ function slider_item_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
 
-  // Exported field: 'node-slider_item-field_slider_teasertitle'
-  $fields['node-slider_item-field_slider_teasertitle'] = array(
+  // Exported field: 'node-slider_item-field_slider_url'
+  $fields['node-slider_item-field_slider_url'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_slider_teasertitle',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
+      'field_name' => 'field_slider_url',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
       'settings' => array(
-        'max_length' => '255',
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'link_field',
     ),
     'field_instance' => array(
       'bundle' => 'slider_item',
@@ -200,48 +202,54 @@ function slider_item_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
-        ),
-        'full' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '13',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '13',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_slider_teasertitle',
-      'label' => 'Teaser title',
+      'field_name' => 'field_slider_url',
+      'label' => 'Beschreibung mit LInk',
       'required' => 1,
       'settings' => array(
-        'text_processing' => '0',
+        'attributes' => array(
+          'class' => '',
+          'configurable_title' => 1,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'required',
+        'title_maxlength' => '128',
+        'title_value' => '',
+        'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 0,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '2',
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '3',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Beschreibung mit LInk');
   t('Body');
   t('Teaser Body');
-  t('Teaser title');
 
   return $fields;
 }
