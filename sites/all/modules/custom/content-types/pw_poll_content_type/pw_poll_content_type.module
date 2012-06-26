@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PW Poll Content Type feature.
+ */
+
+include_once 'pw_poll_content_type.features.inc';
