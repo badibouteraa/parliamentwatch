@@ -36,8 +36,8 @@ rm -r custom
 # applying patches
 find . -name "*.patch" -printf "%f:%h\n" | while IFS=":" read FILE PATH
 do
-	echo "APPLYING PATCH $PATH/$FILE"
- 	git apply -v --directory=$PATH $PATH/$FILE
+	echo "APPLYING PATCH $PATH/$FILE" # TODO: git path
+ 	/usr/bin/git apply -v --directory=$PATH $PATH/$FILE
 done
 
 
