@@ -111,8 +111,8 @@ projects[field_validation][version] = "2.0-beta2"
 projects[field_validation][subdir] = "contrib"
 ; projects[user_diff][version] = "1.4"
 ; projects[user_diff][subdir] = "contrib"
-; projects[user_revision][version] = "1.6"
-; projects[user_revision][subdir] = "contrib" 
+projects[user_revision][version] = "1.6"
+projects[user_revision][subdir] = "contrib" 
 projects[variable][version] = "1.2"
 projects[variable][subdir] = "contrib" 
 projects[views][version] = "3.3"
@@ -137,9 +137,9 @@ libraries[jquery_cycle][download][type] = "git"
 libraries[jquery_cycle][download][url] = "https://github.com/malsup/cycle.git"
 
 ; dompdf
-libraries[dompdf][directory_name] = "dompdf"
-libraries[dompdf][download][type] = "get"
-libraries[dompdf][download][url] = "http://dompdf.googlecode.com/files/dompdf-0.5.2.zip"
+; libraries[dompdf][directory_name] = "dompdf"
+; libraries[dompdf][download][type] = "get"
+; libraries[dompdf][download][url] = "http://dompdf.googlecode.com/files/dompdf-0.5.2.zip"
 
 ; TinyMCE
 libraries[tinymce][directory_name] = "tinymce"
