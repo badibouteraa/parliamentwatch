@@ -9,11 +9,11 @@
  */
 function constituency_taxonomy_default_vocabularies() {
   return array(
-    'parliaments' => array(
-      'name' => 'Parliaments',
-      'machine_name' => 'parliaments',
+    'zipcodes' => array(
+      'name' => 'Zipcodes',
+      'machine_name' => 'zipcodes',
       'description' => '',
-      'hierarchy' => '2',
+      'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
       'rdf_mapping' => array(
