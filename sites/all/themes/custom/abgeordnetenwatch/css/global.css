@@ -698,9 +698,6 @@ textarea:active {
     line-height: 16px;
     font-weight: normal;
 }
-.views-row {
-    margin-bottom: 27px;
-}
 .view-filters textarea,
 .view-filters select,
 .view-filters input[type="text"] {
