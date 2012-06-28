@@ -38,7 +38,7 @@ function rate_voteas_voting_form($form, &$form_state, $node){
     '#value'=> $options,
   );
   // Add a wrapper for the choices and more button.
-  $form['rate_wrapper'] = array(
+  /*$form['rate_wrapper'] = array(
     '#tree' => FALSE,
     '#weight' => -4,
     '#prefix' => '<div class="clearfix" id="rate-users-wrapper">',
@@ -82,23 +82,12 @@ function rate_voteas_voting_form($form, &$form_state, $node){
 
     }
     
-    $form['rate_upload'] = array(
-    //'#name' => 'files[' . implode('_', $element['#parents']) . ']',
-    '#type' => 'managed_file',
-    '#title' => t('Choose a file'),
-    '#title_display' => 'invisible',
-    '#size' => 22,
-    '#theme_wrappers' => array(),
-    '#weight' => -10,
-    '#upload_validators' => array(
-        'file_validate_extensions' => array('csv'),
-      ),
-  	);
+    
     
     $form['rate_wrapper']['user'][$key] = _rate_voteas_vote_form($key, $uid, $uname, 0, $weight, $choice_count, $options, $vote_id, $option);
-  }
+  }*/
   
-  $form['rate_wrapper']['rate_more'] = array(
+  /*$form['rate_wrapper']['rate_more'] = array(
       '#type' => 'submit',
       '#value' => t('More User Votes'),
       '#attributes' => array(
@@ -112,8 +101,19 @@ function rate_voteas_voting_form($form, &$form_state, $node){
         'wrapper' => 'rate-user-vote',
         'effect' => 'fade',
     ),
-  );
-  
+  /);*/
+  $form['rate_upload'] = array(
+    //'#name' => 'files[' . implode('_', $element['#parents']) . ']',
+    '#type' => 'managed_file',
+    '#title' => t('Choose a file'),
+    '#title_display' => 'invisible',
+    '#size' => 22,
+    '#theme_wrappers' => array(),
+    '#weight' => -10,
+    '#upload_validators' => array(
+        'file_validate_extensions' => array('csv'),
+      ),
+  	);
   $form['rate_submit'] = array(
     '#type'=>'submit',
     '#value'=> 'save',

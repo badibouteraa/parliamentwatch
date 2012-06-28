@@ -84,18 +84,21 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
   foreach($widgets[1]->options as $option){
     $options[$option[0]] = $option[1];
   }
-  
+  $colors = array('01cc00','ff3334','0033fe','555555');
   if($type == 'total'){
     $chart = array(
         '#type'=>CHART_TYPE_BAR_V,
         '#chart_id'=>$type,
         '#size' => chart_size(200, 200),
         '#adjust_resolution' => TRUE,
-        '#data' => array(),
-        '#mixed_axis_labels' => array(
-          CHART_AXIS_Y_LEFT => array(),
-          CHART_AXIS_X_BOTTOM => array(),
-      ),
+        //'#data' => array(),
+        '#data_colors' => array('01cc00|ff3334|0033fe|555555'),
+        '#labels' => array(),
+        '#bar_size' => 'a',
+        //'#mixed_axis_labels' => array(
+          //CHART_AXIS_Y_LEFT => array(),
+          //CHART_AXIS_X_TOP => array(),
+      //),
     );
     $query = "SELECT count(vv.vote_id) as votes, vv.value , count(*) as total
               FROM votingapi_vote vv 
@@ -107,15 +110,24 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
       );
     $result = db_query($query,$args);
     $max_count = 0;
+    foreach($options as $key => $option){
+        $chart['#legends'][$key] = $option;
+      }
+    $i = 0;
     while($rec = $result->fetchAssoc()){
       //print_r($rec);
-      $chart['#data'][$rec['value']] = $rec['votes'];
-      $chart['#legends'][] = $options[$rec['value']];
+      $chart['#data'][] = $rec['votes'];
+      $chart['#labels'][] = $rec['votes'];
+      //$chart['#data_colors'][] = $colors[$i];
+//$chart['#shape_markers'][$options[$rec['value']]] = array('t'.$rec['votes'],'555555',0,-35,13);
+      //$chart['#legends'][] = $options[$rec['value']];
       //$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][] = chart_mixed_axis_label($options[$rec['value']]);
       if($rec['votes'] > $max_count){
         $max_count = $rec['votes'];
       }
+      $i++;
     }
+   echo '<pre>'.print_r($chart,1).'</pre>';
    $output .= theme('chart', array('chart' => $chart));
    
   }else if($type == 'party'){
