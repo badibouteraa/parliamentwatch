@@ -84,7 +84,6 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
   foreach($widgets[1]->options as $option){
     $options[$option[0]] = $option[1];
   }
-  $colors = array('01cc00','ff3334','0033fe','555555');
   if($type == 'total'){
     $chart = array(
         '#type'=>CHART_TYPE_BAR_V,
@@ -127,7 +126,7 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
       }
       $i++;
     }
-   echo '<pre>'.print_r($chart,1).'</pre>';
+   // DEBUG: echo '<pre>'.print_r($chart,1).'</pre>';
    $output .= theme('chart', array('chart' => $chart));
    
   }else if($type == 'party'){
