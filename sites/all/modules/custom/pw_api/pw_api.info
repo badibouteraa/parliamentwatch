@@ -1,0 +1,6 @@
+name = Parliamentwatch API
+description = Provides an interface for developers to query the available data
+core = 7.x
+package = Parliamentwatch
+dependencies[] = services
+dependencies[] = rest_server
