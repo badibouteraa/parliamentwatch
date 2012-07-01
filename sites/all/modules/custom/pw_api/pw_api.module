@@ -17,7 +17,7 @@ function pw_api_services_resources() {
       'retrieve' => array(
         'help' => 'Retrieves a parliament',
         'callback' => 'pw_api_parliament_retrieve',
-        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'file' => array('file' => 'parliament.inc', 'module' => 'pw_api'),
         'access arguments' => array('access content'),
         'args' => array(
           array(
@@ -33,7 +33,7 @@ function pw_api_services_resources() {
         'help' => 'Retrieves a list of all parliaments',
         'callback' => 'pw_api_parliament_index',
         'access arguments' => array('access content'),
-        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'file' => array('file' => 'parliament.inc', 'module' => 'pw_api'),
       ),
     );
   }
@@ -44,7 +44,7 @@ function pw_api_services_resources() {
       'retrieve' => array(
         'help' => 'Retrieves a constituency',
         'callback' => 'pw_api_constituency_retrieve',
-        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'file' => array('file' => 'constituency.inc', 'module' => 'pw_api'),
         'access callback' => '_node_resource_access',
         'access arguments' => array('view'),
         'access arguments append' => TRUE,
@@ -60,7 +60,7 @@ function pw_api_services_resources() {
       ),
       'index' => array(
         'help' => 'Retrieves a list of all constituencies',
-        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'file' => array('file' => 'constituency.inc', 'module' => 'pw_api'),
         'callback' => 'pw_api_constituency_index',
         'access arguments' => array('access content'),
       ),
@@ -73,7 +73,7 @@ function pw_api_services_resources() {
       'retrieve' => array(
         'help' => 'Retrieves a committee',
         'callback' => 'pw_api_committee_retrieve',
-        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'file' => array('file' => 'committee.inc', 'module' => 'pw_api'),
         'access callback' => '_node_resource_access',
         'access arguments' => array('view'),
         'access arguments append' => TRUE,
@@ -89,7 +89,7 @@ function pw_api_services_resources() {
       ),
       'index' => array(
         'help' => 'Retrieves a list of all committees',
-        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'file' => array('file' => 'committee.inc', 'module' => 'pw_api'),
         'callback' => 'pw_api_committee_index',
         'access arguments' => array('access content'),
       ),
