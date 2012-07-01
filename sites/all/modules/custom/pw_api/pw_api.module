@@ -67,6 +67,35 @@ function pw_api_services_resources() {
     );
   }
 
+  // Provide committees as a resource.
+  if (node_type_get_type('committee')) {
+    $resources['committee'] = array(
+      'retrieve' => array(
+        'help' => 'Retrieves a committee',
+        'callback' => 'pw_api_committee_retrieve',
+        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'access callback' => '_node_resource_access',
+        'access arguments' => array('view'),
+        'access arguments append' => TRUE,
+        'args' => array(
+          array(
+            'name' => 'id',
+            'type' => 'int',
+            'description' => 'The id of the committee',
+            'source' => array('path' => 0),
+            'optional' => FALSE,
+          ),
+        ),
+      ),
+      'index' => array(
+        'help' => 'Retrieves a list of all committees',
+        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'callback' => 'pw_api_committee_index',
+        'access arguments' => array('access content'),
+      ),
+    );
+  }
+
   return $resources;
 }
 

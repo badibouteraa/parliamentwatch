@@ -94,3 +94,46 @@ function _pw_api_constituency_flatten($node) {
     'name' => $node->title,
   );
 }
+
+/**
+ * Services API callback that retrieves a committee.
+ *
+ * @param $id
+ *   The node ID of the committee to retrieve.
+ */
+function pw_api_committee_retrieve($id) {
+  $node = node_load($id);
+  if ($node && $node->type == 'committee') {
+    return _pw_api_committee_flatten($node);
+  }
+  else {
+    return services_error('Committee not found.', 404);
+  }
+}
+
+/**
+ * Services API callback that retrieves a list of committees.
+ */
+function pw_api_committee_index() {
+  $nids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'committee')
+    ->condition('status', 1)
+    ->execute()
+    ->fetchCol();
+
+  return array_map('_pw_api_committee_flatten', node_load_multiple($nids));
+}
+
+/**
+ * Helper functions: Builds an array from a committee node.
+ *
+ * @param $node
+ *   A committee node.
+ */
+function _pw_api_committee_flatten($node) {
+  return array(
+    'id' => $node->nid,
+    'name' => $node->title,
+  );
+}
