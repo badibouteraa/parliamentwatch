@@ -9,15 +9,16 @@
  * Implements hook_services_resources().
  */
 function pw_api_services_resources() {
-  return array(
-    'parliament' => array(
+  $resources = array();
+
+  // Provide parliaments as a resource.
+  if (module_exists('taxonomy') && taxonomy_vocabulary_machine_name_load('parliaments')) {
+    $resources['parliament'] = array(
       'retrieve' => array(
         'help' => 'Retrieves a parliament',
-        'file' => array('file' => 'inc', 'module' => 'pw_api'),
         'callback' => 'pw_api_parliament_retrieve',
-        'access callback' => 'user_access',
-        'access arguments' => array('access content'), // TODO: Figure out the right permission
-        'access arguments append' => FALSE,
+        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'access arguments' => array('access content'),
         'args' => array(
           array(
             'name' => 'id',
@@ -30,14 +31,43 @@ function pw_api_services_resources() {
       ),
       'index' => array(
         'help' => 'Retrieves a list of all parliaments',
-        'file' => array('file' => 'inc', 'module' => 'pw_api'),
         'callback' => 'pw_api_parliament_index',
-        'access callback' => 'user_access',
         'access arguments' => array('access content'),
-        'access arguments append' => FALSE,
+        'file' => array('file' => 'inc', 'module' => 'pw_api'),
       ),
-    ),
-  );
+    );
+  }
+
+  // Provide constituencies as a resource.
+  if (node_type_get_type('constituency')) {
+    $resources['constituency'] = array(
+      'retrieve' => array(
+        'help' => 'Retrieves a constituency',
+        'callback' => 'pw_api_constituency_retrieve',
+        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'access callback' => '_node_resource_access',
+        'access arguments' => array('view'),
+        'access arguments append' => TRUE,
+        'args' => array(
+          array(
+            'name' => 'id',
+            'type' => 'int',
+            'description' => 'The id of the constituency',
+            'source' => array('path' => 0),
+            'optional' => FALSE,
+          ),
+        ),
+      ),
+      'index' => array(
+        'help' => 'Retrieves a list of all constituencies',
+        'file' => array('file' => 'inc', 'module' => 'pw_api'),
+        'callback' => 'pw_api_constituency_index',
+        'access arguments' => array('access content'),
+      ),
+    );
+  }
+
+  return $resources;
 }
 
 /**

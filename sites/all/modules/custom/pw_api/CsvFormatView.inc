@@ -9,6 +9,7 @@
  * Renders data as comma separated values.
  */
 class CsvFormatView extends RESTServerView {
+
   public function render() {
     $buffer = fopen('php://temp', 'r+');
     foreach ($this->model as $row) {
