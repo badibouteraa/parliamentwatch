@@ -447,7 +447,8 @@ a.tagadelic.level4 {
     position: relative;
 }
 #region-user-second #block-print-print-links .content,
-#region-user-second #block-text-resize-0 .content {
+#region-user-second #block-text-resize-0 .content,
+#region-user-second #block-locale-language .content {
     right: 0;    
 }
 #region-user-second #block-user-login .content,
@@ -458,7 +459,8 @@ a.tagadelic.level4 {
 #region-user-second #block-print-print-links .content,
 #region-user-second #block-text-resize-0 .content,
 #region-user-second #block-user-login .content,
-#region-user-second #block-system-user-menu .content {
+#region-user-second #block-system-user-menu .content,
+#region-user-second #block-locale-language .content {
     width: 190px;
     padding: 15px 0;   
 }
@@ -469,6 +471,7 @@ a.tagadelic.level4 {
 }
 #region-user-second #block-block-7 .content,
 #region-user-second #block-text-resize-0 .content,
+#region-user-second #block-locale-language .content,
 #region-user-second #block-user-login .content {
     padding: 15px;   
 }
@@ -516,6 +519,12 @@ a.tagadelic.level4 {
 }
 #region-user-second #block-block-7 h2 {
     background-position: -962px -19px;    
+}
+#region-user-second #block-locale-language h2 {
+    background-position: -600px -2056px;
+}
+#region-user-second #block-locale-language:hover h2 {
+    background-position: -638px -2015px;
 }
 
 #region-user-second #user-login-form {
