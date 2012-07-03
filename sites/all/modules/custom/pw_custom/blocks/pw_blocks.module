@@ -23,10 +23,7 @@ function pw_blocks_block_info(){
     'info' => t('PW: Total Votes per Party'),
     //'cache' => DRUPAL_CACHE_PER_PAGE,
   );
-  $blocks['pw_custom_lang'] = array(
-    'info' => t('PW: Custom Language Switcher Menu'),
-    //'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
+  
   
   return $blocks;
 }
@@ -56,11 +53,7 @@ function pw_blocks_block_view($delta = ''){
       $block['subject'] = 'chart party';
       $block['content'] = pw_blocks_get_chart($nid,'party');
     break;
-    case 'pw_custom_lang':
-      $nid = arg(1);
-      $block['subject'] = t('Custom Language');
-      $block['content'] = pw_blocks_custom_menu();
-    break;
+    
   
   }
   
@@ -183,18 +176,12 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
 }
 
 
-function pw_blocks_custom_menu(){
-  $links = array();
-  $langs = language_list();
-  $current_path = current_path();
-  foreach($langs as $lang){
-    if($lang->prefix!="default"){
-      if($alias = drupal_lookup_path('alias', $current_path, $lang->language))
-        $links[] = l( t($lang->name). ' '.$lang->native,  $alias);
-      else
-        $links[] = '<span class="locale-untranslated">'.t($lang->name). ' '.$lang->native.'</span>';
-        
-    } 
+
+function pw_blocks_language_switch_links_alter(array &$links, $type, $path){
+
+  foreach($links as $key => $link){
+    $links[$key]['title'] = t($link['language']->name) ." ".$link['language']->native;
+    
   }
-  return theme('item_list',array('items' => $links));
+  return $links;
 }
