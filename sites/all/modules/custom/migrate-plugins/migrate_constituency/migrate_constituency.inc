@@ -16,7 +16,7 @@ class ConstituencyMigration extends BasicMigrateConstituency {
     $query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_constituency', 'c');
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
-    $query->fields('c', array('id', 'constituency', 'zipcodes'));
+    $query->fields('c', array('id', 'constituency', 'zipcode'));
     $query->fields('p', array('project', 'startdate'));
     $query->condition('p.project_cmd', array(132, 360));
 

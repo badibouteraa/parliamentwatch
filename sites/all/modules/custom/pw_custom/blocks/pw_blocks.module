@@ -175,12 +175,19 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
   return $output;
 }
 
-
+/**
+ *Implementation of hook_language_switch_links_alter
+ * @param array $links
+ * @param type $type
+ * @param type $path
+ * @return string 
+ */
 
 function pw_blocks_language_switch_links_alter(array &$links, $type, $path){
 
   foreach($links as $key => $link){
     $links[$key]['title'] = t($link['language']->name) ." ".$link['language']->native;
+    $links[$key]['html'] = TRUE;
     
   }
   return $links;
