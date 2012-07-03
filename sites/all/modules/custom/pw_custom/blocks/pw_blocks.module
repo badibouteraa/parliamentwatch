@@ -35,6 +35,8 @@ function pw_blocks_block_info(){
  */
 
 function pw_blocks_block_view($delta = ''){
+  $block = array();
+  
   switch($delta){
     case 'pw_taxonomy_menu':
       $uid = arg(1);
