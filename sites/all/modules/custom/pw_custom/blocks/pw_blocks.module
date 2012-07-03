@@ -15,12 +15,16 @@ function pw_blocks_block_info(){
     'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['pw_total_votes'] = array(
-    'info' => t('AW: Total Votes per Poll'),
+    'info' => t('PW: Total Votes per Poll'),
     //'cache' => DRUPAL_CA,
   );
   
   $blocks['pw_per_party_votes'] = array(
-    'info' => t('AW: Total Votes per Party'),
+    'info' => t('PW: Total Votes per Party'),
+    //'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  $blocks['pw_custom_lang'] = array(
+    'info' => t('PW: Custom Language Switcher Menu'),
     //'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   
@@ -51,6 +55,11 @@ function pw_blocks_block_view($delta = ''){
       $nid = arg(1);
       $block['subject'] = 'chart party';
       $block['content'] = pw_blocks_get_chart($nid,'party');
+    break;
+    case 'pw_custom_lang':
+      $nid = arg(1);
+      $block['subject'] = t('Custom Language');
+      $block['content'] = pw_blocks_custom_menu();
     break;
   
   }
@@ -170,7 +179,22 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
   }
   //$chart['#mixed_axis_labels'][CHART_AXIS_Y_LEFT][0][] = chart_mixed_axis_range_label(0, $max_count);
   //$chart['#bar_size'] = chart_bar_size(, 0);
-  print $total;
   return $output;
 }
 
+
+function pw_blocks_custom_menu(){
+  $links = array();
+  $langs = language_list();
+  $current_path = current_path();
+  foreach($langs as $lang){
+    if($lang->prefix!="default"){
+      if($alias = drupal_lookup_path('alias', $current_path, $lang->language))
+        $links[] = l( t($lang->name). ' '.$lang->native,  $alias);
+      else
+        $links[] = '<span class="locale-untranslated">'.t($lang->name). ' '.$lang->native.'</span>';
+        
+    } 
+  }
+  return theme('item_list',$links);
+}
