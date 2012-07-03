@@ -526,6 +526,10 @@ a.tagadelic.level4 {
 #region-user-second #block-locale-language:hover h2 {
     background-position: -638px -2015px;
 }
+#region-user-second #block-locale-language .locale-translated-name,
+#region-user-second #block-locale-language .locale-translated-name a {
+    font-weight: normal;
+}
 
 #region-user-second #user-login-form {
     padding-bottom: 4em;
@@ -679,6 +683,12 @@ a#text_resize_increase:hover {
     float: right;
     padding: 1em 0 1.5em 1em;
 }
+.views-exposed-form .views-exposed-widget label {
+    display: block;
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: normal;
+}
 .form-item-sort-order {
     display: none;
 }
@@ -700,12 +710,6 @@ textarea:active {
 }
 .view-content {
     clear: both;
-}
-.view-filters label {
-    display: block;
-    font-size: 11px;
-    line-height: 16px;
-    font-weight: normal;
 }
 .view-filters textarea,
 .view-filters select,
