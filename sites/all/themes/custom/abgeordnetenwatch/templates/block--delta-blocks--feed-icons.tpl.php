@@ -8,7 +8,7 @@
     <?php print render($title_suffix); ?>
     
     <div<?php print $content_attributes; ?>>
-     <?php print t('Aktuelle Inhalte werden mit RSS (Really Simple Syndication) in einer komprimierten Form bereitgestellt und in Ihrem Browser angezeigt.'); ?>
+     <?php print t('Current content is delivered using RSS (Really Simple Syndication) in a compressed form and displayed in your browser.'); ?>
       <?php print $content ?>
     </div>
   </div>
