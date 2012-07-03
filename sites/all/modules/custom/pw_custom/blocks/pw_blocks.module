@@ -196,5 +196,5 @@ function pw_blocks_custom_menu(){
         
     } 
   }
-  return theme('item_list',$links);
+  return theme('item_list',array('items' => $links));
 }
