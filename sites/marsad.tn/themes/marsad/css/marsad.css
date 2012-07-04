@@ -1,4 +1,36 @@
 #zone-menu-wrapper {
-    background: #839ea9 !important;
+    background: #7c97a3; /* Old browsers */
+    background: -moz-linear-gradient(top,  #7c97a3 0%, #7c97a3 2%, #8ea5b0 2%, #7c97a3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7c97a3), color-stop(2%,#7c97a3), color-stop(2%,#8ea5b0), color-stop(100%,#7c97a3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #7c97a3 0%,#7c97a3 2%,#8ea5b0 2%,#7c97a3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #7c97a3 0%,#7c97a3 2%,#8ea5b0 2%,#7c97a3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #7c97a3 0%,#7c97a3 2%,#8ea5b0 2%,#7c97a3 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #7c97a3 0%,#7c97a3 2%,#8ea5b0 2%,#7c97a3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c97a3', endColorstr='#7c97a3',GradientType=0 ); /* IE6-9 */
+
     filter: none;
+}
+a {
+    color: #7c97a3;
+    text-decoration: none;
+    font-weight: bold;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #7c97a3;
+}
+.back {
+    color: #7c97a3;
+}
+h1#page-title {
+    color: #7c97a3;
+}
+.node-blogpost.node-teaser,
+.views-table tr.odd,
+.views-table tr.even,
+.node-results li,
+.group-result .panel-flexible {
+    border-bottom: 1px dotted #7c97a3;
+}
+#block-delta-blocks-feed-icons .feed-link {
+    color: #7c97a3;
 }

@@ -41,7 +41,9 @@ zones[content] = 'Content'
 zones[postscript] = 'Postscript'
 zones[footer] = 'Footer'
 
-stylesheets[all][] = css/dailwatch.css
+css[dailwatch.css][name] = 'Custom styles'
+css[dailwatch.css][description] = 'Custom theme styles.'
+css[dailwatch.css][options][weight] = '10'
 
 version = '7.x-3.0'
 project = 'omega'

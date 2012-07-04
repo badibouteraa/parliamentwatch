@@ -41,7 +41,9 @@ zones[content] = 'Content'
 zones[postscript] = 'Postscript'
 zones[footer] = 'Footer'
 
-stylesheets[all][] = css/marsad.css
+css[marsad.css][name] = 'Custom styles'
+css[marsad.css][description] = 'Custom theme styles.'
+css[marsad.css][options][weight] = '10'
 
 version = '7.x-3.0'
 project = 'omega'

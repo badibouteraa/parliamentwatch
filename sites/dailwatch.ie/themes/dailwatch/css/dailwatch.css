@@ -1,4 +1,34 @@
 #zone-menu-wrapper {
-    background: #196e3b !important;
-    filter: none;
+    background: #a4a974; /* Old browsers */
+    background: -moz-linear-gradient(top,  #a4a974 0%, #919756 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a4a974), color-stop(100%,#919756)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #a4a974 0%,#919756 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #a4a974 0%,#919756 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #a4a974 0%,#919756 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #a4a974 0%,#919756 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4a974', endColorstr='#919756',GradientType=0 ); /* IE6-9 */
+}
+a {
+    color: #919756;
+    text-decoration: none;
+    font-weight: bold;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #919756;
+}
+.back {
+    color: #919756;
+}
+h1#page-title {
+    color: #919756;
+}
+.node-blogpost.node-teaser,
+.views-table tr.odd,
+.views-table tr.even,
+.node-results li,
+.group-result .panel-flexible {
+    border-bottom: 1px dotted #919756;
+}
+#block-delta-blocks-feed-icons .feed-link {
+    color: #919756;
 }
