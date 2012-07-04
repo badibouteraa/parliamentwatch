@@ -90,6 +90,7 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
   }
   if($type == 'total'){
     $chart = array(
+        '#title'=> 'CHART',
         '#type'=>CHART_TYPE_BAR_V,
         '#chart_id'=>$type,
         '#size' => chart_size(200, 200),
@@ -109,7 +110,7 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
               AND entity_id=:nid
              GROUP BY value";
     $args = array(
-        ':nid' => $node->nid,
+        ':nid' => $nid,
       );
     $result = db_query($query,$args);
     $max_count = 0;
@@ -119,7 +120,7 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
     $i = 0;
     while($rec = $result->fetchAssoc()){
       //print_r($rec);
-      $chart['#data'][] = $rec['votes'];
+      $chart['#data'][$rec['value']] = $rec['votes'];
       $chart['#labels'][] = $rec['votes'];
       //$chart['#data_colors'][] = $colors[$i];
 //$chart['#shape_markers'][$options[$rec['value']]] = array('t'.$rec['votes'],'555555',0,-35,13);
@@ -130,46 +131,56 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
       }
       $i++;
     }
-   // DEBUG: echo '<pre>'.print_r($chart,1).'</pre>';
-   $output .= theme('chart', array('chart' => $chart));
+   $output = theme('chart', array('chart' => $chart));
    
   }else if($type == 'party'){
     
     //$groups = og_get_group_ids();
 
-    $query = "SELECT count(vv.vote_id) as votes, vv.value , count(*) as total, om.gid
-            FROM votingapi_vote vv
-            JOIN og_membership om ON om.etid = vv.uid
-          WHERE vv.entity_type = 'node'
-            AND vv.entity_id=:nid
-           GROUP BY om.gid, value";
+    $query = "select count(vv.uid) as votes , om.gid, n.title, n.nid, vv.value from votingapi_vote vv 
+              join og_membership om on om.etid = vv.uid
+              join node n on n.nid = om.gid
+              where vv.entity_id = :nid
+              and n.type = 'party'
+              group by  om.gid, vv.value";
     $args = array(
       ':nid' => $node->nid,
     );
-    $chart = array(
-      '#title'=> '',
-      '#type'=>CHART_TYPE_BAR_V,
-      '#chart_id'=>$type,
-      '#size' => chart_size(200, 200),
-      '#adjust_resolution' => TRUE,
-      '#data' => array(),
-      '#mixed_axis_labels' => array(
+    
+    $result = db_query($query,$args);
+    $gid = "";
+    $chart = array();
+    while($rec = $result->fetchAssoc()){
+      
+        $parties[$rec['gid']]['title'] = $rec['title'];
+        $parties[$rec['gid']]['id'] = $rec['gid'];
+        $parties[$rec['gid']]['data'][$rec['value']] = $rec['votes'];
+      //$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][] = chart_mixed_axis_label($options[$rec['value']]);
+        
+      
+    }
+    foreach($parties as $party){  
+      $chart = array(
+        '#title'=> $party['title'],
+        '#type'=>CHART_TYPE_BAR_V,
+        '#chart_id'=>$party['id'],
+        '#size' => chart_size(200, 200),
+        '#adjust_resolution' => TRUE,
+        '#mixed_axis_labels' => array(
         CHART_AXIS_Y_LEFT => array(),
         CHART_AXIS_X_BOTTOM => array(),
         ),
+        '#data_colors' => array('01cc00|ff3334|0033fe|555555'),
+        '#labels' => array(),
+        '#bar_size' => 'a',
       );
-    $result = db_query($query,$args);
-    while($rec = $result->fetchAssoc()){
-
-      $chart['#data'][$rec['value']] = $rec['votes'];
-      $chart['#legends'][] = $options[$rec['value']];
-    //$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][] = chart_mixed_axis_label($options[$rec['value']]);
-      if($rec['votes'] > $max_count){
-        $max_count = $rec['votes'];
+      foreach($options as $key =>$option){
+        $chart['#legends'][$key] = $option;
       }
-
+      
+      $chart['#data'] = $party['data'];
+      $output .= theme('chart',array('chart'=>$chart));
     }
-    $output .= theme('chart', array('chart' => $chart));
     
   }
   //$chart['#mixed_axis_labels'][CHART_AXIS_Y_LEFT][0][] = chart_mixed_axis_range_label(0, $max_count);
