@@ -471,7 +471,6 @@ a.tagadelic.level4 {
 }
 #region-user-second #block-block-7 .content,
 #region-user-second #block-text-resize-0 .content,
-#region-user-second #block-locale-language .content,
 #region-user-second #block-user-login .content {
     padding: 15px;   
 }
@@ -529,6 +528,7 @@ a.tagadelic.level4 {
 #region-user-second #block-locale-language .locale-translated-name,
 #region-user-second #block-locale-language .locale-translated-name a {
     font-weight: normal;
+    margin-right: 7px;
 }
 
 #region-user-second #user-login-form {
@@ -550,7 +550,8 @@ a.tagadelic.level4 {
     line-height: 26px;
 }
 #region-user-second #block-system-user-menu .content a:hover,
-#region-user-second #block-print-print-links .content a:hover {
+#region-user-second #block-print-print-links .content a:hover,
+#block-locale-language a:hover {
     background-color: #d5d5d5;
     color: #444;
 }
@@ -569,6 +570,11 @@ a.print-page,
 a.print_mail,
 a.print-pdf {
     padding: 0 15px 0 41px;
+}
+#block-locale-language a {
+    padding: 0 15px;
+    line-height: 26px;
+    display: block;
 }
 #block-system-user-menu .first a,
 #block-system-user-menu .last a {
