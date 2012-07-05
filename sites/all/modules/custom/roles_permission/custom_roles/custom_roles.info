@@ -2,6 +2,7 @@ name = Custom Roles
 description = custom roles
 core = 7.x
 package = Features
+php = 5.2.4
 version = 7.x-1.0-27062012
 project = custom_roles
 dependencies[] = features

@@ -10,7 +10,7 @@
 function blogpost_type_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-blogpost-body'.
+  // Exported field: 'node-blogpost-body'
   $fields['node-blogpost-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,9 +33,10 @@ function blogpost_type_field_default_fields() {
           0 => 'format',
         ),
       ),
-      'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -113,7 +114,7 @@ function blogpost_type_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blogpost-field_addthis'.
+  // Exported field: 'node-blogpost-field_addthis'
   $fields['node-blogpost-field_addthis'] = array(
     'field_config' => array(
       'active' => '1',
@@ -123,7 +124,6 @@ function blogpost_type_field_default_fields() {
       'field_name' => 'field_addthis',
       'foreign keys' => array(),
       'indexes' => array(),
-      'locked' => '0',
       'module' => 'addthis',
       'settings' => array(
         'max_length' => 255,
@@ -191,7 +191,7 @@ function blogpost_type_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blogpost-field_blogpost_blogtags'.
+  // Exported field: 'node-blogpost-field_blogpost_blogtags'
   $fields['node-blogpost-field_blogpost_blogtags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -212,7 +212,6 @@ function blogpost_type_field_default_fields() {
           0 => 'tid',
         ),
       ),
-      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -221,6 +220,7 @@ function blogpost_type_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -287,7 +287,7 @@ function blogpost_type_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blogpost-field_blogpost_boxcontent'.
+  // Exported field: 'node-blogpost-field_blogpost_boxcontent'
   $fields['node-blogpost-field_blogpost_boxcontent'] = array(
     'field_config' => array(
       'active' => '1',
@@ -308,7 +308,6 @@ function blogpost_type_field_default_fields() {
           0 => 'format',
         ),
       ),
-      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -379,7 +378,7 @@ function blogpost_type_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blogpost-field_blogpost_teaserimage'.
+  // Exported field: 'node-blogpost-field_blogpost_teaserimage'
   $fields['node-blogpost-field_blogpost_teaserimage'] = array(
     'field_config' => array(
       'active' => '1',
@@ -387,13 +386,19 @@ function blogpost_type_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_blogpost_teaserimage',
-      'foreign keys' => array(),
+      'foreign keys' => array(
+        'file_managed' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
         ),
       ),
-      'locked' => '0',
       'module' => 'mediafield',
       'settings' => array(),
       'translatable' => '0',
