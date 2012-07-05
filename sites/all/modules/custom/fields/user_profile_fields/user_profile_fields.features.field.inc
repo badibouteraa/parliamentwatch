@@ -403,27 +403,30 @@ function user_profile_fields_field_default_fields() {
   $fields['user-user-field_user_more'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_user_more',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
         ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
+        'display' => array(
+          'url_cutoff' => 80,
         ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
       ),
-      'module' => 'text',
-      'settings' => array(),
       'translatable' => '0',
-      'type' => 'text_long',
+      'type' => 'link_field',
     ),
     'field_instance' => array(
       'bundle' => 'user',
@@ -433,10 +436,10 @@ function user_profile_fields_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 5,
+          'type' => 'link_default',
+          'weight' => 11,
         ),
       ),
       'ds_extras_field_template' => '',
@@ -445,16 +448,30 @@ function user_profile_fields_field_default_fields() {
       'label' => 'Weiterführendes',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => 1,
+        'attributes' => array(
+          'class' => '',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'rel_remove' => 'default',
+        'title' => 'optional',
+        'title_maxlength' => '128',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => 0,
+        'validate_url' => 1,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '5',
-        ),
-        'type' => 'text_textarea',
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
         'weight' => '11',
       ),
     ),
