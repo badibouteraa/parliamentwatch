@@ -46,6 +46,7 @@ css[print.css][name] = 'Your custom print styles'
 css[print.css][description] = 'This file holds all the custom print CSS of your theme.'
 css[print.css][options][weight] = '11'
 css[print.css][options][media] = 'print'
+stylesheets[all][] = css/horizontal-tabs.css
 version = '7.x-3.0'
 project = 'omega'
 datestamp = '1314088930'

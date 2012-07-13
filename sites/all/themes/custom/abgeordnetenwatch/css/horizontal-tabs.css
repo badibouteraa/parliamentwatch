@@ -1,0 +1,127 @@
+@CHARSET "UTF-8";
+
+div.horizontal-tabs {
+  margin: 0 0 1em 0; /* LTR */
+  padding: 4px 0 0;
+  position: relative; /* IE6/7 */
+  font-size: 11px;
+}
+div.horizontal-tabs .even {
+  background: #dbdbdb;
+}
+div.horizontal-tabs .label-inline {
+    display: block;
+    float: left;
+    width: 30%;
+}
+.field-group-htabs-wrapper h2 {
+  margin-bottom: 0;
+}
+
+.horizontal-tabs ul.horizontal-tabs-list {
+  display: inline-block;
+  margin: 0 0 -5px;
+  padding: 0px;
+  position: relative; /* IE6 */
+  list-style: none;
+  list-style-image: none; /* IE6 */
+  width: 100%;
+  height: auto;
+  clear: both;
+}
+
+.horizontal-tabs div.horizontal-tabs-panes {
+  background: #f4f4f4;
+  -webkit-box-shadow: 0 0 2px 1px #dedede;
+  -moz-box-shadow: 0 0 2px 1px #dedede;
+  box-shadow: 0 0 2px 1px #dedede;
+}
+.horizontal-tabs fieldset.horizontal-tabs-pane {
+  padding: 10px 0 20px;
+}
+.horizontal-tabs fieldset.horizontal-tabs-pane .field-item {
+  padding: 5px 10px;
+}
+
+.horizontal-tabs-pane>legend {
+  display: none;
+}
+
+/* Layout of each tab */
+.horizontal-tabs ul.horizontal-tabs-list li {
+  background: #e1e1e1;
+  padding-top: 0; 
+  margin: 0;
+  min-width: 5em; /* IE7 */
+  float: left;
+}
+.horizontal-tabs ul.horizontal-tabs-list li a {
+  display: block;
+  text-decoration: none;
+  padding: 0.5em 0.6em;
+}
+.horizontal-tabs ul.horizontal-tabs-list li a:hover,
+.horizontal-tabs ul.horizontal-tabs-list li.selected a {
+  outline: none;
+  background-color: #f4f4f4;
+}
+.horizontal-tabs ul.horizontal-tabs-list li:hover,
+.horizontal-tabs ul.horizontal-tabs-list li:focus {
+  background-color: #f4f4f4;
+}
+.horizontal-tabs ul.horizontal-tabs-list li strong {
+  font-weight: normal;
+}
+.horizontal-tabs ul.horizontal-tabs-list li a:focus strong,
+.horizontal-tabs ul.horizontal-tabs-list li a:active strong,
+.horizontal-tabs ul.horizontal-tabs-list li a:hover strong {
+  text-decoration: none;
+  outline: none;
+}
+.horizontal-tabs ul.horizontal-tabs-list li a,
+.horizontal-tabs ul.horizontal-tabs-list li.selected a {
+  display: block;
+  text-decoration: none;
+  padding: 0 30px;
+  line-height: 24px;
+  position:relative;
+  top: 0px;
+  color: #666; 
+}
+.horizontal-tabs ul.horizontal-tabs-list li.selected a {
+  padding-bottom: 4px;
+  margin-top: -4px;
+  border: 1px solid #dedede;
+  border-width: 1px 1px 0 0;
+      -webkit-box-shadow: -2px -1px 2px -1px #dedede;
+    -moz-box-shadow: -2px -1px 2px -1px #dedede;
+    box-shadow: -2px -1px 2px -1px #dedede;
+}
+.horizontal-tabs ul.horizontal-tabs-list .selected strong {
+  color: #000;
+}
+.horizontal-tabs ul.horizontal-tabs-list .summary {
+  display: block;
+}
+.horizontal-tabs ul.horizontal-tabs ul.horizontal-tabs-list .summary {
+  line-height: normal;
+  margin-bottom: 0;
+}
+
+/**
+ * tab content 
+ */
+div.field-group-htabs-wrapper .field-group-format-wrapper { 
+  clear: both;
+  padding: 0 0 0.6em;
+}
+div.horizontal-tabs-panes a { 
+  color: #666;
+  font-weight: bold;
+}
+/*hide*/
+.horizontal-tabs .horizontal-tab-hidden {
+  display: block;
+  position: absolute;
+  top: -100000px;
+}

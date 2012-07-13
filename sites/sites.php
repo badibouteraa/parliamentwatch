@@ -49,7 +49,7 @@
 $sites['abgeordnetenwatch.de'] = 'abgeordnetenwatch.de';
 $sites['de.parliamentwatch.org'] = 'abgeordnetenwatch.de';
 $sites['parlawatch.com'] = 'abgeordnetenwatch.de';          // for all test*.parlawatch.com servers
-$sites['aw-blog.silversurfer'] = 'abgeordnetenwatch.de';    // ruth's local maschine
+$sites['aw-profiles.silversurfer'] = 'abgeordnetenwatch.de';    // ruth's local maschine
 
 $sites['dailwatch.ie'] = 'dailwatch.ie';
 $sites['ie.parliamentwatch.org'] = 'dailwatch.ie';

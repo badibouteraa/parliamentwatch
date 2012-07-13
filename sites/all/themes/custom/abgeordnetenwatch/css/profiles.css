@@ -1,0 +1,20 @@
+table.views-view-grid {
+    width: 100%;
+    margin-bottom: 30px;
+}
+table.views-view-grid td {
+    padding: 26px 22px;
+    border: 1px solid #eee;
+}
+table.views-view-grid td.col-first {
+    border-left: 0;
+}
+table.views-view-grid td.col-last {
+    border-right: 0;
+}
+table.views-view-grid .row-first td {
+    border-top: 0;
+}
+table.views-view-grid .row-last td {
+    border-bottom: 0;
+}

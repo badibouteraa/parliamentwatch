@@ -1,6 +1,6 @@
 /* This file will hold the main styles for your website. */
 @charset "utf-8";
-
+@import url("profiles.css");
 body {
     background: #fff;
     font: 12px/1.5 Lucida Grande, Helvetica, Arial, sans-serif;
@@ -51,13 +51,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     font-weight: normal;
     color: #333;
 }
-h1, h2, h3 {
+h1,
+h2,
+.h2,
+h3 {
     font-family: 'Times New Roman', Georgia, serif;
 }
 h1 {
     font-size: 24px;
 }
-h2 {
+h2,
+.h2 {
     font-size: 23px;
     letter-spacing: 0.04ex;
     margin-bottom: 0.4em;
@@ -747,36 +751,40 @@ textarea:active {
     right: 0;
     top: 0;
 }
-.field-name-field-blog-teaserimage {
+.field-name-field-blog-teaserimage,
+.field-name-field-user-picture {
     float: left;
     margin: 4px 14px 12px 0;
 }
-.field-name-field-blog-teaserimage img {
+.file-image img {
     margin-bottom: 4px;
 }
 .field-name-field-image-copyright {
     color: #666;
     font-size: 10px;
 }
-.field-name-field-blog-teaserimage img {
+.file-image img {
     outline: 1px solid #ccc;
 }
 .comment-count,
 .field-type-taxonomy-term-reference {
-    clear: both;
     padding-left: 26px;
     background: url(../images/sprite.png) no-repeat;
+}
+.comment-count {
+    background-position: -929px -2574px;
 }
 .field-type-taxonomy-term-reference {
     background-position: -969px -2534px;
     margin-bottom: 5px;
 }
+.node-blogpost .comment-count,
+.node-blogpost .field-type-taxonomy-term-reference {
+    clear: both;
+}
 .pane-blog .field-type-taxonomy-term-reference {
     position: relative;
     top: 4px;
-}
-.comment-count {
-    background-position: -929px -2574px;
 }
 .view-blog .views-row .comment-count {
     margin-bottom: 18px;
