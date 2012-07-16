@@ -33,7 +33,6 @@ function profiles_ds_field_settings_info() {
     'group_audience' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
-        'lb-col' => TRUE,
         'ow' => TRUE,
         'ow-el' => 'div',
         'ow-cl' => 'field-item even clearfix',
@@ -45,12 +44,12 @@ function profiles_ds_field_settings_info() {
         'lb-col' => TRUE,
         'ow' => TRUE,
         'ow-el' => 'div',
-        'ow-cl' => 'field-item odd clearfix clearfix',
+        'ow-cl' => 'field-item even clearfix clearfix',
       ),
     ),
     'field_user_fname' => array(
       'ft' => array(
-        'func' => 'theme_ds_field_reset',
+        'func' => 'theme_ds_field_minimal',
       ),
     ),
     'field_user_job' => array(
@@ -73,7 +72,7 @@ function profiles_ds_field_settings_info() {
     ),
     'field_user_lname' => array(
       'ft' => array(
-        'func' => 'theme_ds_field_reset',
+        'func' => 'theme_ds_field_minimal',
       ),
     ),
     'field_user_marriage_status' => array(
@@ -82,7 +81,7 @@ function profiles_ds_field_settings_info() {
         'lb-col' => TRUE,
         'ow' => TRUE,
         'ow-el' => 'div',
-        'ow-cl' => 'field-item even clearfix',
+        'ow-cl' => 'field-item odd clearfix',
       ),
     ),
     'field_user_picture' => array(
@@ -148,35 +147,33 @@ function profiles_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'field_user_picture',
         1 => 'group_user_name',
-        2 => 'field_user_parliament',
+        2 => 'group_audience',
         3 => 'field_user_fname',
         4 => 'ask_a_question',
         5 => 'field_user_lname',
         6 => 'group_user_basics',
         7 => 'field_user_more',
         8 => 'group_user_basics_basics',
-        9 => 'group_user_basics_additional',
-        10 => 'field_user_job_skills',
+        9 => 'field_user_job_skills',
+        10 => 'group_user_basics_additional',
         11 => 'field_user_job',
-        12 => 'group_audience',
-        13 => 'field_user_childs',
-        14 => 'field_user_marriage_status',
+        12 => 'field_user_childs',
+        13 => 'field_user_marriage_status',
       ),
     ),
     'fields' => array(
       'field_user_picture' => 'ds_content',
       'group_user_name' => 'ds_content',
-      'field_user_parliament' => 'ds_content',
+      'group_audience' => 'ds_content',
       'field_user_fname' => 'ds_content',
       'ask_a_question' => 'ds_content',
       'field_user_lname' => 'ds_content',
       'group_user_basics' => 'ds_content',
       'field_user_more' => 'ds_content',
       'group_user_basics_basics' => 'ds_content',
-      'group_user_basics_additional' => 'ds_content',
       'field_user_job_skills' => 'ds_content',
+      'group_user_basics_additional' => 'ds_content',
       'field_user_job' => 'ds_content',
-      'group_audience' => 'ds_content',
       'field_user_childs' => 'ds_content',
       'field_user_marriage_status' => 'ds_content',
     ),

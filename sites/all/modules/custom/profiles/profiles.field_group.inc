@@ -50,11 +50,10 @@ function profiles_field_group_info() {
     'label' => 'Basics',
     'weight' => '13',
     'children' => array(
-      0 => 'group_audience',
-      1 => 'field_user_childs',
-      2 => 'field_user_job',
-      3 => 'field_user_job_skills',
-      4 => 'field_user_marriage_status',
+      0 => 'field_user_childs',
+      1 => 'field_user_job',
+      2 => 'field_user_job_skills',
+      3 => 'field_user_marriage_status',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
