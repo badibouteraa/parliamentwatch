@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * user_profile_fields.field_group.inc
+ * politicians.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function user_profile_fields_field_group_info() {
+function politicians_field_group_info() {
   $export = array();
 
   $field_group = new stdClass();
