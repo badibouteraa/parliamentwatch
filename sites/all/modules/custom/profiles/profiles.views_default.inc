@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * politicians.views_default.inc
+ * profiles.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function politicians_views_default_views() {
+function profiles_views_default_views() {
   $export = array();
 
   $view = new view;

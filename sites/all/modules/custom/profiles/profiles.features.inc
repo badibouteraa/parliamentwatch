@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * politicians.features.inc
+ * profiles.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function politicians_ctools_plugin_api() {
+function profiles_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
@@ -21,14 +21,14 @@ function politicians_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function politicians_views_api() {
+function profiles_views_api() {
   return array("version" => "3.0");
 }
 
 /**
  * Implements hook_image_default_styles().
  */
-function politicians_image_default_styles() {
+function profiles_image_default_styles() {
   $styles = array();
 
   // Exported image style: portrait

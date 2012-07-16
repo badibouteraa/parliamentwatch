@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * user_profile_fields.features.field.inc
+ * profiles.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function user_profile_fields_field_default_fields() {
+function profiles_field_default_fields() {
   $fields = array();
 
   // Exported field: 'taxonomy_term-parliaments-field_parliament_valid'
@@ -201,7 +201,7 @@ function user_profile_fields_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
+          'type' => 'text_default',
           'weight' => '2',
         ),
       ),
@@ -261,7 +261,7 @@ function user_profile_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
       ),
       'ds_extras_field_template' => '',
@@ -454,7 +454,7 @@ function user_profile_fields_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
+          'type' => 'text_default',
           'weight' => '3',
         ),
       ),
@@ -656,10 +656,9 @@ function user_profile_fields_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'i18n_taxonomy',
           'settings' => array(),
-          'type' => 'i18n_taxonomy_term_reference_plain',
-          'weight' => '2',
+          'type' => 'hidden',
+          'weight' => '3',
         ),
       ),
       'ds_extras_field_template' => '',
@@ -798,11 +797,11 @@ function user_profile_fields_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'hidden',
           'module' => 'og',
           'settings' => array(),
           'type' => 'og_list_default',
-          'weight' => '16',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'user',

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Politicians feature.
- */
-
-include_once 'politicians.features.inc';

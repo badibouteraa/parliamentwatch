@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * politicians.ds.inc
+ * profiles.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function politicians_ds_field_settings_info() {
+function profiles_ds_field_settings_info() {
   $export = array();
 
   $ds_fieldsetting = new stdClass();
@@ -107,7 +107,7 @@ function politicians_ds_field_settings_info() {
 /**
  * Implements hook_ds_custom_fields_info().
  */
-function politicians_ds_custom_fields_info() {
+function profiles_ds_custom_fields_info() {
   $export = array();
 
   $ds_field = new stdClass();
@@ -131,7 +131,7 @@ function politicians_ds_custom_fields_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function politicians_ds_layout_settings_info() {
+function profiles_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();
@@ -190,7 +190,7 @@ function politicians_ds_layout_settings_info() {
 /**
  * Implements hook_ds_view_modes_info().
  */
-function politicians_ds_view_modes_info() {
+function profiles_ds_view_modes_info() {
   $export = array();
 
   $ds_view_mode = new stdClass();
