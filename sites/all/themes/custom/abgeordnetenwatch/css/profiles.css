@@ -18,3 +18,8 @@ table.views-view-grid .row-first td {
 table.views-view-grid .row-last td {
     border-bottom: 0;
 }
+
+.user-profile .field field-name-field-user-fname {
+    float: left;
+    margin-right: 0.8ex;
+}
