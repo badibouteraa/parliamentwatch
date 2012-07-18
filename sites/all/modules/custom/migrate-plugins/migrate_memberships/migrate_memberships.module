@@ -77,7 +77,6 @@ function migrate_memberships_form_submit($form, &$form_state) {
 
     // Load userdata
     $user = user_load($row->uid);
-
     // Get mapping to legacy user
     $migration_mapping = $migration_user->getMap()->lookupSourceID(array($user->uid));
     $legacy_uid = $migration_mapping['sourceid1'];
@@ -125,19 +124,22 @@ function migrate_memberships_form_submit($form, &$form_state) {
             case 'constituency':
               $terms = taxonomy_get_term_by_name($og->label);
               $keys = array_keys($terms);
+              $user->field_user_constituency['und'] = array();
               array_push($user->field_user_constituency['und'],array('tid'=>$keys[0]));
               $user = user_save($user);
             break;
             case 'committee':
               $terms = taxonomy_get_term_by_name($og->label);
               $keys = array_keys($terms);
+              $user->field_user_committee['und'] = array();
               array_push($user->field_user_committee['und'],array('tid'=>$keys[0]));
               $user = user_save($user);
             break;
-            case 'p':
+            case 'party':
               $terms = taxonomy_get_term_by_name($og->label);
               $keys = array_keys($terms);
-              array_push($user->field_user_committee['und'],array('tid'=>$keys[0]));
+              $user->field_user_party['und'] = array();
+              array_push($user->field_user_party['und'],array('tid'=>$keys[0]));
               $user = user_save($user);
             break;
           }
