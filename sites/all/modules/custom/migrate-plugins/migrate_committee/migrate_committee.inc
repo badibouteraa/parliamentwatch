@@ -69,7 +69,7 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
                             'not null' => TRUE,
                         )
                     ),
-                    MigrateDestinationNode::getKeySchema()
+                    MigrateDestinationTerm::getKeySchema()
     );
 
     $this->destination = new MigrateDestinationTerm('committee');

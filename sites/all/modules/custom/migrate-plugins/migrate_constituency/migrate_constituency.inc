@@ -72,7 +72,7 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
 
     $this->destination = new MigrateDestinationTerm('constituency');
     $this->addFieldMapping('name', 'constituency');
-    $this->addFieldMapping('created', 'startdate');
+    //$this->addFieldMapping('created', 'startdate');
     //$this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_voc_constituency_zip', 'zipcode')->separator(',')->arguments(array('create_term' => TRUE));
   }

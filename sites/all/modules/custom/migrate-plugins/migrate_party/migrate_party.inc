@@ -53,10 +53,10 @@ class PartyTermMigration extends BasicMigrateParty {
                             'not null' => TRUE,
                         )
                     ),
-                    MigrateDestinationNode::getKeySchema()
+                    MigrateDestinationTerm::getKeySchema()
     );
 
-    $this->destination = new MigrateDestinationNode('party');
+    $this->destination = new MigrateDestinationTerm('party');
     $this->addFieldMapping('name', 'party');
     //$this->addFieldMapping('uid')->defaultValue(1);
     //$this->addFieldMapping('created')->defaultValue('2004-12-08');
