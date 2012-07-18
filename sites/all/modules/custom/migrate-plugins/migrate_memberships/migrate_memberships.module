@@ -56,9 +56,9 @@ function migrate_memberships_form_submit($form, &$form_state) {
 
   // Get instance of previous migration
   $migration_user = MigrationBase::getInstance('politician');
-  $migration_committee = MigrationBase::getInstance('committee');
-  $migration_constituency = MigrationBase::getInstance('constituency');
-  $migration_party = MigrationBase::getInstance('party');
+  $migration_committee = MigrationBase::getInstance('committeeNode');
+  $migration_constituency = MigrationBase::getInstance('constituencyNode');
+  $migration_party = MigrationBase::getInstance('partyNode');
 
   // Load all users with specific role (politician)
   $query = db_select('users', 'u');
@@ -121,6 +121,26 @@ function migrate_memberships_form_submit($form, &$form_state) {
           $membership = og_membership_create($dest_gid, 'user', $user->uid);
           og_membership_save($membership);
           $og = og_load($dest_gid);
+          switch($legacy_membership->type){
+            case 'constituency':
+              $terms = taxonomy_get_term_by_name($og->label);
+              $keys = array_keys($terms);
+              array_push($user->field_user_constituency['und'],array('tid'=>$keys[0]));
+              $user = user_save($user);
+            break;
+            case 'committee':
+              $terms = taxonomy_get_term_by_name($og->label);
+              $keys = array_keys($terms);
+              array_push($user->field_user_committee['und'],array('tid'=>$keys[0]));
+              $user = user_save($user);
+            break;
+            case 'p':
+              $terms = taxonomy_get_term_by_name($og->label);
+              $keys = array_keys($terms);
+              array_push($user->field_user_committee['und'],array('tid'=>$keys[0]));
+              $user = user_save($user);
+            break;
+          }
           $l_name = l($user->name, "user/$user->uid");
           $l_group = l($og->label, "node/$dest_gid");
           drupal_set_message("adding $l_name to $l_group");
