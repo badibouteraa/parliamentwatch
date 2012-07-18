@@ -90,7 +90,7 @@ function migrate_memberships_form_submit($form, &$form_state) {
 
     // Loop through legacy memberships
     while ($legacy_membership = $legacy_result->fetchObject()) {
-
+      
       // Get destination group id by loading migration data
       switch ($legacy_membership->type) {
         case 'committee':
@@ -124,23 +124,34 @@ function migrate_memberships_form_submit($form, &$form_state) {
             case 'constituency':
               $terms = taxonomy_get_term_by_name($og->label);
               $keys = array_keys($terms);
+            if(!is_array($user->field_user_constituency['und']))
               $user->field_user_constituency['und'] = array();
               array_push($user->field_user_constituency['und'],array('tid'=>$keys[0]));
-              $user = user_save($user);
+              
+              //debug($user);
             break;
             case 'committee':
               $terms = taxonomy_get_term_by_name($og->label);
               $keys = array_keys($terms);
-              $user->field_user_committee['und'] = array();
-              array_push($user->field_user_committee['und'],array('tid'=>$keys[0]));
-              $user = user_save($user);
+              //debug($keys);
+            if(!is_array($user->field_user_commitee['und']))
+              $user->field_user_commitee['und'] = array();
+              array_push($user->field_user_commitee['und'],array('tid'=>$keys[0]));
+              //debug($user->field_user_commitee['und']);
+              //$user->revision = FALSE;
+              //$user = user_save($user);
+              //debug($user);
             break;
             case 'party':
               $terms = taxonomy_get_term_by_name($og->label);
               $keys = array_keys($terms);
+            if(!is_array($user->field_user_party['und']))
               $user->field_user_party['und'] = array();
               array_push($user->field_user_party['und'],array('tid'=>$keys[0]));
-              $user = user_save($user);
+              //$user->revision = FALSE;
+              //$user = user_save($user);
+              //debug($user);
+              
             break;
           }
           $l_name = l($user->name, "user/$user->uid");
@@ -150,6 +161,8 @@ function migrate_memberships_form_submit($form, &$form_state) {
         }
       }
     }
+    $user->revision = 0;
+    $user = user_save($user);
   }
   foreach ($count_memberships_created as $type => $count) {
     drupal_set_message("$count memberships of type $type created!");
