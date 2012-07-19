@@ -10,6 +10,74 @@
 function profiles_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'taxonomy_term-constituency-field_voc_constituency_zip'
+  $fields['taxonomy_term-constituency-field_voc_constituency_zip'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_voc_constituency_zip',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'zipcodes',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'constituency',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'field_voc_constituency_zip',
+      'label' => 'Zipcodes',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '31',
+      ),
+    ),
+  );
+
   // Exported field: 'taxonomy_term-parliaments-field_parliament_valid'
   $fields['taxonomy_term-parliaments-field_parliament_valid'] = array(
     'field_config' => array(
@@ -159,6 +227,136 @@ function profiles_field_default_fields() {
         'settings' => array(),
         'type' => 'number',
         'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'user-user-field_user_commitee'
+  $fields['user-user-field_user_commitee'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_user_commitee',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'committee',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 19,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_user_commitee',
+      'label' => 'Commitee',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'user-user-field_user_constituency'
+  $fields['user-user-field_user_constituency'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_user_constituency',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'constituency',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 20,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_user_constituency',
+      'label' => 'Constituency',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '12',
       ),
     ),
   );
@@ -679,6 +877,71 @@ function profiles_field_default_fields() {
     ),
   );
 
+  // Exported field: 'user-user-field_user_party'
+  $fields['user-user-field_user_party'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_user_party',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'party',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'i18n_taxonomy',
+          'settings' => array(),
+          'type' => 'i18n_taxonomy_term_reference_link',
+          'weight' => 21,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_user_party',
+      'label' => 'Party',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '13',
+      ),
+    ),
+  );
+
   // Exported field: 'user-user-field_user_picture'
   $fields['user-user-field_user_picture'] = array(
     'field_config' => array(
@@ -763,92 +1026,23 @@ function profiles_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-group_audience'
-  $fields['user-user-group_audience'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'group_audience',
-      'foreign keys' => array(
-        'og' => array(
-          'columns' => array(
-            'gid' => 'gid',
-          ),
-          'table' => 'og',
-        ),
-      ),
-      'indexes' => array(
-        'gid' => array(
-          0 => 'gid',
-        ),
-      ),
-      'module' => 'og',
-      'no_ui' => TRUE,
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'group',
-    ),
-    'field_instance' => array(
-      'bundle' => 'user',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'og',
-          'settings' => array(),
-          'type' => 'og_list_default',
-          'weight' => '2',
-        ),
-      ),
-      'entity_type' => 'user',
-      'field_name' => 'group_audience',
-      'label' => 'Groups audience',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'view modes' => array(
-        'full' => array(
-          'custom settings' => FALSE,
-          'label' => 'Full',
-          'type' => 'og_list_default',
-        ),
-        'teaser' => array(
-          'custom settings' => FALSE,
-          'label' => 'Teaser',
-          'type' => 'og_list_default',
-        ),
-      ),
-      'widget' => array(
-        'module' => 'og',
-        'settings' => array(
-          'opt_group' => 'auto',
-        ),
-        'type' => 'group_audience',
-        'weight' => '9',
-      ),
-      'widget_type' => 'group_audience',
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Additional information');
   t('Children');
+  t('Commitee');
+  t('Constituency');
   t('First Name');
   t('Gender');
-  t('Groups audience');
   t('Last name');
   t('Marriage status');
   t('Occupation held');
   t('Parmliament');
+  t('Party');
   t('Professional qualification');
   t('Profile picture');
   t('Valid Date');
+  t('Zipcodes');
 
   return $fields;
 }

@@ -28,31 +28,6 @@ function profiles_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['autosubmit'] = 1;
-  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
-  $handler->display->display_options['exposed_form']['options']['bef'] = array(
-    'sort' => array(
-      'bef_format' => 'default',
-      'combine' => 0,
-      'reset' => 1,
-      'reset_label' => '',
-    ),
-    'field_user_gender_value' => array(
-      'bef_format' => 'bef',
-      'more_options' => array(
-        'bef_select_all_none' => 0,
-        'bef_collapsible' => 0,
-        'bef_filter_description' => '',
-      ),
-    ),
-    'field_user_lname_value' => array(
-      'more_options' => array(
-        'bef_filter_description' => '',
-      ),
-    ),
-  );
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'grid';
@@ -160,7 +135,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['field_user_lname']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_user_lname']['type'] = 'text_plain';
   $handler->display->display_options['fields']['field_user_lname']['field_api_classes'] = 0;
-  /* Field: User: Groups audience */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['group_audience']['id'] = 'group_audience';
   $handler->display->display_options['fields']['group_audience']['table'] = 'field_data_group_audience';
   $handler->display->display_options['fields']['group_audience']['field'] = 'group_audience';
@@ -183,12 +158,6 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['group_audience']['hide_empty'] = 0;
   $handler->display->display_options['fields']['group_audience']['empty_zero'] = 0;
   $handler->display->display_options['fields']['group_audience']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['group_audience']['click_sort_column'] = 'gid';
-  $handler->display->display_options['fields']['group_audience']['group_rows'] = 0;
-  $handler->display->display_options['fields']['group_audience']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['group_audience']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['group_audience']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['group_audience']['field_api_classes'] = 0;
   /* Field: User: Link */
   $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
   $handler->display->display_options['fields']['view_user']['table'] = 'users';
@@ -277,11 +246,6 @@ function profiles_views_default_views() {
     t('Master'),
     t('Overview of Politicians'),
     t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
