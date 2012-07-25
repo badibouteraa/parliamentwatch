@@ -28,6 +28,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'grid';
@@ -135,7 +136,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['field_user_lname']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_user_lname']['type'] = 'text_plain';
   $handler->display->display_options['fields']['field_user_lname']['field_api_classes'] = 0;
-  /* Field: Broken/missing handler */
+  /* Field: User: Groups audience */
   $handler->display->display_options['fields']['group_audience']['id'] = 'group_audience';
   $handler->display->display_options['fields']['group_audience']['table'] = 'field_data_group_audience';
   $handler->display->display_options['fields']['group_audience']['field'] = 'group_audience';
@@ -246,6 +247,11 @@ function profiles_views_default_views() {
     t('Master'),
     t('Overview of Politicians'),
     t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),

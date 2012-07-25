@@ -441,8 +441,8 @@ function profiles_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'man' => 'Male',
-          'woman' => 'Female',
+          'm' => 'Male',
+          'f' => 'Female',
         ),
         'allowed_values_function' => '',
       ),
