@@ -96,6 +96,35 @@ function pw_api_services_resources() {
     );
   }
 
+  // Provide politicians as a resource.
+  if (user_role_load_by_name('politician')) {
+    $resources['politician'] = array(
+      'retrieve' => array(
+        'help' => 'Retrieves a politician',
+        'callback' => 'pw_api_politician_retrieve',
+        'file' => array('file' => 'politician.inc', 'module' => 'pw_api'),
+        'access callback' => '_user_resource_access',
+        'access arguments' => array('view'),
+        'access arguments append' => TRUE,
+        'args' => array(
+          array(
+            'name' => 'id',
+            'type' => 'int',
+            'description' => 'The id of the politician',
+            'source' => array('path' => 0),
+            'optional' => FALSE,
+          ),
+        ),
+      ),
+      'index' => array(
+        'help' => 'Retrieves a list of all politicians',
+        'callback' => 'pw_api_politician_index',
+        'file' => array('file' => 'politician.inc', 'module' => 'pw_api'),
+        'access arguments' => array('access user profiles'),
+      ),
+    );
+  }
+
   return $resources;
 }
 
