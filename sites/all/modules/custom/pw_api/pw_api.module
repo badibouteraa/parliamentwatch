@@ -129,7 +129,7 @@ function pw_api_services_resources() {
 }
 
 /**
- * Implements hook_reset_server_response_formatters_alter().
+ * Implements hook_rest_server_response_formatters_alter().
  */
 function pw_api_rest_server_response_formatters_alter(&$formatters) {
   $formatters['csv'] = array(
