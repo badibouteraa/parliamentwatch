@@ -14,14 +14,14 @@ function subsite_conf_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'file_private_path';
-  $strongarm->value = 'sites/piratenpartei-bayern.de/files/private';
+  $strongarm->value = 'sites/marsad.tn/files/private';
   $export['file_private_path'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'file_public_path';
-  $strongarm->value = 'sites/piratenpartei-bayern.de/files';
+  $strongarm->value = 'sites/marsad.tn/files';
   $export['file_public_path'] = $strongarm;
 
   $strongarm = new stdClass();
