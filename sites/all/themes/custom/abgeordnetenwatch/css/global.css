@@ -1188,3 +1188,38 @@ a.form-submit:hover {
 #region-postscript-fourth .block-forward .content a {
     background-position: -970px -1250px;
 }
+
+
+/* /////////////////////////// content /////////////////// */
+
+/* reset the alpha-reset.css for lists in the content and display them how they appear in the wysiwig */
+
+#region-content ol,
+#region-content ul {
+    display: block;
+    unicode-bidi: embed;
+}
+#region-content li {
+    display:list-item;
+}
+#region-content ul,
+#region-content ol {
+    margin: 1.12em 0;
+}
+#region-content ol,
+#region-content ul {
+    margin-left:40px;
+}
+#region-content ol {
+    list-style-type:decimal;
+}
+#region-content ul {
+    list-style-type:disc;
+}
+#region-content ol ul,
+#region-content ul ol,
+#region-content ul ul,
+#region-content ol ol {
+    margin-top:0;
+    margin-bottom:0;
+}
