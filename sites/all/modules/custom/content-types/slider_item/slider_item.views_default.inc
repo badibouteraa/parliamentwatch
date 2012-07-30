@@ -28,6 +28,10 @@ function slider_item_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Zurücksetzen';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Artikel sortieren nach';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'aufsteigend';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'absteigend';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'slideshow';
@@ -35,7 +39,7 @@ function slider_item_views_default_views() {
   $handler->display->display_options['style_options']['slideshow_skin'] = 'default';
   $handler->display->display_options['style_options']['skin_info'] = array(
     'class' => 'default',
-    'name' => 'Vorgabe',
+    'name' => 'Default',
     'module' => 'views_slideshow',
     'path' => '',
     'stylesheets' => array(),
@@ -43,10 +47,11 @@ function slider_item_views_default_views() {
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['type'] = 'views_slideshow_pager_fields';
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_pager']['views_slideshow_pager_fields_fields'] = array(
-    'field_slider_url' => 0,
-    'field_slider_teaserbody' => 0,
+    'field_slider_url' => 'field_slider_url',
+    'field_slider_teaserbody' => 'field_slider_teaserbody',
     'title' => 0,
     'body' => 0,
+    'webform_form_body' => 0,
     'nothing' => 0,
   );
   $handler->display->display_options['style_options']['widgets']['top']['views_slideshow_controls']['enable'] = 1;
@@ -61,6 +66,7 @@ function slider_item_views_default_views() {
     'field_slider_teaserbody' => 'field_slider_teaserbody',
     'title' => 0,
     'body' => 0,
+    'webform_form_body' => 0,
     'nothing' => 0,
   );
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['weight'] = '1';
@@ -80,17 +86,17 @@ function slider_item_views_default_views() {
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Header: Global: Text area */
+  /* Kopfbereich: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
   $handler->display->display_options['header']['area']['content'] = '<?php
-drupal_add_css(path_to_theme() . \'/css/slider.css\', array(\'group\' => CSS_DEFAULT, \'every_page\' => TRUE));
+drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', array(\'group\' => CSS_DEFAULT, \'every_page\' => TRUE));
 ?>';
   $handler->display->display_options['header']['area']['format'] = 'php_code';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
-  /* Field: Content: Beschreibung mit LInk */
+  /* Feld: Inhalt: Beschreibung mit LInk */
   $handler->display->display_options['fields']['field_slider_url']['id'] = 'field_slider_url';
   $handler->display->display_options['fields']['field_slider_url']['table'] = 'field_data_field_slider_url';
   $handler->display->display_options['fields']['field_slider_url']['field'] = 'field_slider_url';
@@ -116,7 +122,7 @@ drupal_add_css(path_to_theme() . \'/css/slider.css\', array(\'group\' => CSS_DEF
   $handler->display->display_options['fields']['field_slider_url']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_slider_url']['group_column'] = 'url';
   $handler->display->display_options['fields']['field_slider_url']['field_api_classes'] = 0;
-  /* Field: Content: Teaser Body */
+  /* Feld: Inhalt: Teaser Body */
   $handler->display->display_options['fields']['field_slider_teaserbody']['id'] = 'field_slider_teaserbody';
   $handler->display->display_options['fields']['field_slider_teaserbody']['table'] = 'field_data_field_slider_teaserbody';
   $handler->display->display_options['fields']['field_slider_teaserbody']['field'] = 'field_slider_teaserbody';
@@ -141,7 +147,7 @@ drupal_add_css(path_to_theme() . \'/css/slider.css\', array(\'group\' => CSS_DEF
   $handler->display->display_options['fields']['field_slider_teaserbody']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slider_teaserbody']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slider_teaserbody']['field_api_classes'] = 0;
-  /* Field: Content: Title */
+  /* Feld: Inhalt: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -165,7 +171,7 @@ drupal_add_css(path_to_theme() . \'/css/slider.css\', array(\'group\' => CSS_DEF
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  /* Field: Content: Body */
+  /* Feld: Inhalt: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -189,7 +195,7 @@ drupal_add_css(path_to_theme() . \'/css/slider.css\', array(\'group\' => CSS_DEF
   $handler->display->display_options['fields']['body']['empty_zero'] = 0;
   $handler->display->display_options['fields']['body']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
-  /* Field: Content: Webform form body */
+  /* Feld: Inhalt: Webform form body */
   $handler->display->display_options['fields']['webform_form_body']['id'] = 'webform_form_body';
   $handler->display->display_options['fields']['webform_form_body']['table'] = 'node';
   $handler->display->display_options['fields']['webform_form_body']['field'] = 'webform_form_body';
@@ -212,7 +218,7 @@ drupal_add_css(path_to_theme() . \'/css/slider.css\', array(\'group\' => CSS_DEF
   $handler->display->display_options['fields']['webform_form_body']['hide_empty'] = 0;
   $handler->display->display_options['fields']['webform_form_body']['empty_zero'] = 0;
   $handler->display->display_options['fields']['webform_form_body']['hide_alter_empty'] = 1;
-  /* Field: Global: Custom text */
+  /* Feld: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -235,19 +241,28 @@ drupal_add_css(path_to_theme() . \'/css/slider.css\', array(\'group\' => CSS_DEF
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Inhalt: Veröffentlicht */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Filter criterion: Inhalt: Typ */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'slider_item' => 'slider_item',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Inhaltsübersetzung: Sprache */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+    'und' => 'und',
   );
 
   /* Display: Block */
@@ -256,13 +271,13 @@ drupal_add_css(path_to_theme() . \'/css/slider.css\', array(\'group\' => CSS_DEF
     t('Master'),
     t('Slider'),
     t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('anwenden'),
+    t('Zurücksetzen'),
+    t('Artikel sortieren nach'),
+    t('aufsteigend'),
+    t('absteigend'),
     t('<?php
-drupal_add_css(path_to_theme() . \'/css/slider.css\', array(\'group\' => CSS_DEFAULT, \'every_page\' => TRUE));
+drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', array(\'group\' => CSS_DEFAULT, \'every_page\' => TRUE));
 ?>'),
     t('[field_slider_teaserbody]<div class="item"></div>'),
     t('<span class="close">close</span>'),
