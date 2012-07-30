@@ -1,0 +1,16 @@
+diff --git a/sites/all/modules/contrib/migrate/plugins/destinations/term.inc b/sites/all/modules/contrib/migrate/plugins/destinations/term.inc
+index 345df2a..c21d520 100644
+--- a/sites/all/modules/contrib/migrate/plugins/destinations/term.inc
++++ b/sites/all/modules/contrib/migrate/plugins/destinations/term.inc
+@@ -204,6 +204,11 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
+       // load it
+       $candidates = taxonomy_term_load_multiple(array(),
+         array('name' => trim($term->name), 'vid' => $term->vid));
++
++	  // Hack, Boris, 2012-07-30: clearing array to avoid check for existing terms
++	  $candidates = array();
++      // Hack end
++
+       foreach ($candidates as $candidate) {
+         $parents = taxonomy_get_parents($candidate->tid);
+         // We need to set up $parents as a simple array of tids
