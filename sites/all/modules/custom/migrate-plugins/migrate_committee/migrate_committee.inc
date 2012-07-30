@@ -86,7 +86,7 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
 	taxonomy_term_save($term);
 	$term = (object) array('vid' => $current_row->vid, 'name' => 'Member', 'parent' => $current_row->tid);
 	taxonomy_term_save($term);
-	$term = (object) array('vid' => $current_row->vid, 'name' => 'Replacement Member', 'parent' => $current_row->tid);
+	$term = (object) array('vid' => $current_row->vid, 'name' => 'Deputy Member', 'parent' => $current_row->tid);
 	taxonomy_term_save($term);
   }
 
