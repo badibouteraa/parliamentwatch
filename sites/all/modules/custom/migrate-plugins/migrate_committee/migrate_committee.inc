@@ -74,14 +74,20 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
 
     $this->destination = new MigrateDestinationTerm('committee');
     $this->addFieldMapping('name', 'committee'); 
-    //$this->addFieldMapping('created', 'startdate');
-    //$this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
   }
 
-  public function prepareRow($current_row) {
-    if ($current_row->startdate < 1) {
-      $current_row->startdate = NULL;
-    }
+  public function complete($current_row) {
+
+	// add default subterms to term
+	$term = (object) array('vid' => $current_row->vid, 'name' => 'Chairman', 'parent' => $current_row->tid);
+	taxonomy_term_save($term);
+	$term = (object) array('vid' => $current_row->vid, 'name' => 'Vice Chairman', 'parent' => $current_row->tid);
+	taxonomy_term_save($term);
+	$term = (object) array('vid' => $current_row->vid, 'name' => 'Member', 'parent' => $current_row->tid);
+	taxonomy_term_save($term);
+	$term = (object) array('vid' => $current_row->vid, 'name' => 'Replacement Member', 'parent' => $current_row->tid);
+	taxonomy_term_save($term);
   }
 
 }
