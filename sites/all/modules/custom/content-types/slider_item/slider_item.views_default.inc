@@ -22,7 +22,6 @@ function slider_item_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Slider';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -86,7 +85,7 @@ function slider_item_views_default_views() {
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Kopfbereich: Global: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
@@ -96,7 +95,7 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
 ?>';
   $handler->display->display_options['header']['area']['format'] = 'php_code';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
-  /* Feld: Inhalt: Beschreibung mit LInk */
+  /* Field: Content: Beschreibung mit LInk */
   $handler->display->display_options['fields']['field_slider_url']['id'] = 'field_slider_url';
   $handler->display->display_options['fields']['field_slider_url']['table'] = 'field_data_field_slider_url';
   $handler->display->display_options['fields']['field_slider_url']['field'] = 'field_slider_url';
@@ -122,7 +121,7 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
   $handler->display->display_options['fields']['field_slider_url']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_slider_url']['group_column'] = 'url';
   $handler->display->display_options['fields']['field_slider_url']['field_api_classes'] = 0;
-  /* Feld: Inhalt: Teaser Body */
+  /* Field: Content: Teaser Body */
   $handler->display->display_options['fields']['field_slider_teaserbody']['id'] = 'field_slider_teaserbody';
   $handler->display->display_options['fields']['field_slider_teaserbody']['table'] = 'field_data_field_slider_teaserbody';
   $handler->display->display_options['fields']['field_slider_teaserbody']['field'] = 'field_slider_teaserbody';
@@ -147,7 +146,7 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
   $handler->display->display_options['fields']['field_slider_teaserbody']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slider_teaserbody']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slider_teaserbody']['field_api_classes'] = 0;
-  /* Feld: Inhalt: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -171,7 +170,7 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  /* Feld: Inhalt: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -195,7 +194,7 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
   $handler->display->display_options['fields']['body']['empty_zero'] = 0;
   $handler->display->display_options['fields']['body']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
-  /* Feld: Inhalt: Webform form body */
+  /* Field: Content: Webform form body */
   $handler->display->display_options['fields']['webform_form_body']['id'] = 'webform_form_body';
   $handler->display->display_options['fields']['webform_form_body']['table'] = 'node';
   $handler->display->display_options['fields']['webform_form_body']['field'] = 'webform_form_body';
@@ -218,7 +217,7 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
   $handler->display->display_options['fields']['webform_form_body']['hide_empty'] = 0;
   $handler->display->display_options['fields']['webform_form_body']['empty_zero'] = 0;
   $handler->display->display_options['fields']['webform_form_body']['hide_alter_empty'] = 1;
-  /* Feld: Global: Custom text */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -241,14 +240,14 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Filter criterion: Inhalt: Veröffentlicht */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Inhalt: Typ */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -256,7 +255,7 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
     'slider_item' => 'slider_item',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Inhaltsübersetzung: Sprache */
+  /* Filter criterion: Content translation: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -269,9 +268,8 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
   $handler = $view->new_display('block', 'Block', 'block');
   $translatables['slider'] = array(
     t('Master'),
-    t('Slider'),
     t('more'),
-    t('anwenden'),
+    t('Apply'),
     t('Zurücksetzen'),
     t('Artikel sortieren nach'),
     t('aufsteigend'),
