@@ -17,7 +17,7 @@ class PoliticianMigration extends BasicMigratePolitician {
     $query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_user', 'u');
     $query->join('legacy_projects', 'p', 'u.cmd = p.cmd');
-    $query->fields('u', array('id', 'username', 'title', 'first_name', 'last_name', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage'));
+    $query->fields('u', array('id', 'username', 'title', 'first_name', 'last_name', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'image'));
     $query->fields('p', array('project', 'startdate'));
     $query->condition('u.oldest', 1, '=');
     $query->condition('p.project_cmd', array(132, 360));
@@ -34,7 +34,7 @@ class PoliticianMigration extends BasicMigratePolitician {
                     ),
                     MigrateDestinationUser::getKeySchema()
     );
-
+    
     // Map old to new data fields
     $this->addFieldMapping('name', 'username')->dedupe('users', 'name');
     $this->addFieldMapping('created', 'startdate');
@@ -51,6 +51,7 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->addFieldMapping('language')->defaultValue('de');
     $this->addFieldMapping('role_names')->defaultValue('politician');
     $this->addFieldMapping('field_user_parliament', 'project')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_user_image', 'image');
   }
 
 public function prepareRow($current_row) {
@@ -61,6 +62,5 @@ public function prepareRow($current_row) {
     $current_row->startdate = NULL;
   }
 }
-
 
 }
