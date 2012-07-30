@@ -1,7 +1,7 @@
-diff --git a/sites/all/modules/contrib/migrate/plugins/destinations/term.inc b/sites/all/modules/contrib/migrate/plugins/destinations/term.inc
+diff --git a/term.inc b/term.inc
 index 345df2a..c21d520 100644
---- a/sites/all/modules/contrib/migrate/plugins/destinations/term.inc
-+++ b/sites/all/modules/contrib/migrate/plugins/destinations/term.inc
+--- a/term.inc
++++ b/term.inc
 @@ -204,6 +204,11 @@ class MigrateDestinationTerm extends MigrateDestinationEntity {
        // load it
        $candidates = taxonomy_term_load_multiple(array(),
