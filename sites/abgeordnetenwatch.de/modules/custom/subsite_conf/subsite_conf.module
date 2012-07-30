@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Subsite configuration feature.
+ */
+
+include_once 'subsite_conf.features.inc';
