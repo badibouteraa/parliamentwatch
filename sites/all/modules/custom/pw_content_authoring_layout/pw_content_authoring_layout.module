@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Text formats, WYSIWIG and Images feature.
+ */
+
+include_once 'pw_content_authoring_layout.features.inc';
