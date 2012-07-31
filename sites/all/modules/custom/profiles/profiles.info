@@ -50,7 +50,6 @@ features[field_group][] = group_user_basics_additional|user|user|default
 features[field_group][] = group_user_basics_basics|user|user|default
 features[field_group][] = group_user_basics|user|user|default
 features[field_group][] = group_user_name|user|user|default
-features[image][] = portrait
 features[taxonomy][] = committee
 features[taxonomy][] = constituency
 features[taxonomy][] = parliaments
