@@ -289,23 +289,25 @@ a.tagadelic.level4 {
 
 /* //////////////////////////// pager ////////////////////// */
 
-.item-list .pager {
+#region-content .item-list .pager {
     clear: both;
     text-align: center;
     font-size: 12px;
 }
-.item-list ul.pager {
+#region-content .item-list ul.pager {
     padding: 0;
+    margin: 0;
 }
-#comments .item-list ul.pager {
+#region-content #comments .item-list ul.pager {
     margin-bottom: 30px;
 }
-.item-list ul.pager li {
+#region-content .item-list ul.pager li {
     margin: 0 3px;
+    display: inline;
 }
-.item-list ul.pager li a,
-.item-list ul.pager li span,
-.item-list ul.pager li.pager-current {
+#region-content .item-list ul.pager li a,
+#region-content .item-list ul.pager li span,
+#region-content .item-list ul.pager li.pager-current {
     background: #c3c3c3;
     display: inline-block;
     min-width: 25px;
@@ -324,69 +326,69 @@ a.tagadelic.level4 {
     float: right;
     margin-top: -25px;
 }
-.item-list ul.pager li.pager-first span,
-.item-list ul.pager li.pager-last span {
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-last span {
     color: #999;
 }
-.item-list ul.pager li.pager-current,
-.item-list ul.pager li a:hover {
+#region-content .item-list ul.pager li.pager-current,
+#region-content .item-list ul.pager li a:hover {
     background: #ddd;
 }
-.pager-current {
+#region-content .pager-current {
     font-weight: bold;
 }
-.item-list ul.pager li.pager-previous a,
-.item-list ul.pager li.pager-first span,
-.item-list ul.pager li.pager-first a,
-.item-list ul.pager li.pager-last a,
-.item-list ul.pager li.pager-last span,
-.item-list ul.pager li.pager-next a {
+#region-content .item-list ul.pager li.pager-previous a,
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-first a,
+#region-content .item-list ul.pager li.pager-last a,
+#region-content .item-list ul.pager li.pager-last span,
+#region-content .item-list ul.pager li.pager-next a {
     background: #c3c3c3 url(../images/sprite.png) no-repeat;
     text-indent: -5000em;
     display: block;
     width: 25px;
     height: 25px;
 }
-.item-list ul.pager li.pager-previous a,
-.item-list ul.pager li.pager-first span,
-.item-list ul.pager li.pager-first a {
+#region-content .item-list ul.pager li.pager-previous a,
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-first a {
     float: left;
     padding-left: 36px;
 }
-.item-list ul.pager li.pager-previous a,
-.item-list ul.pager li.pager-first a {
+#region-content .item-list ul.pager li.pager-previous a,
+#region-content .item-list ul.pager li.pager-first a {
     background-position: -920px -3655px;
 }
-.item-list ul.pager li.pager-first span,
-.item-list ul.pager li.pager-first a:hover {
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-first a:hover {
     background-position: -960px -3615px;
 }
-.item-list ul.pager li.pager-last a,
-.item-list ul.pager li.pager-last span,
-.item-list ul.pager li.pager-next a {
+#region-content .item-list ul.pager li.pager-last a,
+#region-content .item-list ul.pager li.pager-last span,
+#region-content .item-list ul.pager li.pager-next a {
     float: right;
     padding-right: 33px;
 }
-.item-list ul.pager li.pager-last a,
-.item-list ul.pager li.pager-next a {
+#region-content .item-list ul.pager li.pager-last a,
+#region-content .item-list ul.pager li.pager-next a {
     background-position: right -3815px;
 }
-.item-list ul.pager li.pager-last span,
-.item-list ul.pager li.pager-last a:hover {
+#region-content .item-list ul.pager li.pager-last span,
+#region-content .item-list ul.pager li.pager-last a:hover {
     background-position: right -3775px;
 }
-.item-list ul.pager li.pager-first a,
-.item-list ul.pager li.pager-previous a,
-.item-list ul.pager li.pager-last a,
-.item-list ul.pager li.pager-next a {
+#region-content .item-list ul.pager li.pager-first a,
+#region-content .item-list ul.pager li.pager-previous a,
+#region-content .item-list ul.pager li.pager-last a,
+#region-content .item-list ul.pager li.pager-next a {
     background-color: transparent;
     color: #333;
     font-weight: normal;
     text-indent: 0;
     width: auto;
 }
-.item-list ul.pager li.pager-first span,
-.item-list ul.pager li.pager-last span {
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-last span {
     background-color: transparent;
     color: #999;
     font-weight: normal;
@@ -789,8 +791,15 @@ textarea:active {
 .view-blog .views-row .comment-count {
     margin-bottom: 18px;
 }
+#region-content .field-type-taxonomy-term-reference ul {
+    margin: 0;
+    padding: 0;
+}
 .field-type-taxonomy-term-reference li {
     float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 .comment-count,
 .field-type-taxonomy-term-reference li a {
@@ -1196,7 +1205,6 @@ a.form-submit:hover {
 
 #region-content ol,
 #region-content ul {
-    display: block;
     unicode-bidi: embed;
 }
 #region-content li {
