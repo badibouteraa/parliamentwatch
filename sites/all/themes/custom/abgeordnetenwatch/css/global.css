@@ -74,6 +74,7 @@ h2,
 h3 {
     font-size:20px;
     line-height: 22px;
+    margin-bottom: 0.4em;
 }
 #zone-postscript h2.block-title {
     color: #333;
@@ -131,6 +132,10 @@ blockquote p:last-child {
 .clear-both {
     clear: both;
 }
+.float-left .file-image {
+    margin-right: 14px;
+    margin-bottom: 14px;
+}
 .light,
 a.light {
     color: #999;
@@ -146,14 +151,33 @@ a.dark {
     display: inline;
 }
 .read-more a,
-a.read-more {
+a.read-more,
+.read-codex a,
+a.read-codex {
     padding-left: 18px;
-    background: url(../images/sprite.png) no-repeat -723px -1942px;
+    background: url(../images/sprite.png) no-repeat;
+}
+.read-more a,
+a.read-more {
+    background-position: -723px -1942px;
+}
+.read-codex a,
+a.read-codex {
+    background-position: -568px -2100px;
+}
+.read-more a:hover,
+a.read-more:hover,
+.read-codex a:hover,
+a.read-codex:hover {
+    color: #999;
 }
 .read-more a:hover,
 a.read-more:hover {
-    color: #999;
     background-position: -683px -1982px;
+}
+.read-codex a:hover,
+a.read-codex:hover {
+    background-position: -528px -2140px;
 }
 .back {
     color: #f63;
@@ -217,7 +241,8 @@ h1#page-title {
 .views-table tr.odd,
 .views-table tr.even,
 .node-results li,
-.group-result .panel-flexible {
+.group-result .panel-flexible,
+.pw-list-item {
     background: transparent;
     border-bottom: 1px dotted #f63;
     padding-bottom: 15px !important;
