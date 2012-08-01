@@ -142,7 +142,7 @@ function blogpost_type_field_default_fields() {
           'module' => 'addthis',
           'settings' => array(),
           'type' => 'addthis_disabled',
-          'weight' => 7,
+          'weight' => '7',
         ),
         'full' => array(
           'label' => 'above',
@@ -386,16 +386,26 @@ function blogpost_type_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_blogpost_teaserimage',
-      'foreign keys' => array(),
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
         ),
       ),
-      'module' => 'mediafield',
-      'settings' => array(),
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
       'translatable' => '0',
-      'type' => 'media',
+      'type' => 'image',
     ),
     'field_instance' => array(
       'bundle' => 'blogpost',
@@ -404,19 +414,19 @@ function blogpost_type_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
           'weight' => 8,
         ),
         'full' => array(
-          'label' => 'hidden',
-          'module' => 'mediafield',
-          'settings' => array(
-            'file_view_mode' => 'media_small',
-          ),
-          'type' => 'media',
-          'weight' => '3',
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
         ),
         'print' => array(
           'label' => 'above',
@@ -431,22 +441,24 @@ function blogpost_type_field_default_fields() {
           'weight' => 0,
         ),
         'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'mediafield',
-          'settings' => array(
-            'file_view_mode' => 'media_preview',
-          ),
-          'type' => 'media',
-          'weight' => '3',
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
-      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_blogpost_teaserimage',
       'label' => 'Teaser image',
       'required' => 0,
       'settings' => array(
-        'file_extensions' => 'jpg jpeg gif png txt doc xls pdf ppt pps odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
+        'alt_field' => 0,
+        'file_directory' => 'blog',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -454,7 +466,6 @@ function blogpost_type_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'private' => 'private',
             'public' => 'public',
           ),
           'allowed_types' => array(
@@ -465,13 +476,14 @@ function blogpost_type_field_default_fields() {
           ),
           'browser_plugins' => array(
             'library' => 0,
-            'media_default--media_browser_1' => 'media_default--media_browser_1',
-            'upload' => 'upload',
+            'media_default--media_browser_1' => 0,
+            'media_default--media_browser_my_files' => 0,
+            'upload' => 0,
           ),
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '1',
+        'weight' => '31',
       ),
     ),
   );
