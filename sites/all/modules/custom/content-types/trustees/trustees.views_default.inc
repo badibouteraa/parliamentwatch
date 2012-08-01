@@ -75,7 +75,7 @@ function trustees_views_default_views() {
   $handler->display->display_options['fields']['field_trustee_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_trustee_image']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_trustee_image']['settings'] = array(
-    'file_view_mode' => 'profile',
+    'file_view_mode' => 'pw_file_portrait_l',
   );
   $handler->display->display_options['fields']['field_trustee_image']['field_api_classes'] = 0;
   /* Field: Content: Title */

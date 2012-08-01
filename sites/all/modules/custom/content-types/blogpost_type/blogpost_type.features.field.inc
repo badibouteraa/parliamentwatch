@@ -386,14 +386,7 @@ function blogpost_type_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_blogpost_teaserimage',
-      'foreign keys' => array(
-        'file_managed' => array(
-          'columns' => array(
-            'fid' => 'fid',
-          ),
-          'table' => 'file_managed',
-        ),
-      ),
+      'foreign keys' => array(),
       'indexes' => array(
         'fid' => array(
           0 => 'fid',

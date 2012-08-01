@@ -159,6 +159,31 @@ function blogpost_type_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|blogpost|search_index';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'blogpost';
+  $ds_fieldsetting->view_mode = 'search_index';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h4',
+        'class' => '',
+      ),
+    ),
+    'post_date' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_long',
+    ),
+  );
+  $export['node|blogpost|search_index'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|blogpost|search_result';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'blogpost';
@@ -227,7 +252,7 @@ function blogpost_type_ds_field_settings_info() {
       'format' => 'author',
       'ft' => array(
         'func' => 'theme_ds_field_expert',
-        'lb' => ' von ',
+        'lb' => ' by ',
         'lb-col' => TRUE,
         'ow' => TRUE,
         'ow-el' => 'span',
@@ -240,7 +265,7 @@ function blogpost_type_ds_field_settings_info() {
       'format' => 'ds_post_date_medium',
       'ft' => array(
         'func' => 'theme_ds_field_expert',
-        'lb' => 'Veröffentlicht am ',
+        'lb' => 'Posted on ',
         'lb-col' => TRUE,
         'ow' => TRUE,
         'ow-el' => 'span',
@@ -363,6 +388,34 @@ function blogpost_type_ds_layout_settings_info() {
     'classes' => array(),
   );
   $export['node|blogpost|print'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|blogpost|search_index';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'blogpost';
+  $ds_layout->view_mode = 'search_index';
+  $ds_layout->layout = 'panels-omega_16_twocol_4_12';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'left' => array(
+        0 => 'post_date',
+      ),
+      'right' => array(
+        0 => 'title',
+        1 => 'body',
+      ),
+    ),
+    'fields' => array(
+      'post_date' => 'left',
+      'title' => 'right',
+      'body' => 'right',
+    ),
+    'classes' => array(),
+  );
+  $export['node|blogpost|search_index'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
