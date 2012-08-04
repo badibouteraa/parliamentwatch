@@ -18,7 +18,14 @@ class CommitteeNodeMigration extends BasicMigrateCommittee {
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
     $query->fields('c', array('id', 'committee', 'txt'));
     $query->fields('p', array('project', 'startdate'));
-    $query->condition('p.project_cmd', array(132, 360));
+	switch(variable_get('site_name')){
+		case 'abgeordnetenwatch.de':
+		    $query->condition('p.project_cmd', array(132, 360));
+			break;
+		case 'marsad.tn':
+		    $query->condition('p.project_cmd', 974);
+			break;
+	}
 
     // Prepare mapping
     $this->source = new MigrateSourceSQL($query);
@@ -58,7 +65,14 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
     $query->fields('c', array('id', 'committee', 'txt'));
     $query->fields('p', array('project', 'startdate'));
-    $query->condition('p.project_cmd', array(132, 360));
+	switch(variable_get('site_name')){
+		case 'abgeordnetenwatch.de':
+		    $query->condition('p.project_cmd', array(132, 360));
+			break;
+		case 'marsad.tn':
+		    $query->condition('p.project_cmd', 974);
+			break;
+	}
 
     // Prepare mapping
     $this->source = new MigrateSourceSQL($query);
@@ -79,15 +93,20 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
 
   public function complete($current_row) {
 
+	switch($current_row->field_parliament['0']){
+		case 'Assemblée nationale constituante':
+		    $a_subterms = array('Chairman', 'Vice Chairman', 'Rapporteur', '1er rapporteur adjoint', '2ème rapporteur adjoint', 'Member');
+			break;
+		default:
+		    $a_subterms = array('Chairman', 'Vice Chairman', 'Member', 'Deputy Member');
+			break;
+	}
+
 	// add default subterms to term
-	$term = (object) array('vid' => $current_row->vid, 'name' => 'Chairman', 'parent' => $current_row->tid);
-	taxonomy_term_save($term);
-	$term = (object) array('vid' => $current_row->vid, 'name' => 'Vice Chairman', 'parent' => $current_row->tid);
-	taxonomy_term_save($term);
-	$term = (object) array('vid' => $current_row->vid, 'name' => 'Member', 'parent' => $current_row->tid);
-	taxonomy_term_save($term);
-	$term = (object) array('vid' => $current_row->vid, 'name' => 'Deputy Member', 'parent' => $current_row->tid);
-	taxonomy_term_save($term);
+	foreach($a_subterms as $subterm){
+		$term = (object) array('vid' => $current_row->vid, 'name' => $subterm, 'parent' => $current_row->tid);
+		taxonomy_term_save($term);
+	}
   }
 
 }
