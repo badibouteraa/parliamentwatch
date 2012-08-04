@@ -56,9 +56,9 @@ function migrate_memberships_form_submit($form, &$form_state) {
 
   // Get instance of previous migration
   $migration_user = MigrationBase::getInstance('politician');
-  $migration_committee = MigrationBase::getInstance('committeeNode');
-  $migration_constituency = MigrationBase::getInstance('constituencyNode');
-  $migration_party = MigrationBase::getInstance('partyNode');
+  $migration_committee = MigrationBase::getInstance('committeeTerm');
+  $migration_constituency = MigrationBase::getInstance('constituencyTerm');
+  $migration_party = MigrationBase::getInstance('partyTerm');
 
   // Load all users with specific role (politician)
   $query = db_select('users', 'u');
@@ -66,6 +66,7 @@ function migrate_memberships_form_submit($form, &$form_state) {
   $query->join('role', 'r', 'ur.rid = r.rid');
   $query->fields('u', array('uid'));
   $query->condition('r.name', 'Politician', '=');
+  //$query->range(0,10);
   $result = $query->execute();
   $result_count = $query->countQuery()->execute()->fetchField();
 
@@ -91,79 +92,55 @@ function migrate_memberships_form_submit($form, &$form_state) {
     // Loop through legacy memberships
     while ($legacy_membership = $legacy_result->fetchObject()) {
       
-      // Get destination group id by loading migration data
+      // Get destination term id by loading migration data
       switch ($legacy_membership->type) {
         case 'committee':
           $migration_mapping = $migration_committee->getMap()->lookupDestinationID(array($legacy_membership->gid));
-          $dest_gid = $migration_mapping['destid1'];
+		  $dest_field = &$user->field_user_commitee['und'];
           break;
         case 'constituency':
           $migration_mapping = $migration_constituency->getMap()->lookupDestinationID(array($legacy_membership->gid));
-          $dest_gid = $migration_mapping['destid1'];
+		  $dest_field = &$user->field_user_constituency['und'];
           break;
         case 'party':
           $migration_mapping = $migration_party->getMap()->lookupDestinationID(array($legacy_membership->gid));
-          $dest_gid = $migration_mapping['destid1'];
+		  $dest_field = &$user->field_user_party['und'];
           break;
       }
 
-      // Check if membership exists
-      if ($dest_gid) {
-        $check_query = db_select('{og_membership}', 'm');
-        $check_query->condition('m.etid', $user->uid, '=');
-        $check_query->condition('m.entity_type', 'user', '=');
-        $check_query->condition('m.gid', $dest_gid, '=');
-        $check_count = $check_query->countQuery()->execute()->fetchField();
+     // Check if target term is already migrated
+      $dest_tid = $migration_mapping['destid1'];
+      if ($dest_tid) {
 
-        // Creating membership
-        if ($check_count == 0) {
-          $membership = og_membership_create($dest_gid, 'user', $user->uid);
-          og_membership_save($membership);
-          $og = og_load($dest_gid);
-          switch($legacy_membership->type){
-            case 'constituency':
-              $terms = taxonomy_get_term_by_name($og->label);
-              $keys = array_keys($terms);
-            if(!is_array($user->field_user_constituency['und']))
-              $user->field_user_constituency['und'] = array();
-              array_push($user->field_user_constituency['und'],array('tid'=>$keys[0]));
-              
-              //debug($user);
-            break;
-            case 'committee':
-              $terms = taxonomy_get_term_by_name($og->label);
-              $keys = array_keys($terms);
-              //debug($keys);
-            if(!is_array($user->field_user_commitee['und']))
-              $user->field_user_commitee['und'] = array();
-              array_push($user->field_user_commitee['und'],array('tid'=>$keys[0]));
-              //debug($user->field_user_commitee['und']);
-              //$user->revision = FALSE;
-              //$user = user_save($user);
-              //debug($user);
-            break;
-            case 'party':
-              $terms = taxonomy_get_term_by_name($og->label);
-              $keys = array_keys($terms);
-            if(!is_array($user->field_user_party['und']))
-              $user->field_user_party['und'] = array();
-              array_push($user->field_user_party['und'],array('tid'=>$keys[0]));
-              //$user->revision = FALSE;
-              //$user = user_save($user);
-              //debug($user);
-              
-            break;
-          }
-          $l_name = l($user->name, "user/$user->uid");
-          $l_group = l($og->label, "node/$dest_gid");
-          drupal_set_message("adding $l_name to $l_group");
-          $count_memberships_created[$legacy_membership->type]++;
-        }
+		// Field value must be an array
+		if(!is_array($dest_field)){
+			$dest_field = array();
+		}
+
+		// Check if term is already in the field
+		$term_exists = false;
+		foreach($dest_field as $a_term){
+			if($a_term['tid'] == $dest_tid){
+				$term_exists = true;
+			}
+		}
+		if(!$term_exists){
+
+			// Add term to field
+			array_push($dest_field, array('tid' => $dest_tid));
+
+			// For output
+		    $count_memberships_created[$legacy_membership->type]++;
+		}
       }
     }
+
+	// Finally save the user
     $user->revision = 0;
     $user = user_save($user);
   }
+
+  // Output
   foreach ($count_memberships_created as $type => $count) {
     drupal_set_message("$count memberships of type $type created!");
   }
