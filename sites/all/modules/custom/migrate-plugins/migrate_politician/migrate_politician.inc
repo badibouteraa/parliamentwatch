@@ -20,7 +20,15 @@ class PoliticianMigration extends BasicMigratePolitician {
     $query->fields('u', array('id', 'username', 'title', 'first_name', 'last_name', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'url_picture'));
     $query->fields('p', array('project', 'startdate'));
     $query->condition('u.oldest', 1, '=');
-    $query->condition('p.project_cmd', array(132, 360));
+	switch(variable_get('site_name')){
+		case 'abgeordnetenwatch.de':
+		    $query->condition('p.project_cmd', array(132, 360));
+			break;
+		case 'marsad.tn':
+		    $query->condition('p.project_cmd', 974);
+			break;
+	}
+
 
     // Prepare mapping
     $this->source = new MigrateSourceSQL($query);
@@ -51,7 +59,7 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->addFieldMapping('language')->defaultValue('de');
     $this->addFieldMapping('role_names')->defaultValue('politician');
     $this->addFieldMapping('field_user_parliament', 'project')->arguments(array('create_term' => TRUE));
-    $this->addFieldMapping('field_user_image', 'url_picture');
+    $this->addFieldMapping('field_user_picture', 'url_picture');
   }
 
 public function prepareRow($current_row) {
