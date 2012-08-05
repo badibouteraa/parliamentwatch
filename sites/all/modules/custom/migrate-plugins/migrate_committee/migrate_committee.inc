@@ -63,7 +63,7 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
     $query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_committee', 'c');
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
-    $query->fields('c', array('id', 'committee', 'txt'));
+    $query->fields('c', array('id', 'committee', 'txt','first_lang' , 'second_lang','committee_2nd_lang'));
     $query->fields('p', array('project', 'startdate'));
 	switch(variable_get('site_name')){
 		case 'abgeordnetenwatch.de':
@@ -89,24 +89,40 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
     $this->destination = new MigrateDestinationTerm('committee');
     $this->addFieldMapping('name', 'committee'); 
     $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('language','first_lang');
   }
 
   public function complete($current_row) {
+    
+    if($this->sourceValues->second_lang){
+      $translations = array($current_row->language=> $current_row,$this->sourceValues->second_lang => $this->sourceValues->committee_2nd_lang);
+      $set = i18n_translation_set_create('taxonomy_term', 'committee');
+      $current_row->i18n_tsid = $set->tsid;
+      taxonomy_term_save($current_row);
+      $term_trans = (object) array('vid' => $current_row->vid, 'name' => $this->sourceValues->committee_2nd_lang, 'language' => $this->sourceValues->second_lang,'translation_set'=>$set);
+      $term_trans = taxonomy_term_save($term_trans);
+      $set->add_item($term_trans)
+      ->save();
+      $set->add_item($current_row)
+      ->save();
+    }
+    
+    switch($current_row->field_parliament){
+      case 'Assemblée nationale constituante':
+          $a_subterms = array('en'=>'Chairman', 'en'=>'Vice Chairman', 'fr'=>'Rapporteur', 'fr'=>'1er rapporteur adjoint', 'fr'=>'2ème rapporteur adjoint', 'en'=>'Member');
+        break;
+      default:
+          $a_subterms = array('en'=>'Chairman', 'en'=>'Vice Chairman', 'en'=>'Member', 'en'=>'Deputy Member');
+        break;
+    }
 
-	switch($current_row->field_parliament['0']){
-		case 'Assemblée nationale constituante':
-		    $a_subterms = array('Chairman', 'Vice Chairman', 'Rapporteur', '1er rapporteur adjoint', '2ème rapporteur adjoint', 'Member');
-			break;
-		default:
-		    $a_subterms = array('Chairman', 'Vice Chairman', 'Member', 'Deputy Member');
-			break;
-	}
-
+    // add default subterms to term
+    foreach($a_subterms as $lang => $subterm){
+      $term = (object) array('vid' => $current_row->vid, 'name' => $subterm, 'parent' => $current_row->tid, 'language'=>$lang);
+      taxonomy_term_save($term);
+    }
 	// add default subterms to term
-	foreach($a_subterms as $subterm){
-		$term = (object) array('vid' => $current_row->vid, 'name' => $subterm, 'parent' => $current_row->tid);
-		taxonomy_term_save($term);
-	}
+    
   }
 
 }
