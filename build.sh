@@ -3,9 +3,9 @@
 if [ ! -n "$1" ]
 	then
 		echo "PLEASE ENTER DATABASE NAME:"
-		read DB_NAME
+		read DB_NAME_PREFIX
 else
-	DB_NAME=`echo $1 | sed 's/\./_/g'`
+	DB_NAME_PREFIX=`echo $1 | sed 's/\./_/g'`
 fi
 
 if [ ! -n "$2" ]
@@ -20,14 +20,34 @@ else
 	SITE_PASS=$2
 fi
 
+echo "INSTALL AS MULTISITE OR TYPE IN THE NAME OF THE SUBSITE THAT SHOULD BE INSTALLED (Y/N/subsite):"
+read MULTISITE
+
+if [ $MULTISITE != "Y" -a $MULTISITE != "N" ]
+	then
+		SITE_INSTALL=$MULTISITE
+	else
+		SITE_INSTALL=abgeordnetenwatch.de
+fi
+
 # avoid overwriting of custom modules/themes
 mv sites custom
 
 echo "RUNNING DRUSH MAKE FILE"
 drush make --yes --working-copy parliamentwatch.make
 
-echo "INSTALLING SITE"
-drush site-install standard --yes --locale=de --account-name=root --account-pass=$SITE_PASS --account-mail=dummy@parliamentwatch.org --site-name=parliamentwatch.org --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
+for SITE_PATH in `find custom -maxdepth 1 -type d -name '*.*'`
+do 
+	SITE=`basename $SITE_PATH`
+	if [ $MULTISITE = "Y" -o $SITE = $SITE_INSTALL ]
+		then
+			DB_NAME_SUFFIX=`echo $SITE | sed 's/\./_/g'`
+			DB_NAME=$DB_NAME_PREFIX"_"$DB_NAME_SUFFIX
+
+			echo "INSTALLING SITE $SITE"
+			drush site-install standard --yes --account-name=root --account-pass=$SITE_PASS --account-mail=dummy@parliamentwatch.org --uri=$SITE --sites-subdir=$SITE --site-name=$SITE --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
+	fi
+done
 
 # bring back custom modules/themes
 cp -r custom/* sites
@@ -40,23 +60,49 @@ do
  	/usr/bin/git apply -v --directory=$PATH $PATH/$FILE
 done
 
+for SITE_PATH in `find sites -maxdepth 1 -type d -name '*.*'`
+do
+	SITE=`basename $SITE_PATH`
+	if [ $MULTISITE = "Y" -o $SITE = $SITE_INSTALL ]
+		then
+			echo "ENABLING CONTRIB MODULES FOR $SITE"
+			drush en --yes --uri=$SITE admin_devel admin_menu admin_menu_toolbar ctools page_manager views_content context context_layouts context_ui custom_search custom_search_blocks date date_all_day date_api date_migrate date_popup date_tools devel migrate migrate_committee migrate_constituency migrate_extras migrate_memberships migrate_party migrate_politician migrate_ui migrate_user_revisions rate votingapi rate_voteas ds ds_extras ds_search features  addressfield addthis addthis_displays field_group link simplehtmldom file_entity media i18n_field i18n i18n_string i18n_taxonomy i18n_translation i18n_variable pw_content_authoring_layout backup_migrate better_formats chart custom_breadcrumbs entity entity_token feedback_simple forward inline_messages job_scheduler libraries masquerade menu_position module_filter nice_menus pathauto read_more strongarm subform text_resize token user_revision panels php print rules rules_scheduler rules_admin search_api search_api_solr search404 facetapi secureshare secureshare_fields de_stemmer stemmer_api tagadelic delta delta_blocks delta_ui omega_tools compact_forms wysiwyg variable variable_realm variable_store better_exposed_filters views views_slideshow views_slideshow_cycle views_ui webform webform_rules  
 
-echo "ENABLING MODULES"
-drush en --yes admin_devel admin_menu admin_menu_toolbar ctools page_manager views_content context context_layouts context_ui custom_search custom_search_blocks date date_all_day date_api date_migrate date_popup date_tools devel migrate migrate_committee migrate_constituency migrate_extras migrate_memberships migrate_party migrate_politician migrate_ui migrate_user_revisions rate votingapi rate_voteas ds ds_extras ds_search committee_type constituency custom_roles features profiles slider_item type_party addressfield addthis addthis_displays field_group link simplehtmldom file_entity media i18n_field i18n i18n_string i18n_taxonomy i18n_translation i18n_variable og og_access og_context og_field_access og_migrate og_ui pw_content_authoring_layout backup_migrate better_formats chart custom_breadcrumbs entity entity_token feedback_simple forward inline_messages job_scheduler l10n_update libraries masquerade menu_position module_filter nice_menus pathauto read_more strongarm subform text_resize token user_revision panels php print rules rules_scheduler rules_admin search_api search_api_solr search404 facetapi secureshare secureshare_fields de_stemmer stemmer_api tagadelic delta delta_blocks delta_ui omega_tools compact_forms wysiwyg variable variable_realm variable_store better_exposed_filters views views_slideshow views_slideshow_cycle views_ui webform webform_rules  
+			echo "ENABLING CUSTOM MODULES FOR $SITE"
+			drush en --yes --uri=$SITE profiles pw_roles_permissions slider_item subsite_conf
 
-echo "DISABLING MODULES"
-drush dis --yes toolbar print_pdf overlay
+			echo "DISABLING MODULES FOR $SITE"
+			drush dis --yes --uri=$SITE toolbar overlay
 
-echo "ENABLING THEME"
-drush en -y omega abgeordnetenwatch
-drush vset -y theme_default abgeordnetenwatch
+			echo "ENABLING THEME FOR $SITE"
+			drush en --yes --uri=$SITE omega abgeordnetenwatch
+			THEME=`echo $SITE | sed 's/\..*$//g'`
+			drush vset --yes --uri=$SITE theme_default $THEME
 
-echo "SETTING DATE/COUNTRY"
-drush vset --yes date_first_day 1
-drush vset --yes site_default_country "DE"
+			echo "SETTING DATE/COUNTRY FOR $SITE"
+			drush vset --yes --uri=$SITE date_first_day 1
+			drush vset --yes --uri=$SITE site_default_country "DE"
 
-echo "SETTING WRITE PERMISSIONS TO FILES FOLDER"
-chmod -R 0775 sites/default/files
+ 			# add legacy DB parlamentwatch
+			echo "
+			\$databases['parlamentwatch']['default'] = array(
+			  'driver' => 'mysql',
+			  'database' => 'parlamentwatch',
+			  'username' => 'root',
+			  'password' => '"$DB_PASS"',
+			  'host' => 'localhost',
+			);" >> sites/$SITE/settings.php
 
-echo "CLEARING CACHE"
-drush cc all 
+			# add site to sites.php
+			echo "
+				\$sites['$SITE'] = '$SITE';
+			"; >> sites/sites.php
+
+			echo "SETTING WRITE PERMISSIONS TO FILES FOLDER FOR $SITE"
+			chmod -R 0775 sites/$SITE/files
+
+			echo "CLEARING CACHE ON $SITE"
+			drush cc --uri=$SITE all
+	fi
+done
+
