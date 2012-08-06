@@ -794,7 +794,7 @@ textarea:active {
     outline: 1px solid #ccc;
 }
 .comment-count,
-.field-type-taxonomy-term-reference {
+.taxonomy-comma-serpated.field-type-taxonomy-term-reference {
     padding-left: 26px;
     background: url(../images/sprite.png) no-repeat;
 }

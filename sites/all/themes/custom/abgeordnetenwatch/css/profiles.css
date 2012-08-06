@@ -19,9 +19,15 @@ table.views-view-grid .row-last td {
     border-bottom: 0;
 }
 
-.user-profile .field-name-field-user-fname {
+.user-profile .field-name-field-user-fname,
+.user-profile .field-name-field-user-lname {
     float: left;
+}
+.user-profile .field-name-field-user-fname {
     margin-right: 0.8ex;
+}
+.user-profile .field-name-field-user-lname:after {
+    content: ",\0000a0";
 }
 .page-user #page-title {
     display: none;

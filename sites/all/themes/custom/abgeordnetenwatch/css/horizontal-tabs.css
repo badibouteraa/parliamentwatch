@@ -1,5 +1,8 @@
 @CHARSET "UTF-8";
 
+.field-group-htabs-wrapper {
+    margin-bottom: 3em;
+}
 div.horizontal-tabs {
   margin: 0 0 1em 0; /* LTR */
   padding: 4px 0 0;
@@ -13,6 +16,11 @@ div.horizontal-tabs .label-inline {
     display: block;
     float: left;
     width: 30%;
+}
+div.horizontal-tabs .fieldset-description {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 18px;
+    padding: 0 10px 10px 10px;
 }
 .field-group-htabs-wrapper h2 {
   margin-bottom: 0;
@@ -48,9 +56,15 @@ div.horizontal-tabs .label-inline {
 }
 
 /* Layout of each tab */
-.horizontal-tabs ul.horizontal-tabs-list li {
+#region-content .horizontal-tabs ul {
+  padding: 0; 
+  margin: 0 0 -5px;
+  list-style: none;
+}
+#region-content .horizontal-tabs ul.horizontal-tabs-list li {
   background: #e1e1e1;
-  padding-top: 0; 
+  margin: 0;
+  padding: 0; 
   margin: 0;
   min-width: 5em; /* IE7 */
   float: left;
