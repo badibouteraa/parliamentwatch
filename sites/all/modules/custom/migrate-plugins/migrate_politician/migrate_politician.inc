@@ -17,7 +17,7 @@ class PoliticianMigration extends BasicMigratePolitician {
     $query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_user', 'u');
     $query->join('legacy_projects', 'p', 'u.cmd = p.cmd');
-    $query->fields('u', array('id', 'username', 'title', 'first_name', 'last_name', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'url_picture'));
+    $query->fields('u', array('id', 'username', 'title', 'first_name', 'first_name_2nd_lang', 'last_name', 'last_name_2nd_lang', 'first_lang', 'second_lang', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'url_picture'));
     $query->fields('p', array('project', 'startdate'));
     $query->condition('u.oldest', 1, '=');
 	switch(variable_get('site_name')){
@@ -56,19 +56,55 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->addFieldMapping('field_user_childs', 'childs');
     $this->addFieldMapping('field_user_job_skills', 'job');
     $this->addFieldMapping('field_user_marriage_status', 'marriage');
-    $this->addFieldMapping('language')->defaultValue('de');
+    //$this->addFieldMapping('language')->defaultValue('en');
     $this->addFieldMapping('role_names')->defaultValue('politician');
     $this->addFieldMapping('field_user_parliament', 'project')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_user_picture', 'url_picture');
   }
 
-public function prepareRow($current_row) {
-  if($current_row->birthday < 1){
-    $current_row->birthday = NULL;
+  public function prepareRow($current_row) {
+    if($current_row->birthday < 1){
+      $current_row->birthday = NULL;
+    }
+    if($current_row->startdate < 1){
+      $current_row->startdate = NULL;
+    }
   }
-  if($current_row->startdate < 1){
-    $current_row->startdate = NULL;
+  
+  public function complete($current_row){
+    
+    if($this->sourceValues->second_lang){
+      $translation = array(
+        'translate' => 0,
+        'status' => 1,
+        'language' => $this->sourceValues->second_lang, // here is the language you're translating to
+        'source' => $this->sourceValues->first_lang, // here is the source language
+  );
+  $term = taxonomy_term_load($tid); // I had to load the taxonomy term
+  $handler = entity_translation_get_handler('user', $current_row); // get the translation handler in place
+  // This is the array structure for the field you are translating, in my case the name was "name_field" and the language target, English. $value is the translated string.
+  $values = array(
+    'user_fname' => array (
+      $this->sourceValues->first_lang => array(
+        '0' => array(
+          'value' => $this->sourceValues->first_name_2nd_lang,
+         )
+       )
+     ),
+    'user_lname' => array (
+      $this->sourceValues->second_lang => array(
+        '0' => array(
+          'value' => $this->sourceValues->last_name_2nd_lang,
+         )
+       )
+     ),
+  );
+  // Finally you set the translation and save the object.
+  $handler->setTranslation($translation, $values);
+  user_save($current_row);
+      
+    }
+    
   }
-}
 
 }
