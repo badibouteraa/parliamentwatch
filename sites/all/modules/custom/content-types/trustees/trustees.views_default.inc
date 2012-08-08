@@ -22,7 +22,7 @@ function trustees_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Das Kuratorium von abgeordnetenwatch.de';
+  $handler->display->display_options['title'] = 'Board of Trustees';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -38,17 +38,17 @@ function trustees_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = 0;
   $handler->display->display_options['row_options']['default_field_elements'] = 1;
-  /* Kopfbereich: Global: Text area */
+  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p>Das Kuratorium wirkt für abgeordnetenwatch.de. Es gewährleistet die Einhaltung des Codex für Anfragen über die Seite, macht Vorschläge zur Erweiterung des Codex und hat eine allgemein beratende Funktion. Die Mitglieder wirken überparteilich und sollten deshalb kein bedeutendes Mandat in einer Partei wahrnehmen.</p>
-<p class="read-codex float-right"><a href="/de/node/5337">Moderationscodex lesen</a></p>
+  $handler->display->display_options['header']['area']['content'] = '<p>The board of trustees fulfills an important function for abgeordnetenwatch.de. It ensures the adherence to the Code of Conduct concerning any requests made through the site, as well as to make possible suggestions concerning the expansion of the Code of Conduct. In addition the board fulfills the role of a general advisor to the project. The board´s members act in a non-partisan way, and should therefore not hold any significant party mandates.</p>
+<p class="read-codex float-right"><a href="/about_us/code_of_conduct">read code of conduct</a></p>
 ';
   $handler->display->display_options['header']['area']['format'] = 'managed_content';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
-  /* Feld: Inhalt: Profile image */
+  /* Field: Content: Profile image */
   $handler->display->display_options['fields']['field_trustee_image']['id'] = 'field_trustee_image';
   $handler->display->display_options['fields']['field_trustee_image']['table'] = 'field_data_field_trustee_image';
   $handler->display->display_options['fields']['field_trustee_image']['field'] = 'field_trustee_image';
@@ -78,7 +78,7 @@ function trustees_views_default_views() {
     'file_view_mode' => 'pw_file_portrait_l',
   );
   $handler->display->display_options['fields']['field_trustee_image']['field_api_classes'] = 0;
-  /* Feld: Inhalt: Titel */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -103,7 +103,7 @@ function trustees_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  /* Feld: Inhalt: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -131,7 +131,7 @@ function trustees_views_default_views() {
     'trim_length' => '600',
   );
   $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
-  /* Feld: Node: Edit link */
+  /* Field: Node: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -153,14 +153,14 @@ function trustees_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['hide_empty'] = 0;
   $handler->display->display_options['fields']['edit_node']['empty_zero'] = 0;
   $handler->display->display_options['fields']['edit_node']['hide_alter_empty'] = 1;
-  /* Filter criterion: Inhalt: Veröffentlicht */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Inhalt: Typ */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -170,23 +170,23 @@ function trustees_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'wir_ueber_uns/kuratorium';
+  $handler->display->display_options['path'] = 'about_us/trustees';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Kuratorium';
+  $handler->display->display_options['menu']['title'] = 'Board of Trustees';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $translatables['Trustees'] = array(
     t('Master'),
-    t('Das Kuratorium von abgeordnetenwatch.de'),
+    t('Board of Trustees'),
     t('more'),
-    t('anwenden'),
+    t('Apply'),
     t('Zurücksetzen'),
     t('Artikel sortieren nach'),
     t('aufsteigend'),
     t('absteigend'),
-    t('<p>Das Kuratorium wirkt für abgeordnetenwatch.de. Es gewährleistet die Einhaltung des Codex für Anfragen über die Seite, macht Vorschläge zur Erweiterung des Codex und hat eine allgemein beratende Funktion. Die Mitglieder wirken überparteilich und sollten deshalb kein bedeutendes Mandat in einer Partei wahrnehmen.</p>
-<p class="read-codex float-right"><a href="/de/node/5337">Moderationscodex lesen</a></p>
+    t('<p>The board of trustees fulfills an important function for abgeordnetenwatch.de. It ensures the adherence to the Code of Conduct concerning any requests made through the site, as well as to make possible suggestions concerning the expansion of the Code of Conduct. In addition the board fulfills the role of a general advisor to the project. The board´s members act in a non-partisan way, and should therefore not hold any significant party mandates.</p>
+<p class="read-codex float-right"><a href="/about_us/code_of_conduct">read code of conduct</a></p>
 '),
     t('Page'),
   );
