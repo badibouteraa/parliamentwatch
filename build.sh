@@ -45,7 +45,7 @@ do
 			DB_NAME=$DB_NAME_PREFIX"_"$DB_NAME_SUFFIX
 
 			echo "INSTALLING SITE $SITE"
-			drush site-install standard --yes --account-name=root --account-pass=$SITE_PASS --account-mail=dummy@parliamentwatch.org --uri=$SITE --sites-subdir=$SITE --site-name=$SITE --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
+			drush site-install standard --yes --account-name=root --account-pass=$SITE_PASS --uri=$SITE --sites-subdir=$SITE --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
 	fi
 done
 
@@ -75,7 +75,8 @@ do
 			drush dis --yes --uri=$SITE toolbar overlay
 
 			echo "ENABLING THEME FOR $SITE"
-			drush en --yes --uri=$SITE omega abgeordnetenwatch
+			THEME=`echo $SITE | sed 's/\..*$//g'`
+			drush en --yes --uri=$SITE omega abgeordnetenwatch $THEME
 
  			# add legacy DB parlamentwatch
 			echo "
@@ -88,9 +89,8 @@ do
 			);" >> sites/$SITE/settings.php
 
 			# add site to sites.php
-			echo "
-				\$sites['$SITE'] = '$SITE';
-			"; >> sites/sites.php
+			echo "\$sites['$SITE'] = '$SITE';
+			" >> sites/sites.php
 
 			echo "SETTING WRITE PERMISSIONS TO FILES FOLDER FOR $SITE"
 			chmod -R 0775 sites/$SITE/files
