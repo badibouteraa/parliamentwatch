@@ -1,0 +1,10 @@
+name = Roles
+description = Default Roles
+core = 7.x
+package = Features
+version = 7.x-1.0-08082012
+project = roles
+dependencies[] = features
+features[features_api][] = api:1
+features[user_role][] = Content Manager
+features[user_role][] = Politician
