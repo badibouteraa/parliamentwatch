@@ -13,13 +13,6 @@ function subsite_conf_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'date_default_timezone';
-  $strongarm->value = 'Africa/Tunis';
-  $export['date_default_timezone'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'date_first_day';
   $strongarm->value = '1';
   $export['date_first_day'] = $strongarm;
@@ -30,6 +23,20 @@ function subsite_conf_strongarm() {
   $strongarm->name = 'file_temporary_path';
   $strongarm->value = '/tmp';
   $export['file_temporary_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'file_private_path';
+  $strongarm->value = 'sites/marsad.tn/files/private';
+  $export['file_private_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'file_public_path';
+  $strongarm->value = 'sites/marsad.tn/files';
+  $export['file_public_path'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
