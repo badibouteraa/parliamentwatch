@@ -76,12 +76,6 @@ do
 
 			echo "ENABLING THEME FOR $SITE"
 			drush en --yes --uri=$SITE omega abgeordnetenwatch
-			THEME=`echo $SITE | sed 's/\..*$//g'`
-			drush vset --yes --uri=$SITE theme_default $THEME
-
-			echo "SETTING DATE/COUNTRY FOR $SITE"
-			drush vset --yes --uri=$SITE date_first_day 1
-			drush vset --yes --uri=$SITE site_default_country "DE"
 
  			# add legacy DB parlamentwatch
 			echo "
