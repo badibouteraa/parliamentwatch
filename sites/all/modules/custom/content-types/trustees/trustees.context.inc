@@ -26,9 +26,9 @@ function trustees_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'webform-client-block-7' => array(
+        'webform-client-block-5353' => array(
           'module' => 'webform',
-          'delta' => 'client-block-7',
+          'delta' => 'client-block-5353',
           'region' => 'content',
           'weight' => '9',
         ),
