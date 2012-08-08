@@ -62,8 +62,25 @@ function trustees_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'language_content_type_trustee';
+  $strongarm->name = 'i18n_node_extended_trustee';
   $strongarm->value = '1';
+  $export['i18n_node_extended_trustee'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_trustee';
+  $strongarm->value = array(
+    0 => 'required',
+    1 => 'lock',
+  );
+  $export['i18n_node_options_trustee'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_trustee';
+  $strongarm->value = '2';
   $export['language_content_type_trustee'] = $strongarm;
 
   $strongarm = new stdClass();
