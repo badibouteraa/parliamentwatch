@@ -79,29 +79,29 @@ class PoliticianMigration extends BasicMigratePolitician {
         'status' => 1,
         'language' => $this->sourceValues->second_lang, // here is the language you're translating to
         'source' => $this->sourceValues->first_lang, // here is the source language
-  );
-  $term = taxonomy_term_load($tid); // I had to load the taxonomy term
-  $handler = entity_translation_get_handler('user', $current_row); // get the translation handler in place
-  // This is the array structure for the field you are translating, in my case the name was "name_field" and the language target, English. $value is the translated string.
-  $values = array(
-    'user_fname' => array (
-      $this->sourceValues->first_lang => array(
-        '0' => array(
-          'value' => $this->sourceValues->first_name_2nd_lang,
-         )
-       )
-     ),
-    'user_lname' => array (
-      $this->sourceValues->second_lang => array(
-        '0' => array(
-          'value' => $this->sourceValues->last_name_2nd_lang,
-         )
-       )
-     ),
-  );
-  // Finally you set the translation and save the object.
-  $handler->setTranslation($translation, $values);
-  user_save($current_row);
+      );
+      $term = taxonomy_term_load($tid); // I had to load the taxonomy term
+      $handler = entity_translation_get_handler('user', $current_row); // get the translation handler in place
+      // This is the array structure for the field you are translating, in my case the name was "name_field" and the language target, English. $value is the translated string.
+      $values = array(
+        'user_fname' => array (
+          $this->sourceValues->second_lang => array(
+            '0' => array(
+              'value' => $this->sourceValues->first_name_2nd_lang,
+             )
+           )
+         ),
+        'user_lname' => array (
+          $this->sourceValues->second_lang => array(
+            '0' => array(
+              'value' => $this->sourceValues->last_name_2nd_lang,
+             )
+           )
+         ),
+      );
+      // Finally you set the translation and save the object.
+      $handler->setTranslation($translation, $values);
+      user_save($current_row);
       
     }
     
