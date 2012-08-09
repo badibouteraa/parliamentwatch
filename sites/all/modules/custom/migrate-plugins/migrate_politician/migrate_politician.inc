@@ -48,15 +48,15 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->addFieldMapping('created', 'startdate');
     $this->addFieldMapping('status')->defaultValue(1);
     $this->addFieldMapping('field_user_title', 'title');
-    $this->addFieldMapping('field_user_fname', 'first_name');
-    $this->addFieldMapping('field_user_lname', 'last_name');
+    //$this->addFieldMapping('field_user_fname', 'first_name');
+    //$this->addFieldMapping('field_user_lname', 'last_name');
     $this->addFieldMapping('mail', 'email');
     $this->addFieldMapping('field_user_gender', 'gender');
     $this->addFieldMapping('field_user_birthday', 'birthday');
     $this->addFieldMapping('field_user_childs', 'childs');
     $this->addFieldMapping('field_user_job_skills', 'job');
     $this->addFieldMapping('field_user_marriage_status', 'marriage');
-    //$this->addFieldMapping('language')->defaultValue('en');
+    //$this->addFieldMapping('language','first_lang');
     $this->addFieldMapping('role_names')->defaultValue('politician');
     $this->addFieldMapping('field_user_parliament', 'project')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_user_picture', 'url_picture');
@@ -80,14 +80,23 @@ class PoliticianMigration extends BasicMigratePolitician {
         'language' => $this->sourceValues->second_lang, // here is the language you're translating to
         'source' => $this->sourceValues->first_lang, // here is the source language
       );
-      $term = taxonomy_term_load($tid); // I had to load the taxonomy term
-      $handler = entity_translation_get_handler('user', $current_row); // get the translation handler in place
+      $entity = user_load($current_row->uid);
+      $handler = entity_translation_get_handler('user', $entity); // get the translation handler in place
       // This is the array structure for the field you are translating, in my case the name was "name_field" and the language target, English. $value is the translated string.
+      $entity->field_user_fname[$this->sourceValues->first_lang][0]['value'] = $this->sourceValues->first_name;
+      $entity->field_user_lname[$this->sourceValues->first_lang][0]['value'] = $this->sourceValues->last_name;
+      $entity->field_user_fname[$this->sourceValues->second_lang][0]['value'] = $this->sourceValues->first_name_2nd_lang;
+      $entity->field_user_lname[$this->sourceValues->second_lang][0]['value'] = $this->sourceValues->last_name_2nd_lang;
       $values = array(
         'user_fname' => array (
           $this->sourceValues->second_lang => array(
             '0' => array(
               'value' => $this->sourceValues->first_name_2nd_lang,
+             ),
+          ),
+          $this->sourceValues->first_lang => array(
+            '0' => array(
+              'value' => $this->sourceValues->first_name,
              )
            )
          ),
@@ -96,12 +105,35 @@ class PoliticianMigration extends BasicMigratePolitician {
             '0' => array(
               'value' => $this->sourceValues->last_name_2nd_lang,
              )
+           ),
+          $this->sourceValues->first_lang => array(
+            '0' => array(
+              'value' => $this->sourceValues->last_name,
+             )
            )
          ),
+          
       );
+      /*$values = array(
+        'field_user_fname' => array (
+          $this->sourceValues->first_lang => array(
+            '0' => array(
+              'value' => $this->sourceValues->first_name,
+             )
+           )
+         ),
+        'field_user_lname' => array (
+          $this->sourceValues->first_lang => array(
+            '0' => array(
+              'value' => $this->sourceValues->last_name,
+             )
+           )
+         ),
+      );*/
       // Finally you set the translation and save the object.
       $handler->setTranslation($translation, $values);
-      user_save($current_row);
+      //print_r($entity);
+      user_save($entity);
       
     }
     
