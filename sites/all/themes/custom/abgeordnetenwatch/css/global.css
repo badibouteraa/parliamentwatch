@@ -238,6 +238,7 @@ h1#page-title {
     box-shadow: 0 0 2px 2px #DEDEDE;
 }
 .node-blogpost.node-teaser,
+.block-submenutree .view-mode-teaser,
 .views-table tr.odd,
 .views-table tr.even,
 .node-results li,
@@ -778,7 +779,7 @@ textarea:active {
     right: 0;
     top: 0;
 }
-.field-name-field-blog-teaserimage,
+.field-name-field-teaserimage,
 .field-name-field-user-picture {
     float: left;
     margin: 4px 14px 12px 0;
@@ -794,7 +795,7 @@ textarea:active {
     outline: 1px solid #ccc;
 }
 .comment-count,
-.taxonomy-comma-serpated.field-type-taxonomy-term-reference {
+.field-type-taxonomy-term-reference {
     padding-left: 26px;
     background: url(../images/sprite.png) no-repeat;
 }
