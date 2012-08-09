@@ -29,8 +29,14 @@ function profiles_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = 1;
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '21';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['style_options']['columns'] = '3';
   $handler->display->display_options['style_options']['fill_single_line'] = 1;
@@ -46,7 +52,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = 'Change this text in the string translation section';
+  $handler->display->display_options['header']['area']['content'] = 'Lorem ipsum ad qui amet dolore, vitae cetero quaerendum mel ea. Facilis fastidii duo no. Viris partiendo ius no, alia animal nam at. Feugait imperdiet ius an, no quis facer lucilius vis. Aliquam saperet contentiones ex pro, id idque offendit ius.';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Relationship: User revision: User */
@@ -54,14 +60,41 @@ function profiles_views_default_views() {
   $handler->display->display_options['relationships']['vid']['table'] = 'user_revision';
   $handler->display->display_options['relationships']['vid']['field'] = 'vid';
   $handler->display->display_options['relationships']['vid']['required'] = 1;
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'vid';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['uid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['uid']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['uid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['element_default_classes'] = 0;
+  $handler->display->display_options['fields']['uid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['uid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['uid']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = 0;
   /* Field: User: Profile picture */
   $handler->display->display_options['fields']['field_user_picture']['id'] = 'field_user_picture';
   $handler->display->display_options['fields']['field_user_picture']['table'] = 'field_data_field_user_picture';
   $handler->display->display_options['fields']['field_user_picture']['field'] = 'field_user_picture';
   $handler->display->display_options['fields']['field_user_picture']['label'] = '';
   $handler->display->display_options['fields']['field_user_picture']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_user_picture']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_user_picture']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_user_picture']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['field_user_picture']['alter']['path'] = 'user/[uid]';
+  $handler->display->display_options['fields']['field_user_picture']['alter']['absolute'] = 1;
   $handler->display->display_options['fields']['field_user_picture']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_user_picture']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_user_picture']['alter']['trim_whitespace'] = 0;
@@ -80,7 +113,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['field_user_picture']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_user_picture']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_user_picture']['settings'] = array(
-    'file_view_mode' => 'profile',
+    'file_view_mode' => 'pw_file_portrait_m',
   );
   $handler->display->display_options['fields']['field_user_picture']['field_api_classes'] = 0;
   /* Field: User: First Name */
@@ -210,8 +243,8 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_gender_value']['field'] = 'field_user_gender_value';
   $handler->display->display_options['filters']['field_user_gender_value']['value'] = array(
     'all' => 'all',
-    'man' => 'man',
-    'woman' => 'woman',
+    'm' => 'm',
+    'f' => 'f',
   );
   $handler->display->display_options['filters']['field_user_gender_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['operator_id'] = 'field_user_gender_value_op';
@@ -237,8 +270,8 @@ function profiles_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'politicians';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Profile list';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
@@ -255,8 +288,9 @@ function profiles_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('Change this text in the string translation section'),
+    t('Lorem ipsum ad qui amet dolore, vitae cetero quaerendum mel ea. Facilis fastidii duo no. Viris partiendo ius no, alia animal nam at. Feugait imperdiet ius an, no quis facer lucilius vis. Aliquam saperet contentiones ex pro, id idque offendit ius.'),
     t('Get the actual user from a user revision.'),
+    t('user/[uid]'),
     t('Go to profile'),
     t('Name'),
     t('Choose gender'),

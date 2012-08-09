@@ -18,47 +18,28 @@ function profiles_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
     'ask_a_question' => array(
-      'weight' => '3',
+      'weight' => '4',
       'label' => 'above',
       'format' => 'default',
       'ft' => array(
         'func' => 'theme_ds_field_expert',
+        'lb' => 'Soon you can ask questions',
         'lb-el' => 'h3',
         'lb-col' => TRUE,
-        'ow' => TRUE,
-        'ow-el' => 'p',
-        'ow-cl' => '',
       ),
     ),
-    'group_audience' => array(
-      'ft' => array(
-        'func' => 'theme_ds_field_expert',
-        'ow' => TRUE,
-        'ow-el' => 'div',
-        'ow-cl' => 'field-item even clearfix',
-      ),
-    ),
-    'field_user_childs' => array(
+    'field_user_constituency' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
         'lb-col' => TRUE,
         'ow' => TRUE,
         'ow-el' => 'div',
-        'ow-cl' => 'field-item even clearfix clearfix',
+        'ow-cl' => 'field-item field-name-field-user-constituency clearfix',
       ),
     ),
     'field_user_fname' => array(
       'ft' => array(
         'func' => 'theme_ds_field_minimal',
-      ),
-    ),
-    'field_user_job' => array(
-      'ft' => array(
-        'func' => 'theme_ds_field_expert',
-        'lb-col' => TRUE,
-        'ow' => TRUE,
-        'ow-el' => 'div',
-        'ow-cl' => 'field-item odd clearfix',
       ),
     ),
     'field_user_job_skills' => array(
@@ -67,7 +48,7 @@ function profiles_ds_field_settings_info() {
         'lb-col' => TRUE,
         'ow' => TRUE,
         'ow-el' => 'div',
-        'ow-cl' => 'field-item even clearfix',
+        'ow-cl' => 'field-item field-name-field-user-job-skills clearfix even',
       ),
     ),
     'field_user_lname' => array(
@@ -75,26 +56,17 @@ function profiles_ds_field_settings_info() {
         'func' => 'theme_ds_field_minimal',
       ),
     ),
-    'field_user_marriage_status' => array(
-      'ft' => array(
-        'func' => 'theme_ds_field_expert',
-        'lb-col' => TRUE,
-        'ow' => TRUE,
-        'ow-el' => 'div',
-        'ow-cl' => 'field-item odd clearfix',
-      ),
-    ),
-    'field_user_picture' => array(
+    'field_user_parliament' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
         'ow' => TRUE,
-        'ow-el' => 'div',
-        'ow-cl' => 'field-name-field-user-picture',
+        'ow-el' => 'p',
+        'ow-cl' => '',
       ),
     ),
-    'group_user_name' => array(
+    'field_user_party' => array(
       'ft' => array(
-        'func' => 'theme_ds_field_reset',
+        'func' => 'theme_ds_field_minimal',
       ),
     ),
   );
@@ -145,37 +117,43 @@ function profiles_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_user_picture',
-        1 => 'group_user_name',
-        2 => 'group_audience',
-        3 => 'field_user_fname',
-        4 => 'ask_a_question',
-        5 => 'field_user_lname',
-        6 => 'group_user_basics',
-        7 => 'field_user_more',
-        8 => 'group_user_basics_basics',
-        9 => 'field_user_job_skills',
-        10 => 'group_user_basics_additional',
-        11 => 'field_user_job',
-        12 => 'field_user_childs',
-        13 => 'field_user_marriage_status',
+        0 => 'group_audience',
+        1 => 'field_user_picture',
+        2 => 'field_user_fname',
+        3 => 'group_user_name',
+        4 => 'field_user_lname',
+        5 => 'field_user_parliament',
+        6 => 'ask_a_question',
+        7 => 'field_user_party',
+        8 => 'group_user_basics',
+        9 => 'group_user_commitee',
+        10 => 'field_user_commitee',
+        11 => 'field_user_more',
+        12 => 'group_user_commitee_tab',
+        13 => 'group_user_basics_basics',
+        14 => 'field_user_job_skills',
+        15 => 'group_user_basics_additional',
+        16 => 'field_user_constituency',
       ),
     ),
     'fields' => array(
-      'field_user_picture' => 'ds_content',
-      'group_user_name' => 'ds_content',
       'group_audience' => 'ds_content',
+      'field_user_picture' => 'ds_content',
       'field_user_fname' => 'ds_content',
-      'ask_a_question' => 'ds_content',
+      'group_user_name' => 'ds_content',
       'field_user_lname' => 'ds_content',
+      'field_user_parliament' => 'ds_content',
+      'ask_a_question' => 'ds_content',
+      'field_user_party' => 'ds_content',
       'group_user_basics' => 'ds_content',
+      'group_user_commitee' => 'ds_content',
+      'field_user_commitee' => 'ds_content',
       'field_user_more' => 'ds_content',
+      'group_user_commitee_tab' => 'ds_content',
       'group_user_basics_basics' => 'ds_content',
       'field_user_job_skills' => 'ds_content',
       'group_user_basics_additional' => 'ds_content',
-      'field_user_job' => 'ds_content',
-      'field_user_childs' => 'ds_content',
-      'field_user_marriage_status' => 'ds_content',
+      'field_user_constituency' => 'ds_content',
     ),
     'classes' => array(),
   );
@@ -198,6 +176,42 @@ function profiles_ds_view_modes_info() {
     'file' => 'file',
   );
   $export['profile'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'pw_file_landscape_l';
+  $ds_view_mode->label = 'pw_file_landscape_l';
+  $ds_view_mode->entities = array(
+    'file' => 'file',
+  );
+  $export['pw_file_landscape_l'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'pw_file_portrait_l';
+  $ds_view_mode->label = 'pw_file_portrait_l';
+  $ds_view_mode->entities = array(
+    'file' => 'file',
+  );
+  $export['pw_file_portrait_l'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'pw_file_portrait_m';
+  $ds_view_mode->label = 'pw_file_portrait_m';
+  $ds_view_mode->entities = array(
+    'file' => 'file',
+  );
+  $export['pw_file_portrait_m'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'pw_file_portrait_s';
+  $ds_view_mode->label = 'pw_file_portrait_s';
+  $ds_view_mode->entities = array(
+    'file' => 'file',
+  );
+  $export['pw_file_portrait_s'] = $ds_view_mode;
 
   return $export;
 }

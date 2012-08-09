@@ -30,7 +30,7 @@ function profiles_field_group_info() {
       'label' => 'Additional',
       'instance_settings' => array(
         'classes' => '',
-        'description' => '',
+        'description' => 'Additional Links',
       ),
       'formatter' => 'open',
     ),
@@ -50,17 +50,15 @@ function profiles_field_group_info() {
     'label' => 'Basics',
     'weight' => '13',
     'children' => array(
-      0 => 'field_user_childs',
-      1 => 'field_user_job',
-      2 => 'field_user_job_skills',
-      3 => 'field_user_marriage_status',
+      0 => 'field_user_constituency',
+      1 => 'field_user_job_skills',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
       'label' => 'Basics',
       'instance_settings' => array(
         'classes' => '',
-        'description' => '',
+        'description' => 'Basic Information',
       ),
       'formatter' => 'open',
     ),
@@ -78,10 +76,10 @@ function profiles_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Basics',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
-      0 => 'group_user_basics_basics',
-      1 => 'group_user_basics_additional',
+      0 => 'group_user_basics_additional',
+      1 => 'group_user_basics_basics',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
@@ -96,6 +94,58 @@ function profiles_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_user_commitee_tab|user|user|default';
+  $field_group->group_name = 'group_user_commitee_tab';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_user_commitee';
+  $field_group->data = array(
+    'label' => 'Political Roles',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_user_commitee',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'label' => 'Political Roles',
+      'instance_settings' => array(
+        'classes' => '',
+        'description' => 'Political Roles',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_user_commitee_tab|user|user|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_user_commitee|user|user|default';
+  $field_group->group_name = 'group_user_commitee';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Commitee Fieldgroup',
+    'weight' => '6',
+    'children' => array(
+      0 => 'group_user_commitee_tab',
+    ),
+    'format_type' => 'htabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_user_commitee|user|user|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_user_name|user|user|default';
   $field_group->group_name = 'group_user_name';
   $field_group->entity_type = 'user';
@@ -104,10 +154,11 @@ function profiles_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Name',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_user_fname',
       1 => 'field_user_lname',
+      2 => 'field_user_party',
     ),
     'format_type' => 'div',
     'format_settings' => array(
