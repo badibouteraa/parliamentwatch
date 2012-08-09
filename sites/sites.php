@@ -59,3 +59,11 @@ $sites['tn.parliamentwatch.org'] = 'marsad.tn';
 
 $sites['watch.piratenpartei-bayern.de'] = 'piratenpartei-bayern.de';
 $sites['pp.parliamentwatch.org'] = 'piratenpartei-bayern.de';
+$sites['abgeordnetenwatch.de'] = 'abgeordnetenwatch.de';
+			
+$sites['dailwatch.ie'] = 'dailwatch.ie';
+			
+$sites['marsad.tn'] = 'marsad.tn';
+			
+$sites['piratenpartei-bayern.de'] = 'piratenpartei-bayern.de';
+			
