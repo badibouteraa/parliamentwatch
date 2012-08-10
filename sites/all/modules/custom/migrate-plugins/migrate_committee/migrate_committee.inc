@@ -29,7 +29,8 @@ class CommitteeNodeMigration extends BasicMigrateCommittee {
 		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
 			break;
 		default:
-			return;
+		    $query->condition('p.project_cmd', 0);
+			break;		
 	}
 
     // Prepare mapping
@@ -81,7 +82,8 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
 		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
 			break;
 		default:
-			return;
+		    $query->condition('p.project_cmd', 0);
+			break;		
 	}
 
     // Prepare mapping

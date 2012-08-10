@@ -29,7 +29,8 @@ class ConstituencyNodeMigration extends BasicMigrateConstituency {
 		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
 			break;
 		default:
-			return;
+		    $query->condition('p.project_cmd', 0);
+			break;			
 	}
 
     $this->source = new MigrateSourceSQL($query);
@@ -80,7 +81,8 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
 		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
 			break;
 		default:
-			return;
+		    $query->condition('p.project_cmd', 0);
+			break;		
 	}
 
     $this->source = new MigrateSourceSQL($query);
