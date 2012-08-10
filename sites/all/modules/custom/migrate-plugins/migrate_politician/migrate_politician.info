@@ -7,6 +7,6 @@ dependencies[] = migrate
 files[] = migrate_politician.module
 files[] = migrate_politician.inc
 
-version = "7.x-1.0-14062012"
+version = "7.x-1.0-10082012"
 core = "7.x"
 project = "migrate_politician"

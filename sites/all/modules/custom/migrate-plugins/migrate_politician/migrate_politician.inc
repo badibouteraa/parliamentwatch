@@ -26,7 +26,12 @@ class PoliticianMigration extends BasicMigratePolitician {
 			break;
 		case 'marsad.tn':
 		    $query->condition('p.project_cmd', 974);
+			break;		
+		case 'dailwatch.ie':
+		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
 			break;
+		default:
+			return;
 	}
 
 
