@@ -67,3 +67,5 @@ $sites['marsad.tn'] = 'marsad.tn';
 			
 $sites['piratenpartei-bayern.de'] = 'piratenpartei-bayern.de';
 			
+$sites['dailwatch.ie'] = 'dailwatch.ie';
+			
