@@ -45,7 +45,7 @@ do
 			DB_NAME=$DB_NAME_PREFIX"_"$DB_NAME_SUFFIX
 
 			echo "INSTALLING SITE $SITE"
-			drush site-install standard --yes --account-name=root --account-pass=$SITE_PASS --uri=$SITE --sites-subdir=$SITE --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
+			drush site-install standard --yes --account-name=root --account-pass=$SITE_PASS --site-name=$SITE --site-mail=admin@$SITE --uri=$SITE --sites-subdir=$SITE --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
 	fi
 done
 
