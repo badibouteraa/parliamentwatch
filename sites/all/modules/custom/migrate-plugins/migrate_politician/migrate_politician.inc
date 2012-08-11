@@ -78,12 +78,9 @@ class PoliticianMigration extends BasicMigratePolitician {
   }
   
   public function complete($current_row){
-   
-    if($this->sourceValues->second_lang && $this->sourceValues->first_name_2nd_lang && $this->sourceValues->first_name_2nd_lang){
+	$entity = user_load($current_row->uid);
+    if($this->sourceValues->second_lang && $this->sourceValues->first_name_2nd_lang){
     
-      $entity = user_load($current_row->uid);
-      $handler = entity_translation_get_handler('user', $entity, TRUE);
-
       // This is the array structure for the field you are translating, in my case the name was "name_field" and the language target, English. $value is the translated string.
 
       $translation = array(
@@ -92,8 +89,8 @@ class PoliticianMigration extends BasicMigratePolitician {
         'language' => $this->sourceValues->second_lang, // here is the language you're translating to
         'source' => $this->sourceValues->first_lang, // here is the source language
       );
-      $entity = user_load($current_row->uid);
-      $handler = entity_translation_get_handler('user', $entity); // get the translation handler in place
+
+      $handler = entity_translation_get_handler('user', $entity, TRUE); // get the translation handler in place
       // This is the array structure for the field you are translating, in my case the name was "name_field" and the language target, English. $value is the translated string.
       $entity->field_user_fname[$this->sourceValues->first_lang][0]['value'] = $this->sourceValues->first_name;
       $entity->field_user_lname[$this->sourceValues->first_lang][0]['value'] = $this->sourceValues->last_name;
@@ -145,10 +142,13 @@ class PoliticianMigration extends BasicMigratePolitician {
       // Finally you set the translation and save the object.
       $handler->setTranslation($translation, $values);
       //print_r($entity);
-      user_save($entity);
       
     }
-    
+	else{
+     $entity->field_user_fname['und'][0]['value'] = $this->sourceValues->first_name;
+     $entity->field_user_lname['und'][0]['value'] = $this->sourceValues->last_name;
+	}
+	user_save($entity);
   }
 
 }
