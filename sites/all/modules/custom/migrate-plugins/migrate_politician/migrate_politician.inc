@@ -79,7 +79,16 @@ class PoliticianMigration extends BasicMigratePolitician {
   
   public function complete($current_row){
     
+<<<<<<< HEAD
     if($this->sourceValues->second_lang){
+=======
+    if($this->sourceValues->second_lang && $this->sourceValues->first_name_2nd_lang && $this->sourceValues->first_name_2nd_lang){
+    
+      $entity = user_load($current_row->uid);
+      $handler = entity_translation_get_handler('user', $entity, TRUE);
+
+      // This is the array structure for the field you are translating, in my case the name was "name_field" and the language target, English. $value is the translated string.
+>>>>>>> no 2nd lang fix for users
       $translation = array(
         'translate' => 0,
         'status' => 1,
