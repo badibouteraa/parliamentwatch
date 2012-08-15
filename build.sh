@@ -4,8 +4,8 @@ if [ ! -n "$1" ]
 	then
 		echo "PLEASE ENTER DATABASE NAME:"
 		read DB_NAME_PREFIX
-else
-	DB_NAME_PREFIX=`echo $1 | sed 's/\./_/g'`
+	else
+		DB_NAME_PREFIX=`echo $1 | sed 's/\./_/g'`
 fi
 
 if [ ! -n "$2" ]
@@ -15,9 +15,9 @@ if [ ! -n "$2" ]
 
 		echo "PLEASE ENTER YOUR WEBSITE ACCOUNT PASSWORD:"
 		read SITE_PASS
-else
-	DB_PASS=$2
-	SITE_PASS=$2
+	else
+		DB_PASS=$2
+		SITE_PASS=$2
 fi
 
 echo "INSTALL AS MULTISITE OR TYPE IN THE NAME OF THE SUBSITE THAT SHOULD BE INSTALLED (Y/N/subsite):"
@@ -60,6 +60,7 @@ do
  	/usr/bin/git apply -v --directory=$PATH $PATH/$FILE
 done
 
+# enabling modules, themes, etc.
 for SITE_PATH in `find sites -maxdepth 1 -type d -name '*.*'`
 do
 	SITE=`basename $SITE_PATH`
@@ -69,15 +70,14 @@ do
 			drush en --yes --uri=$SITE admin_devel admin_menu admin_menu_toolbar ctools page_manager views_content context context_layouts context_ui custom_search custom_search_blocks date date_all_day date_api date_migrate date_popup date_tools devel entity_translation filefield_sources migrate migrate_extras migrate_ui rate votingapi ds ds_extras ds_search features addressfield addthis addthis_displays field_group link simplehtmldom file_entity media i18n_field i18n i18n_string i18n_taxonomy i18n_translation i18n_variable backup_migrate better_formats chart custom_breadcrumbs entity entity_token feedback_simple forward inline_messages job_scheduler libraries linkit masquerade menu_position module_filter nice_menus pathauto read_more strongarm subform text_resize token user_revision panels php print rules rules_scheduler rules_admin search_api search_api_solr search404 facetapi secureshare secureshare_fields de_stemmer stemmer_api tagadelic delta delta_blocks delta_ui omega_tools compact_forms wysiwyg variable variable_realm variable_store better_exposed_filters views views_slideshow views_slideshow_cycle views_ui webform webform_rules  
 
 			echo "ENABLING CUSTOM MODULES FOR $SITE"
-			drush en --yes --uri=$SITE floatbox migrate_committee migrate_constituency migrate_memberships migrate_party migrate_politician migrate_user_revisions profiles pw_content_authoring_layout roles rate_voteas slider_item subsite_conf trustees
+			drush en --yes --uri=$SITE all_strong_arms floatbox migrate_committee migrate_constituency migrate_memberships migrate_party migrate_politician migrate_user_revisions profiles pw_content_authoring_layout roles rate_voteas slider_item subsite_conf trustees
 
 			echo "DISABLING MODULES FOR $SITE"
-			drush dis --yes --uri=$SITE toolbar overlay
+			drush dis --yes --uri=$SITE toolbar
 
 			echo "ENABLING THEME FOR $SITE"
 			THEME=`echo $SITE | sed 's/\..*$//g'`
 			drush en --yes --uri=$SITE omega abgeordnetenwatch $THEME
-			drush vset --yes theme_default $THEME
 
  			# add legacy DB parlamentwatch
 			echo "
