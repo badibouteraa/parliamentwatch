@@ -512,7 +512,7 @@ function profiles_field_default_fields() {
       'settings' => array(
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -535,6 +535,44 @@ function profiles_field_default_fields() {
       'label' => 'First Name',
       'required' => 0,
       'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'ds_code' => 'ds_code',
+            'filtered_html' => 'filtered_html',
+            'full_html' => 'full_html',
+            'managed_content' => 'managed_content',
+            'php_code' => 'php_code',
+            'plain_text' => 'plain_text',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'ds_code' => array(
+                'weight' => '-5',
+              ),
+              'filtered_html' => array(
+                'weight' => '-9',
+              ),
+              'full_html' => array(
+                'weight' => '-8',
+              ),
+              'managed_content' => array(
+                'weight' => '-10',
+              ),
+              'php_code' => array(
+                'weight' => '-6',
+              ),
+              'plain_text' => array(
+                'weight' => '-7',
+              ),
+            ),
+          ),
+        ),
+        'linkit' => array(
+          'enable' => 0,
+          'insert_plugin' => '',
+        ),
         'text_processing' => '0',
         'user_register_form' => 0,
       ),
@@ -698,7 +736,7 @@ function profiles_field_default_fields() {
       'settings' => array(
         'max_length' => '255',
       ),
-      'translatable' => '0',
+      'translatable' => '1',
       'type' => 'text',
     ),
     'field_instance' => array(
@@ -721,6 +759,44 @@ function profiles_field_default_fields() {
       'label' => 'Last name',
       'required' => 0,
       'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'ds_code' => 'ds_code',
+            'filtered_html' => 'filtered_html',
+            'full_html' => 'full_html',
+            'managed_content' => 'managed_content',
+            'php_code' => 'php_code',
+            'plain_text' => 'plain_text',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'ds_code' => array(
+                'weight' => '-5',
+              ),
+              'filtered_html' => array(
+                'weight' => '-9',
+              ),
+              'full_html' => array(
+                'weight' => '-8',
+              ),
+              'managed_content' => array(
+                'weight' => '-10',
+              ),
+              'php_code' => array(
+                'weight' => '-6',
+              ),
+              'plain_text' => array(
+                'weight' => '-7',
+              ),
+            ),
+          ),
+        ),
+        'linkit' => array(
+          'enable' => 0,
+          'insert_plugin' => '',
+        ),
         'text_processing' => '0',
         'user_register_form' => 0,
       ),
