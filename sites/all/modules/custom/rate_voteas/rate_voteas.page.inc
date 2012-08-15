@@ -137,17 +137,21 @@ function rate_voteas_voting_form_submit($form, &$form_state){
   $handle = fopen($file, "r");
   if( $handle ) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+      
       $user = user_load_by_name($data[0]);
-      $option = array_search($data[1], $form_state['values']['rate_widget_options']);
-      $vote = array();
-      $vote['entity_id'] = $form_state['values']['rate_nid'];
-      $vote['uid'] = $user->uid;
-      $vote['value'] = $option;
-      $vote['tag'] = $form_state['values']['rate_widget_info']->tag;
-      $vote['value_type'] = $form_state['values']['rate_widget_info']->value_type;
-      $votes[] = $vote;
-      $arrResult[] = $data;
+      if($user){
+        $option = array_search($data[1], $form_state['values']['rate_widget_options']);
+        $vote = array();
+        $vote['entity_id'] = $form_state['values']['rate_nid'];
+        $vote['uid'] = $user->uid;
+        $vote['value'] = $option;
+        $vote['tag'] = $form_state['values']['rate_widget_info']->tag;
+        $vote['value_type'] = $form_state['values']['rate_widget_info']->value_type;
+        $votes[] = $vote;
+      }
     }
+    //echo "<pre>".print_r($votes,1)."</pre>";
+    //die();
     fclose($handle);
   }
 
@@ -212,7 +216,9 @@ function rate_voteas_voting_form_submit($form, &$form_state){
     
     
   }*/
-  $results = votingapi_set_votes($votes, $criteria);
+  $results = votingapi_set_votes($votes);
+  print_r($results);
+  die();
 }
 
 /**

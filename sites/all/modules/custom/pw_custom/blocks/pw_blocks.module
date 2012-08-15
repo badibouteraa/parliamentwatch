@@ -137,12 +137,11 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
     
     //$groups = og_get_group_ids();
 
-    $query = "select count(vv.uid) as votes , om.gid, n.title, n.nid, vv.value from votingapi_vote vv 
-              join og_membership om on om.etid = vv.uid
-              join node n on n.nid = om.gid
+    $query = "select count(vv.uid) as votes , td.tid, td.name, vv.value from votingapi_vote vv 
+              join field_data_field_user_party up on up.entity_id = vv.uid
+              join taxonomy_term_data td on td.tid = up.field_user_party_tid
               where vv.entity_id = :nid
-              and n.type = 'party'
-              group by  om.gid, vv.value";
+              group by  td.tid, vv.value";
     $args = array(
       ':nid' => $node->nid,
     );
@@ -151,17 +150,18 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
     $gid = "";
     $chart = array();
     while($rec = $result->fetchAssoc()){
-      
-        $parties[$rec['gid']]['title'] = $rec['title'];
-        $parties[$rec['gid']]['id'] = $rec['gid'];
-        $parties[$rec['gid']]['data'][$rec['value']] = $rec['votes'];
-      //$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][] = chart_mixed_axis_label($options[$rec['value']]);
         
+        $parties[$rec['tid']]['name'] = $rec['name'];
+        $parties[$rec['tid']]['id'] = $rec['tid'];
+        $parties[$rec['tid']]['data'][$rec['value']] = $rec['votes'];
+      //$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][] = chart_mixed_axis_label($options[$rec['value']]);
+        $parties[$rec['tid']]['labels'][] = $rec['votes'];
+
       
     }
     foreach($parties as $party){  
       $chart = array(
-        '#title'=> $party['title'],
+        '#title'=> $party['name'],
         '#type'=>CHART_TYPE_BAR_V,
         '#chart_id'=>$party['id'],
         '#size' => chart_size(200, 200),
@@ -173,9 +173,13 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
         '#data_colors' => array('01cc00|ff3334|0033fe|555555'),
         '#labels' => array(),
         '#bar_size' => 'a',
+        '#labels'=>$party['labels']
       );
       foreach($options as $key =>$option){
         $chart['#legends'][$key] = $option;
+        if(!$party['data'][$key]){
+          $party['data'][$key] = 0;
+        }
       }
       
       $chart['#data'] = $party['data'];
