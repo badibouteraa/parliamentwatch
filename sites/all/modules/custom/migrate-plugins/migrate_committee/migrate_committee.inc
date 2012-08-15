@@ -19,18 +19,9 @@ class CommitteeNodeMigration extends BasicMigrateCommittee {
     $query->fields('c', array('id', 'committee', 'txt'));
     $query->fields('p', array('project', 'startdate'));
 	switch(variable_get('site_name')){
-		case 'abgeordnetenwatch.de':
-		    $query->condition('p.project_cmd', array(132, 360));
-			break;
-		case 'marsad.tn':
-		    $query->condition('p.project_cmd', 974);
-			break;
-		case 'dailwatch.ie':
-		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
-			break;
 		default:
 		    $query->condition('p.project_cmd', 0);
-			break;		
+			break;			
 	}
 
     // Prepare mapping
