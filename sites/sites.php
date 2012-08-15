@@ -49,7 +49,7 @@
 $sites['abgeordnetenwatch.de'] = 'abgeordnetenwatch.de';
 $sites['de.parliamentwatch.org'] = 'abgeordnetenwatch.de';
 $sites['parlawatch.com'] = 'abgeordnetenwatch.de';          // for all test*.parlawatch.com servers
-$sites['aw.silversurfer'] = 'abgeordnetenwatch.de';    // ruth's local maschine
+$sites['de.pw.silversurfer'] = 'abgeordnetenwatch.de';    // ruth's local maschine
 
 $sites['dailwatch.ie'] = 'dailwatch.ie';
 $sites['ie.parliamentwatch.org'] = 'dailwatch.ie';
@@ -62,10 +62,21 @@ $sites['pp.parliamentwatch.org'] = 'piratenpartei-bayern.de';
 $sites['abgeordnetenwatch.de'] = 'abgeordnetenwatch.de';
 			
 $sites['dailwatch.ie'] = 'dailwatch.ie';
+$sites['ie.pw.silversurfer'] = 'dailwatch.ie';    // ruth's local maschine
+
 			
 $sites['marsad.tn'] = 'marsad.tn';
+$sites['tn.pw.silversurfer'] = 'marsad.tn';
 			
 $sites['piratenpartei-bayern.de'] = 'piratenpartei-bayern.de';
 			
 $sites['dailwatch.ie'] = 'dailwatch.ie';
+			
+$sites['abgeordnetenwatch.de'] = 'abgeordnetenwatch.de';
+			
+$sites['dailwatch.ie'] = 'dailwatch.ie';
+			
+$sites['marsad.tn'] = 'marsad.tn';
+			
+$sites['piratenpartei-bayern.de'] = 'piratenpartei-bayern.de';
 			
