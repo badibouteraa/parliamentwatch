@@ -1,0 +1,15 @@
+name = pw_solr_configs
+core = 7.x
+package = Features
+version = 7.x-1.0-15082012
+project = pw_solr_configs
+dependencies[] = ctools
+dependencies[] = entity
+dependencies[] = search_api
+dependencies[] = search_api_solr
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[search_api_index][] = user_constituency
+features[search_api_server][] = pw_solr
+features[views_view][] = user_constituency_solr
