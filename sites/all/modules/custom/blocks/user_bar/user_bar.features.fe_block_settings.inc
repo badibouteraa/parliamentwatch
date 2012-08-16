@@ -16,13 +16,13 @@ function user_bar_default_fe_block_settings() {
   $theme['block-user_bar_add_this'] = array(
     'module' => 'block',
     'theme' => 'abgeordnetenwatch',
-    'status' => '1',
-    'weight' => '-26',
-    'region' => 'user_second',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'Share',
+    'title' => '',
     'cache' => -1,
     'machine_name' => 'user_bar_add_this',
   );
@@ -132,12 +132,12 @@ function user_bar_default_fe_block_settings() {
 
   $export['bartik'] = $theme;
 
-  // dailwatch
+  // marsad
   $theme = array();
 
   $theme['block-user_bar_add_this'] = array(
     'module' => 'block',
-    'theme' => 'dailwatch',
+    'theme' => 'marsad',
     'status' => 0,
     'weight' => '0',
     'region' => '',
@@ -152,10 +152,10 @@ function user_bar_default_fe_block_settings() {
   $theme['locale-language'] = array(
     'module' => 'locale',
     'delta' => 'language',
-    'theme' => 'dailwatch',
-    'status' => 0,
+    'theme' => 'marsad',
+    'status' => '1',
     'weight' => '0',
-    'region' => '',
+    'region' => 'user_second',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
@@ -166,7 +166,7 @@ function user_bar_default_fe_block_settings() {
   $theme['print-print-links'] = array(
     'module' => 'print',
     'delta' => 'print-links',
-    'theme' => 'dailwatch',
+    'theme' => 'marsad',
     'status' => 0,
     'weight' => '0',
     'region' => '',
@@ -180,10 +180,10 @@ function user_bar_default_fe_block_settings() {
   $theme['text_resize-0'] = array(
     'module' => 'text_resize',
     'delta' => '0',
-    'theme' => 'dailwatch',
-    'status' => 0,
+    'theme' => 'marsad',
+    'status' => '1',
     'weight' => '0',
-    'region' => '',
+    'region' => 'user_second',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
@@ -191,7 +191,7 @@ function user_bar_default_fe_block_settings() {
     'cache' => '1',
   );
 
-  $export['dailwatch'] = $theme;
+  $export['marsad'] = $theme;
 
   // omega
   $theme = array();
@@ -266,7 +266,7 @@ function user_bar_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'Share',
+    'title' => '',
     'cache' => -1,
     'machine_name' => 'user_bar_add_this',
   );
