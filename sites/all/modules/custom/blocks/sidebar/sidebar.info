@@ -1,0 +1,10 @@
+name = Sidebar
+description = Sidebar First, Sidebar Second
+core = 7.x
+package = Blocks
+version = 7.x-1.0-15082012
+project = sidebar
+dependencies[] = fe_block
+dependencies[] = search
+features[fe_block_settings][] = search-form
+features[features_api][] = api:1
