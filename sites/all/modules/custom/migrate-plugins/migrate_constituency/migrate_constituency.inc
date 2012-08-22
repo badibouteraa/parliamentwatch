@@ -70,7 +70,10 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
 			break;		
 		case 'dailwatch.ie':
 		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
-			break;
+			break;		
+		case 'piratenpartei-bayern.de':
+		    $query->condition('p.project_cmd', array(1036, 1010, 1475));
+			break;	
 		default:
 		    $query->condition('p.project_cmd', 0);
 			break;		

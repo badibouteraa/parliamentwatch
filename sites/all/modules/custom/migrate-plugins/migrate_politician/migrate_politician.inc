@@ -17,7 +17,7 @@ class PoliticianMigration extends BasicMigratePolitician {
     $query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_user', 'u');
     $query->join('legacy_projects', 'p', 'u.cmd = p.cmd');
-    $query->fields('u', array('id', 'username', 'title', 'first_name', 'first_name_2nd_lang', 'last_name', 'last_name_2nd_lang', 'first_lang', 'second_lang', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'url_picture'));
+    $query->fields('u', array('id', 'username', 'title', 'first_name', 'first_name_2nd_lang', 'last_name', 'last_name_2nd_lang', 'first_lang', 'second_lang', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'url_picture', 'links'));
     $query->fields('p', array('project', 'startdate'));
     $query->condition('u.oldest', 1, '=');
 	switch(variable_get('site_name')){
@@ -30,6 +30,9 @@ class PoliticianMigration extends BasicMigratePolitician {
 		case 'dailwatch.ie':
 		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
 			break;		
+		case 'piratenpartei-bayern.de':
+		    $query->condition('p.project_cmd', array(1036, 1010, 1475));
+			break;				
 		default:
 		    $query->condition('p.project_cmd', 0);
 			break;		
@@ -66,6 +69,9 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->addFieldMapping('role_names')->defaultValue('politician');
     $this->addFieldMapping('field_user_parliament', 'project')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_user_picture', 'url_picture');
+    $arguments = new MigrateLinkFieldHandler();
+    # ::arguments(array('source_field' => 'ext_ref_titles'));
+    $this->addFieldMapping('field_user_more', 'links')->separator('|');
   }
 
   public function prepareRow($current_row) {
