@@ -234,7 +234,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
   $handler->display->display_options['filters']['rid']['field'] = 'rid';
   $handler->display->display_options['filters']['rid']['value'] = array(
-    4 => '4',
+    181527986 => '181527986',
   );
   $handler->display->display_options['filters']['rid']['reduce_duplicates'] = 0;
   /* Filter criterion: User: Gender (field_user_gender) */
@@ -258,7 +258,6 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_lname_value']['table'] = 'field_data_field_user_lname';
   $handler->display->display_options['filters']['field_user_lname_value']['field'] = 'field_user_lname_value';
   $handler->display->display_options['filters']['field_user_lname_value']['operator'] = 'starts';
-  $handler->display->display_options['filters']['field_user_lname_value']['value'] = 'A';
   $handler->display->display_options['filters']['field_user_lname_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['operator_id'] = 'field_user_lname_value_op';
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['label'] = 'Last name';
