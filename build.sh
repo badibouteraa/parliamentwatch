@@ -77,7 +77,7 @@ do
 
 			echo "ENABLING THEME FOR $SITE"
 			THEME=`echo $SITE | sed 's/\..*$//g'`
-			drush en --yes --uri=$SITE omega abgeordnetenwatch $THEME
+			drush en --yes --uri=$SITE $THEME
 
  			# add legacy DB parlamentwatch
 			echo "
