@@ -255,7 +255,7 @@ drupal_add_css(\'sites/all/themes/custom/abgeordnetenwatch/css/slider.css\', arr
     'slider_item' => 'slider_item',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content translation: Language */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
