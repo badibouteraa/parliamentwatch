@@ -718,16 +718,19 @@ a#text_resize_increase:hover {
 /* /////////////////////////// views /////////////////// */
 
 .views-exposed-form .views-exposed-widget {
+    float: none;
+}
+#region-content .views-exposed-form .views-exposed-widget {
     float: right;
     padding: 1em 0 1.5em 1em;
 }
-.views-exposed-form .views-exposed-widget label {
+#region-content .views-exposed-form .views-exposed-widget label {
     display: block;
     font-size: 11px;
     line-height: 16px;
     font-weight: normal;
 }
-.form-item-sort-order {
+#region-content .form-item-sort-order {
     display: none;
 }
 button:focus,
@@ -740,7 +743,7 @@ textarea:focus,
 textarea:active {
     box-shadow: none;
 }
-.ctools-auto-submit-full-form {
+#region-content .ctools-auto-submit-full-form {
     float: right;
 }
 .views-field-field-press-article-medium div {
