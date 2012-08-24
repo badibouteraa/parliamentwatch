@@ -16,11 +16,24 @@ function subsite_conf_locale_default_languages() {
     'name' => 'English',
     'native' => 'English',
     'direction' => '0',
+    'enabled' => '0',
+    'plurals' => '0',
+    'formula' => '',
+    'domain' => '',
+    'prefix' => 'en',
+    'weight' => '0',
+  );
+  // Exported language: en-gb
+  $languages['en-gb'] = array(
+    'language' => 'en-gb',
+    'name' => 'English, British',
+    'native' => 'English, British',
+    'direction' => '0',
     'enabled' => '1',
     'plurals' => '0',
     'formula' => '',
     'domain' => '',
-    'prefix' => '',
+    'prefix' => 'en-gb',
     'weight' => '0',
   );
   // Exported language: ga

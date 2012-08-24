@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Subsite Content feature.
+ */
+
+include_once 'subsite_content.features.inc';
