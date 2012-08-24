@@ -10,6 +10,17 @@
 function pw_permissions_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: access print.
+  $permissions['access print'] = array(
+    'name' => 'access print',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'print',
+  );
+
   // Exported permission: access user profiles.
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
@@ -21,13 +32,15 @@ function pw_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: use custom search blocks.
-  $permissions['use custom search blocks'] = array(
-    'name' => 'use custom search blocks',
+  // Exported permission: search content.
+  $permissions['search content'] = array(
+    'name' => 'search content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
     ),
-    'module' => 'custom_search_blocks',
+    'module' => 'search',
   );
 
   return $permissions;
