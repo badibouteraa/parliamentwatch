@@ -75,7 +75,7 @@ function migrate_memberships_form_submit($form, &$form_state) {
   // Loop through politicians
   $count_memberships_created = array('committee' => 0, 'constituency' => 0, 'party' => 0);
   while ($row = $result->fetchObject()) {
-
+    
     // Load userdata
     $user = user_load($row->uid);
     // Get mapping to legacy user
@@ -91,7 +91,7 @@ function migrate_memberships_form_submit($form, &$form_state) {
 
     // Loop through legacy memberships
     while ($legacy_membership = $legacy_result->fetchObject()) {
-      
+
       // Get destination term id by loading migration data
       switch ($legacy_membership->type) {
         case 'committee':

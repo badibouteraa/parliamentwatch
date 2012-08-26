@@ -2,7 +2,7 @@
 core = 7.x
 api = 2
 
-projects[drupal][version] = "7.14"
+projects[drupal][version] = "7.15"
 
 ; Modules
 projects[addressfield][subdir] = "contrib"
@@ -20,7 +20,7 @@ projects[better_formats][version] = "1.0-beta1"
 projects[chart][subdir] = "contrib"
 projects[chart][version] = "1.1"
 projects[ctools][subdir] = "contrib"
-projects[ctools][version] = "1.0"
+projects[ctools][version] = "1.2"
 projects[compact_forms][subdir] = "contrib"
 projects[compact_forms][version] = "1.0"
 projects[content_menu][subdir] = "contrib"
