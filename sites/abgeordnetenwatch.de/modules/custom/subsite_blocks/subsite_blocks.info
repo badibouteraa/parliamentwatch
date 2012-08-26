@@ -1,5 +1,5 @@
 name = Subsite Blocks
-description = Block Configuration for Subsite
+description = Block configuration
 core = 7.x
 package = Features
 php = 5.2.4

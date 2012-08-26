@@ -10,179 +10,6 @@
 function subsite_blocks_default_fe_block_settings() {
   $export = array();
 
-  // abgeordnetenwatch
-  $theme = array();
-
-  $theme['delta_blocks-breadcrumb'] = array(
-    'module' => 'delta_blocks',
-    'delta' => 'breadcrumb',
-    'theme' => 'abgeordnetenwatch',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => 4,
-  );
-
-  $theme['delta_blocks-messages'] = array(
-    'module' => 'delta_blocks',
-    'delta' => 'messages',
-    'theme' => 'abgeordnetenwatch',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['forward-form'] = array(
-    'module' => 'forward',
-    'delta' => 'form',
-    'theme' => 'abgeordnetenwatch',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => '1',
-  );
-
-  $theme['locale-language'] = array(
-    'module' => 'locale',
-    'delta' => 'language',
-    'theme' => 'abgeordnetenwatch',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['print-print-links'] = array(
-    'module' => 'print',
-    'delta' => 'print-links',
-    'theme' => 'abgeordnetenwatch',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => 4,
-  );
-
-  $theme['search-form'] = array(
-    'module' => 'search',
-    'delta' => 'form',
-    'theme' => 'abgeordnetenwatch',
-    'status' => '1',
-    'weight' => '-1',
-    'region' => 'sidebar_first',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['system-help'] = array(
-    'module' => 'system',
-    'delta' => 'help',
-    'theme' => 'abgeordnetenwatch',
-    'status' => '1',
-    'weight' => '0',
-    'region' => 'content',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['system-main'] = array(
-    'module' => 'system',
-    'delta' => 'main',
-    'theme' => 'abgeordnetenwatch',
-    'status' => '1',
-    'weight' => '0',
-    'region' => 'content',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['system-navigation'] = array(
-    'module' => 'system',
-    'delta' => 'navigation',
-    'theme' => 'abgeordnetenwatch',
-    'status' => '1',
-    'weight' => '0',
-    'region' => 'sidebar_first',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['system-powered-by'] = array(
-    'module' => 'system',
-    'delta' => 'powered-by',
-    'theme' => 'abgeordnetenwatch',
-    'status' => '1',
-    'weight' => '10',
-    'region' => 'content',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['text_resize-0'] = array(
-    'module' => 'text_resize',
-    'delta' => '0',
-    'theme' => 'abgeordnetenwatch',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => '1',
-  );
-
-  $theme['views-slider-block'] = array(
-    'module' => 'views',
-    'delta' => 'slider-block',
-    'theme' => 'abgeordnetenwatch',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $export['abgeordnetenwatch'] = $theme;
-
   // bartik
   $theme = array();
 
@@ -231,6 +58,20 @@ function subsite_blocks_default_fe_block_settings() {
   $theme['locale-language'] = array(
     'module' => 'locale',
     'delta' => 'language',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['nice_menus-1'] = array(
+    'module' => 'nice_menus',
+    'delta' => '1',
     'theme' => 'bartik',
     'status' => 0,
     'weight' => '0',
@@ -415,6 +256,20 @@ function subsite_blocks_default_fe_block_settings() {
     'cache' => -1,
   );
 
+  $theme['nice_menus-1'] = array(
+    'module' => 'nice_menus',
+    'delta' => '1',
+    'theme' => 'marsad',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'menu',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
   $theme['print-print-links'] = array(
     'module' => 'print',
     'delta' => 'print-links',
@@ -529,179 +384,6 @@ function subsite_blocks_default_fe_block_settings() {
 
   $export['marsad'] = $theme;
 
-  // omega
-  $theme = array();
-
-  $theme['delta_blocks-breadcrumb'] = array(
-    'module' => 'delta_blocks',
-    'delta' => 'breadcrumb',
-    'theme' => 'omega',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => 4,
-  );
-
-  $theme['delta_blocks-messages'] = array(
-    'module' => 'delta_blocks',
-    'delta' => 'messages',
-    'theme' => 'omega',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['forward-form'] = array(
-    'module' => 'forward',
-    'delta' => 'form',
-    'theme' => 'omega',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => '1',
-  );
-
-  $theme['locale-language'] = array(
-    'module' => 'locale',
-    'delta' => 'language',
-    'theme' => 'omega',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['print-print-links'] = array(
-    'module' => 'print',
-    'delta' => 'print-links',
-    'theme' => 'omega',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => 4,
-  );
-
-  $theme['search-form'] = array(
-    'module' => 'search',
-    'delta' => 'form',
-    'theme' => 'omega',
-    'status' => '1',
-    'weight' => '-1',
-    'region' => 'sidebar_first',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['system-help'] = array(
-    'module' => 'system',
-    'delta' => 'help',
-    'theme' => 'omega',
-    'status' => '1',
-    'weight' => '0',
-    'region' => 'content',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['system-main'] = array(
-    'module' => 'system',
-    'delta' => 'main',
-    'theme' => 'omega',
-    'status' => '1',
-    'weight' => '0',
-    'region' => 'content',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['system-navigation'] = array(
-    'module' => 'system',
-    'delta' => 'navigation',
-    'theme' => 'omega',
-    'status' => '1',
-    'weight' => '0',
-    'region' => 'sidebar_first',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['system-powered-by'] = array(
-    'module' => 'system',
-    'delta' => 'powered-by',
-    'theme' => 'omega',
-    'status' => '1',
-    'weight' => '10',
-    'region' => 'content',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $theme['text_resize-0'] = array(
-    'module' => 'text_resize',
-    'delta' => '0',
-    'theme' => 'omega',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => '1',
-  );
-
-  $theme['views-slider-block'] = array(
-    'module' => 'views',
-    'delta' => 'slider-block',
-    'theme' => 'omega',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
-  $export['omega'] = $theme;
-
   // seven
   $theme = array();
 
@@ -758,6 +440,20 @@ function subsite_blocks_default_fe_block_settings() {
     'visibility' => '0',
     'pages' => '',
     'title' => 'Language',
+    'cache' => -1,
+  );
+
+  $theme['nice_menus-1'] = array(
+    'module' => 'nice_menus',
+    'delta' => '1',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
   );
 

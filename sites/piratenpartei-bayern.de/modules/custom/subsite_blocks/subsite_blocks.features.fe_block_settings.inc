@@ -139,20 +139,6 @@ function subsite_blocks_default_fe_block_settings() {
     'cache' => -1,
   );
 
-  $theme['system-main-menu'] = array(
-    'module' => 'system',
-    'delta' => 'main-menu',
-    'theme' => 'bartik',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
   $theme['system-navigation'] = array(
     'module' => 'system',
     'delta' => 'navigation',
@@ -340,20 +326,6 @@ function subsite_blocks_default_fe_block_settings() {
     'cache' => -1,
   );
 
-  $theme['system-main-menu'] = array(
-    'module' => 'system',
-    'delta' => 'main-menu',
-    'theme' => 'piratenpartei',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-  );
-
   $theme['system-navigation'] = array(
     'module' => 'system',
     'delta' => 'navigation',
@@ -538,20 +510,6 @@ function subsite_blocks_default_fe_block_settings() {
     'visibility' => '0',
     'pages' => '',
     'title' => '<none>',
-    'cache' => -1,
-  );
-
-  $theme['system-main-menu'] = array(
-    'module' => 'system',
-    'delta' => 'main-menu',
-    'theme' => 'seven',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
     'cache' => -1,
   );
 
