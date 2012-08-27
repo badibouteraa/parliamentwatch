@@ -62,16 +62,29 @@ function profiles_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_options']['row_class'] = 'profiles-list-compact';
   $handler->display->display_options['style_options']['columns'] = '3';
   $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'field_user_lname' => 'field_user_lname',
-    'field_user_fname' => 'field_user_fname',
-  );
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: User: Parliament (field_user_parliament) */
   $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_data_field_user_parliament';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: Taxonomy term: User using Party */
+  $handler->display->display_options['relationships']['reverse_field_user_party_user']['id'] = 'reverse_field_user_party_user';
+  $handler->display->display_options['relationships']['reverse_field_user_party_user']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['relationships']['reverse_field_user_party_user']['field'] = 'reverse_field_user_party_user';
+  $handler->display->display_options['relationships']['reverse_field_user_party_user']['relationship'] = 'field_user_parliament_tid';
+  /* Relationship: Taxonomy term: User using Constituency */
+  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['id'] = 'reverse_field_user_constituency_user';
+  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['field'] = 'reverse_field_user_constituency_user';
+  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['relationship'] = 'field_user_parliament_tid';
+  /* Relationship: User: Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_data_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['relationship'] = 'reverse_field_user_constituency_user';
   /* Field: User: Uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
@@ -85,9 +98,8 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['field_user_picture']['table'] = 'field_data_field_user_picture';
   $handler->display->display_options['fields']['field_user_picture']['field'] = 'field_user_picture';
   $handler->display->display_options['fields']['field_user_picture']['label'] = '';
-  $handler->display->display_options['fields']['field_user_picture']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_user_picture']['alter']['path'] = 'user/[uid]';
-  $handler->display->display_options['fields']['field_user_picture']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_user_picture']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_picture']['alter']['text'] = '<div class="profiles-list-compact-wrapper">[field_user_picture]';
   $handler->display->display_options['fields']['field_user_picture']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_picture']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_user_picture']['type'] = 'file_rendered';
@@ -99,6 +111,8 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['field_user_fname']['table'] = 'field_data_field_user_fname';
   $handler->display->display_options['fields']['field_user_fname']['field'] = 'field_user_fname';
   $handler->display->display_options['fields']['field_user_fname']['label'] = '';
+  $handler->display->display_options['fields']['field_user_fname']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_fname']['alter']['text'] = '<strong>[field_user_fname]';
   $handler->display->display_options['fields']['field_user_fname']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_fname']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_user_fname']['type'] = 'text_plain';
@@ -110,22 +124,110 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['field_user_lname']['table'] = 'field_data_field_user_lname';
   $handler->display->display_options['fields']['field_user_lname']['field'] = 'field_user_lname';
   $handler->display->display_options['fields']['field_user_lname']['label'] = '';
+  $handler->display->display_options['fields']['field_user_lname']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_lname']['alter']['text'] = '[field_user_lname],';
   $handler->display->display_options['fields']['field_user_lname']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_lname']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_user_lname']['type'] = 'text_plain';
-  /* Field: User: Groups audience */
-  $handler->display->display_options['fields']['group_audience']['id'] = 'group_audience';
-  $handler->display->display_options['fields']['group_audience']['table'] = 'field_data_group_audience';
-  $handler->display->display_options['fields']['group_audience']['field'] = 'group_audience';
-  $handler->display->display_options['fields']['group_audience']['label'] = '';
-  $handler->display->display_options['fields']['group_audience']['element_label_colon'] = FALSE;
+  /* Field: User: Party */
+  $handler->display->display_options['fields']['field_user_party']['id'] = 'field_user_party';
+  $handler->display->display_options['fields']['field_user_party']['table'] = 'field_data_field_user_party';
+  $handler->display->display_options['fields']['field_user_party']['field'] = 'field_user_party';
+  $handler->display->display_options['fields']['field_user_party']['label'] = '';
+  $handler->display->display_options['fields']['field_user_party']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_party']['alter']['text'] = '[field_user_party]</strong>';
+  $handler->display->display_options['fields']['field_user_party']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_party']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_user_party']['delta_offset'] = '0';
+  /* Field: | more info start */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = '| more info start';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="element-hidden profile-list-compact-info">';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: User: Profile picture */
+  $handler->display->display_options['fields']['field_user_picture_1']['id'] = 'field_user_picture_1';
+  $handler->display->display_options['fields']['field_user_picture_1']['table'] = 'field_data_field_user_picture';
+  $handler->display->display_options['fields']['field_user_picture_1']['field'] = 'field_user_picture';
+  $handler->display->display_options['fields']['field_user_picture_1']['label'] = '';
+  $handler->display->display_options['fields']['field_user_picture_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_user_picture_1']['alter']['path'] = 'user/[uid]';
+  $handler->display->display_options['fields']['field_user_picture_1']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_user_picture_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_picture_1']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_user_picture_1']['element_wrapper_class'] = 'profile-image';
+  $handler->display->display_options['fields']['field_user_picture_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_picture_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_picture_1']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_user_picture_1']['settings'] = array(
+    'file_view_mode' => 'pw_file_portrait_l',
+  );
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['field_user_fname_1']['id'] = 'field_user_fname_1';
+  $handler->display->display_options['fields']['field_user_fname_1']['table'] = 'field_data_field_user_fname';
+  $handler->display->display_options['fields']['field_user_fname_1']['field'] = 'field_user_fname';
+  $handler->display->display_options['fields']['field_user_fname_1']['label'] = '';
+  $handler->display->display_options['fields']['field_user_fname_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_fname_1']['alter']['text'] = '<h3>[field_user_fname_1]';
+  $handler->display->display_options['fields']['field_user_fname_1']['element_label_colon'] = FALSE;
+  /* Field: User: Last name */
+  $handler->display->display_options['fields']['field_user_lname_1']['id'] = 'field_user_lname_1';
+  $handler->display->display_options['fields']['field_user_lname_1']['table'] = 'field_data_field_user_lname';
+  $handler->display->display_options['fields']['field_user_lname_1']['field'] = 'field_user_lname';
+  $handler->display->display_options['fields']['field_user_lname_1']['label'] = '';
+  $handler->display->display_options['fields']['field_user_lname_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_lname_1']['alter']['text'] = '[field_user_lname_1]</h3>';
+  $handler->display->display_options['fields']['field_user_lname_1']['element_label_colon'] = FALSE;
+  /* Field: User: Party */
+  $handler->display->display_options['fields']['field_user_party_1']['id'] = 'field_user_party_1';
+  $handler->display->display_options['fields']['field_user_party_1']['table'] = 'field_data_field_user_party';
+  $handler->display->display_options['fields']['field_user_party_1']['field'] = 'field_user_party';
+  $handler->display->display_options['fields']['field_user_party_1']['label'] = '';
+  $handler->display->display_options['fields']['field_user_party_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_party_1']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_user_party_1']['element_wrapper_class'] = 'row party';
+  $handler->display->display_options['fields']['field_user_party_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_party_1']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_user_party_1']['delta_offset'] = '0';
+  /* Field: User: Constituency */
+  $handler->display->display_options['fields']['field_user_constituency']['id'] = 'field_user_constituency';
+  $handler->display->display_options['fields']['field_user_constituency']['table'] = 'field_data_field_user_constituency';
+  $handler->display->display_options['fields']['field_user_constituency']['field'] = 'field_user_constituency';
+  $handler->display->display_options['fields']['field_user_constituency']['label'] = '';
+  $handler->display->display_options['fields']['field_user_constituency']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_constituency']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_user_constituency']['element_wrapper_class'] = 'row constituency';
+  $handler->display->display_options['fields']['field_user_constituency']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_constituency']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_user_constituency']['type'] = 'i18n_taxonomy_term_reference_plain';
   /* Field: User: Link */
   $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
   $handler->display->display_options['fields']['view_user']['table'] = 'users';
   $handler->display->display_options['fields']['view_user']['field'] = 'view_user';
   $handler->display->display_options['fields']['view_user']['label'] = '';
   $handler->display->display_options['fields']['view_user']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_user']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['view_user']['element_wrapper_class'] = 'row link-profile';
+  $handler->display->display_options['fields']['view_user']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['view_user']['text'] = 'Go to profile';
+  /* Field: | more info end */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['ui_name'] = '| more info end';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '</div>';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Field: | compact end */
+  $handler->display->display_options['fields']['nothing_3']['id'] = 'nothing_3';
+  $handler->display->display_options['fields']['nothing_3']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_3']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_3']['ui_name'] = '| compact end';
+  $handler->display->display_options['fields']['nothing_3']['label'] = '';
+  $handler->display->display_options['fields']['nothing_3']['alter']['text'] = '</div>';
+  $handler->display->display_options['fields']['nothing_3']['element_label_colon'] = FALSE;
   /* Sort criterion: User: Last name (field_user_lname) */
   $handler->display->display_options['sorts']['field_user_lname_value']['id'] = 'field_user_lname_value';
   $handler->display->display_options['sorts']['field_user_lname_value']['table'] = 'field_data_field_user_lname';
@@ -394,7 +496,18 @@ function profiles_views_default_views() {
     t('next ›'),
     t('last »'),
     t('term from field_user_parliament'),
+    t('field_user_party'),
+    t('field_user_constituency'),
+    t('term from field_user_constituency'),
+    t('<div class="profiles-list-compact-wrapper">[field_user_picture]'),
+    t('<strong>[field_user_fname]'),
+    t('[field_user_lname],'),
+    t('[field_user_party]</strong>'),
+    t('<div class="element-hidden profile-list-compact-info">'),
+    t('<h3>[field_user_fname_1]'),
+    t('[field_user_lname_1]</h3>'),
     t('Go to profile'),
+    t('</div>'),
     t('Name'),
     t('All'),
     t('Last name (field_user_lname)'),
