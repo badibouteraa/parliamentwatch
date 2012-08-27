@@ -25,17 +25,12 @@ body {
 #page {
     background: #fff;
 }
-#zone-content {
-    padding-top: 7px;
-}
 #region-content { /* for module text_resize in IE */
     line-height: 18px;
+    margin-top: 7px;
 }
 #region-content .region-content-inner {
     padding: 0 10px 0 0;
-}
-#region-header-first {
-    min-height: 20px;
 }
 a {
     color: #f63;
@@ -211,19 +206,19 @@ h1#page-title {
     color: #f63;
     margin-bottom: 0.5em;
 }
-#block-delta-blocks-breadcrumb {
+#breadcrumb {
     padding: 5px 0;
 }
-#block-delta-blocks-breadcrumb,
-#block-delta-blocks-breadcrumb * {
+#breadcrumb,
+#breadcrumb * {
     text-decoration: none;
     color: #b0b0b0;
     font: 11px/1em Lucida Grande, Helvetica, Arial, sans-serif;
 }
-#block-delta-blocks-breadcrumb li {
+#breadcrumb li {
     margin-right: 0;
 }
-#block-delta-blocks-breadcrumb .first a {
+#breadcrumb .first a {
     padding-left: 0;
     background: none;
 }
