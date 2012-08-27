@@ -1,0 +1,13 @@
+name = PW Breadcrumb
+description = Breadcrumb Settings
+core = 7.x
+package = Features
+php = 5.2.4
+version = 7.x-1.0-27082012
+project = pw_breadcrumb
+dependencies[] = ctools
+dependencies[] = path_breadcrumbs
+features[ctools][] = path_breadcrumbs:path_breadcrumbs:1
+features[features_api][] = api:1
+features[path_breadcrumbs][] = profiles_list
+features[path_breadcrumbs][] = profiles_user
