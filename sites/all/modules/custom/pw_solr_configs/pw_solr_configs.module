@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the pw_solr_configs feature.
- */
-
-include_once 'pw_solr_configs.features.inc';

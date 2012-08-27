@@ -39,19 +39,34 @@ function pw_blocks_block_view($delta = ''){
   
   switch($delta){
     case 'pw_taxonomy_menu':
-      $uid = arg(1);
-      $tid = arg(2);
+      if(is_numeric(arg(1))){
+        $uid = arg(1);
+        $tid = arg(2);
+      }else{
+        $uid = arg(2);
+        $tid = arg(3);
+      }
+      
       $vid = variable_get('pw_blocks_taxonomy_menu_vid',4);
       $block['subject'] = t('Taxonomy Profile Menu');
       $block['content'] =  pw_blocks_get_accordian_data($uid , $tid , $vid);
     break;
     case 'pw_total_votes':
-      $nid = arg(1);
+      if(is_numeric(arg(1))){
+        $nid = arg(1);
+      }else{
+        $nid = arg(2);
+      }
+      
       $block['subject'] = 'chart test';
       $block['content'] = pw_blocks_get_chart($nid,'total');
     break;
     case 'pw_per_party_votes':
-      $nid = arg(1);
+      if(is_numeric(arg(1))){
+        $nid = arg(1);
+      }else{
+        $nid = arg(2);
+      }
       $block['subject'] = 'chart party';
       $block['content'] = pw_blocks_get_chart($nid,'party');
     break;
@@ -114,16 +129,17 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
       );
     $result = db_query($query,$args);
     $max_count = 0;
-    foreach($options as $key => $option){
+    /*foreach($options as $key => $option){
         $chart['#legends'][$key] = $option;
-      }
+      }*/
     $i = 0;
     while($rec = $result->fetchAssoc()){
       //print_r($rec);
+      $chart['#legends'][$rec['value']] = $options[$rec['value']];
       $chart['#data'][$rec['value']] = $rec['votes'];
       $chart['#labels'][] = $rec['votes'];
       //$chart['#data_colors'][] = $colors[$i];
-//$chart['#shape_markers'][$options[$rec['value']]] = array('t'.$rec['votes'],'555555',0,-35,13);
+      //$chart['#shape_markers'][$options[$rec['value']]] = array('t'.$rec['votes'],'555555',0,-35,13);
       //$chart['#legends'][] = $options[$rec['value']];
       //$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][] = chart_mixed_axis_label($options[$rec['value']]);
       if($rec['votes'] > $max_count){
@@ -156,7 +172,7 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
         $parties[$rec['tid']]['data'][$rec['value']] = $rec['votes'];
       //$chart['#mixed_axis_labels'][CHART_AXIS_X_BOTTOM][1][] = chart_mixed_axis_label($options[$rec['value']]);
         $parties[$rec['tid']]['labels'][] = $rec['votes'];
-
+        $parties[$rec['tid']]['legends'][$rec['value']] = $options[$rec['value']];
       
     }
     foreach($parties as $party){  
@@ -175,12 +191,13 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
         '#bar_size' => 'a',
         '#labels'=>$party['labels']
       );
-      foreach($options as $key =>$option){
+      $chart['#legends'] = $party['legends'];
+      /*foreach($options as $key =>$option){
         $chart['#legends'][$key] = $option;
         if(!$party['data'][$key]){
           $party['data'][$key] = 0;
         }
-      }
+      }*/
       
       $chart['#data'] = $party['data'];
       $output .= theme('chart',array('chart'=>$chart));
