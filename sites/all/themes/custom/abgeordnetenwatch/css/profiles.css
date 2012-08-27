@@ -3,7 +3,7 @@ table.views-view-grid {
     margin-bottom: 30px;
 }
 table.views-view-grid td {
-    padding: 26px 22px;
+    padding: 16px 22px;
     border: 1px solid #eee;
 }
 table.views-view-grid td.col-first {
@@ -32,6 +32,50 @@ table.views-view-grid .row-last td {
 .page-user #page-title {
     display: none;
 }
+
+.profiles-list-compact-wrapper {
+    position: relative;    
+}
+.profiles-list-compact-wrapper .row {
+    background: #fff;
+    margin: 0 -12px 2px 0;    
+}
+.col-last .profiles-list-compact-wrapper h3 {
+    text-align: right;   
+}
+.col-last .profiles-list-compact-wrapper .row {
+    margin: 0 0 2px -12px;
+    text-align: right;
+}
+.profiles-list-compact-wrapper:hover .element-hidden {
+    display: block;
+    position: absolute;
+    z-index: 123;
+    background: url(../images/bg_eee95.png);
+    top: -43px;
+    left: -13px;
+    width: 379px;
+    padding: 12px;
+    -webkit-box-shadow: 0 0 2px 2px #DEDEDE;
+    -moz-box-shadow: 0 0 2px 2px #DEDEDE;
+    box-shadow: 0 0 2px 2px #DEDEDE;
+    border: 1px solid #dedede;
+    
+}
+.col-last .profiles-list-compact-wrapper:hover .element-hidden {
+    left: auto;
+    right: 17px;
+}
+.profiles-list-compact-wrapper:hover .element-hidden .profile-image {
+    float: left;
+    margin: 0 14px 0 0;
+}
+.col-last .profiles-list-compact-wrapper:hover .element-hidden .profile-image {
+    float: right;
+    margin: 0 0 0 14px;
+}
+
+/* filters */
 
 #views-exposed-form-profile-list-page .form-item-field-user-lname-value {
     display: block;

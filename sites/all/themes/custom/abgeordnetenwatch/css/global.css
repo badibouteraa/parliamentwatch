@@ -43,7 +43,6 @@ a {
     font-weight: bold;
 }
 h1, h2, h3, h4, h5, h6 {
-    color: #f63;
     font-weight: normal;
     line-height: 1.2em;
 }
@@ -58,10 +57,12 @@ h3 {
     font-family: 'Times New Roman', Georgia, serif;
 }
 h1 {
+    color: #f63;
     font-size: 24px;
 }
 h2,
 .h2 {
+    color: #f63;
     font-size: 23px;
     letter-spacing: 0.04ex;
     margin-bottom: 0.4em;
@@ -153,9 +154,16 @@ a.dark {
 .read-more a,
 a.read-more,
 .read-codex a,
-a.read-codex {
+a.read-codex,
+.link-profile a,
+a.link-profile {
     padding-left: 18px;
     background: url(../images/sprite.png) no-repeat;
+}
+.link-profile a,
+a.link-profile {
+    padding-left: 26px;
+    background-position: -462px -1698px;
 }
 .read-more a,
 a.read-more {
@@ -782,8 +790,7 @@ textarea:active {
     right: 0;
     top: 0;
 }
-.field-name-field-teaserimage,
-.field-name-field-user-picture {
+.file-image.float-left {
     float: left;
     margin: 4px 14px 12px 0;
 }
@@ -798,14 +805,14 @@ textarea:active {
     outline: 1px solid #ccc;
 }
 .comment-count,
-.field-type-taxonomy-term-reference {
+.icon-taxonomy {
     padding-left: 26px;
     background: url(../images/sprite.png) no-repeat;
 }
 .comment-count {
     background-position: -929px -2574px;
 }
-.field-type-taxonomy-term-reference {
+.icon-taxonomy {
     background-position: -969px -2534px;
     margin-bottom: 5px;
 }
