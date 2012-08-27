@@ -79,7 +79,77 @@ function pw_poll_content_type_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => 0,
+        'weight' => '0',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-pw_poll-field_pw_views_reference'
+  $fields['node-pw_poll-field_pw_views_reference'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pw_views_reference',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'viewfield',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'viewfield',
+    ),
+    'field_instance' => array(
+      'bundle' => 'pw_poll',
+      'default_value' => array(
+        0 => array(
+          'vname' => 'user_constituency|page',
+          'vargs' => '',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'viewfield',
+          'settings' => array(),
+          'type' => 'viewfield_default',
+          'weight' => 1,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pw_views_reference',
+      'label' => 'Views Reference',
+      'required' => 0,
+      'settings' => array(
+        'allowed_views' => array(
+          'Trustees' => 0,
+          'og_list' => 0,
+          'og_members' => 0,
+          'og_nodes' => 0,
+          'og_user_groups' => 0,
+          'profile_list' => 0,
+          'rules_scheduler' => 0,
+          'slider' => 0,
+          'user_constituency' => 'user_constituency',
+        ),
+        'force_default' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'viewfield',
+        'settings' => array(),
+        'type' => 'viewfield_select',
+        'weight' => '31',
       ),
     ),
   );
@@ -87,6 +157,7 @@ function pw_poll_content_type_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
+  t('Views Reference');
 
   return $fields;
 }
