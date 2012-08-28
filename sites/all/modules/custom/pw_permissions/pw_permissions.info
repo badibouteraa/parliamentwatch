@@ -1,9 +1,9 @@
 name = PW Permissions
-description = Permission Settings
+description = permission settings
 core = 7.x
 package = Features
 php = 5.2.4
-version = 7.x-1.0-24082012
+version = 7.x-1.0-28082012
 project = pw_permissions
 dependencies[] = custom_search_blocks
 dependencies[] = features
@@ -13,3 +13,5 @@ features[features_api][] = api:1
 features[user_permission][] = access print
 features[user_permission][] = access user profiles
 features[user_permission][] = search content
+features[user_permission][] = use custom search
+features[user_permission][] = use custom search blocks
