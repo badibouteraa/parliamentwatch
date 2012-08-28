@@ -181,6 +181,20 @@ function subsite_blocks_default_fe_block_settings() {
     'cache' => '1',
   );
 
+  $theme['user-login'] = array(
+    'module' => 'user',
+    'delta' => 'login',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
   $theme['views-slider-block'] = array(
     'module' => 'views',
     'delta' => 'slider-block',
@@ -368,6 +382,20 @@ function subsite_blocks_default_fe_block_settings() {
     'cache' => '1',
   );
 
+  $theme['user-login'] = array(
+    'module' => 'user',
+    'delta' => 'login',
+    'theme' => 'bartik',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'sidebar_first',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
   $theme['views-slider-block'] = array(
     'module' => 'views',
     'delta' => 'slider-block',
@@ -553,6 +581,20 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Text resize',
     'cache' => '1',
+  );
+
+  $theme['user-login'] = array(
+    'module' => 'user',
+    'delta' => 'login',
+    'theme' => 'seven',
+    'status' => '1',
+    'weight' => '10',
+    'region' => 'content',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
   );
 
   $theme['views-slider-block'] = array(

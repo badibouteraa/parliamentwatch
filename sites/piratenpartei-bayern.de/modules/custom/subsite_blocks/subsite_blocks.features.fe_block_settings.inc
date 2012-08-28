@@ -10,6 +10,207 @@
 function subsite_blocks_default_fe_block_settings() {
   $export = array();
 
+  // abgeordnetenwatch
+  $theme = array();
+
+  $theme['delta_blocks-breadcrumb'] = array(
+    'module' => 'delta_blocks',
+    'delta' => 'breadcrumb',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => 4,
+  );
+
+  $theme['delta_blocks-messages'] = array(
+    'module' => 'delta_blocks',
+    'delta' => 'messages',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['forward-form'] = array(
+    'module' => 'forward',
+    'delta' => 'form',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => '1',
+  );
+
+  $theme['locale-language'] = array(
+    'module' => 'locale',
+    'delta' => 'language',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['nice_menus-1'] = array(
+    'module' => 'nice_menus',
+    'delta' => '1',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['print-print-links'] = array(
+    'module' => 'print',
+    'delta' => 'print-links',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => 4,
+  );
+
+  $theme['search-form'] = array(
+    'module' => 'search',
+    'delta' => 'form',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['system-help'] = array(
+    'module' => 'system',
+    'delta' => 'help',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '5',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['system-main'] = array(
+    'module' => 'system',
+    'delta' => 'main',
+    'theme' => 'abgeordnetenwatch',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'content',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['system-navigation'] = array(
+    'module' => 'system',
+    'delta' => 'navigation',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['system-powered-by'] = array(
+    'module' => 'system',
+    'delta' => 'powered-by',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '10',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['text_resize-0'] = array(
+    'module' => 'text_resize',
+    'delta' => '0',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => '1',
+  );
+
+  $theme['user-login'] = array(
+    'module' => 'user',
+    'delta' => 'login',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['views-slider-block'] = array(
+    'module' => 'views',
+    'delta' => 'slider-block',
+    'theme' => 'abgeordnetenwatch',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $export['abgeordnetenwatch'] = $theme;
+
   // bartik
   $theme = array();
 
@@ -179,6 +380,20 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => '1',
+  );
+
+  $theme['user-login'] = array(
+    'module' => 'user',
+    'delta' => 'login',
+    'theme' => 'bartik',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'sidebar_first',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
   );
 
   $theme['views-slider-block'] = array(
@@ -368,6 +583,20 @@ function subsite_blocks_default_fe_block_settings() {
     'cache' => '1',
   );
 
+  $theme['user-login'] = array(
+    'module' => 'user',
+    'delta' => 'login',
+    'theme' => 'piratenpartei',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
   $theme['views-slider-block'] = array(
     'module' => 'views',
     'delta' => 'slider-block',
@@ -553,6 +782,20 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Text resize',
     'cache' => '1',
+  );
+
+  $theme['user-login'] = array(
+    'module' => 'user',
+    'delta' => 'login',
+    'theme' => 'seven',
+    'status' => '1',
+    'weight' => '10',
+    'region' => 'content',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
   );
 
   $theme['views-slider-block'] = array(
