@@ -37,6 +37,7 @@ function dialogue_message_type_feeds_importer_default() {
           'xpathparser:5' => '',
           'xpathparser:6' => 'sender.id',
           'xpathparser:7' => 'type',
+          'xpathparser:8' => 'documents/documents_item',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
@@ -47,6 +48,7 @@ function dialogue_message_type_feeds_importer_default() {
           'xpathparser:5' => 0,
           'xpathparser:6' => 0,
           'xpathparser:7' => 0,
+          'xpathparser:8' => 0,
         ),
         'context' => '//message',
         'exp' => array(
@@ -61,6 +63,7 @@ function dialogue_message_type_feeds_importer_default() {
             'xpathparser:5' => 0,
             'xpathparser:6' => 0,
             'xpathparser:7' => 0,
+            'xpathparser:8' => 0,
           ),
         ),
         'allow_override' => 0,
@@ -111,6 +114,11 @@ function dialogue_message_type_feeds_importer_default() {
           7 => array(
             'source' => 'xpathparser:7',
             'target' => 'field_dialogue_message_type',
+            'unique' => FALSE,
+          ),
+          8 => array(
+            'source' => 'xpathparser:8',
+            'target' => 'field_dialogue_message_documents:url',
             'unique' => FALSE,
           ),
         ),
