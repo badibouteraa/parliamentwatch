@@ -126,7 +126,12 @@ function rate_voteas_voting_form($form, &$form_state, $node){
 function rate_voteas_voting_form_submit($form, &$form_state){
   $votes = array();
   $criteria = array();
-  
+  if(is_numeric(arg(1))){
+      $nid = arg(1);
+    }else{
+      $nid = arg(2);
+    }
+    //db_query("DELETE FROM {votingapi_vote} WHERE entity_id=:nid",array(":nid"=>$nid));
   //Get file contents from csv determine user and save vote
   
   //echo "<pre>RATE WIDGET:".print_r($form_state['values']['rate_widget_info'],1)."</pre>";
@@ -136,13 +141,14 @@ function rate_voteas_voting_form_submit($form, &$form_state){
   $arrResult = array();
   $handle = fopen($file, "r");
   if( $handle ) {
+    
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
       
       $user = user_load_by_name($data[0]);
       if($user){
         $option = array_search($data[1], $form_state['values']['rate_widget_options']);
         $vote = array();
-        $vote['entity_id'] = $form_state['values']['rate_nid'];
+        $vote['entity_id'] = $nid;
         $vote['uid'] = $user->uid;
         $vote['value'] = $option;
         $vote['tag'] = $form_state['values']['rate_widget_info']->tag;
@@ -217,8 +223,6 @@ function rate_voteas_voting_form_submit($form, &$form_state){
     
   }*/
   $results = votingapi_set_votes($votes);
-  print_r($results);
-  die();
 }
 
 /**
