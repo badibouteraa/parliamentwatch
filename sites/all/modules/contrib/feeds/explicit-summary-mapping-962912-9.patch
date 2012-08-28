@@ -1,0 +1,49 @@
+diff --git a/mappers/field.inc b/mappers/field.inc
+index 43d62c4..c5705d9 100644
+--- a/mappers/field.inc
++++ b/mappers/field.inc
+@@ -45,6 +45,14 @@ function field_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_na
+         'description' => t('The @label field of the node.', array('@label' => $instance['label'])),
+       );
+     }
++
++    if ($info['type'] == 'text_with_summary' && !empty($instance['settings']['display_summary'])) {
++      $targets[$name . ':summary'] = array(
++        'name' => check_plain($instance['label']) . ' (' . t('Summary') . ')',
++        'callback' => 'field_feeds_set_target_summary',
++        'description' => t('The summary of the @label field of the node.', array('@label' => $instance['label'])),
++      );
++    }
+   }
+ }
+ 
+@@ -76,6 +84,29 @@ function field_feeds_set_target_text($source, $entity, $target, $value) {
+ }
+ 
+ /**
++ * Callback for explicit mapping of summaries of text fields.
++ */
++function field_feeds_set_target_summary($source, $entity, $target, $value) {
++  if (!is_array($value)) {
++    $value = array($value);
++  }
++
++  list($target) = explode(':', $target);
++  $info = field_info_field($target);
++
++  $i = 0;
++  foreach ($value as $v) {
++    if (!is_array($v) && !is_object($v)) {
++      $entity->{$target}['und'][$i]['summary'] = $v;
++    }
++    if ($info['cardinality'] == 1) {
++      break;
++    }
++    $i++;
++  }
++}
++
++/**
+  * Helper for mapping.
+  *
+  * When the callback is invoked, $target contains the name of the field the
