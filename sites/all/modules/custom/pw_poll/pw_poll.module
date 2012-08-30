@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the pw poll feature.
+ */
+
+include_once 'pw_poll.features.inc';
