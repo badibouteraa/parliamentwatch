@@ -111,6 +111,36 @@ function all_strong_arms_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'compact_forms_descriptions';
+  $strongarm->value = 1;
+  $export['compact_forms_descriptions'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'compact_forms_field_size';
+  $strongarm->value = '';
+  $export['compact_forms_field_size'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'compact_forms_ids';
+  $strongarm->value = 'user-login-form
+webform-client-form-6
+forward-form';
+  $export['compact_forms_ids'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'compact_forms_stars';
+  $strongarm->value = '1';
+  $export['compact_forms_stars'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_criteria_negative_display';
   $strongarm->value = 0;
   $export['custom_search_criteria_negative_display'] = $strongarm;
@@ -349,6 +379,13 @@ function all_strong_arms_strongarm() {
   $strongarm->name = 'custom_search_text';
   $strongarm->value = 'Search term';
   $export['custom_search_text'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'default_nodes_main';
+  $strongarm->value = '10';
+  $export['default_nodes_main'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -795,6 +832,13 @@ function all_strong_arms_strongarm() {
   $strongarm->name = 'text_resize_scope';
   $strongarm->value = 'region-content';
   $export['text_resize_scope'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'user_revision_by_default';
+  $strongarm->value = 0;
+  $export['user_revision_by_default'] = $strongarm;
 
   return $export;
 }
