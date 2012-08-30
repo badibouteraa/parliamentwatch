@@ -19,6 +19,13 @@ function pw_poll_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function pw_poll_views_api() {
+  return array("version" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function pw_poll_node_info() {
