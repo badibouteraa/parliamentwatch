@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# setting DB_NAME (as prefix)
 if [ ! -n "$1" ]
 	then
 		echo "PLEASE ENTER DATABASE NAME:"
@@ -8,16 +9,31 @@ if [ ! -n "$1" ]
 		DB_NAME_PREFIX=`echo $1 | sed 's/[\.-]/_/g'`
 fi
 
+# setting DB_USER
 if [ ! -n "$2" ]
+	then
+		echo "PLEASE ENTER DATABASE USER:"
+		read DB_USER
+	else
+		DB_USER=$2
+fi
+
+# setting DB_PASS
+if [ ! -n "$3" ]
 	then
 		echo "PLEASE ENTER DATABASE PASSWORD:"
 		read DB_PASS
+	else
+		DB_PASS=$3
+fi
 
+# setting SITE_PASS
+if [ ! -n "$4" ]
+	then
 		echo "PLEASE ENTER YOUR WEBSITE ACCOUNT PASSWORD:"
 		read SITE_PASS
 	else
-		DB_PASS=$2
-		SITE_PASS=$2
+		SITE_PASS=$4
 fi
 
 echo "INSTALL AS MULTISITE OR TYPE IN THE NAME OF THE SUBSITE THAT SHOULD BE INSTALLED (Y/N/subsite):"
@@ -45,7 +61,7 @@ do
 			DB_NAME=$DB_NAME_PREFIX"_"$DB_NAME_SUFFIX
 
 			echo "INSTALLING SITE $SITE"
-			drush site-install standard --yes --account-name=root --account-pass=$SITE_PASS --site-name=$SITE --site-mail=admin@$SITE --uri=$SITE --sites-subdir=$SITE --db-url=mysql://root:$DB_PASS@localhost/$DB_NAME
+			drush site-install standard --yes --account-name=root --account-pass=$SITE_PASS --site-name=$SITE --site-mail=admin@$SITE --uri=$SITE --sites-subdir=$SITE --db-url=mysql://$DB_USER:$DB_PASS@localhost/$DB_NAME
 	fi
 done
 
@@ -84,7 +100,7 @@ do
 			\$databases['parlamentwatch']['default'] = array(
 			  'driver' => 'mysql',
 			  'database' => 'parlamentwatch',
-			  'username' => 'root',
+			  'username' => '$DB_USER',
 			  'password' => '"$DB_PASS"',
 			  'host' => 'localhost',
 			);" >> sites/$SITE/settings.php
