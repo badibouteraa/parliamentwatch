@@ -83,17 +83,24 @@ do
 	if [ $MULTISITE = "Y" -o $SITE = $SITE_INSTALL ]
 		then
 			echo "ENABLING CONTRIB MODULES FOR $SITE"
-			drush en --yes --uri=$SITE admin_devel admin_menu admin_menu_toolbar ctools viewfield views_php page_manager views_content content_menu context context_layouts context_ui custom_search custom_search_blocks date date_all_day date_api date_migrate date_popup date_tools entityreference features_tools devel entity_translation filefield_sources migrate migrate_extras migrate_ui rate votingapi ds ds_extras ds_search features fe_block uuid node_export node_export_features uuid_services rest_server uuid_features addressfield addthis addthis_displays field_group link simplehtmldom file_entity media i18n_field i18n i18n_string i18n_taxonomy i18n_translation i18n_variable backup_migrate better_formats chart entity entity_token feedback_simple forward inline_messages job_scheduler libraries linkit masquerade menu_position module_filter nice_menus pathauto path_breadcrumbs path_breadcrumbs_ui read_more strongarm subform text_resize token user_revision panels php print role_export rules rules_scheduler rules_admin search_api search_api_solr search404 facetapi secureshare secureshare_fields de_stemmer stemmer_api tagadelic delta delta_blocks delta_ui omega_tools compact_forms wysiwyg variable variable_realm variable_store better_exposed_filters views views_data_export views_slideshow views_slideshow_cycle views_ui webform webform_rules  
+			drush en --yes --uri=$SITE admin_devel admin_menu admin_menu_toolbar ctools viewfield views_php page_manager views_content content_menu context context_layouts context_ui custom_search custom_search_blocks date date_all_day date_api date_migrate date_popup date_tools entityreference features_tools feeds feeds_ui feeds_xpathparser devel entity_translation filefield_sources migrate migrate_extras migrate_ui rate votingapi ds ds_extras ds_search features fe_block uuid node_export node_export_features uuid_services rest_server uuid_features addressfield addthis addthis_displays field_group link simplehtmldom file_entity media i18n_field i18n i18n_string i18n_taxonomy i18n_translation i18n_variable backup_migrate better_formats chart entity entity_token feedback_simple forward inline_messages job_scheduler libraries linkit masquerade menu_position module_filter nice_menus pathauto path_breadcrumbs path_breadcrumbs_ui read_more strongarm subform text_resize token user_revision panels php print role_export rules rules_scheduler rules_admin search_api search_api_solr search404 facetapi secureshare secureshare_fields de_stemmer stemmer_api tagadelic delta delta_blocks delta_ui omega_tools compact_forms wysiwyg variable variable_realm variable_store better_exposed_filters views views_data_export views_slideshow views_slideshow_cycle views_ui webform webform_rules
 
 			echo "ENABLING CUSTOM MODULES FOR $SITE"
-			drush en --yes --uri=$SITE all_strong_arms dialogue_message_type floatbox migrate_committee migrate_constituency migrate_memberships migrate_party migrate_politician migrate_user_revisions roles slider_item profiles pw_breadcrumb pw_content_authoring_layout pw_permissions rate_voteas subsite_blocks subsite_conf trustees
+			drush en --yes --uri=$SITE all_strong_arms dialogue_message_type floatbox migrate_committee migrate_constituency migrate_memberships migrate_party migrate_politician migrate_user_revisions roles slider_item profiles pw_breadcrumb pw_content_authoring_layout pw_permissions rate_voteas subsite_conf subsite_blocks trustees
+			# 
 
 			echo "DISABLING MODULES FOR $SITE"
 			drush dis --yes --uri=$SITE toolbar
+			# 
 
 			echo "ENABLING THEME FOR $SITE"
-			THEME=`echo $SITE | sed 's/\..*$//g'`
-			drush en --yes --uri=$SITE $THEME
+			if [ $SITE = "piratenpartei-bayern.de" ]
+				then
+					drush en --yes --uri=$SITE piratenpartei
+				else
+					THEME=`echo $SITE | sed 's/\..*$//g'`
+					drush en --yes --uri=$SITE $THEME				
+			fi
 
  			# add legacy DB parlamentwatch
 			echo "
@@ -113,9 +120,6 @@ do
 
 			echo "REVERTING ALL FEATURES ON $SITE"
 			drush fr-all --force --yes --uri=$SITE
-
-			echo "ENABLING CONTENT FOR $SITE"
-			drush en --yes --uri=$SITE subsite_content
 	fi
 done
 

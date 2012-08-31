@@ -10,6 +10,12 @@
 function subsite_blocks_menu_default_menu_custom() {
   $menus = array();
 
+  // Exported menu: main-menu
+  $menus['main-menu'] = array(
+    'menu_name' => 'main-menu',
+    'title' => 'Main menu',
+    'description' => '',
+  );
   // Exported menu: menu-menu-about-us
   $menus['menu-menu-about-us'] = array(
     'menu_name' => 'menu-menu-about-us',
@@ -25,6 +31,7 @@ function subsite_blocks_menu_default_menu_custom() {
   // Translatables
   // Included for use with string extractors like potx.
   t('About us');
+  t('Main menu');
   t('Parliaments');
 
 

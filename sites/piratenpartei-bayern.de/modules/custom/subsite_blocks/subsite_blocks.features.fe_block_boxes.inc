@@ -11,6 +11,14 @@ function subsite_blocks_default_fe_block_boxes() {
   $export = array();
 
   $fe_block_boxes = new stdClass();
+  $fe_block_boxes->info = 'Social Media Footer';
+  $fe_block_boxes->format = 'managed_content';
+  $fe_block_boxes->machine_name = 'footer_social_media';
+  $fe_block_boxes->body = '<ul class="menu"><li class="first leaf facebook"><a href="https://www.facebook.com/pages/abgeordnetenwatchde/204139474516" title="">Facebook</a></li><li class="leaf twitter"><a href="http://twitter.com/a_watch" title="">Twitter</a></li><li class="leaf google"><a href="https://plus.google.com/101206126881536002255/posts" title="">Google+</a></li><li class="last leaf rss"><a href="/rss.xml" title="">RSS</a></li></ul>';
+
+  $export['footer_social_media'] = $fe_block_boxes;
+
+  $fe_block_boxes = new stdClass();
   $fe_block_boxes->info = 'Text über der Profilliste der Abgeordneten im Bezirkstag';
   $fe_block_boxes->format = 'managed_content';
   $fe_block_boxes->machine_name = 'profiles_bezirkstag';

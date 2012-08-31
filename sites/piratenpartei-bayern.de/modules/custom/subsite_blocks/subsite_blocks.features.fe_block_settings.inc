@@ -13,6 +13,20 @@ function subsite_blocks_default_fe_block_settings() {
   // bartik
   $theme = array();
 
+  $theme['block-profiles_bezirkstag'] = array(
+    'module' => 'block',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'machine_name' => 'profiles_bezirkstag',
+  );
+
   $theme['block-profiles_bundestag'] = array(
     'module' => 'block',
     'theme' => 'bartik',
@@ -20,11 +34,10 @@ function subsite_blocks_default_fe_block_settings() {
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '1',
-    'pages' => 'politicians/bundestag',
-    'title' => 'Abgeordnete im Bundestag',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
     'machine_name' => 'profiles_bundestag',
   );
 
@@ -35,27 +48,25 @@ function subsite_blocks_default_fe_block_settings() {
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '1',
-    'pages' => 'politicians/landtag',
-    'title' => 'Abgeordnete im Landtag',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
     'machine_name' => 'profiles_landtag',
   );
 
-  $theme['block-profiles_bezirkstag'] = array(
+  $theme['block-footer_social_media'] = array(
     'module' => 'block',
     'theme' => 'bartik',
     'status' => 0,
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '1',
-    'pages' => 'politicians/bezirkstag',
-    'title' => 'Abgeordnete im Bezirkstag',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
-    'machine_name' => 'profiles_bezirkstag',
+    'machine_name' => 'footer_social_media',
   );
 
   $theme['forward-form'] = array(
@@ -70,7 +81,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => '1',
-    'i18n_mode' => '0',
   );
 
   $theme['locale-language'] = array(
@@ -85,7 +95,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['menu-menu-menu-about-us'] = array(
@@ -100,7 +109,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['menu-menu-parliaments'] = array(
@@ -115,7 +123,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['nice_menus-1'] = array(
@@ -130,7 +137,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['print-print-links'] = array(
@@ -145,7 +151,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => 4,
-    'i18n_mode' => '0',
   );
 
   $theme['search-form'] = array(
@@ -160,7 +165,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-help'] = array(
@@ -175,7 +179,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-main'] = array(
@@ -190,7 +193,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-navigation'] = array(
@@ -205,7 +207,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-powered-by'] = array(
@@ -220,7 +221,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['text_resize-0'] = array(
@@ -235,7 +235,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => '1',
-    'i18n_mode' => '0',
   );
 
   $theme['user-login'] = array(
@@ -250,7 +249,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['views-slider-block'] = array(
@@ -265,13 +263,16 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
-  $theme['webform-client-block-6'] = array(
-    'module' => 'webform',
-    'delta' => 'client-block-6',
-    'theme' => 'bartik',
+  $export['bartik'] = $theme;
+
+  // piratenpartei
+  $theme = array();
+
+  $theme['block-profiles_bezirkstag'] = array(
+    'module' => 'block',
+    'theme' => 'piratenpartei',
     'status' => 0,
     'weight' => '0',
     'region' => '',
@@ -280,57 +281,49 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
+    'machine_name' => 'profiles_bezirkstag',
   );
-
-  $export['bartik'] = $theme;
-
-  // piratenpartei
-  $theme = array();
 
   $theme['block-profiles_bundestag'] = array(
     'module' => 'block',
     'theme' => 'piratenpartei',
-    'status' => '1',
-    'weight' => '-23',
-    'region' => 'content',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
     'custom' => '0',
-    'visibility' => '1',
-    'pages' => 'politicians/bundestag',
-    'title' => 'Abgeordnete im Bundestag',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
     'machine_name' => 'profiles_bundestag',
   );
 
   $theme['block-profiles_landtag'] = array(
     'module' => 'block',
     'theme' => 'piratenpartei',
-    'status' => '1',
-    'weight' => '-23',
-    'region' => 'content',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
     'custom' => '0',
-    'visibility' => '1',
-    'pages' => 'politicians/landtag',
-    'title' => 'Abgeordnete im Landtag',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
     'machine_name' => 'profiles_landtag',
   );
 
-  $theme['block-profiles_bezirkstag'] = array(
+  $theme['block-footer_social_media'] = array(
     'module' => 'block',
     'theme' => 'piratenpartei',
     'status' => '1',
-    'weight' => '-23',
-    'region' => 'content',
+    'weight' => '0',
+    'region' => 'postscript_fourth',
     'custom' => '0',
-    'visibility' => '1',
-    'pages' => 'politicians/bezirkstag',
-    'title' => 'Abgeordnete im Bezirkstag',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
-    'machine_name' => 'profiles_bezirkstag',
+    'machine_name' => 'footer_social_media',
   );
 
   $theme['forward-form'] = array(
@@ -345,7 +338,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Social Media',
     'cache' => '1',
-    'i18n_mode' => '0',
   );
 
   $theme['locale-language'] = array(
@@ -360,7 +352,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Language',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['menu-menu-menu-about-us'] = array(
@@ -375,7 +366,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['menu-menu-parliaments'] = array(
@@ -390,7 +380,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['nice_menus-1'] = array(
@@ -405,7 +394,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['print-print-links'] = array(
@@ -420,7 +408,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Print',
     'cache' => 4,
-    'i18n_mode' => '0',
   );
 
   $theme['search-form'] = array(
@@ -435,7 +422,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-help'] = array(
@@ -450,7 +436,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-main'] = array(
@@ -465,7 +450,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-navigation'] = array(
@@ -480,7 +464,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-powered-by'] = array(
@@ -495,7 +478,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['text_resize-0'] = array(
@@ -510,7 +492,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Text resize',
     'cache' => '1',
-    'i18n_mode' => '0',
   );
 
   $theme['user-login'] = array(
@@ -525,7 +506,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['views-slider-block'] = array(
@@ -540,13 +520,16 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
-  $theme['webform-client-block-6'] = array(
-    'module' => 'webform',
-    'delta' => 'client-block-6',
-    'theme' => 'piratenpartei',
+  $export['piratenpartei'] = $theme;
+
+  // seven
+  $theme = array();
+
+  $theme['block-profiles_bezirkstag'] = array(
+    'module' => 'block',
+    'theme' => 'seven',
     'status' => 0,
     'weight' => '0',
     'region' => '',
@@ -555,13 +538,8 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
+    'machine_name' => 'profiles_bezirkstag',
   );
-
-  $export['piratenpartei'] = $theme;
-
-  // seven
-  $theme = array();
 
   $theme['block-profiles_bundestag'] = array(
     'module' => 'block',
@@ -570,11 +548,10 @@ function subsite_blocks_default_fe_block_settings() {
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '1',
-    'pages' => 'politicians/bundestag',
-    'title' => 'Abgeordnete im Bundestag',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
     'machine_name' => 'profiles_bundestag',
   );
 
@@ -585,27 +562,25 @@ function subsite_blocks_default_fe_block_settings() {
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '1',
-    'pages' => 'politicians/landtag',
-    'title' => 'Abgeordnete im Landtag',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
     'machine_name' => 'profiles_landtag',
   );
 
-  $theme['block-profiles_bezirkstag'] = array(
+  $theme['block-footer_social_media'] = array(
     'module' => 'block',
     'theme' => 'seven',
     'status' => 0,
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '1',
-    'pages' => 'politicians/bezirkstag',
-    'title' => 'Abgeordnete im Bezirkstag',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
-    'machine_name' => 'profiles_bezirkstag',
+    'machine_name' => 'footer_social_media',
   );
 
   $theme['forward-form'] = array(
@@ -620,7 +595,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Social Media',
     'cache' => '1',
-    'i18n_mode' => '0',
   );
 
   $theme['locale-language'] = array(
@@ -635,7 +609,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Language',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['menu-menu-menu-about-us'] = array(
@@ -650,7 +623,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['menu-menu-parliaments'] = array(
@@ -665,7 +637,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['nice_menus-1'] = array(
@@ -680,7 +651,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['print-print-links'] = array(
@@ -695,7 +665,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Print',
     'cache' => 4,
-    'i18n_mode' => '0',
   );
 
   $theme['search-form'] = array(
@@ -710,7 +679,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-help'] = array(
@@ -725,7 +693,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-main'] = array(
@@ -740,7 +707,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-navigation'] = array(
@@ -755,7 +721,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['system-powered-by'] = array(
@@ -770,7 +735,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['text_resize-0'] = array(
@@ -785,7 +749,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Text resize',
     'cache' => '1',
-    'i18n_mode' => '0',
   );
 
   $theme['user-login'] = array(
@@ -800,7 +763,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $theme['views-slider-block'] = array(
@@ -815,22 +777,6 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
-    'i18n_mode' => '0',
-  );
-
-  $theme['webform-client-block-6'] = array(
-    'module' => 'webform',
-    'delta' => 'client-block-6',
-    'theme' => 'seven',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-    'i18n_mode' => '0',
   );
 
   $export['seven'] = $theme;
