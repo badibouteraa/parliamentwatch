@@ -13,7 +13,7 @@ function subsite_blocks_default_fe_block_settings() {
   // bartik
   $theme = array();
 
-  $theme['block-profiles_bezirkstag'] = array(
+  $theme['block-footer_social_media'] = array(
     'module' => 'block',
     'theme' => 'bartik',
     'status' => 0,
@@ -22,6 +22,20 @@ function subsite_blocks_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'machine_name' => 'footer_social_media',
+  );
+
+  $theme['block-profiles_bezirkstag'] = array(
+    'module' => 'block',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => 'politicians/bezirkstag',
     'title' => '',
     'cache' => -1,
     'machine_name' => 'profiles_bezirkstag',
@@ -34,7 +48,7 @@ function subsite_blocks_default_fe_block_settings() {
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '0',
+    'visibility' => '1',
     'pages' => '',
     'title' => '',
     'cache' => -1,
@@ -48,15 +62,16 @@ function subsite_blocks_default_fe_block_settings() {
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
+    'visibility' => '1',
+    'pages' => 'politicians/landtag',
     'title' => '',
     'cache' => -1,
     'machine_name' => 'profiles_landtag',
   );
 
-  $theme['block-footer_social_media'] = array(
-    'module' => 'block',
+  $theme['custom_search_blocks-1'] = array(
+    'module' => 'custom_search_blocks',
+    'delta' => '1',
     'theme' => 'bartik',
     'status' => 0,
     'weight' => '0',
@@ -66,7 +81,20 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'machine_name' => 'footer_social_media',
+  );
+
+  $theme['delta_blocks-breadcrumb'] = array(
+    'module' => 'delta_blocks',
+    'delta' => 'breadcrumb',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => 4,
   );
 
   $theme['forward-form'] = array(
@@ -270,48 +298,6 @@ function subsite_blocks_default_fe_block_settings() {
   // piratenpartei
   $theme = array();
 
-  $theme['block-profiles_bezirkstag'] = array(
-    'module' => 'block',
-    'theme' => 'piratenpartei',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-    'machine_name' => 'profiles_bezirkstag',
-  );
-
-  $theme['block-profiles_bundestag'] = array(
-    'module' => 'block',
-    'theme' => 'piratenpartei',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-    'machine_name' => 'profiles_bundestag',
-  );
-
-  $theme['block-profiles_landtag'] = array(
-    'module' => 'block',
-    'theme' => 'piratenpartei',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => '',
-    'cache' => -1,
-    'machine_name' => 'profiles_landtag',
-  );
-
   $theme['block-footer_social_media'] = array(
     'module' => 'block',
     'theme' => 'piratenpartei',
@@ -324,6 +310,76 @@ function subsite_blocks_default_fe_block_settings() {
     'title' => '',
     'cache' => -1,
     'machine_name' => 'footer_social_media',
+  );
+
+  $theme['block-profiles_bezirkstag'] = array(
+    'module' => 'block',
+    'theme' => 'piratenpartei',
+    'status' => '1',
+    'weight' => '-30',
+    'region' => 'content',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => 'politicians/bezirkstag',
+    'title' => '',
+    'cache' => -1,
+    'machine_name' => 'profiles_bezirkstag',
+  );
+
+  $theme['block-profiles_bundestag'] = array(
+    'module' => 'block',
+    'theme' => 'piratenpartei',
+    'status' => '1',
+    'weight' => '-29',
+    'region' => 'content',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'machine_name' => 'profiles_bundestag',
+  );
+
+  $theme['block-profiles_landtag'] = array(
+    'module' => 'block',
+    'theme' => 'piratenpartei',
+    'status' => '1',
+    'weight' => '-28',
+    'region' => 'content',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => 'politicians/landtag',
+    'title' => '',
+    'cache' => -1,
+    'machine_name' => 'profiles_landtag',
+  );
+
+  $theme['custom_search_blocks-1'] = array(
+    'module' => 'custom_search_blocks',
+    'delta' => '1',
+    'theme' => 'piratenpartei',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+  );
+
+  $theme['delta_blocks-breadcrumb'] = array(
+    'module' => 'delta_blocks',
+    'delta' => 'breadcrumb',
+    'theme' => 'piratenpartei',
+    'status' => '1',
+    'weight' => '-30',
+    'region' => 'header_first',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => 4,
   );
 
   $theme['forward-form'] = array(
@@ -414,9 +470,9 @@ function subsite_blocks_default_fe_block_settings() {
     'module' => 'search',
     'delta' => 'form',
     'theme' => 'piratenpartei',
-    'status' => 0,
+    'status' => '1',
     'weight' => '-23',
-    'region' => '',
+    'region' => 'sidebar_second',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
@@ -429,7 +485,7 @@ function subsite_blocks_default_fe_block_settings() {
     'delta' => 'help',
     'theme' => 'piratenpartei',
     'status' => '1',
-    'weight' => '-22',
+    'weight' => '-29',
     'region' => 'header_first',
     'custom' => '0',
     'visibility' => '0',
@@ -443,7 +499,7 @@ function subsite_blocks_default_fe_block_settings() {
     'delta' => 'main',
     'theme' => 'piratenpartei',
     'status' => '1',
-    'weight' => '-23',
+    'weight' => '-27',
     'region' => 'content',
     'custom' => '0',
     'visibility' => '0',
@@ -527,7 +583,7 @@ function subsite_blocks_default_fe_block_settings() {
   // seven
   $theme = array();
 
-  $theme['block-profiles_bezirkstag'] = array(
+  $theme['block-footer_social_media'] = array(
     'module' => 'block',
     'theme' => 'seven',
     'status' => 0,
@@ -536,6 +592,20 @@ function subsite_blocks_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'machine_name' => 'footer_social_media',
+  );
+
+  $theme['block-profiles_bezirkstag'] = array(
+    'module' => 'block',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => 'politicians/bezirkstag',
     'title' => '',
     'cache' => -1,
     'machine_name' => 'profiles_bezirkstag',
@@ -548,7 +618,7 @@ function subsite_blocks_default_fe_block_settings() {
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '0',
+    'visibility' => '1',
     'pages' => '',
     'title' => '',
     'cache' => -1,
@@ -562,15 +632,16 @@ function subsite_blocks_default_fe_block_settings() {
     'weight' => '0',
     'region' => '',
     'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
+    'visibility' => '1',
+    'pages' => 'politicians/landtag',
     'title' => '',
     'cache' => -1,
     'machine_name' => 'profiles_landtag',
   );
 
-  $theme['block-footer_social_media'] = array(
-    'module' => 'block',
+  $theme['custom_search_blocks-1'] = array(
+    'module' => 'custom_search_blocks',
+    'delta' => '1',
     'theme' => 'seven',
     'status' => 0,
     'weight' => '0',
@@ -580,7 +651,20 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
-    'machine_name' => 'footer_social_media',
+  );
+
+  $theme['delta_blocks-breadcrumb'] = array(
+    'module' => 'delta_blocks',
+    'delta' => 'breadcrumb',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => 4,
   );
 
   $theme['forward-form'] = array(

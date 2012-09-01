@@ -267,77 +267,76 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['label'] = 'Abgeordnete nach Namen filtern';
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['identifier'] = 'field_user_lname_value';
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['widget'] = 'radios';
-  $handler->display->display_options['filters']['field_user_lname_value']['group_info']['remember'] = 1;
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['group_items'] = array(
     1 => array(
-      'title' => 'B',
+      'title' => 'R',
       'operator' => 'starts',
-      'value' => 'B',
+      'value' => 'R',
     ),
     2 => array(
-      'title' => 'C',
+      'title' => 'Q',
       'operator' => 'starts',
-      'value' => 'C',
+      'value' => 'Q',
     ),
     3 => array(
-      'title' => 'Ä',
+      'title' => 'W',
       'operator' => 'starts',
-      'value' => 'Ä',
+      'value' => 'W',
     ),
     4 => array(
-      'title' => 'A',
+      'title' => 'Y',
       'operator' => 'starts',
-      'value' => 'A',
+      'value' => 'Y',
     ),
     5 => array(
-      'title' => 'L',
+      'title' => 'U',
       'operator' => 'starts',
-      'value' => 'L',
+      'value' => 'U',
     ),
     6 => array(
-      'title' => 'M',
+      'title' => 'O',
       'operator' => 'starts',
-      'value' => 'M',
+      'value' => 'O',
     ),
     7 => array(
-      'title' => 'D',
+      'title' => 'Ö',
       'operator' => 'starts',
-      'value' => 'D',
+      'value' => 'Ö',
     ),
     8 => array(
-      'title' => 'E',
+      'title' => 'P',
       'operator' => 'starts',
-      'value' => 'E',
+      'value' => 'P',
     ),
     9 => array(
-      'title' => 'I',
+      'title' => 'Z',
       'operator' => 'starts',
-      'value' => 'I',
+      'value' => 'Z',
     ),
     10 => array(
-      'title' => 'J',
+      'title' => 'V',
       'operator' => 'starts',
-      'value' => 'J',
+      'value' => 'V',
     ),
     11 => array(
-      'title' => 'H',
+      'title' => 'X',
       'operator' => 'starts',
-      'value' => 'H',
+      'value' => 'X',
     ),
     12 => array(
-      'title' => 'G',
+      'title' => 'S',
       'operator' => 'starts',
-      'value' => 'G',
+      'value' => 'S',
     ),
     13 => array(
-      'title' => 'F',
+      'title' => 'Ü',
       'operator' => 'starts',
-      'value' => 'F',
+      'value' => 'Ü',
     ),
     14 => array(
-      'title' => 'K',
+      'title' => 'T',
       'operator' => 'starts',
-      'value' => 'K',
+      'value' => 'T',
     ),
     15 => array(
       'title' => 'N',
@@ -345,74 +344,74 @@ function profiles_views_default_views() {
       'value' => 'N',
     ),
     16 => array(
-      'title' => 'T',
+      'title' => 'G',
       'operator' => 'starts',
-      'value' => 'T',
+      'value' => 'G',
     ),
     17 => array(
-      'title' => 'U',
+      'title' => 'F',
       'operator' => 'starts',
-      'value' => 'U',
+      'value' => 'F',
     ),
     18 => array(
-      'title' => 'O',
+      'title' => 'K',
       'operator' => 'starts',
-      'value' => 'O',
+      'value' => 'K',
     ),
     19 => array(
-      'title' => 'Y',
+      'title' => 'B',
       'operator' => 'starts',
-      'value' => 'Y',
+      'value' => 'B',
     ),
     20 => array(
-      'title' => 'W',
+      'title' => 'C',
       'operator' => 'starts',
-      'value' => 'W',
+      'value' => 'C',
     ),
     21 => array(
-      'title' => 'R',
+      'title' => 'Ä',
       'operator' => 'starts',
-      'value' => 'R',
+      'value' => 'Ä',
     ),
     22 => array(
-      'title' => 'Q',
+      'title' => 'A',
       'operator' => 'starts',
-      'value' => 'Q',
+      'value' => 'A',
     ),
     23 => array(
-      'title' => 'Ö',
+      'title' => 'L',
       'operator' => 'starts',
-      'value' => 'Ö',
+      'value' => 'L',
     ),
     24 => array(
-      'title' => 'P',
+      'title' => 'M',
       'operator' => 'starts',
-      'value' => 'P',
+      'value' => 'M',
     ),
     25 => array(
-      'title' => 'Ü',
+      'title' => 'D',
       'operator' => 'starts',
-      'value' => 'Ü',
+      'value' => 'D',
     ),
     26 => array(
-      'title' => 'S',
+      'title' => 'E',
       'operator' => 'starts',
-      'value' => 'S',
+      'value' => 'E',
     ),
     27 => array(
-      'title' => 'X',
+      'title' => 'I',
       'operator' => 'starts',
-      'value' => 'X',
+      'value' => 'I',
     ),
     28 => array(
-      'title' => 'Z',
+      'title' => 'J',
       'operator' => 'starts',
-      'value' => 'Z',
+      'value' => 'J',
     ),
     29 => array(
-      'title' => 'V',
+      'title' => 'H',
       'operator' => 'starts',
-      'value' => 'V',
+      'value' => 'H',
     ),
   );
   /* Filter criterion: User: Gender (field_user_gender) */
@@ -429,7 +428,6 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['label'] = 'Geschlecht auswählen';
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['operator'] = 'field_user_gender_value_op';
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['identifier'] = 'field_user_gender_value';
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['remember'] = TRUE;
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['remember_roles'] = array(
     2 => 0,
@@ -473,7 +471,6 @@ function profiles_views_default_views() {
   $handler->display->display_options['sorts']['field_user_lname_value']['id'] = 'field_user_lname_value';
   $handler->display->display_options['sorts']['field_user_lname_value']['table'] = 'field_data_field_user_lname';
   $handler->display->display_options['sorts']['field_user_lname_value']['field'] = 'field_user_lname_value';
-  $handler->display->display_options['sorts']['field_user_lname_value']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['field_user_lname_value']['expose']['label'] = 'Sort by Name';
   $handler->display->display_options['path'] = 'politicians/%';
   $handler->display->display_options['menu']['title'] = 'Profile list';
