@@ -95,7 +95,7 @@ function trustees_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['path'] = 'about_us/trustees';
+  $handler->display->display_options['path'] = 'about/trustees';
   $handler->display->display_options['menu']['title'] = 'Board of Trustees';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';

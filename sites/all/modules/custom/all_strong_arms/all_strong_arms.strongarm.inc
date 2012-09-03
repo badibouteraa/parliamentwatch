@@ -492,6 +492,20 @@ forward-form';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_string_allowed_formats';
+  $strongarm->value = array(
+    'managed_content' => 'managed_content',
+    'filtered_html' => 'filtered_html',
+    'full_html' => 'full_html',
+    'plain_text' => 'plain_text',
+    'php_code' => 'php_code',
+    'ds_code' => 'ds_code',
+  );
+  $export['i18n_string_allowed_formats'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_page';
   $strongarm->value = '2';
   $export['language_content_type_page'] = $strongarm;
@@ -502,13 +516,6 @@ forward-form';
   $strongarm->name = 'language_content_type_slider_item';
   $strongarm->value = '2';
   $export['language_content_type_slider_item'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'language_count';
-  $strongarm->value = 1;
-  $export['language_count'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -853,6 +860,16 @@ forward-form';
   $strongarm->name = 'user_revision_by_default';
   $strongarm->value = 0;
   $export['user_revision_by_default'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'webform_node_types';
+  $strongarm->value = array(
+    0 => 'slider_item',
+    1 => 'webform',
+  );
+  $export['webform_node_types'] = $strongarm;
 
   return $export;
 }
