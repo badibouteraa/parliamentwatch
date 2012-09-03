@@ -1,0 +1,105 @@
+From 0029c00a760b3a79caadd9da172d0a81cdd643c4 Mon Sep 17 00:00:00 2001
+From: Niklas Fiekas <niklas.fiekas@googlemail.com>
+Date: Mon, 3 Sep 2012 20:58:27 +0200
+Subject: [PATCH 1/2] Allow mapping to fields on a comment bundle.
+
+---
+ FeedsCommentProcessor.inc |   27 +++++++++++++++++++--------
+ 1 file changed, 19 insertions(+), 8 deletions(-)
+
+diff --git a/FeedsCommentProcessor.inc b/FeedsCommentProcessor.inc
+index 4d21b04..3092d87 100644
+--- a/FeedsCommentProcessor.inc
++++ b/FeedsCommentProcessor.inc
+@@ -121,13 +121,17 @@ class FeedsCommentProcessor extends FeedsProcessor {
+    * Override parent::configDefaults().
+    */
+   public function configDefaults() {
++    $node_types = node_type_get_names();
++    $node_type = isset($node_types['article']) ? 'article' : key($types);
++
+     return array(
++      'node_type' => $node_type,
+       'input_format' => filter_default_format(),
+       'update_existing' => FEEDS_SKIP_EXISTING,
+       'expire' => FEEDS_EXPIRE_NEVER,
+       'mappings' => array(),
+       'author' => 0,
+-    );
++    ) + parent::configDefaults();
+   }
+ 
+   /**
+@@ -135,6 +139,16 @@ class FeedsCommentProcessor extends FeedsProcessor {
+    */
+   public function configForm(&$form_state) {
+     $form = array();
++
++    $node_types = node_type_get_names();
++    array_walk($node_types, 'check_plain');
++    $form['node_type'] = array(
++      '#type' => 'select',
++      '#title' => t('Content type'),
++      '#options' => $node_types,
++      '#default_value' => $this->config['node_type'],
++    );
++
+     $format_options = array(filter_default_format() => t('Default format'));
+     $formats = filter_formats();
+     foreach ($formats as $format) {
+@@ -147,6 +161,7 @@ class FeedsCommentProcessor extends FeedsProcessor {
+       '#options' => $format_options,
+       '#default_value' => $this->config['input_format'],
+     );
++
+     $author = user_load($this->config['author']);
+     $form['author'] = array(
+       '#type' => 'textfield',
+@@ -155,6 +170,7 @@ class FeedsCommentProcessor extends FeedsProcessor {
+       '#autocomplete_path' => 'user/autocomplete',
+       '#default_value' => empty($author->name) ?  'anonymous' : check_plain($author->name),
+     );
++
+     $period = drupal_map_assoc(array(FEEDS_EXPIRE_NEVER, 3600, 10800, 21600, 43200, 86400, 259200, 604800, 604800 * 4, 604800 * 12, 604800 * 24, 31536000), 'feeds_format_expire');
+     $form['expire'] = array(
+       '#type' => 'select',
+@@ -163,6 +179,7 @@ class FeedsCommentProcessor extends FeedsProcessor {
+       '#description' => t('Select after how much time comments should be deleted. The comment\'s published date will be used for determining the comment\'s age, see Mapping settings.'),
+       '#default_value' => $this->config['expire'],
+     );
++
+     $form['update_existing'] = array(
+       '#type' => 'radios',
+       '#title' => t('Update existing comments'),
+@@ -194,9 +211,6 @@ class FeedsCommentProcessor extends FeedsProcessor {
+    */
+   public function setTargetElement(FeedsSource $source, $target_comment, $target_element, $value) {
+     switch ($target_element) {
+-      case 'comment':
+-        $target_comment->comment_body[$target_comment->language][0]['value'] = $value;
+-        break;
+       case 'guid':
+         $target_comment->feeds_comment_item->guid = $value;
+         break;
+@@ -227,10 +241,6 @@ class FeedsCommentProcessor extends FeedsProcessor {
+         'name' => t('Title'),
+         'description' => t('The title of the comment.'),
+       ),
+-      'comment' => array(
+-        'name' => t('Comment'),
+-        'description' => t('The comment body.'),
+-      ),
+       'hostname' => array(
+         'name' => t('Hostname'),
+         'description' => t('The author\'s host name.'),
+@@ -264,6 +274,7 @@ class FeedsCommentProcessor extends FeedsProcessor {
+ 
+     // Let other modules expose mapping targets.
+     self::loadMappers();
++    feeds_alter('feeds_processor_targets', $targets, 'comment', 'comment_node_' . $this->config['node_type']);
+     feeds_alter('feeds_comment_processor_targets', $targets);
+ 
+     return $targets;
+-- 
+1.7.9.5
+

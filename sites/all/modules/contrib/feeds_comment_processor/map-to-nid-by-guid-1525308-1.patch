@@ -1,0 +1,42 @@
+From 8efc7bb8f92c739d9c381a3d313122855871c1fb Mon Sep 17 00:00:00 2001
+From: Niklas Fiekas <niklas.fiekas@googlemail.com>
+Date: Mon, 3 Sep 2012 21:19:42 +0200
+Subject: [PATCH 2/2] Allow mapping nid by GUID of a different import.
+
+---
+ FeedsCommentProcessor.inc |   12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/FeedsCommentProcessor.inc b/FeedsCommentProcessor.inc
+index 3092d87..f87094b 100644
+--- a/FeedsCommentProcessor.inc
++++ b/FeedsCommentProcessor.inc
+@@ -211,6 +211,14 @@ class FeedsCommentProcessor extends FeedsProcessor {
+    */
+   public function setTargetElement(FeedsSource $source, $target_comment, $target_element, $value) {
+     switch ($target_element) {
++      case 'nid_by_guid':
++        $target_comment->nid = db_select('feeds_item', 'f')
++          ->fields('f', array('entity_id'))
++          ->condition('entity_type', 'node')
++          ->condition('guid', $value)
++          ->execute()
++          ->fetchField();
++        break;
+       case 'guid':
+         $target_comment->feeds_comment_item->guid = $value;
+         break;
+@@ -233,6 +241,10 @@ class FeedsCommentProcessor extends FeedsProcessor {
+         'name' => t('Node ID'),
+         'description' => t('The nid to which this comment is a reply.'),
+       ),
++      'nid_by_guid' => array(
++        'name' => t('Node ID by GUID'),
++        'description' => t('The node to which this comment is a reply, looked up by the GUID of a previous import.'),
++      ),
+       'uid' => array(
+         'name' => t('User ID'),
+         'description' => t('The Drupal user ID of the comment author.'),
+-- 
+1.7.9.5
+
