@@ -1,0 +1,47 @@
+From 2b41e1d0451712e7d3725f82f7302e6fc6819966 Mon Sep 17 00:00:00 2001
+From: dalin <dalin@18981.no-reply.drupal.org>
+Date: Mon, 2 Apr 2012 11:34:58 -0400
+Subject: [PATCH]  Issue #1169264 by dalin: System main block does not respect context assigned weight when block module is enabled. Fix makes context block reaction honor weight settings of blocks already present in region when adding blocks.
+
+---
+ plugins/context_reaction_block.inc |   24 +++++++++++++++++++++++-
+ 1 files changed, 23 insertions(+), 1 deletions(-)
+
+diff --git a/plugins/context_reaction_block.inc b/plugins/context_reaction_block.inc
+index 2f1ae04..8c37186 100644
+--- a/plugins/context_reaction_block.inc
++++ b/plugins/context_reaction_block.inc
+@@ -220,7 +220,29 @@ class context_reaction_block extends context_reaction {
+     foreach (array_keys($all_regions) as $region) {
+       if ($this->is_enabled_region($region)) {
+         if ($blocks = $this->block_get_blocks_by_region($region)) {
+-          $page[$region] = isset($page[$region]) ? array_merge($page[$region], $blocks) : $blocks;
++
++          // Are the blocks already sorted.
++          $blocks_sorted = TRUE;
++
++          // If blocks have already been placed in this region (most likely by
++          // Block module), then merge in blocks from Context.
++          if (isset($page[$region])) {
++            $page[$region] = array_merge($page[$region], $blocks);
++
++            // Restore the weights that Block module manufactured
++            // @see _block_get_renderable_array()
++            foreach ($page[$region] as &$block) {
++              if (isset($block['#block']->weight)) {
++                $block['#weight'] = $block['#block']->weight;
++                $blocks_sorted = FALSE;
++              }
++            }
++          }
++          else {
++            $page[$region] = $blocks;
++          }
++
++          $page[$region]['#sorted'] = $blocks_sorted;
+         }
+       }
+     }
+-- 
+1.7.4.1
+
