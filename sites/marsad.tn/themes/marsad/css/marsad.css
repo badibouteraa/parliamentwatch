@@ -1,4 +1,9 @@
-#zone-menu-wrapper {
+#zone-menu-wrapper,
+button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"],
+a.form-submit {
     background: #7c97a3; /* Old browsers */
     background: -moz-linear-gradient(top,  #7c97a3 0%, #7c97a3 2%, #8ea5b0 2%, #7c97a3 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7c97a3), color-stop(2%,#7c97a3), color-stop(2%,#8ea5b0), color-stop(100%,#7c97a3)); /* Chrome,Safari4+ */
@@ -15,22 +20,64 @@ a {
     text-decoration: none;
     font-weight: bold;
 }
-h1, h2, h3, h4, h5, h6 {
-    color: #7c97a3;
-}
-.back {
-    color: #7c97a3;
-}
+h1,
+h2,
+.h1,
+.h2,
 h1#page-title {
     color: #7c97a3;
 }
+
 .node-blogpost.node-teaser,
+.block-submenutree .view-mode-teaser,
 .views-table tr.odd,
 .views-table tr.even,
 .node-results li,
-.group-result .panel-flexible {
+.group-result .panel-flexible,
+.pw-list-item {
     border-bottom: 1px dotted #7c97a3;
 }
 #block-delta-blocks-feed-icons .feed-link {
     color: #7c97a3;
+}
+
+#region-content .item-list ul.pager li.pager-previous a,
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-first a,
+#region-content .item-list ul.pager li.pager-last a,
+#region-content .item-list ul.pager li.pager-last span,
+#region-content .item-list ul.pager li.pager-next a,
+#region-postscript-fourth a,
+.comment-reply,
+.comment .submitted .author,
+#block-delta-blocks-feed-icons .content,
+#views_slideshow_cycle_div_slider-block_1 .icon-share,
+#comment-form #edit-author--2,
+#forward-form #edit-instructions p:first-child,
+#block-views-blog-block-1 .views-row,
+.comment-count,
+.icon-taxonomy,
+#floatbox ul.arrow-items li,
+#floatbox h3,
+a#text_resize_decrease,
+a#text_resize_reset,
+a#text_resize_increase,
+a.print-page,
+a.print_mail,
+a.print-pdf,
+#block-system-user-menu .first a,
+#block-system-user-menu .last a,
+#region-user-second .block h2,
+.field-name-anchor-to-top a,
+.arrow-item,
+.back,
+.read-more a,
+a.read-more,
+.read-codex a,
+a.read-codex,
+.link-profile a,
+a.link-profile,
+blockquote:before {
+    background-image: url("../images/sprite.png");
+    background-repeat: no-repeat;
 }

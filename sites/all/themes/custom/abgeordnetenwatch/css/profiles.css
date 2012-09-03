@@ -75,6 +75,23 @@ table.views-view-grid .row-last td {
     margin: 0 0 0 14px;
 }
 
+
+
+/* frontpage */
+ 
+.view-pw-profiles-frontpage .pw-list-item {
+    position: relative;
+} 
+.view-pw-profiles-frontpage .float-left .file-image {
+    margin-bottom: 0;
+} 
+.view-pw-profiles-frontpage .link-profile a,
+.view-pw-profiles-frontpage a.link-profile {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+}
+
 /* filters */
 
 #views-exposed-form-profile-list-page .form-item-field-user-lname-value {

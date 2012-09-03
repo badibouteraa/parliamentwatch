@@ -13,6 +13,21 @@ function subsite_blocks_default_fe_block_settings() {
   // bartik
   $theme = array();
 
+  $theme['block-data_wrong'] = array(
+    'module' => 'block',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => 'This content is wrong',
+    'cache' => -1,
+    'i18n_mode' => '1',
+    'machine_name' => 'data_wrong',
+  );
+
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
     'delta' => 'breadcrumb',
@@ -25,6 +40,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => 4,
+    'i18n_mode' => '0',
   );
 
   $theme['delta_blocks-messages'] = array(
@@ -39,6 +55,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['forward-form'] = array(
@@ -53,6 +70,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => '1',
+    'i18n_mode' => '0',
   );
 
   $theme['locale-language'] = array(
@@ -67,6 +85,37 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-about-us'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-about-us',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-parliaments'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-parliaments',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['nice_menus-1'] = array(
@@ -81,6 +130,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['print-print-links'] = array(
@@ -95,6 +145,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => 4,
+    'i18n_mode' => '0',
   );
 
   $theme['search-form'] = array(
@@ -109,6 +160,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-help'] = array(
@@ -123,6 +175,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-main'] = array(
@@ -137,6 +190,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-navigation'] = array(
@@ -151,6 +205,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-powered-by'] = array(
@@ -165,6 +220,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['text_resize-0'] = array(
@@ -179,6 +235,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => '1',
+    'i18n_mode' => '0',
   );
 
   $theme['user-login'] = array(
@@ -193,6 +250,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['views-slider-block'] = array(
@@ -207,12 +265,28 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $export['bartik'] = $theme;
 
   // marsad
   $theme = array();
+
+  $theme['block-data_wrong'] = array(
+    'module' => 'block',
+    'theme' => 'marsad',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => 'This content is wrong',
+    'cache' => -1,
+    'i18n_mode' => '1',
+    'machine_name' => 'data_wrong',
+  );
 
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
@@ -226,6 +300,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => 4,
+    'i18n_mode' => '0',
   );
 
   $theme['delta_blocks-messages'] = array(
@@ -233,13 +308,14 @@ function subsite_blocks_default_fe_block_settings() {
     'delta' => 'messages',
     'theme' => 'marsad',
     'status' => '1',
-    'weight' => '-25',
+    'weight' => '-29',
     'region' => 'content',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['forward-form'] = array(
@@ -254,6 +330,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Social Media',
     'cache' => '1',
+    'i18n_mode' => '0',
   );
 
   $theme['locale-language'] = array(
@@ -268,6 +345,37 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Language',
     'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-about-us'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-about-us',
+    'theme' => 'marsad',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'postscript_second',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-parliaments'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-parliaments',
+    'theme' => 'marsad',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'postscript_first',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['nice_menus-1'] = array(
@@ -282,6 +390,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['print-print-links'] = array(
@@ -296,6 +405,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Print',
     'cache' => 4,
+    'i18n_mode' => '0',
   );
 
   $theme['search-form'] = array(
@@ -310,6 +420,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-help'] = array(
@@ -324,6 +435,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-main'] = array(
@@ -331,13 +443,14 @@ function subsite_blocks_default_fe_block_settings() {
     'delta' => 'main',
     'theme' => 'marsad',
     'status' => '1',
-    'weight' => '-26',
+    'weight' => '0',
     'region' => 'content',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-navigation'] = array(
@@ -352,6 +465,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-powered-by'] = array(
@@ -366,6 +480,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['text_resize-0'] = array(
@@ -378,8 +493,9 @@ function subsite_blocks_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'Text resize',
+    'title' => '',
     'cache' => '1',
+    'i18n_mode' => '0',
   );
 
   $theme['user-login'] = array(
@@ -394,6 +510,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['views-slider-block'] = array(
@@ -408,12 +525,28 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $export['marsad'] = $theme;
 
   // seven
   $theme = array();
+
+  $theme['block-data_wrong'] = array(
+    'module' => 'block',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => 'This content is wrong',
+    'cache' => -1,
+    'i18n_mode' => '1',
+    'machine_name' => 'data_wrong',
+  );
 
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
@@ -427,6 +560,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => 4,
+    'i18n_mode' => '0',
   );
 
   $theme['delta_blocks-messages'] = array(
@@ -441,6 +575,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['forward-form'] = array(
@@ -455,6 +590,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Social Media',
     'cache' => '1',
+    'i18n_mode' => '0',
   );
 
   $theme['locale-language'] = array(
@@ -469,6 +605,37 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Language',
     'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-about-us'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-about-us',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-parliaments'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-parliaments',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['nice_menus-1'] = array(
@@ -483,6 +650,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['print-print-links'] = array(
@@ -497,6 +665,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => 'Print',
     'cache' => 4,
+    'i18n_mode' => '0',
   );
 
   $theme['search-form'] = array(
@@ -511,6 +680,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-help'] = array(
@@ -525,6 +695,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-main'] = array(
@@ -539,6 +710,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-navigation'] = array(
@@ -553,6 +725,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['system-powered-by'] = array(
@@ -567,6 +740,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['text_resize-0'] = array(
@@ -579,8 +753,9 @@ function subsite_blocks_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'Text resize',
+    'title' => '',
     'cache' => '1',
+    'i18n_mode' => '0',
   );
 
   $theme['user-login'] = array(
@@ -595,6 +770,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $theme['views-slider-block'] = array(
@@ -609,6 +785,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '<none>',
     'cache' => -1,
+    'i18n_mode' => '0',
   );
 
   $export['seven'] = $theme;
