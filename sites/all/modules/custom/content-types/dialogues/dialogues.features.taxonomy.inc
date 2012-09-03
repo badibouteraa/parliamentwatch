@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dialogue_message_type.features.taxonomy.inc
+ * dialogues.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function dialogue_message_type_taxonomy_default_vocabularies() {
+function dialogues_taxonomy_default_vocabularies() {
   return array(
     'dialogue_tags' => array(
       'name' => 'Dialogue tags',

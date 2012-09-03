@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Dialogue Message Type feature.
- */
-
-include_once 'dialogue_message_type.features.inc';
