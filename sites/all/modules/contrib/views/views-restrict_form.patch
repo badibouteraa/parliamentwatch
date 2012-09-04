@@ -1,0 +1,166 @@
+diff --git includes/plugins.inc includes/plugins.inc
+index b30145b..d9ebb0e 100644
+--- includes/plugins.inc
++++ includes/plugins.inc
+@@ -348,6 +348,13 @@ function views_views_plugins() {
+       'type' => 'normal',
+       'help topic' => 'style-jump-menu',
+     );
++    $plugins['exposed_form']['restricted'] = array(
++      'title' => t('Restricted form'),
++      'help' => t('Restrictes options of the widgets to the items in the result'),
++      'handler' => 'views_plugin_exposed_form_restricted',
++      'uses options' => TRUE,
++//         'help topic' => 'exposed-form-restricted',
++    );
+   }
+ 
+   return $plugins;
+diff --git plugins/views_plugin_display.inc plugins/views_plugin_display.inc
+index f5b7f31..a633c8a 100644
+--- plugins/views_plugin_display.inc
++++ plugins/views_plugin_display.inc
+@@ -720,7 +720,7 @@ class views_plugin_display extends views_plugin {
+    * Retrieve a list of fields for the current display with the
+    *  relationship associated if it exists.
+    */
+-  function get_field_labels() {
++  function get_field_labels($type = 'field') {
+     $options = array();
+     foreach ($this->get_handlers('relationship') as $relationship => $handler) {
+       if ($label = $handler->label()) {
+@@ -731,7 +731,7 @@ class views_plugin_display extends views_plugin {
+       }
+     }
+ 
+-    foreach ($this->get_handlers('field') as $id => $handler) {
++    foreach ($this->get_handlers($type) as $id => $handler) {
+       if ($label = $handler->label()) {
+         $options[$id] = $label;
+       }
+diff --git plugins/views_plugin_exposed_form_restricted.inc plugins/views_plugin_exposed_form_restricted.inc
+new file mode 100644
+index 0000000..c1ef70d
+--- /dev/null
++++ plugins/views_plugin_exposed_form_restricted.inc
+@@ -0,0 +1,119 @@
++<?php
++// $Id: $
++
++class views_plugin_exposed_form_restricted extends views_plugin_exposed_form {
++
++  function summary_title() {
++    return t('Restricted form');
++  }
++
++  function option_definition() {
++    $options = parent::option_definition();
++    $options['link'] = array('default' => array());
++
++    return $options;
++  }
++
++  function options_form(&$form, &$form_state) {
++    parent::options_form($form, $form_state);
++
++    foreach ($this->qualified_filters() as $id => $filter) {
++      $form['link'][$id] = array(
++        '#title' => t('Field for filter %filter', array('%filter' => $filter->ui_name())),
++        '#default_value' => $this->options['link'][$id],
++        '#options' => $this->display->handler->get_field_labels(),
++        '#type' => 'select',
++      );
++    }
++  }
++   /**
++   * Render the exposed filter form.
++   *
++   * This actually does more than that; because it's using FAPI, the form will
++   * also assign data to the appropriate handlers for use in building the
++   * query.
++   */
++  function render_exposed_form($block = FALSE) {
++    ctools_include('form');
++    // Deal with any exposed filters we may have, before building.
++    $form_state = array(
++      'view' => &$this->view,
++      'display' => &$this->display,
++      'method' => 'get',
++      'rerender' => TRUE,
++      'no_redirect' => TRUE,
++    );
++
++    // Some types of displays (eg. attachments) may wish to use the exposed
++    // filters of their parent displays instead of showing an additional
++    // exposed filter form for the attachment as well as that for the parent.
++    if (!$this->view->display_handler->displays_exposed() || (!$block && $this->view->display_handler->get_option('exposed_block'))) {
++      unset($form_state['rerender']);
++    }
++
++    if (!empty($this->ajax)) {
++      $form_state['ajax'] = TRUE;
++    }
++
++    $form_state['exposed_form_plugin'] = $this;
++    $form_state['want form'] = TRUE;;
++    $output = ctools_build_form('views_exposed_form', $form_state);
++
++    if (!empty($form_state['js settings'])) {
++      $this->view->js_settings = $form_state['js settings'];
++    }
++
++    return $output;
++  }
++
++  function qualified_filters() {
++    foreach ($this->display->handler->get_handlers('filter') as $id => $filter) {
++      if ($filter->options['exposed']) {
++        $class = get_class($filter);
++        $parents = array_merge(array($class), class_parents($class));
++        // Every class which interits from views_handler_filter_in_operator but not from filter_in_operator_boolean should be enabled to do it.
++        if (in_array('views_handler_filter_in_operator', $parents) && !in_array('views_handler_filter_boolean_operator', $parents)) {
++          $filters[$id] = $filter;
++        }
++      }
++    }
++    return $filters;
++  }
++
++  function pre_render() {
++    $exposed_input = $this->view->get_exposed_input();
++    foreach ($this->qualified_filters() as $id => $filter) {
++      $identifier = $filter->options['expose']['identifier'];
++      // Don't filter out something if the user didn't selected something on the filter.
++      if ($this->view->result && !empty($exposed_input[$identifier])) {
++        $field = $this->view->field[$this->options['link'][$id]];
++        $field_alias = $field->field_alias;
++        $form_element =& $this->view->exposed_widgets[$identifier];
++
++        $options['All'] = $form_element['#options']['All'];
++
++        // TODO: Special case for prerender_list
++        $class = get_class($field);
++        $parents = array_merge(array($class), class_parents($class));
++        if (in_array('views_handler_field_prerender_list', $parents)) {
++
++        }
++        else {
++          foreach ($this->view->result as $id => $row) {
++            $options[$row->{$field_alias}] = $row->{$field_alias};
++          }
++        }
++
++        // Replace the value with the one in the ui
++        foreach ($form_element['#options'] as $option => $value) {
++          if (isset($options[$option])) {
++            $options[$option] = $value;
++          }
++        }
++        $form_element['#options'] = $options;
++      }
++    }
++
++    $this->view->exposed_widgets = drupal_render_form('views_exposed_form', $this->view->exposed_widgets);
++  }
++}
+\ No newline at end of file
