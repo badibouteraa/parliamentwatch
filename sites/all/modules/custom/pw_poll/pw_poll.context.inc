@@ -29,23 +29,23 @@ function pw_poll_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'system-main' => array(
-          'module' => 'system',
-          'delta' => 'main',
+        'pw_blocks-pw_total_votes' => array(
+          'module' => 'pw_blocks',
+          'delta' => 'pw_total_votes',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-29',
         ),
         'pw_blocks-pw_per_party_votes' => array(
           'module' => 'pw_blocks',
           'delta' => 'pw_per_party_votes',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-28',
         ),
-        'pw_blocks-pw_total_votes' => array(
-          'module' => 'pw_blocks',
-          'delta' => 'pw_total_votes',
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-27',
         ),
       ),
     ),
