@@ -221,7 +221,7 @@ function dialogues_feeds_importer_default() {
           'xpathparser:15' => 0,
           'xpathparser:16' => 0,
         ),
-        'context' => '//dialogue/message[position()>0]',
+        'context' => '//dialogue/message[position()>1]',
         'exp' => array(
           'errors' => 1,
           'debug' => array(
