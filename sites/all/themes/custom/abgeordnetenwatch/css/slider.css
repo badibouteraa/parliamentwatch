@@ -29,17 +29,8 @@
 #views_slideshow_cycle_div_slider-block_0 {
     background: url(/sites/all/themes/custom/abgeordnetenwatch/images/slider/slider_4.jpg);
 }
-#block-block-3 { /* newsletter box with same block in content */
-    background: url(/sites/all/themes/custom/abgeordnetenwatch/images/slider/slider_3.jpg);
-    padding: 14px 76px 20px 0;
-    height: 134px;
-}
 #views_slideshow_cycle_div_slider-block_0 form { /* newsletter box with same block in content */
     margin-bottom: 9px;
-}
-#block-block-3 h2 { /* newsletter box with same block in content */
-    font-size: 18px;
-    margin-bottom: 0.2em;
 }
 #webform-component-slider-newsletter-email {
     float: left;
@@ -54,15 +45,6 @@
     position: relative;
     bottom: 0;
     float: left;
-}
-#block-block-3 .content-wrapper {
-    background: url(../images/sprite.png) -745px -2713px no-repeat;
-    padding: 15px 20px 15px 60px;
-}
-#block-block-3 .block-inner {
-    background: url(../images/bg_fff50.png);
-    font-size: 11px;
-    line-height: 16px;
 }
 #views_slideshow_cycle_div_slider-block_1 {
     background: url(/sites/all/themes/custom/abgeordnetenwatch/images/slider/slider_1.jpg);

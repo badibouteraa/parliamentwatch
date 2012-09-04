@@ -26,17 +26,17 @@ function subsite_frontpage_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'block-1' => array(
+        'block-2' => array(
           'module' => 'block',
-          'delta' => 1,
+          'delta' => '2',
           'region' => 'content',
-          'weight' => '-8',
+          'weight' => '-10',
         ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',
           'region' => 'content',
-          'weight' => '-7',
+          'weight' => '-9',
         ),
         'views-dad15b4152fed370e03ab8a66c650c8d' => array(
           'module' => 'views',

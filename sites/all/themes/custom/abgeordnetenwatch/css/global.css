@@ -219,9 +219,6 @@ h1#page-title {
     padding-left: 0;
     background: none;
 }
-#block-block-5 p {
-    margin-bottom: 0;
-}
 #zone-menu-wrapper {
     background: #ff6733; /* Old browsers */
     background-image: #ff8157; /* Old browsers */
@@ -485,7 +482,7 @@ a.tagadelic.level4 {
 }
 #region-user-second #block-user-login .content,
 #region-user-second #block-system-user-menu .content,
-#region-user-second #block-block-7 .content {
+#region-user-second .block.addthis .content {
     left: 0;    
 }
 #region-user-second #block-print-print-links .content,
@@ -496,12 +493,12 @@ a.tagadelic.level4 {
     width: 190px;
     padding: 15px 0;   
 }
-#region-user-second #block-block-7 .content {
+#region-user-second .block.addthis .content {
     width: 212px;
     min-height: 50px;
     padding: 15px 0;
 }
-#region-user-second #block-block-7 .content,
+#region-user-second .block.addthis .content,
 #region-user-second #block-text-resize-0 .content,
 #region-user-second #block-user-login .content {
     padding: 15px;   
@@ -546,7 +543,7 @@ a.tagadelic.level4 {
 #region-user-second #block-text-resize-0 h2 {
     background-position: -722px -259px;    
 }
-#region-user-second #block-block-7 h2 {
+#region-user-second .block.addthis h2 {
     background-position: -962px -19px;    
 }
 #region-user-second #block-locale-language h2 {
@@ -1082,9 +1079,9 @@ a.form-submit:hover {
     -moz-box-shadow: none;
     box-shadow: none;
 }
-#block-block-7 .addthis_default_style .at300b, 
-#block-block-7 .addthis_default_style .at300bo, 
-#block-block-7 .addthis_default_style .at300m {
+.block.addthis .addthis_default_style .at300b, 
+.block.addthis .addthis_default_style .at300bo, 
+.block.addthis .addthis_default_style .at300m {
     display: block;
     font-weight: normal !important;
     font-size: 11px !important;
@@ -1123,7 +1120,17 @@ a.form-submit:hover {
     -moz-box-shadow: 0px 0px 4px 1px #ebebeb;
     box-shadow: 0px 0px 4px 1px #ebebeb;
 }
-#section-content #block-block-3 form.compact-form { /* newsletter order */
+
+#section-content .block.newsletter-subscribe { /* newsletter box with same block as teh slider in content */
+    background: url(/sites/all/themes/custom/abgeordnetenwatch/images/slider/slider_3.jpg);
+    padding: 14px 76px 20px 0;
+    height: 134px;
+}
+#section-content .block.newsletter-subscribe h2 { /* newsletter box with same block in content */
+    font-size: 18px;
+    margin-bottom: 0.2em;
+}
+#section-content .block.newsletter-subscribe form.compact-form { /* newsletter order */
     background: transparent; 
     border: 0;
     -webkit-box-shadow: none;
@@ -1132,6 +1139,16 @@ a.form-submit:hover {
     margin-bottom: 0;
     padding: 10px 0 0;
 }
+#section-content .block.newsletter-subscribe .content-wrapper {
+    background: url(../images/sprite.png) -745px -2713px no-repeat;
+    padding: 15px 20px 15px 60px;
+}
+#section-content .block.newsletter-subscribe .block-inner {
+    background: url(../images/bg_fff50.png);
+    font-size: 11px;
+    line-height: 16px;
+}
+
 .comment .submitted {
     margin: 10px 0;
     background: #fff;
@@ -1205,7 +1222,7 @@ a.form-submit:hover {
 #region-postscript-fourth a {
     padding-left: 28px;
     line-height: 24px;
-    display: block;
+    display: inline-block;
 }
 #region-postscript-fourth .facebook a {
     background-position: -930px -1290px;

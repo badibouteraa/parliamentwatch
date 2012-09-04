@@ -22,10 +22,25 @@ function subsite_blocks_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'This content is wrong',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '1',
+    'i18n_mode' => '0',
     'machine_name' => 'data_wrong',
+  );
+
+  $theme['block-metanavi_addthis'] = array(
+    'module' => 'block',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => 'Share',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'metanavi_addthis',
   );
 
   $theme['delta_blocks-breadcrumb'] = array(
@@ -282,10 +297,25 @@ function subsite_blocks_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'This content is wrong',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '1',
+    'i18n_mode' => '0',
     'machine_name' => 'data_wrong',
+  );
+
+  $theme['block-metanavi_addthis'] = array(
+    'module' => 'block',
+    'theme' => 'marsad',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'user_second',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => 'Share',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'metanavi_addthis',
   );
 
   $theme['delta_blocks-breadcrumb'] = array(
@@ -413,7 +443,7 @@ function subsite_blocks_default_fe_block_settings() {
     'delta' => 'form',
     'theme' => 'marsad',
     'status' => '1',
-    'weight' => '-26',
+    'weight' => '-30',
     'region' => 'sidebar_second',
     'custom' => '0',
     'visibility' => '0',
@@ -502,9 +532,9 @@ function subsite_blocks_default_fe_block_settings() {
     'module' => 'user',
     'delta' => 'login',
     'theme' => 'marsad',
-    'status' => '1',
-    'weight' => '0',
-    'region' => 'sidebar_second',
+    'status' => 0,
+    'weight' => '-28',
+    'region' => '',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
@@ -542,10 +572,25 @@ function subsite_blocks_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'This content is wrong',
+    'title' => '',
     'cache' => -1,
-    'i18n_mode' => '1',
+    'i18n_mode' => '0',
     'machine_name' => 'data_wrong',
+  );
+
+  $theme['block-metanavi_addthis'] = array(
+    'module' => 'block',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => 'Share',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'metanavi_addthis',
   );
 
   $theme['delta_blocks-breadcrumb'] = array(

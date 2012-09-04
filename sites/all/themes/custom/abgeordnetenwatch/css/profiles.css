@@ -38,7 +38,8 @@ table.views-view-grid .row-last td {
 }
 .profiles-list-compact-wrapper .row {
     background: #fff;
-    margin: 0 -12px 2px 0;    
+    margin: 0 -12px 2px 0;
+    padding: 0 12px;  
 }
 .col-last .profiles-list-compact-wrapper h3 {
     text-align: right;   
@@ -82,7 +83,7 @@ table.views-view-grid .row-last td {
 .view-pw-profiles-frontpage .pw-list-item {
     position: relative;
 } 
-.view-pw-profiles-frontpage .float-left .file-image {
+.pw-list-item .float-left .file-image {
     margin-bottom: 0;
 } 
 .view-pw-profiles-frontpage .link-profile a,
