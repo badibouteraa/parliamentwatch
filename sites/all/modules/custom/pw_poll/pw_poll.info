@@ -25,7 +25,6 @@ features[field][] = taxonomy_term-pw_widget_values-field_pw_widget_color
 features[field][] = taxonomy_term-pw_widget_values-field_pw_widget_value
 features[node][] = pw_poll
 features[taxonomy][] = pw_widget_values
-features[taxonomy][] = zipcodes
 features[variable][] = field_bundle_settings_node__pw_poll
 features[variable][] = rate_widgets
 features[views_view][] = user_constituency
