@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the pw_views feature.
- */
-
-include_once 'pw_views.features.inc';
