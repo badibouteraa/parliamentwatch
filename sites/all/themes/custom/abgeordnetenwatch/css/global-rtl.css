@@ -1,0 +1,84 @@
+@charset "utf-8";
+@import url("profiles-rtl.css");
+/* header */
+
+#zone-branding .logo-img {
+    float: right;
+    margin: 1px 0 11px 7px;
+}
+#region-user-second {
+    right: auto;
+    left: 14px;
+}
+
+
+/* metanavigation */
+
+#region-user-second .block {
+    float: left;
+}
+#region-user-second #block-print-print-links .content, #region-user-second #block-text-resize-0 .content, #region-user-second #block-locale-language .content {
+    right: auto;
+    left: 0;
+}
+#region-user-second #block-user-login .content, #region-user-second #block-system-user-menu .content, #region-user-second #block-block-7 .content {
+    left: auto;
+    right: 0;
+}
+
+
+/* content */
+
+#region-content .region-content-inner {
+    padding: 0 0 0 10px;
+}
+
+
+/* slider */
+
+.views-slideshow-controls-bottom {
+    right: auto;
+    left: 0;
+}
+#views_slideshow_cycle_main_slider-block {
+    left: auto;
+    right: 0;
+}
+
+/* search */
+
+#block-search-form .form-submit {
+    right: auto;
+    left: 20px;
+}
+
+
+/* pager */
+#region-content .item-list ul.pager li.pager-next a,
+#region-content .item-list ul.pager li.pager-last span,
+#region-content .item-list ul.pager li.pager-last a {
+    float: left;
+    padding-left: 36px;
+}
+#region-content .item-list ul.pager li.pager-next a,
+#region-content .item-list ul.pager li.pager-last a {
+    background-position: -920px -3655px;
+}
+#region-content .item-list ul.pager li.pager-last span,
+#region-content .item-list ul.pager li.pager-last a:hover {
+    background-position: -960px -3615px;
+}
+#region-content .item-list ul.pager li.pager-first a,
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-previousn a {
+    float: right;
+    padding-right: 33px;
+}
+#region-content .item-list ul.pager li.pager-first a,
+#region-content .item-list ul.pager li.pager-previousn a {
+    background-position: right -3815px;
+}
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-first a:hover {
+    background-position: right -3775px;
+}

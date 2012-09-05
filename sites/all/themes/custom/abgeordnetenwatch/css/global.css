@@ -879,16 +879,16 @@ textarea:active {
     font-size: 11px;
     line-height: 16px;
 }
-.poll-behavior.yes {
+.poll-behavior .yes {
     background: #00cc00;
 }
-.poll-behavior.no {
+.poll-behavior .no {
     background: #ff3333;
 }
-.poll-behavior.abstention {
+.poll-behavior .abstention {
     background: #0033ff;
 }
-.poll-behavior.not-participate {
+.poll-behavior .not-participate {
     background: #999;
 }
 
@@ -1012,13 +1012,15 @@ a.form-submit:hover {
     font: 11px/1.2 Arial,sans-serif;
     padding: 2px 10px;
 }
-#section-content form.compact-form {
+#section-content form.compact-form,
+#section-content #comment-form {
     position: relative;
     margin-bottom: 5em;
     padding: 12px 10px 10px 10px;
     color: #666;
 }
-#section-content .compact-form .form-actions {
+#section-content .compact-form .form-actions,
+#section-content #comment-form .form-actions {
     position: absolute;
     bottom: -40px;
     right: 0;
@@ -1134,6 +1136,7 @@ a.form-submit:hover {
     margin-bottom: 28px;
 }
 .comment,
+#comment-form,
 #section-content form.compact-form {
     background: #f4f4f4; 
     border: 1px solid #dedede;
@@ -1264,9 +1267,10 @@ a.form-submit:hover {
     background-position: -970px -1250px;
 }
 
+
 /* icons */
 
-..field-type-taxonomy-term-reference,
+.field-type-taxonomy-term-reference,
 #region-content .item-list ul.pager li.pager-previous a,
 #region-content .item-list ul.pager li.pager-first span,
 #region-content .item-list ul.pager li.pager-first a,

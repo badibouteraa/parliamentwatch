@@ -1,0 +1,274 @@
+/* Below should fix menu being a few pixels away in some themes, and menus disappearing behind other stuff. */
+
+/******************************
+ Global CSS for ALL menu types
+******************************/
+*+html #block-nice-menus-1,
+*+html #region-menu {
+    z-index: 100;
+    position: relative;
+}
+#zone-menu ul.nice-menu li {
+    border-left: 1px solid #eee;
+    font-size: 15px;
+    line-height: 32px;
+    position: relative;
+    z-index: 100;
+}
+#zone-menu ul.nice-menu ul li {
+    border-right: 0;
+    font-size: 12px;
+    line-height: 25px;
+    padding: 0 16px;
+}
+#zone-menu ul.nice-menu li.first {
+    border-right: 1px solid #eee;
+}
+#zone-menu ul.nice-menu ul li.first {
+    border-right: 0;
+}
+#zone-menu ul.nice-menu a {
+    font-weight: normal;
+    color: #fff;
+    padding: 0 33px;
+    position: relative;
+    z-index: 100;
+}
+#zone-menu ul.nice-menu ul li.last a {
+    border-bottom: 0;
+}
+#zone-menu ul.nice-menu li.active-trail,
+#zone-menu ul.nice-menu li:hover {
+    background: url("../images/sprite.png") no-repeat scroll center -1641px transparent;
+}
+#zone-menu ul.nice-menu ul a {
+    padding: 0;
+    border-bottom: 1px dotted #fff;
+}
+#zone-menu ul.nice-menu li.menu-1428 li a {
+    padding: 0 0 0 21px;
+    background-image: url(../images/sprite_countryicons.png);
+}
+.menu-1702 a { /* bundestag */
+    background-position: -326px -51px;
+}
+.menu-1699 a { /* EU */
+    background-position: -367px -9px;
+}
+.menu-1703 a { /* BW */
+    background-position: -285px -93px;
+}
+.menu-1856 a { /* BY */
+    background-position: -246px -136px;
+}
+.menu-1857 a { /* BE */
+    background-position: -212px -178px;
+}
+.menu-1858 a { /* HH */
+    background-position: -89px -301px;
+}
+.menu-1859 a { /* HE */
+    background-position: -47px -346px;
+}
+.menu-1860 a { /* NI */
+    background-position: -328px -428px;
+}
+.menu-1861 a { /* NW */
+    background-position: -286px -470px;
+}
+.menu-1862 a { /* SH */
+    background-position: -89px -681px;
+}
+ul.nice-menu {
+    z-index: 100;
+    position: relative;
+}
+ul.nice-menu,
+ul.nice-menu ul {
+  list-style: none;
+    z-index: 100;
+}
+
+ul.nice-menu li {
+  float: right; /* LTR */
+}
+
+ul.nice-menu a {
+}
+
+ul.nice-menu ul {
+  top: 2.1em;
+  left: -1px; /* LTR */
+}
+
+ul.nice-menu ul li {
+  width: 193px;
+}
+
+/******************************
+ VERTICAL (left/right) menus
+******************************/
+
+/* This is the default width of all vertical menus. */
+ul.nice-menu-right, ul.nice-menu-left,
+ul.nice-menu-right li, ul.nice-menu-left li {
+  width: 12.5em;
+}
+
+/* VERTICAL menus where submenus pop RIGHT (default). */
+ul.nice-menu-right ul {
+  width: 12.5em;
+  left: 12.5em;
+  top: -1px;
+}
+
+ul.nice-menu-right ul ul {
+  width: 12.5em;
+  left: 12.5em;
+  top: -1px;
+}
+
+ul.nice-menu-right li.menuparent,
+ul.nice-menu-right li li.menuparent {
+}
+
+ul.nice-menu-right li.menuparent:hover,
+ul.nice-menu-right li li.menuparent:hover {
+}
+
+/* VERTICAL menus where submenus pop LEFT. */
+ul.nice-menu-left li ul {
+  width: 12.5em;
+  left: -12.65em;
+  top: -1px;
+}
+
+ul.nice-menu-left li ul li ul {
+  width: 12.5em;
+  left: -12.65em;
+  top: -1px;
+}
+
+ul.nice-menu-left li.menuparent,
+ul.nice-menu-left li li.menuparent {
+}
+
+ul.nice-menu-left li.menuparent:hover,
+ul.nice-menu-left li li.menuparent:hover {
+}
+
+ul.nice-menu-left a, ul.nice-menu-left ul a {
+  padding-left: 14px;
+}
+
+/******************************
+ HORIZONTAL (down) menus
+******************************/
+
+ul.nice-menu-down {
+  float: right; /* LTR */
+  border: 0;
+}
+
+ul.nice-menu-down li {
+}
+
+ul.nice-menu-down li li {
+  border-top: 0;
+}
+
+ul.nice-menu-down ul {
+  left: auto;
+  right: 0;
+  background: #ccc;background: rgb(155,155,155); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzliOWI5YiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3ZjdmN2YiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background-image: -moz-linear-gradient(top,  rgba(155,155,155,1) 0%, rgba(127,127,127,1) 100%); /* FF3.6+ */
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(155,155,155,1)), color-stop(100%,rgba(127,127,127,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(155,155,155,1) 0%,rgba(127,127,127,1) 100%); /* Chrome10+,Safari5.1+ */
+    background-image: -o-linear-gradient(top,  rgba(155,155,155,1) 0%,rgba(127,127,127,1) 100%); /* Opera 11.10+ */
+    background-image: -ms-linear-gradient(top,  rgba(155,155,155,1) 0%,rgba(127,127,127,1) 100%); /* IE10+ */
+    background-image: linear-gradient(top,  rgba(155,155,155,1) 0%,rgba(127,127,127,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b9b9b', endColorstr='#7f7f7f',GradientType=0 ); /* IE6-8 */
+    
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	opacity: .9;
+
+}
+
+ul.nice-menu-down ul li {
+  clear: both;
+}
+
+ul.nice-menu-down li ul li ul {
+  left: 193px; /* LTR */
+  top: -1px;
+}
+
+ul.nice-menu-down .menuparent a {
+  padding-right: 15px; /* LTR */
+}
+
+ul.nice-menu-down li.menuparent {
+}
+
+ul.nice-menu-down li.menuparent:hover {
+}
+
+ul.nice-menu-down li li.menuparent {
+}
+
+ul.nice-menu-down li li.menuparent:hover {
+}
+
+/******************************
+ Garland-specific CSS
+******************************/
+
+/**
+ * Global CSS for ALL menu types
+ */
+ul.nice-menu li {
+  margin: 0;
+  padding-left: 0; /* LTR */
+  background-image: none;
+}
+
+#header-region ul.nice-menu li {
+  margin: 0;
+  /* Padding rules are needed to deal with Garland's header line-height. */
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+
+#header-region ul.nice-menu ul {
+  top: 1.8em;
+  left: -1px; /* LTR */
+  border: 0;
+  margin-right: 0; /* LTR */
+}
+
+#header-region ul.nice-menu ul {
+  top: 1.7em;
+}
+
+/**
+ * HORIZONTAL (down) menus
+ */
+#header-region ul.nice-menu-down li ul li ul {
+  left: 12.5em; /* LTR */
+  top: -1px;
+}
+
+#header-region ul.nice-menu-down li.menuparent {
+}
+
+#header-region ul.nice-menu-down li.menuparent:hover {
+}
+
+#header-region ul.nice-menu-down li li.menuparent {
+}
+
+#header-region ul.nice-menu-down li li.menuparent:hover {
+}

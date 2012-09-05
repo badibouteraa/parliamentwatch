@@ -1,0 +1,57 @@
+/* //////////////////////////// slider ///////////////////// */
+
+.slider-item-act-button {
+    left: auto;
+    left: 65px;
+}
+.slider-item-act-text {
+    margin-left: 0;
+    margin-right: 177px;
+}
+#block-block-3 { /* newsletter box with same block in content */
+    padding: 14px 0 20px 76px;
+}
+#webform-component-slider-newsletter-email {
+    float: right;
+    margin-right: 0;
+    margin-left: 7px;
+}
+#webform-client-form-5332 #edit-submitted-newsletter-order-email {
+    margin-right: 0;
+    margin-left: 3px;
+    float: right;
+}
+#webform-client-form-5332 #edit-actions {
+    float: right;
+}
+#block-block-3 .content-wrapper {
+    padding: 15px 60px 15px 20px;
+}
+#block-views-slider-block .views-slideshow-cycle-main-frame-row-item {
+    margin: 14px 0 20px 95px;
+}
+
+#widget_pager_bottom_slider-block .active {
+    left: auto;
+    right: -10px;
+}
+#block-views-slider-block .close {
+    right: auto;
+    left: 6px;
+}
+.views-slideshow-controls-bottom {
+    right: auto;
+    left: 0;
+}
+#block-views-slider-block .views-slideshow-pager-field-item {
+    padding-right: 0;
+    padding-left: 38px;
+}
+#block-views-slider-block .item {
+    right: auto;
+    left: 0;
+}
+#block-views-slider-block .service-links li {
+    margin-left: 0;
+    margin-right: 12px;
+}

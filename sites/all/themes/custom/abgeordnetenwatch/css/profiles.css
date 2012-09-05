@@ -77,21 +77,21 @@ table.views-view-grid .row-last td {
 }
 
 
-
-/* frontpage */
+/* list */
  
-.view-pw-profiles-frontpage .pw-list-item {
+.pw-list-item .pw-list-item {
     position: relative;
 } 
 .pw-list-item .float-left .file-image {
     margin-bottom: 0;
-} 
-.view-pw-profiles-frontpage .link-profile a,
-.view-pw-profiles-frontpage a.link-profile {
+}
+.pw-list-item .link-profile a,
+.pw-list-item a.link-profile {
     position: absolute;
-    right: 0;
+    right: 0; /* LTR */
     bottom: 20px;
 }
+
 
 /* filters */
 

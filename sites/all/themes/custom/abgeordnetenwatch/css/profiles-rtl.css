@@ -1,0 +1,64 @@
+/* profiles */
+
+#views-exposed-form-profile-list-page .form-item-field-user-lname-value label {
+    float: right;
+}
+table.views-view-grid td.col-last {
+    border-left: 0 none;
+}
+table.views-view-grid td.col-first {
+    border-right: 0 none;
+}
+.user-profile .field-name-field-user-fname,
+.user-profile .field-name-field-user-lname {
+    float: right;
+}
+.user-profile .field-name-field-user-fname {
+    margin-left: 0.8ex;
+}
+.profiles-list-compact-wrapper .row {
+    margin: 0 0 2px -12px;    
+}
+.col-last .profiles-list-compact-wrapper h3 {
+    text-align: left;   
+}
+.col-last .profiles-list-compact-wrapper .row {
+    margin: 0 -12px 2px 0;
+    text-align: right;
+}
+.profiles-list-compact-wrapper:hover .element-hidden {
+    left: 0;
+    right: -13px;
+    
+}
+.col-last .profiles-list-compact-wrapper:hover .element-hidden {
+    right: auto;
+    left: 17px;
+}
+.profiles-list-compact-wrapper:hover .element-hidden .profile-image {
+    float: right;
+    margin: 0 0 0 14px;
+}
+.col-last .profiles-list-compact-wrapper:hover .element-hidden .profile-image {
+    float: left;
+    margin: 0 14px 0 0;
+}
+
+
+/* frontpage */
+
+.view-pw-profiles-frontpage .link-profile a,
+.view-pw-profiles-frontpage a.link-profile {
+    right: auto;
+    left: 0;
+}
+
+/* filters */
+
+#views-exposed-form-profile-list-page .form-item-field-user-lname-value {
+    float: right;
+    margin: 0 0 5px 5px;
+}
+#views-exposed-form-profile-list-page .form-item-field-user-lname-value label {
+    float: right;
+}
