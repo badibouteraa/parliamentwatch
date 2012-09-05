@@ -628,7 +628,7 @@ forward-form';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nice_menus_menu_1';
-  $strongarm->value = 'main-menu';
+  $strongarm->value = 'menu-main-menu-french';
   $export['nice_menus_menu_1'] = $strongarm;
 
   $strongarm = new stdClass();
