@@ -245,6 +245,7 @@ h1#page-title {
     border-bottom: 1px dotted #f63;
     padding-bottom: 15px !important;
     margin-bottom: 26px !important;
+    position: relative;
 }
 .node.view-mode-full {
     border-bottom: 0;
@@ -824,6 +825,7 @@ textarea:active {
     list-style: none;
 }
 .comment-count,
+.field-type-taxonomy-term-reference li,
 .field-type-taxonomy-term-reference li a {
     font-weight: normal;
     color: #666;
@@ -849,6 +851,7 @@ textarea:active {
 }
 
 /* forward */
+
 #forward-form #edit-instructions p:first-child {
     width: 100%;
     margin: 0 0 10px -10px;
@@ -866,6 +869,27 @@ textarea:active {
 #forward-form #edit-subject,
 #forward-form #edit-body {
     display: none;
+}
+
+
+/* polls */
+
+.poll-behavior {
+    display: inline-block;
+    font-size: 11px;
+    line-height: 16px;
+}
+.poll-behavior.yes {
+    background: #00cc00;
+}
+.poll-behavior.no {
+    background: #ff3333;
+}
+.poll-behavior.abstention {
+    background: #0033ff;
+}
+.poll-behavior.not-participate {
+    background: #999;
 }
 
 
@@ -1242,7 +1266,7 @@ a.form-submit:hover {
 
 /* icons */
 
-
+..field-type-taxonomy-term-reference,
 #region-content .item-list ul.pager li.pager-previous a,
 #region-content .item-list ul.pager li.pager-first span,
 #region-content .item-list ul.pager li.pager-first a,

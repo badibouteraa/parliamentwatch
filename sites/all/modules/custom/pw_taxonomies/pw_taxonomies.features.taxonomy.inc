@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * profiles.features.taxonomy.inc
+ * pw_taxonomies.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function profiles_taxonomy_default_vocabularies() {
+function pw_taxonomies_taxonomy_default_vocabularies() {
   return array(
     'committee' => array(
       'name' => 'Committee',

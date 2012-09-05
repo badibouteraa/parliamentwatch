@@ -462,8 +462,8 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
 
-  /* Display: Profiles list */
-  $handler = $view->new_display('page', 'Profiles list', 'page');
+  /* Display: Profiles list parliament */
+  $handler = $view->new_display('page', 'Profiles list parliament', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
@@ -477,6 +477,12 @@ function profiles_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
+
+  /* Display: Profile list commitees */
+  $handler = $view->new_display('block', 'Profile list commitees', 'block_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['block_description'] = 'Profile list commitees';
   $translatables['profile_list'] = array(
     t('Master'),
     t('more'),
@@ -511,8 +517,9 @@ function profiles_views_default_views() {
     t('Abgeordnete nach Namen filtern'),
     t('Geschlecht auswählen'),
     t('Gender (field_user_gender)'),
-    t('Profiles list'),
+    t('Profiles list parliament'),
     t('Sort by Name'),
+    t('Profile list commitees'),
   );
   $export['profile_list'] = $view;
 
