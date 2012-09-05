@@ -1,19 +1,17 @@
 <?php
 /**
  * @file
- * subsite_blocks.features.menu_links.inc
+ * subsite_blocks.features.uuid_menu_links.inc
  */
 
 /**
- * Implements hook_menu_default_menu_links().
+ * Implements hook_uuid_menu_default_menu_links().
  */
-function subsite_blocks_menu_default_menu_links() {
-  $menu_links = array();
+function subsite_blocks_uuid_menu_default_menu_links() {
+  $uuid_menu_links = array();
 
   // Exported menu link: main-menu:committees/assemblée-nationale-constituante
-  $menu_links['main-menu:committees/assemblée-nationale-constituante'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'committees/assemblée-nationale-constituante',
+  $uuid_menu_links['main-menu:committees/assemblée-nationale-constituante'] = array(
     'router_path' => 'committees',
     'link_title' => 'Committees',
     'options' => array(
@@ -27,11 +25,12 @@ function subsite_blocks_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '4',
+    'uuid_link_path' => 'committees/assemblée-nationale-constituante',
+    'uuid_menu_name' => 'main-menu',
+    'uuid_parent_path' => NULL,
   );
   // Exported menu link: main-menu:politicians/assemblée-nationale-constituante
-  $menu_links['main-menu:politicians/assemblée-nationale-constituante'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'politicians/assemblée-nationale-constituante',
+  $uuid_menu_links['main-menu:politicians/assemblée-nationale-constituante'] = array(
     'router_path' => 'politicians/%',
     'link_title' => 'Deputies',
     'options' => array(
@@ -45,11 +44,12 @@ function subsite_blocks_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '1',
+    'uuid_link_path' => 'politicians/assemblée-nationale-constituante',
+    'uuid_menu_name' => 'main-menu',
+    'uuid_parent_path' => NULL,
   );
   // Exported menu link: main-menu:votings/assemblée-nationale-constituante
-  $menu_links['main-menu:votings/assemblée-nationale-constituante'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'votings/assemblée-nationale-constituante',
+  $uuid_menu_links['main-menu:votings/assemblée-nationale-constituante'] = array(
     'router_path' => 'votings/%',
     'link_title' => 'Votings',
     'options' => array(
@@ -63,11 +63,12 @@ function subsite_blocks_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '5',
+    'uuid_link_path' => 'votings/assemblée-nationale-constituante',
+    'uuid_menu_name' => 'main-menu',
+    'uuid_parent_path' => NULL,
   );
   // Exported menu link: menu-about-us:<front>
-  $menu_links['menu-about-us:<front>'] = array(
-    'menu_name' => 'menu-about-us',
-    'link_path' => '<front>',
+  $uuid_menu_links['menu-about-us:<front>'] = array(
     'router_path' => '',
     'link_title' => 'Revue de presse',
     'options' => array(
@@ -82,11 +83,12 @@ function subsite_blocks_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '3',
+    'uuid_link_path' => '<front>',
+    'uuid_menu_name' => 'menu-about-us',
+    'uuid_parent_path' => NULL,
   );
   // Exported menu link: menu-about-us:politicians/assemblée-nationale-constituante
-  $menu_links['menu-about-us:politicians/assemblée-nationale-constituante'] = array(
-    'menu_name' => 'menu-about-us',
-    'link_path' => 'politicians/assemblée-nationale-constituante',
+  $uuid_menu_links['menu-about-us:politicians/assemblée-nationale-constituante'] = array(
     'router_path' => 'politicians/%',
     'link_title' => 'L\'Assemblée',
     'options' => array(
@@ -101,11 +103,12 @@ function subsite_blocks_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '1',
+    'uuid_link_path' => 'politicians/assemblée-nationale-constituante',
+    'uuid_menu_name' => 'menu-about-us',
+    'uuid_parent_path' => NULL,
   );
   // Exported menu link: menu-parliaments:politicians/assemblée-nationale-constituante
-  $menu_links['menu-parliaments:politicians/assemblée-nationale-constituante'] = array(
-    'menu_name' => 'menu-parliaments',
-    'link_path' => 'politicians/assemblée-nationale-constituante',
+  $uuid_menu_links['menu-parliaments:politicians/assemblée-nationale-constituante'] = array(
     'router_path' => 'politicians/%',
     'link_title' => 'Assemblée nationale constituante',
     'options' => array(
@@ -119,6 +122,9 @@ function subsite_blocks_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '1',
+    'uuid_link_path' => 'politicians/assemblée-nationale-constituante',
+    'uuid_menu_name' => 'menu-parliaments',
+    'uuid_parent_path' => NULL,
   );
   // Translatables
   // Included for use with string extractors like potx.
@@ -130,5 +136,5 @@ function subsite_blocks_menu_default_menu_links() {
   t('Votings');
 
 
-  return $menu_links;
+  return $uuid_menu_links;
 }
