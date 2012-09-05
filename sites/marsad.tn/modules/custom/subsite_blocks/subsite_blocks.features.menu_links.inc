@@ -10,94 +10,52 @@
 function subsite_blocks_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu:<front>
-  $menu_links['main-menu:<front>'] = array(
+  // Exported menu link: main-menu:committees/assemblée-nationale-constituante
+  $menu_links['main-menu:committees/assemblée-nationale-constituante'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Revue de presse',
+    'link_path' => 'committees/assemblée-nationale-constituante',
+    'router_path' => 'committees/%',
+    'link_title' => 'Committees',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'langcode' => 'fr',
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '3',
-  );
-  // Exported menu link: main-menu:about/trustees
-  $menu_links['main-menu:about/trustees'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'about/trustees',
-    'router_path' => 'about/trustees',
-    'link_title' => 'Board of Trustees',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'langcode' => 'fr',
     ),
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-50',
-    'parent_path' => 'node/2',
+    'weight' => '4',
   );
-  // Exported menu link: main-menu:node/2
-  $menu_links['main-menu:node/2'] = array(
+  // Exported menu link: main-menu:node/43
+  $menu_links['main-menu:node/43'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'node/2',
+    'link_path' => 'node/43',
     'router_path' => 'node/%',
-    'link_title' => 'À Propos',
+    'link_title' => 'About',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'langcode' => 'fr',
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '1',
-    'expanded' => '0',
-    'weight' => '7',
-  );
-  // Exported menu link: main-menu:node/3
-  $menu_links['main-menu:node/3'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/3',
-    'router_path' => 'node/%',
-    'link_title' => 'المرصد',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'langcode' => 'ar',
     ),
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '8',
+    'weight' => '6',
   );
   // Exported menu link: main-menu:politicians/assemblée-nationale-constituante
   $menu_links['main-menu:politicians/assemblée-nationale-constituante'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'politicians/assemblée-nationale-constituante',
     'router_path' => 'politicians/%',
-    'link_title' => 'L\'Assemblée',
+    'link_title' => 'Deputes',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'langcode' => 'fr',
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -105,6 +63,24 @@ function subsite_blocks_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '1',
+  );
+  // Exported menu link: main-menu:votings/assemblée-nationale-constituante
+  $menu_links['main-menu:votings/assemblée-nationale-constituante'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'votings/assemblée-nationale-constituante',
+    'router_path' => 'votings/%',
+    'link_title' => 'Votings',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '5',
   );
   // Exported menu link: menu-about-us:<front>
   $menu_links['menu-about-us:<front>'] = array(
@@ -124,44 +100,6 @@ function subsite_blocks_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '3',
-  );
-  // Exported menu link: menu-about-us:node/2
-  $menu_links['menu-about-us:node/2'] = array(
-    'menu_name' => 'menu-about-us',
-    'link_path' => 'node/2',
-    'router_path' => 'node/%',
-    'link_title' => 'À Propos',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'langcode' => 'fr',
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '7',
-  );
-  // Exported menu link: menu-about-us:node/3
-  $menu_links['menu-about-us:node/3'] = array(
-    'menu_name' => 'menu-about-us',
-    'link_path' => 'node/3',
-    'router_path' => 'node/%',
-    'link_title' => 'المرصد',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'langcode' => 'ar',
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '8',
   );
   // Exported menu link: menu-about-us:politicians/assemblée-nationale-constituante
   $menu_links['menu-about-us:politicians/assemblée-nationale-constituante'] = array(
@@ -202,12 +140,13 @@ function subsite_blocks_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
+  t('About');
   t('Assemblée nationale constituante');
-  t('Board of Trustees');
+  t('Committees');
+  t('Deputes');
   t('L\'Assemblée');
   t('Revue de presse');
-  t('À Propos');
-  t('المرصد');
+  t('Votings');
 
 
   return $menu_links;
