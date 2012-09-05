@@ -4,6 +4,6 @@ package = "Development"
 
 files[] = migrate_memberships.module
 
-version = "7.x-1.0-14062012"
+version = "7.x-1.0-05092012"
 core = "7.x"
 project = "migrate_memberships"

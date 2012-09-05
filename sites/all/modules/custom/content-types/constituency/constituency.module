@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the constituency feature.
- */
-
-include_once('constituency.features.inc');

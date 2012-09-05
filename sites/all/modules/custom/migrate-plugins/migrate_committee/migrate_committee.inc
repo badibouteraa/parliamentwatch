@@ -8,50 +8,6 @@ abstract class BasicMigrateCommittee extends Migration {
 
 }
 
-class CommitteeNodeMigration extends BasicMigrateCommittee {
-
-  public function __construct() {
-    parent::__construct();
-
-    $query = Database::getConnection('default', 'parlamentwatch')
-            ->select('legacy_committee', 'c');
-    $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
-    $query->fields('c', array('id', 'committee', 'txt'));
-    $query->fields('p', array('project', 'startdate'));
-	switch(variable_get('site_name')){
-		default:
-		    $query->condition('p.project_cmd', 0);
-			break;			
-	}
-
-    // Prepare mapping
-    $this->source = new MigrateSourceSQL($query);
-    $this->map = new MigrateSQLMap($this->machineName,
-                    array(
-                        'id' => array(
-                            'type' => 'int',
-                            'not null' => TRUE,
-                        )
-                    ),
-                    MigrateDestinationNode::getKeySchema()
-    );
-
-    $this->destination = new MigrateDestinationNode('committee');
-    $this->addFieldMapping('title', 'committee');
-    $this->addFieldMapping('body', 'txt');
-    $this->addFieldMapping('uid')->defaultValue(1); 
-    $this->addFieldMapping('created', 'startdate');
-    $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
-  }
-
-  public function prepareRow($current_row) {
-    if ($current_row->startdate < 1) {
-      $current_row->startdate = NULL;
-    }
-  }
-
-}
-
 class CommitteeTermMigration extends BasicMigrateCommittee {
 
   public function __construct() {
@@ -91,6 +47,9 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
 
     $this->destination = new MigrateDestinationTerm('committee');
     $this->addFieldMapping('name', 'committee'); 
+    $this->addFieldMapping('description', 'txt');
+// ->defaultValue('Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.')
+    $this->addFieldMapping('field_committee_picture', 'picture'); 
     $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('language','first_lang');
   }
@@ -109,23 +68,6 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
       $set->add_item($current_row)
       ->save();
     }
-    
-    switch($current_row->field_parliament){
-      case 'Assemblée nationale constituante':
-          $a_subterms = array('en'=>'Chairman', 'en'=>'Vice Chairman', 'fr'=>'Rapporteur', 'fr'=>'1er rapporteur adjoint', 'fr'=>'2ème rapporteur adjoint', 'en'=>'Member');
-        break;
-      default:
-          $a_subterms = array('en'=>'Chairman', 'en'=>'Vice Chairman', 'en'=>'Member', 'en'=>'Deputy Member');
-        break;
-    }
-
-    // add default subterms to term
-    foreach($a_subterms as $lang => $subterm){
-      $term = (object) array('vid' => $current_row->vid, 'name' => $subterm, 'parent' => $current_row->tid, 'language'=>$lang);
-      taxonomy_term_save($term);
-    }
-	// add default subterms to term
-    
   }
 
 }

@@ -8,49 +8,6 @@ abstract class BasicMigrateConstituency extends Migration {
 
 }
 
-class ConstituencyNodeMigration extends BasicMigrateConstituency {
-
-  public function __construct() {
-    parent::__construct();
-
-    $query = Database::getConnection('default', 'parlamentwatch')
-            ->select('legacy_constituency', 'c');
-    $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
-    $query->fields('c', array('id', 'constituency', 'zipcodes'));
-    $query->fields('p', array('project', 'startdate'));
-	switch(variable_get('site_name')){
-		default:
-		    $query->condition('p.project_cmd', 0);
-			break;			
-	}
-
-    $this->source = new MigrateSourceSQL($query);
-    $this->map = new MigrateSQLMap($this->machineName,
-                    array(
-                        'id' => array(
-                            'type' => 'int',
-                            'not null' => TRUE,
-                        )
-                    ),
-                    MigrateDestinationNode::getKeySchema()
-    );
-
-    $this->destination = new MigrateDestinationNode('constituency');
-    $this->addFieldMapping('title', 'constituency');
-    $this->addFieldMapping('uid')->defaultValue(1);
-    $this->addFieldMapping('created', 'startdate');
-    $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
-    $this->addFieldMapping('field_zipcodes', 'zipcodes')->separator(',')->arguments(array('create_term' => TRUE));
-  }
-
-  public function prepareRow($current_row) {
-    if ($current_row->startdate < 1) {
-      $current_row->startdate = NULL;
-    }
-  }
-
-}
-
 class ConstituencyTermMigration extends BasicMigrateConstituency {
 
   public function __construct() {

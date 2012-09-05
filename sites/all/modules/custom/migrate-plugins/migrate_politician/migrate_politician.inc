@@ -68,6 +68,7 @@ class PoliticianMigration extends BasicMigratePolitician {
     //$this->addFieldMapping('language','first_lang');
     $this->addFieldMapping('role_names')->defaultValue('politician');
     $this->addFieldMapping('field_user_parliament', 'project')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_user_party', 'party')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_user_picture', 'url_picture');
     //$arguments = new MigrateLinkFieldHandler();
     # ::arguments(array('source_field' => 'ext_ref_titles'));

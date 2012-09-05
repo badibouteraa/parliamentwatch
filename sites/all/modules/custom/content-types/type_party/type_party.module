@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the type_party feature.
- */
-
-include_once('type_party.features.inc');
