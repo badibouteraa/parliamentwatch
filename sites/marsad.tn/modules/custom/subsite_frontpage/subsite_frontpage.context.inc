@@ -38,12 +38,6 @@ function subsite_frontpage_context_default_contexts() {
           'region' => 'content',
           'weight' => '-9',
         ),
-        'views-dad15b4152fed370e03ab8a66c650c8d' => array(
-          'module' => 'views',
-          'delta' => 'dad15b4152fed370e03ab8a66c650c8d',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
       ),
     ),
   );

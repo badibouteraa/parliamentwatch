@@ -182,7 +182,7 @@ function subsite_conf_strongarm() {
     'alpha_toggle_breadcrumb' => 0,
     'alpha_toggle_page_title' => 1,
     'alpha_toggle_feed_icons' => 0,
-    'alpha_hidden_title' => 1,
+    'alpha_hidden_title' => 0,
     'alpha_hidden_site_name' => 1,
     'alpha_hidden_site_slogan' => 0,
     'alpha_region_dashboard_sidebar_force' => 0,

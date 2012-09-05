@@ -872,14 +872,16 @@ function profiles_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Additional information');
   t('Children');
+  t('Commitee');
+  t('Constituency');
   t('First Name');
   t('Gender');
   t('Last name');
   t('Marriage status');
-  t('Picture');
+  t('Parliament');
+  t('Party');
   t('Professional qualification');
   t('Profile picture');
-  t('Valid Date');
 
   return $fields;
 }
