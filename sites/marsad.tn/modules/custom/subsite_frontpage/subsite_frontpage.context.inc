@@ -26,9 +26,9 @@ function subsite_frontpage_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'block-2' => array(
+        'block-3' => array(
           'module' => 'block',
-          'delta' => '2',
+          'delta' => '3',
           'region' => 'content',
           'weight' => '-10',
         ),

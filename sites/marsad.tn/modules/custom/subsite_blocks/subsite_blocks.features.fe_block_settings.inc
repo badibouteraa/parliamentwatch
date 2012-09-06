@@ -43,6 +43,21 @@ function subsite_blocks_default_fe_block_settings() {
     'machine_name' => 'metanavi_addthis',
   );
 
+  $theme['block-social_media_footer'] = array(
+    'module' => 'block',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'social_media_footer',
+  );
+
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
     'delta' => 'breadcrumb',
@@ -318,6 +333,21 @@ function subsite_blocks_default_fe_block_settings() {
     'machine_name' => 'metanavi_addthis',
   );
 
+  $theme['block-social_media_footer'] = array(
+    'module' => 'block',
+    'theme' => 'marsad',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'postscript_fourth',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'social_media_footer',
+  );
+
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
     'delta' => 'breadcrumb',
@@ -591,6 +621,21 @@ function subsite_blocks_default_fe_block_settings() {
     'cache' => -1,
     'i18n_mode' => '0',
     'machine_name' => 'metanavi_addthis',
+  );
+
+  $theme['block-social_media_footer'] = array(
+    'module' => 'block',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'social_media_footer',
   );
 
   $theme['delta_blocks-breadcrumb'] = array(

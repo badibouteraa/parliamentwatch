@@ -41,6 +41,34 @@ h1#page-title {
     color: #7c97a3;
 }
 
+
+a#text_resize_decrease, a#text_resize_reset, a#text_resize_increase {
+    height: 21px;
+    margin: 0;
+    text-indent: -9000px;
+    width: 40px;
+}
+a#text_resize_decrease {
+    background-position: -298px -675px;
+}
+a#text_resize_decrease:hover {
+    background-position: -34px -938px;
+}
+a#text_resize_reset {
+    background-position: -360px -624px;
+    margin: 0 35px;
+}
+a#text_resize_reset:hover {
+    background-position: -96px -887px;
+}
+a#text_resize_increase {
+    background-position: -428px -565px;
+}
+a#text_resize_increase:hover {
+    background-position: -164px -828px;
+}
+
+
 #region-content .item-list ul.pager li.pager-previous a,
 #region-content .item-list ul.pager li.pager-first span,
 #region-content .item-list ul.pager li.pager-first a,
@@ -77,6 +105,8 @@ a.read-more,
 a.read-codex,
 .link-profile a,
 a.link-profile,
+.link-committees a,
+a.link-committees,
 blockquote:before {
     background-image: url("../images/sprite.png");
     background-repeat: no-repeat;
