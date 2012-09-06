@@ -530,14 +530,6 @@ forward-form';
       ),
       'file' => 'includes/locale.inc',
     ),
-    'locale-session' => array(
-      'callbacks' => array(
-        'language' => 'locale_language_from_session',
-        'switcher' => 'locale_language_switcher_session',
-        'url_rewrite' => 'locale_language_url_rewrite_session',
-      ),
-      'file' => 'includes/locale.inc',
-    ),
     'language-default' => array(
       'callbacks' => array(
         'language' => 'language_from_default',
@@ -628,7 +620,7 @@ forward-form';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nice_menus_menu_1';
-  $strongarm->value = 'menu-main-menu-french';
+  $strongarm->value = 'main-menu';
   $export['nice_menus_menu_1'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -89,8 +89,8 @@ function pw_taxonomies_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
+            0 => 0,
             'default' => 0,
             'image' => 'image',
             'video' => 0,
@@ -407,14 +407,11 @@ function pw_taxonomies_field_default_fields() {
     ),
   );
 
-
-
   // Translatables
   // Included for use with string extractors like potx.
-  t('Commitee');
-  t('Constituency');
   t('Parliament');
-  t('Party');
+  t('Picture');
+  t('Valid Date');
   t('Zipcodes');
 
   return $fields;
