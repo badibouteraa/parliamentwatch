@@ -25,8 +25,11 @@ body {
 #page {
     background: #fff;
 }
-#region-content { /* for module text_resize in IE */
-    line-height: 18px;
+#region-header-first {
+    min-height: 20px;
+}
+#region-content { 
+    line-height: 18px; /* for module text_resize in IE */
     margin-top: 7px;
 }
 #region-content .region-content-inner {
@@ -37,17 +40,16 @@ a {
     text-decoration: none;
     font-weight: bold;
 }
-h1, h2, h3 {
-    font-weight: normal;
-    line-height: 1.2em;
-}
 h1 a, h2 a, h3 a {
     font-weight: normal;
 }
 h1,
+.h1,
 h2,
 .h2,
 h3 {
+    font-weight: normal;
+    line-height: 1.2em;
     font-family: 'Times New Roman', Georgia, serif;
 }
 h1 {
@@ -67,6 +69,7 @@ h2,
     letter-spacing: 0.01ex;
 }
 h3 {
+    font-family: 'Times New Roman', Georgia, serif;
     font-size:20px;
     line-height: 22px;
     margin-bottom: 0.4em;
@@ -85,6 +88,9 @@ h4 {
     font-size: 12px;
     line-height: 1.5em;
     margin-bottom: 0;
+}
+.subtitle {
+    font-size: 11px;
 }
 p {
     margin-bottom: 1em;
@@ -156,6 +162,11 @@ a.link-profile {
 a.link-profile {
     padding-left: 26px;
     background-position: -462px -1698px;
+}
+.link-committees a,
+a.link-committees {
+    padding-left: 31px;
+    background-position: -487px -3012px;
 }
 .read-more a,
 a.read-more {
@@ -891,6 +902,17 @@ textarea:active {
 .poll-behavior .not-participate {
     background: #999;
 }
+#views-exposed-form-user-constituency-page {
+    width: 100%;
+}
+#region-content #views-exposed-form-user-constituency-page.ctools-auto-submit-full-form,
+#region-content #views-exposed-form-user-constituency-page .views-exposed-form .views-exposed-widget {
+    float: none;
+}
+#node_pw_poll_full_group_fieldset_polls_per_party legend {
+    padding-bottom: 1em;
+}
+
 
 
 /* /////////////////////////// forms /////////////////// */
@@ -1012,6 +1034,7 @@ a.form-submit:hover {
     font: 11px/1.2 Arial,sans-serif;
     padding: 2px 10px;
 }
+#views-exposed-form-user-constituency-page,
 #section-content form.compact-form,
 #section-content #comment-form {
     position: relative;
@@ -1137,7 +1160,8 @@ a.form-submit:hover {
 }
 .comment,
 #comment-form,
-#section-content form.compact-form {
+#section-content form.compact-form,
+#views-exposed-form-user-constituency-page {
     background: #f4f4f4; 
     border: 1px solid #dedede;
     -webkit-border-radius: 3px;
@@ -1307,6 +1331,8 @@ a.read-more,
 a.read-codex,
 .link-profile a,
 a.link-profile,
+.link-committees a,
+a.link-committees,
 blockquote:before {
     background-image: url("../images/sprite.png");
     background-repeat: no-repeat;

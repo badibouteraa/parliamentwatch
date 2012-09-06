@@ -5,6 +5,7 @@ table.views-view-grid {
 table.views-view-grid td {
     padding: 16px 22px;
     border: 1px solid #eee;
+    width: 33%;
 }
 table.views-view-grid td.col-first {
     border-left: 0;
