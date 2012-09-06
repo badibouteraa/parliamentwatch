@@ -28,14 +28,6 @@ function pw_committees_ds_field_settings_info() {
         'load_terms' => 1,
       ),
     ),
-    'field_committee_picture' => array(
-      'ft' => array(
-        'func' => 'theme_ds_field_expert',
-        'ow' => TRUE,
-        'ow-el' => 'div',
-        'ow-cl' => 'file-image float-left',
-      ),
-    ),
   );
   $export['taxonomy_term|committee|full'] = $ds_fieldsetting;
 
@@ -121,13 +113,11 @@ function pw_committees_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_committee_picture',
-        1 => 'description',
-        2 => 'users_of_committee',
+        0 => 'description',
+        1 => 'users_of_committee',
       ),
     ),
     'fields' => array(
-      'field_committee_picture' => 'ds_content',
       'description' => 'ds_content',
       'users_of_committee' => 'ds_content',
     ),

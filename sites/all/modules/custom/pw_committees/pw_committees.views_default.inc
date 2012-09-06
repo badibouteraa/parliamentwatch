@@ -22,7 +22,7 @@ function pw_committees_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Commitee terms';
+  $handler->display->display_options['title'] = 'Commitees';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -52,6 +52,7 @@ function pw_committees_views_default_views() {
   $handler->display->display_options['fields']['field_committee_picture']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_committee_picture']['element_class'] = 'file-image float-left';
   $handler->display->display_options['fields']['field_committee_picture']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_committee_picture']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_committee_picture']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_committee_picture']['settings'] = array(
     'image_style' => 'pw_landscape_l',
@@ -80,7 +81,10 @@ function pw_committees_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['path'] = 'taxonomy/term/[tid]';
   $handler->display->display_options['fields']['nothing']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
+  $handler->display->display_options['fields']['nothing']['element_class'] = 'float-right link-committees';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
@@ -95,7 +99,7 @@ function pw_committees_views_default_views() {
   $handler->display->display_options['path'] = 'committees';
   $translatables['pw_commitee_terms'] = array(
     t('Master'),
-    t('Commitee terms'),
+    t('Commitees'),
     t('more'),
     t('Apply'),
     t('Reset'),
