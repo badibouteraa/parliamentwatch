@@ -24,6 +24,11 @@ function pw_blocks_block_info(){
     //'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   
+  $blocks['pw_per_custom_lang_switch'] = array(
+    'info' => t('PW: Custom Language Switcher'),
+    //'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  
   
   return $blocks;
 }
@@ -70,11 +75,22 @@ function pw_blocks_block_view($delta = ''){
       $block['subject'] = 'chart party';
       $block['content'] = pw_blocks_get_chart($nid,'party');
     break;
-    
+    case 'pw_per_custom_lang_switch':
+      $block['subject'] = t('Languages');
+      $block['content'] = pw_blocks_get_custom_lang_switch();
+    break;
   
   }
   
   return $block;
+}
+
+function pw_blocks_get_custom_lang_switch(){
+  if (drupal_multilingual()) {
+    $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
+    $links = language_negotiation_get_switch_links($type, $path);
+    print_r($links);
+  }
 }
 
 function pw_blocks_get_accordian_data($uid = NULL, $tid = NULL, $vid = NULL){
@@ -211,12 +227,21 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
  * @param array $links
  * @param type $type
  * @param type $path
- * @return string 
+ * @return string
  */
 
 function pw_blocks_language_switch_links_alter(array &$links, $type, $path){
 
   foreach($links as $key => $link){
+    $href = explode('/',$link['href']);
+    $nid  = $href[1];
+    //echo "<pre>".print_r($link['language']->language)."</pre>";
+    if($href[0]=='node'){
+      $tres = db_query("SELECT nid FROM {node} WHERE tnid=:tnid AND language=:lang",array(':tnid'=>$nid,':lang'=>$link['language']->language));
+      $tnid = $tres->fetchObject();
+      $links[$key]['href'] = 'node/'.$tnid->nid;
+    }
+
     $links[$key]['title'] = '<span class="locale-translated-name">'.t($link['language']->name) .'</span>&nbsp;<span class="locale-native-name">'.$link['language']->native.'</span>';
     $links[$key]['html'] = TRUE;
     
