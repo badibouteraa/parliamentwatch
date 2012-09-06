@@ -48,7 +48,6 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
     $this->destination = new MigrateDestinationTerm('committee');
     $this->addFieldMapping('name', 'committee'); 
     $this->addFieldMapping('description', 'txt');
-// ->defaultValue('Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.')
     $this->addFieldMapping('field_committee_picture', 'picture'); 
     $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('language','first_lang');
@@ -68,6 +67,12 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
       $set->add_item($current_row)
       ->save();
     }
+  }
+
+  public function prepareRow($row){
+	if(empty($row->txt)){
+		$row->txt = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
+	}
   }
 
 }
