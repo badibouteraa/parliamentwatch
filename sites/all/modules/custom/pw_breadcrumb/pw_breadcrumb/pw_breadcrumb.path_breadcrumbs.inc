@@ -54,15 +54,15 @@ function pw_breadcrumb_path_breadcrumbs_settings_info() {
   $path_breadcrumb = new stdClass();
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'profiles_user';
-  $path_breadcrumb->name = 'Profiles user Bundestag';
+  $path_breadcrumb->name = 'Profiles user Assemblèe';
   $path_breadcrumb->path = 'user/%id';
   $path_breadcrumb->data = array(
     'titles' => array(
-      0 => '%id:field_user_parliament',
+      0 => 'Assemblée nationale constituante',
       1 => '%id:field_user_fname %id:field_user_lname',
     ),
     'paths' => array(
-      0 => 'politicians/%id:field_user_parliament',
+      0 => '/politicians/assembl%C3%A9e-nationale-constituante',
       1 => '<none>',
     ),
     'home' => 1,
@@ -77,33 +77,7 @@ function pw_breadcrumb_path_breadcrumbs_settings_info() {
       ),
     ),
     'access' => array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'role',
-          'settings' => array(
-            'rids' => array(
-              0 => 181527986,
-            ),
-          ),
-          'context' => 'id',
-          'not' => FALSE,
-        ),
-        1 => array(
-          'name' => 'entity_field_value:user:user:field_user_parliament',
-          'settings' => array(
-            'field_user_parliament' => array(
-              'und' => array(
-                0 => array(
-                  'tid' => '2',
-                ),
-              ),
-            ),
-            'field_user_parliament_tid' => '2',
-          ),
-          'context' => 'id',
-          'not' => FALSE,
-        ),
-      ),
+      'plugins' => array(),
       'logic' => 'and',
     ),
   );
