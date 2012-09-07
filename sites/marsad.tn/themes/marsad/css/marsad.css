@@ -34,7 +34,8 @@ h1#page-title {
 .views-table tr.even,
 .node-results li,
 .group-result .panel-flexible,
-.pw-list-item {
+.pw-list-item,
+hr {
     border-bottom: 1px dotted #7c97a3;
 }
 #block-delta-blocks-feed-icons .feed-link {
@@ -107,7 +108,10 @@ a.read-codex,
 a.link-profile,
 .link-committees a,
 a.link-committees,
-blockquote:before {
+.link-poll a,
+a.link-poll,
+blockquote:before,
+.collapse-processed .fieldset-title {
     background-image: url("../images/sprite.png");
     background-repeat: no-repeat;
 }

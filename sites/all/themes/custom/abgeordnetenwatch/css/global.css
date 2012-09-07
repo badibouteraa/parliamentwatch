@@ -40,6 +40,9 @@ a {
     text-decoration: none;
     font-weight: bold;
 }
+a:hover {
+    color: #999;
+}
 h1 a, h2 a, h3 a {
     font-weight: normal;
 }
@@ -94,6 +97,12 @@ h4 {
 }
 p {
     margin-bottom: 1em;
+}
+hr {
+    margin: 1em 0;
+    border: 0;
+    height: 1px;
+    border-bottom: 1px dotted #f63;
 }
 blockquote {
     padding: 12px 0 20px 24px;
@@ -161,30 +170,41 @@ a.link-profile {
 .link-profile a,
 a.link-profile {
     padding-left: 26px;
-    background-position: -462px -1698px;
+    background-position: -502px -1657px;
+}
+.link-profile a:hover,
+a.link-profile:hover {
+    background-position: -462px -1697px;
 }
 .link-committees a,
 a.link-committees {
     padding-left: 31px;
-    background-position: -487px -3012px;
+    background-position: -335px -1820px;
+}
+.link-committees a:hover,
+a.link-committees:hover {
+    background-position: -295px -1860px;
+}
+.link-poll a,
+a.link-poll {
+    padding-left: 26px;
+    background-position: -422px -1739px;
+}
+.link-poll a:hover,
+a.link-poll:hover {
+    background-position: -382px -1779px;
 }
 .read-more a,
 a.read-more {
     background-position: -723px -1942px;
 }
-.read-codex a,
-a.read-codex {
-    background-position: -568px -2100px;
-}
-.read-more a:hover,
-a.read-more:hover,
-.read-codex a:hover,
-a.read-codex:hover {
-    color: #999;
-}
 .read-more a:hover,
 a.read-more:hover {
     background-position: -683px -1982px;
+}
+.read-codex a,
+a.read-codex {
+    background-position: -568px -2100px;
 }
 .read-codex a:hover,
 a.read-codex:hover {
@@ -803,6 +823,10 @@ textarea:active {
 .file-image img {
     outline: 1px solid #ccc;
 }
+.no-outline img,
+img.no-outline {
+    outline: 0;
+}
 .comment-count,
 .icon-taxonomy {
     padding-left: 26px;
@@ -890,17 +914,38 @@ textarea:active {
     font-size: 11px;
     line-height: 16px;
 }
+.legend .poll-behavior {
+    margin-right: 64px;
+}
+.poll.legend {
+    margin-bottom: 27px;
+}
 .poll-behavior .yes {
     background: #00cc00;
 }
 .poll-behavior .no {
     background: #ff3333;
 }
-.poll-behavior .abstention {
+.poll-behavior .absent {
     background: #0033ff;
 }
-.poll-behavior .not-participate {
+.poll-behavior .blank {
     background: #999;
+}
+.poll-behavior .icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 7px;
+}
+.node-type-pw-poll .field-name-field-pw-views-reference {
+    margin-bottom: 40px;
+}
+.node-type-pw-poll .field-name-field-pw-views-reference .icon-taxonomy {
+    margin-left: 97px;
+}
+#region-content #views-exposed-form-user-constituency-page .views-exposed-form .views-exposed-widget {
+    padding: 0;
 }
 #views-exposed-form-user-constituency-page {
     width: 100%;
@@ -1224,8 +1269,9 @@ a.form-submit:hover {
 .comment .field-name-comment-body {
     padding: 0 10px 10px 10px;
 }
-.comment ul.links {
+#region-content .comment ul.links {
     border-top: 1px solid #fff;
+    margin: 0;
     padding: 10px;
 }
 .links.inline a,
@@ -1333,11 +1379,27 @@ a.read-codex,
 a.link-profile,
 .link-committees a,
 a.link-committees,
-blockquote:before {
+.link-poll a,
+a.link-poll,
+blockquote:before,
+.collapse-processed .fieldset-title {
     background-image: url("../images/sprite.png");
     background-repeat: no-repeat;
 }
 
+.collapse-processed a.fieldset-title {
+    padding-left: 15px;
+    background-position: -647px -2020px; 
+}
+.collapse-processed a.fieldset-title:hover {
+    background-position: -608px -2061px; 
+}
+.collapse-processed.collapsed a.fieldset-title {
+    background-position: -810px -1858px; 
+}
+.collapse-processed.collapsed a.fieldset-title:hover {
+    background-position: -770px -1898px;
+}
 
 /* /////////////////////////// content /////////////////// */
 
