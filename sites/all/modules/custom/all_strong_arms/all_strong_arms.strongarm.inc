@@ -205,6 +205,76 @@ comment-form';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_advanced_phrase_display';
+  $strongarm->value = 1;
+  $export['custom_search_advanced_phrase_display'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_advanced_type_article_display';
+  $strongarm->value = 1;
+  $export['custom_search_advanced_type_article_display'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_advanced_type_dialogue_display';
+  $strongarm->value = 1;
+  $export['custom_search_advanced_type_dialogue_display'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_advanced_type_page_display';
+  $strongarm->value = 1;
+  $export['custom_search_advanced_type_page_display'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_advanced_type_pw_poll_display';
+  $strongarm->value = 1;
+  $export['custom_search_advanced_type_pw_poll_display'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_advanced_type_slider_item_display';
+  $strongarm->value = 1;
+  $export['custom_search_advanced_type_slider_item_display'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_advanced_type_trustee_display';
+  $strongarm->value = 1;
+  $export['custom_search_advanced_type_trustee_display'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_advanced_type_webform_display';
+  $strongarm->value = 1;
+  $export['custom_search_advanced_type_webform_display'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_any_force';
+  $strongarm->value = 0;
+  $export['custom_search_any_force'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_any_restricts';
+  $strongarm->value = 0;
+  $export['custom_search_any_restricts'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_criteria_negative_display';
   $strongarm->value = 0;
   $export['custom_search_criteria_negative_display'] = $strongarm;
@@ -310,6 +380,20 @@ comment-form';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_filter';
+  $strongarm->value = 'disabled';
+  $export['custom_search_filter'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_filter_label';
+  $strongarm->value = 'Filter the results';
+  $export['custom_search_filter_label'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_image';
   $strongarm->value = '';
   $export['custom_search_image'] = $strongarm;
@@ -341,6 +425,36 @@ comment-form';
   $strongarm->name = 'custom_search_max_length';
   $strongarm->value = '128';
   $export['custom_search_max_length'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_node_types';
+  $strongarm->value = array(
+    'article' => 0,
+    'page' => 0,
+    'dialogue' => 0,
+    'pw_poll' => 0,
+    'slider_item' => 0,
+    'trustee' => 0,
+    'webform' => 0,
+  );
+  $export['custom_search_node_types'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_node_types_excluded';
+  $strongarm->value = array(
+    'slider_item' => 'slider_item',
+    'article' => 0,
+    'page' => 0,
+    'dialogue' => 0,
+    'pw_poll' => 0,
+    'trustee' => 0,
+    'webform' => 0,
+  );
+  $export['custom_search_node_types_excluded'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -377,6 +491,16 @@ comment-form';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_other';
+  $strongarm->value = array(
+    'ds_search' => 0,
+    'user' => 0,
+  );
+  $export['custom_search_other'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_paths';
   $strongarm->value = '';
   $export['custom_search_paths'] = $strongarm;
@@ -401,6 +525,62 @@ comment-form';
   $strongarm->name = 'custom_search_paths_selector_label_visibility';
   $strongarm->value = 1;
   $export['custom_search_paths_selector_label_visibility'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_results_advanced_search';
+  $strongarm->value = 0;
+  $export['custom_search_results_advanced_search'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_results_advanced_search_collapsed';
+  $strongarm->value = 0;
+  $export['custom_search_results_advanced_search_collapsed'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_results_advanced_search_collapsible';
+  $strongarm->value = 0;
+  $export['custom_search_results_advanced_search_collapsible'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_results_info_comment';
+  $strongarm->value = 0;
+  $export['custom_search_results_info_comment'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_results_info_date';
+  $strongarm->value = 0;
+  $export['custom_search_results_info_date'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_results_info_type';
+  $strongarm->value = 0;
+  $export['custom_search_results_info_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_results_info_user';
+  $strongarm->value = 0;
+  $export['custom_search_results_info_user'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_results_search';
+  $strongarm->value = 1;
+  $export['custom_search_results_search'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -447,9 +627,44 @@ comment-form';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_target';
+  $strongarm->value = '_self';
+  $export['custom_search_target'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_text';
   $strongarm->value = 'Search term';
   $export['custom_search_text'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_type_selector';
+  $strongarm->value = 'select';
+  $export['custom_search_type_selector'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_type_selector_all';
+  $strongarm->value = '-Any-';
+  $export['custom_search_type_selector_all'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_type_selector_label';
+  $strongarm->value = 'Search for';
+  $export['custom_search_type_selector_label'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'custom_search_type_selector_label_visibility';
+  $strongarm->value = 1;
+  $export['custom_search_type_selector_label_visibility'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -495,6 +710,140 @@ comment-form';
   $strongarm->name = 'ds_extras_hide_page_title';
   $strongarm->value = 1;
   $export['ds_extras_hide_page_title'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_group_by_type';
+  $strongarm->value = 1;
+  $export['ds_search_group_by_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_group_by_type_other';
+  $strongarm->value = 'Other';
+  $export['ds_search_group_by_type_other'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_group_by_type_other_wrapper';
+  $strongarm->value = 'markup';
+  $export['ds_search_group_by_type_other_wrapper'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_group_by_type_settings';
+  $strongarm->value = array(
+    'article' => array(
+      'status' => 1,
+      'label' => 'Results for article',
+      'wrapper' => 'fieldset',
+      'weight' => '0',
+    ),
+    'page' => array(
+      'status' => 1,
+      'label' => 'Results for basic page',
+      'wrapper' => 'fieldset',
+      'weight' => '0',
+    ),
+    'dialogue' => array(
+      'status' => 1,
+      'label' => 'Results for dialogue',
+      'wrapper' => 'fieldset',
+      'weight' => '0',
+    ),
+    'pw_poll' => array(
+      'status' => 1,
+      'label' => 'Results for pw poll',
+      'wrapper' => 'fieldset',
+      'weight' => '0',
+    ),
+    'slider_item' => array(
+      'status' => 0,
+      'label' => 'Results for slider item',
+      'wrapper' => 'fieldset',
+      'weight' => '0',
+    ),
+    'trustee' => array(
+      'status' => 1,
+      'label' => 'Results for trustee',
+      'wrapper' => 'fieldset',
+      'weight' => '0',
+    ),
+    'webform' => array(
+      'status' => 1,
+      'label' => 'Results for webform',
+      'wrapper' => 'fieldset',
+      'weight' => '0',
+    ),
+  );
+  $export['ds_search_group_by_type_settings'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_highlight';
+  $strongarm->value = 1;
+  $export['ds_search_highlight'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_highlight_selector';
+  $strongarm->value = '.view-mode-search_result';
+  $export['ds_search_highlight_selector'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_language';
+  $strongarm->value = 1;
+  $export['ds_search_language'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_node_form_alter';
+  $strongarm->value = 1;
+  $export['ds_search_node_form_alter'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_show_title';
+  $strongarm->value = 1;
+  $export['ds_search_show_title'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_type';
+  $strongarm->value = 'node';
+  $export['ds_search_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_variables';
+  $strongarm->value = 'none';
+  $export['ds_search_variables'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_search_view_mode';
+  $strongarm->value = 'search_result';
+  $export['ds_search_view_mode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ds_user_override_search_page';
+  $strongarm->value = 1;
+  $export['ds_user_override_search_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -970,20 +1319,6 @@ comment-form';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'preprocess_css';
-  $strongarm->value = 1;
-  $export['preprocess_css'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'preprocess_js';
-  $strongarm->value = 1;
-  $export['preprocess_js'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'print_display_comment_pw_poll';
   $strongarm->value = 0;
   $export['print_display_comment_pw_poll'] = $strongarm;
@@ -1007,9 +1342,9 @@ comment-form';
   $strongarm->api_version = 1;
   $strongarm->name = 'search_active_modules';
   $strongarm->value = array(
-    'node' => 'node',
     'ds_search' => 'ds_search',
     'user' => 'user',
+    'node' => 0,
   );
   $export['search_active_modules'] = $strongarm;
 
