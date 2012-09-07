@@ -17,7 +17,7 @@ class PoliticianMigration extends BasicMigratePolitician {
     $query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_user', 'u');
     $query->join('legacy_projects', 'p', 'u.cmd = p.cmd');
-    $query->fields('u', array('id', 'username', 'title', 'first_name', 'first_name_2nd_lang', 'last_name', 'last_name_2nd_lang', 'first_lang', 'second_lang', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'url_picture'));
+    $query->fields('u', array('id', 'username', 'title', 'first_name', 'first_name_2nd_lang', 'last_name', 'last_name_2nd_lang', 'first_lang', 'second_lang', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'url_picture', 'party'));
     $query->fields('p', array('project', 'startdate'));
     $query->condition('u.oldest', 1, '=');
 	switch(variable_get('site_name')){
