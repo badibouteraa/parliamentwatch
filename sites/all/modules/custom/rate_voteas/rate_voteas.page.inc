@@ -223,6 +223,40 @@ function rate_voteas_voting_form_submit($form, &$form_state){
     
   }*/
   $results = votingapi_set_votes($votes);
+  if(count($results)){
+    $node = node_load($nid);
+    //echo "<pre>".    print_r($node,1). "</pre>";
+    //die();
+    //Get Overview Chart from Google Chart API and save to node object
+    $overview_chart = pw_blocks_get_chart($nid, 'total', TRUE);
+    $overview_url = chart_url($overview_chart['overview']);
+    $overview_tmp_image = file_get_contents('http:'.$overview_url);
+    $overview_file = file_save_data($overview_tmp_image, 'public://'.$nid.'_overview.png', FILE_EXISTS_REPLACE);
+    //$overview_file['title'] = t('Overview');
+    $node->field_pw_overview_chart[LANGUAGE_NONE]['0']['fid'] = $overview_file->fid;
+    $node->field_pw_overview_chart[LANGUAGE_NONE]['0']['title'] = t('Overview');
+    //field_pw_party_charts
+    
+    $party_charts = pw_blocks_get_chart($nid, 'party', TRUE);
+    $i = 0;
+    //print_r($party_charts);
+    foreach($party_charts as $party => $data){
+      //print_r($data);
+     
+      //$party_chart = pw_blocks_get_chart($nid, 'party', TRUE);
+      $party_url = chart_url($data);
+      print $party_url;
+      $party_tmp_image = file_get_contents('http:'.$party_url);
+      $party_file = file_save_data($party_tmp_image, 'public://'.$nid.'_'.str_replace(' ','_',$party).'.png', FILE_EXISTS_REPLACE);
+      //$party_file['title'] = $party;
+      $node->field_pw_party_chart[LANGUAGE_NONE][$i]['fid'] = $party_file->fid;
+      $node->field_pw_party_chart[LANGUAGE_NONE][$i]['title'] = $party;
+      $i++;      
+    }
+    
+    //die();
+    node_save($node);
+  }
 }
 
 /**
@@ -376,3 +410,4 @@ function rate_voteas_theme() {
 
   return $theme_hooks;
 }
+

@@ -112,8 +112,9 @@ function pw_blocks_get_accordian_data($uid = NULL, $tid = NULL, $vid = NULL){
   
 }
 
-function pw_blocks_get_chart($nid = NULL, $type = 'total'){
+function pw_blocks_get_chart($nid = NULL, $type = 'total', $raw = NULL){
   $output = '';
+  $charts = array();
   $node = node_load($nid);
   $widgets = rate_get_active_widgets('node',$node->type);
   
@@ -158,7 +159,12 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
       }
       $i++;
     }
-   $output = theme('chart', array('chart' => $chart));
+    if($raw){
+      $charts['overview'] = $chart;
+    }else{
+      $output = theme('chart', array('chart' => $chart)); 
+    }
+    
    
   }else if($type == 'party'){
     
@@ -176,6 +182,7 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
     $result = db_query($query,$args);
     $gid = "";
     $chart = array();
+    
     while($rec = $result->fetchAssoc()){
         
         $parties[$rec['tid']]['name'] = $rec['name'];
@@ -212,14 +219,23 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total'){
       );
       $chart['#legends'] = $options['legends'];
       $chart['#data'] = $party['data'];
+      if($raw){
+        $charts[$party['name']] = $chart;
+      }else{
+        $output .= theme('chart',array('chart'=>$chart));
+      }
       
-      $output .= theme('chart',array('chart'=>$chart));
     }
     
   }
   //$chart['#mixed_axis_labels'][CHART_AXIS_Y_LEFT][0][] = chart_mixed_axis_range_label(0, $max_count);
   //$chart['#bar_size'] = chart_bar_size(, 0);
-  return $output;
+  if($raw){
+    return $charts;
+  }else{
+    return $output;
+  }
+  
 }
 
 /**
