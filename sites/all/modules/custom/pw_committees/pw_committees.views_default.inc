@@ -96,7 +96,7 @@ function pw_committees_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['path'] = 'committees';
+  $handler->display->display_options['path'] = 'committees/%';
   $translatables['pw_commitee_terms'] = array(
     t('Master'),
     t('Commitees'),
