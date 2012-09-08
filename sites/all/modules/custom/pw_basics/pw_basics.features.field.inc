@@ -251,7 +251,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-// Exported field: 'taxonomy_term-committee-field_committee_picture'
+  // Exported field: 'taxonomy_term-committee-field_committee_picture'
   $fields['taxonomy_term-committee-field_committee_picture'] = array(
     'field_config' => array(
       'active' => '1',
@@ -327,8 +327,8 @@ function pw_basics_field_default_fields() {
           ),
           'allowed_types' => array(
             'audio' => 0,
-            0 => 0,
             'default' => 0,
+            0 => 0,
             'image' => 'image',
             'video' => 0,
           ),
@@ -849,13 +849,13 @@ function pw_basics_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
+  t('Color');
   t('Enter a comma-separated list of words to describe your content.');
   t('Image');
-  t('Tags');
-  t('Upload an image to go with this article.');
-  t('Color');
   t('Parliament');
   t('Picture');
+  t('Tags');
+  t('Upload an image to go with this article.');
   t('Valid Date');
   t('Value');
   t('Zipcodes');
