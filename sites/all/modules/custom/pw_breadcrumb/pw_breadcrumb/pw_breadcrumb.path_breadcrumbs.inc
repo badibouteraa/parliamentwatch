@@ -55,7 +55,7 @@ function pw_breadcrumb_path_breadcrumbs_settings_info() {
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'profiles_user';
   $path_breadcrumb->name = 'Profiles user Assemblèe';
-  $path_breadcrumb->path = 'user/%id';
+  $path_breadcrumb->path = 'user/%uid';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => 'Assemblée nationale constituante',
@@ -68,7 +68,7 @@ function pw_breadcrumb_path_breadcrumbs_settings_info() {
     'home' => 1,
     'translatable' => 1,
     'arguments' => array(
-      'id' => array(
+      'uid' => array(
         'position' => 1,
         'argument' => 'entity_id:user',
         'settings' => array(
