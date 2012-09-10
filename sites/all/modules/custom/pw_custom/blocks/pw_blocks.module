@@ -249,12 +249,25 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total', $raw = NULL){
 function pw_blocks_language_switch_links_alter(array &$links, $type, $path){
 
   foreach($links as $key => $link){
+//print_r($link);
     $href = explode('/',$link['href']);
     $nid  = $href[1];
     //echo "<pre>".print_r($link['language']->language)."</pre>";
     if($href[0]=='node'){
       $tres = db_query("SELECT nid FROM {node} WHERE tnid=:tnid AND language=:lang",array(':tnid'=>$nid,':lang'=>$link['language']->language));
-      $tnid = $tres->fetchObject();
+      if($tres->rowCount() == 1){
+        $tnid = $tres->fetchObject();
+      }else{
+        $lang = variable_get('i18n_string_source_language');
+        $tres = db_query("SELECT tnid AS nid FROM {node} WHERE nid=:tnid AND language=:lang",array(':tnid'=>$nid,':lang'=>$lang));
+        if($tres->rowCount() == 1){
+          $tnid = $tres->fetchObject();
+        }else{
+          $tnid = new stdClass;
+          $tnid->nid = $nid;
+        }
+      }
+      
       $links[$key]['href'] = 'node/'.$tnid->nid;
     }
 
