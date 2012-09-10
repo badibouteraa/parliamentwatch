@@ -127,7 +127,7 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total', $raw = NULL){
   $colors = array(rtrim(implode('|', $options['colors']),'|'));
   if($type == 'total'){
     $chart = array(
-        '#title'=> 'CHART',
+        '#title'=> '',
         '#type'=>CHART_TYPE_BAR_V,
         '#chart_id'=>$type,
         '#size' => chart_size(200, 200),
@@ -204,7 +204,7 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total', $raw = NULL){
         }
       }
       $chart = array(
-        '#title'=> $party['name'],
+        '#title'=> '',
         '#type'=>CHART_TYPE_BAR_V,
         '#chart_id'=>$party['id'],
         '#size' => chart_size(200, 200),
