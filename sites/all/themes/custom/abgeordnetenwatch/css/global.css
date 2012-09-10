@@ -946,9 +946,6 @@ img.no-outline {
 #region-content #views-exposed-form-user-constituency-page .views-exposed-form .views-exposed-widget {
     padding: 0;
 }
-#views-exposed-form-user-constituency-page {
-    width: 100%;
-}
 #region-content #views-exposed-form-user-constituency-page.ctools-auto-submit-full-form,
 #region-content #views-exposed-form-user-constituency-page .views-exposed-form .views-exposed-widget {
     float: none;
