@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+
+div.horizontal-tabs .label-inline {
+    float: right;
+}
+
+.horizontal-tabs ul.horizontal-tabs-list li.selected a {
+    border-width: 1px 0 0 1px;
+    -webkit-box-shadow: 2px -1px 2px -1px #dedede;
+    -moz-box-shadow: 2px -1px 2px -1px #dedede;
+    box-shadow: 2px -1px 2px -1px #dedede;
+}
+div.horizontal-tabs .label-inline {
+    float: right;
+}

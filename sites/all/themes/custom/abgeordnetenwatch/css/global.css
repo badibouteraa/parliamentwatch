@@ -810,7 +810,6 @@ textarea:active {
     top: 0;
 }
 .file-image.float-left {
-    float: left;
     margin: 4px 14px 12px 0;
 }
 .file-image img {
@@ -915,7 +914,7 @@ img.no-outline {
     line-height: 16px;
 }
 .legend .poll-behavior {
-    margin-right: 64px;
+    margin-right: 57px;
 }
 .poll.legend {
     margin-bottom: 27px;
@@ -936,7 +935,7 @@ img.no-outline {
     display: inline-block;
     width: 12px;
     height: 12px;
-    margin-right: 7px;
+    margin: 0 7px;
 }
 .node-type-pw-poll .field-name-field-pw-views-reference {
     margin-bottom: 40px;
@@ -1418,7 +1417,7 @@ blockquote:before,
 }
 #region-content ol,
 #region-content ul {
-    margin-left:40px;
+    margin-left: 40px; /* LTR */
 }
 #region-content ol {
     list-style-type:decimal;

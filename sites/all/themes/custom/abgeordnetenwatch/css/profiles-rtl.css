@@ -45,12 +45,15 @@ table.views-view-grid td.col-first {
 }
 
 
-/* frontpage */
+/* list */
 
-.view-pw-profiles-frontpage .link-profile a,
-.view-pw-profiles-frontpage a.link-profile {
+.pw-list-item .link-profile a,
+.pw-list-item a.link-profile {
     right: auto;
     left: 0;
+}
+.node-type-pw-poll .field-name-field-pw-views-reference .icon-taxonomy {
+    margin-left: 0;
 }
 
 /* filters */

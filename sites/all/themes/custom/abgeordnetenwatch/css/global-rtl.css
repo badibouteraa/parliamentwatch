@@ -1,5 +1,22 @@
 @charset "utf-8";
 @import url("profiles-rtl.css");
+
+.float-right {
+    float: left;
+}
+.float-left {
+    float: right;
+}
+.float-left .file-image {
+    margin-right: 0;
+    margin-left: 14px;
+}
+.file-image.float-left {
+    margin: 4px 0 12px 14px;
+}
+.arrow-item {
+    background: transparent;
+}
 /* header */
 
 #zone-branding .logo-img {
@@ -17,15 +34,29 @@
 #region-user-second .block {
     float: left;
 }
-#region-user-second #block-print-print-links .content, #region-user-second #block-text-resize-0 .content, #region-user-second #block-locale-language .content {
+#region-user-second #block-print-print-links .content,
+#region-user-second #block-text-resize-0 .content,
+#region-user-second #block-locale-language .content,
+#region-user-second .block.addthis .content {
     right: auto;
     left: 0;
 }
-#region-user-second #block-user-login .content, #region-user-second #block-system-user-menu .content, #region-user-second #block-block-7 .content {
+#region-user-second #block-user-login .content,
+#region-user-second #block-system-user-menu .content {
     left: auto;
     right: 0;
 }
 
+/* addthis */
+
+.addthis_default_style .addthis_separator,
+.addthis_default_style .at300b,
+.addthis_default_style .at300bo,
+.addthis_default_style .at300m,
+.addthis_default_style .at300bs {
+    float: right;
+    margin-left: 4px;
+}
 
 /* content */
 
@@ -81,4 +112,22 @@
 #region-content .item-list ul.pager li.pager-first span,
 #region-content .item-list ul.pager li.pager-first a:hover {
     background-position: right -3775px;
+}
+
+/* polls */
+
+.legend .poll-behavior {
+    margin-right: 0;
+    margin-left: 57px;
+}
+
+
+/* /////////////////////////// content /////////////////// */
+
+/* reset the alpha-reset.css for lists in the content and display them how they appear in the wysiwig */
+
+#region-content ol,
+#region-content ul {
+    margin-left: 0;
+    margin-right: 40px;
 }
