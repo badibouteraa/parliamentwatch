@@ -1141,15 +1141,15 @@ a.form-submit:hover {
 
 /* /////////////////////////// addthis ///////////// */
 
-#views_slideshow_cycle_div_slider-block_1 .at300b,
-#views_slideshow_cycle_div_slider-block_1 .at300m {
+#views_slideshow_cycle_teaser_section_slider-block .at300b,
+#views_slideshow_cycle_teaser_section_slider-block .at300m {
     display: block;
     float: left;
     width: 102px;
     color: #999;
     font-weight: normal;
 }
-#views_slideshow_cycle_div_slider-block_1 .addthis_button_favorites {
+#views_slideshow_cycle_teaser_section_slider-block .addthis_button_favorites {
     clear: left;
 }
 .addthis_toolbox .at16nc {
@@ -1161,7 +1161,7 @@ a.form-submit:hover {
     padding: 0;
     margin: 4px 0;
 }
-#views_slideshow_cycle_div_slider-block_1 .icon-share {
+#views_slideshow_cycle_teaser_section_slider-block .icon-share {
     padding-left: 26px;
     background-position: -680px -1px;
     margin: 2px 0 0 0;
@@ -1351,7 +1351,7 @@ a.form-submit:hover {
 .comment-reply,
 .comment .submitted .author,
 #block-delta-blocks-feed-icons .content,
-#views_slideshow_cycle_div_slider-block_1 .icon-share,
+#views_slideshow_cycle_teaser_section_slider-block .icon-share,
 #comment-form #edit-author--2,
 #forward-form #edit-instructions p:first-child,
 #block-views-blog-block-1 .views-row,
