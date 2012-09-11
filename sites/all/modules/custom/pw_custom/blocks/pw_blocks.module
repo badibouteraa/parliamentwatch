@@ -274,7 +274,6 @@ function pw_blocks_form_alter(&$form, &$form_state, $form_id){
   if($form_id == "search_api_page_search_form_content_search"){
     $form['pw_search_type'] = array(
       '#type'=>'radios',
-      '#title'=> t('Search Index'),
       '#options' => array(t('Content'), t('Users')),
     );
     $form['#submit'][] = 'pw_blocks_custom_sapi_submit';
