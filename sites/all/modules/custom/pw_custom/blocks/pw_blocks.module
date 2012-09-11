@@ -246,34 +246,43 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total', $raw = NULL){
  * @return string
  */
 
-function pw_blocks_language_switch_links_alter(array &$links, $type, $path){
-
+function pw_blocks_language_switch_links_alter(array &$links, $type, $path){;
   foreach($links as $key => $link){
 //print_r($link);
     $href = explode('/',$link['href']);
-    $nid  = $href[1];
-    //echo "<pre>".print_r($link['language']->language)."</pre>";
-    if($href[0]=='node'){
-      $tres = db_query("SELECT nid FROM {node} WHERE tnid=:tnid AND language=:lang",array(':tnid'=>$nid,':lang'=>$link['language']->language));
-      if($tres->rowCount() == 1){
-        $tnid = $tres->fetchObject();
-      }else{
-        $lang = variable_get('i18n_string_source_language');
-        $tres = db_query("SELECT tnid AS nid FROM {node} WHERE nid=:tnid AND language=:lang",array(':tnid'=>$nid,':lang'=>$lang));
-        if($tres->rowCount() == 1){
-          $tnid = $tres->fetchObject();
-        }else{
-          $tnid = new stdClass;
-          $tnid->nid = $nid;
-        }
-      }
+    if($href[0] == 'node' && is_numeric($href[1])){
+    	$nid  = $href[1];
+    	$tres = db_query("SELECT tnid FROM {node} WHERE nid=:nid",array(':nid'=>$nid));
+    	if($tres->rowCount() == 1){
+      	$tnid = $tres->fetchObject();
+      	$i18_nids_res = db_query("SELECT nid, language FROM {node} WHERE tnid=:tnid",array(':tnid'=>$tnid->tnid));
+      	while($i18_nids = $i18_nids_res->fetchObject()){
+      		$nids[$i18_nids->language] = $i18_nids->nid;
+      	}
+      	$links[$key]['href'] = 'node/'.$nids[$link['language']->language];
+    	} 
       
-      $links[$key]['href'] = 'node/'.$tnid->nid;
-    }
-
-    $links[$key]['title'] = '<span class="locale-translated-name">'.t($link['language']->name) .'</span>&nbsp;<span class="locale-native-name">'.$link['language']->native.'</span>';
-    $links[$key]['html'] = TRUE;
-    
+		}    
+//    print_r($href);
+    	$links[$key]['title'] = '<span class="locale-translated-name">'.t($link['language']->name) .'</span>&nbsp;<span class="locale-native-name">'.$link['language']->native.'</span>';
+    	$links[$key]['html'] = TRUE;
   }
   return $links;
+}
+
+function pw_blocks_form_alter(&$form, &$form_state, $form_id){
+  if($form_id == "search_api_page_search_form_content_search"){
+    $form['pw_search_type'] = array(
+      '#type'=>'radios',
+      '#title'=> t('Search Index'),
+      '#options' => array(t('Content'), t('Users')),
+    );
+    $form['#submit'][] = 'pw_blocks_custom_sapi_submit';
+  }
+}
+
+function pw_blocks_custom_sapi_submit($form, $form_state){
+  if($form_state['values']['pw_search_type'] == 1){
+    drupal_goto('search/persons/'.$form_state['values']['keys_1']);
+  }
 }
