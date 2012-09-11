@@ -50,10 +50,10 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
     $this->addFieldMapping('description', 'txt');
     $this->addFieldMapping('field_committee_picture', 'picture'); 
     $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
-    $this->addFieldMapping('language','first_lang');
+    // $this->addFieldMapping('language','first_lang');
   }
 
-  public function complete($current_row) {
+ /* public function complete($current_row) {
     
     if($this->sourceValues->second_lang){
       $translations = array($current_row->language=> $current_row,$this->sourceValues->second_lang => $this->sourceValues->committee_2nd_lang);
@@ -68,6 +68,7 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
       ->save();
     }
   }
+*/
 
   public function prepareRow($row){
 	if(empty($row->txt)){

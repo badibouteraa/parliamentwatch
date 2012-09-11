@@ -1041,6 +1041,25 @@ comment-form';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'language_negotiation_language_content';
+  $strongarm->value = array(
+    'locale-interface' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_interface',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'language-default' => array(
+      'callbacks' => array(
+        'language' => 'language_from_default',
+      ),
+    ),
+  );
+  $export['language_negotiation_language_content'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'locale_language_providers_weight_language';
   $strongarm->value = array(
     'locale-url' => '-8',
@@ -1134,14 +1153,14 @@ comment-form';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nice_menus_menu_1';
-  $strongarm->value = 'main-menu';
+  $strongarm->value = 'menu-main-menu-fr';
   $export['nice_menus_menu_1'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nice_menus_name_1';
-  $strongarm->value = 'Nice menu 1';
+  $strongarm->value = 'Nice menu FR';
   $export['nice_menus_name_1'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1257,7 +1276,7 @@ comment-form';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'page_cache_maximum_age';
-  $strongarm->value = '600';
+  $strongarm->value = '1800';
   $export['page_cache_maximum_age'] = $strongarm;
 
   $strongarm = new stdClass();

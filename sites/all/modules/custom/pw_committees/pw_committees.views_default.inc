@@ -92,32 +92,19 @@ function pw_committees_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['value'] = array(
     'committee' => 'committee',
   );
+  /* Filter criterion: Taxonomy term: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+    'und' => 'und',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'committees/%';
-  $translatables['pw_commitee_terms'] = array(
-    t('Master'),
-    t('Commitees'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('.'),
-    t(','),
-    t('Go to commitee'),
-    t('Page'),
-  );
   $export['pw_commitee_terms'] = $view;
 
   return $export;
