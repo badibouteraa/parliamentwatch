@@ -35,7 +35,9 @@ h1#page-title {
 .node-results li,
 .group-result .panel-flexible,
 .pw-list-item,
-hr {
+hr,
+#region-content ol.search-results li,
+.search-results article {
     border-bottom: 1px dotted #7c97a3;
 }
 #block-delta-blocks-feed-icons .feed-link {
@@ -69,6 +71,16 @@ a#text_resize_increase:hover {
     background-position: -164px -828px;
 }
 
+
+/* search */
+
+#search-api-page-search-form .form-submit,
+#search-api-page-search-form-content-search .form-submit {
+    background: url(../images/ic_search.png) no-repeat center;
+}
+
+
+/* icons */
 
 #region-content .item-list ul.pager li.pager-previous a,
 #region-content .item-list ul.pager li.pager-first span,
