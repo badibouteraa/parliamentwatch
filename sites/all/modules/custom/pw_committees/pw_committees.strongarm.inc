@@ -24,7 +24,17 @@ function pw_committees_strongarm() {
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'path' => array(
+          'weight' => '2',
+        ),
+        'name' => array(
+          'weight' => '0',
+        ),
+        'description' => array(
+          'weight' => '1',
+        ),
+      ),
       'display' => array(
         'description' => array(
           'default' => array(

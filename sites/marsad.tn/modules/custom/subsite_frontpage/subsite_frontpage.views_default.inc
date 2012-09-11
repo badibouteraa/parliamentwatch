@@ -57,6 +57,7 @@ function subsite_frontpage_views_default_views() {
   );
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'suiv';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'arrow-item pw-list-item clearfix';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
@@ -134,7 +135,7 @@ function subsite_frontpage_views_default_views() {
   $handler->display->display_options['fields']['view_user']['element_class'] = 'float-right link-profile';
   $handler->display->display_options['fields']['view_user']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_user']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['view_user']['text'] = 'Go to profile';
+  $handler->display->display_options['fields']['view_user']['text'] = 'Consulter le profil';
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
@@ -160,7 +161,7 @@ function subsite_frontpage_views_default_views() {
   $handler->display->display_options['filters']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   $handler->display->display_options['filters']['field_user_constituency_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['operator_id'] = 'field_user_constituency_tid_op';
-  $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['label'] = 'Constituency';
+  $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['label'] = 'Circonscription';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['operator'] = 'field_user_constituency_tid_op';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['identifier'] = 'field_user_constituency_tid';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['remember_roles'] = array(
@@ -252,32 +253,6 @@ function subsite_frontpage_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'home';
-  $translatables['pw_profiles_frontpage'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('<h4>[field_user_fname]'),
-    t('[field_user_lname],'),
-    t('[field_user_party]</h4>'),
-    t('Go to profile'),
-    t('Constituency'),
-    t('Party'),
-    t('Gender'),
-    t('Last name'),
-    t('Last name (field_user_lname)'),
-    t('Page'),
-  );
   $export['pw_profiles_frontpage'] = $view;
 
   return $export;

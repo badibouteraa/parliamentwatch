@@ -35,7 +35,7 @@ function pw_poll_ds_field_settings_info() {
     'body' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
-        'lb' => 'Backgrund information',
+        'lb' => 'Background information',
         'lb-el' => 'h3',
         'lb-col' => TRUE,
         'ow' => TRUE,
@@ -137,8 +137,8 @@ function pw_poll_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'pw_poll_votes_total',
         1 => 'group_fieldset_polls_per_party',
-        2 => 'field_pw_views_reference',
-        3 => 'poll_votes_per_party_block_ds',
+        2 => 'poll_votes_per_party_block_ds',
+        3 => 'field_pw_views_reference',
         4 => 'body',
         5 => 'comments',
       ),
@@ -146,8 +146,8 @@ function pw_poll_ds_layout_settings_info() {
     'fields' => array(
       'pw_poll_votes_total' => 'ds_content',
       'group_fieldset_polls_per_party' => 'ds_content',
-      'field_pw_views_reference' => 'ds_content',
       'poll_votes_per_party_block_ds' => 'ds_content',
+      'field_pw_views_reference' => 'ds_content',
       'body' => 'ds_content',
       'comments' => 'ds_content',
     ),
