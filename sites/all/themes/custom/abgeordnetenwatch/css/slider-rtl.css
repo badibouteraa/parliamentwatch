@@ -8,9 +8,6 @@
     margin-left: 0;
     margin-right: 177px;
 }
-#block-block-3 { /* newsletter box with same block in content */
-    padding: 14px 0 20px 76px;
-}
 #webform-component-slider-newsletter-email {
     float: right;
     margin-right: 0;
@@ -23,9 +20,6 @@
 }
 #webform-client-form-5332 #edit-actions {
     float: right;
-}
-#block-block-3 .content-wrapper {
-    padding: 15px 60px 15px 20px;
 }
 #block-views-slider-block .views-slideshow-cycle-main-frame-row-item {
     margin: 14px 0 20px 95px;

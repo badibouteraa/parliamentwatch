@@ -17,6 +17,8 @@
 .arrow-item {
     background: transparent;
 }
+
+
 /* header */
 
 #zone-branding .logo-img {
@@ -84,7 +86,17 @@
 }
 
 
+/* newsletter subscribe */
+
+#section-content .block.newsletter-subscribe { /* newsletter box with same block as teh slider in content */
+    padding: 14px 0 20px 76px;
+}
+#section-content .block.newsletter-subscribe .content-wrapper {
+    padding: 15px 60px 15px 20px;
+}
+
 /* pager */
+
 #region-content .item-list ul.pager li.pager-next a,
 #region-content .item-list ul.pager li.pager-last span,
 #region-content .item-list ul.pager li.pager-last a {
