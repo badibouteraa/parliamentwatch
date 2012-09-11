@@ -91,7 +91,7 @@ function profiles_field_group_info() {
       'label' => 'Basics',
       'instance_settings' => array(
         'classes' => '',
-        'description' => 'Basic Information',
+        'description' => '<?php t(\'Basic information\'); ?>',
       ),
       'formatter' => 'open',
     ),
