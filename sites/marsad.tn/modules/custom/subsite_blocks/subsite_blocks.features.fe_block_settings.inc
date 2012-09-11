@@ -58,6 +58,21 @@ function subsite_blocks_default_fe_block_settings() {
     'machine_name' => 'social_media_footer',
   );
 
+  $theme['block-introduction'] = array(
+    'module' => 'block',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => '<front>',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'introduction',
+  );
+
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
     'delta' => 'breadcrumb',
@@ -133,6 +148,36 @@ function subsite_blocks_default_fe_block_settings() {
     'i18n_mode' => '0',
   );
 
+  $theme['menu-menu-main-menu-ar'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-main-menu-ar',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-main-menu-fr'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-main-menu-fr',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
   $theme['menu-menu-parliaments'] = array(
     'module' => 'menu',
     'delta' => 'menu-parliaments',
@@ -151,6 +196,21 @@ function subsite_blocks_default_fe_block_settings() {
   $theme['nice_menus-1'] = array(
     'module' => 'nice_menus',
     'delta' => '1',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '<none>',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['nice_menus-2'] = array(
+    'module' => 'nice_menus',
+    'delta' => '2',
     'theme' => 'bartik',
     'status' => 0,
     'weight' => '0',
@@ -322,7 +382,7 @@ function subsite_blocks_default_fe_block_settings() {
     'module' => 'block',
     'theme' => 'marsad',
     'status' => '1',
-    'weight' => '0',
+    'weight' => '-34',
     'region' => 'user_second',
     'custom' => '0',
     'visibility' => '0',
@@ -348,13 +408,28 @@ function subsite_blocks_default_fe_block_settings() {
     'machine_name' => 'social_media_footer',
   );
 
+  $theme['block-introduction'] = array(
+    'module' => 'block',
+    'theme' => 'marsad',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'content',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => '<front>',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'introduction',
+  );
+
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
     'delta' => 'breadcrumb',
     'theme' => 'marsad',
-    'status' => '1',
+    'status' => 0,
     'weight' => '-22',
-    'region' => 'header_first',
+    'region' => '',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
@@ -398,7 +473,7 @@ function subsite_blocks_default_fe_block_settings() {
     'delta' => 'language',
     'theme' => 'marsad',
     'status' => '1',
-    'weight' => '-26',
+    'weight' => '-36',
     'region' => 'user_second',
     'custom' => '0',
     'visibility' => '0',
@@ -415,6 +490,36 @@ function subsite_blocks_default_fe_block_settings() {
     'status' => '1',
     'weight' => '0',
     'region' => 'postscript_second',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-main-menu-ar'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-main-menu-ar',
+    'theme' => 'marsad',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-main-menu-fr'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-main-menu-fr',
+    'theme' => 'marsad',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
@@ -441,6 +546,21 @@ function subsite_blocks_default_fe_block_settings() {
   $theme['nice_menus-1'] = array(
     'module' => 'nice_menus',
     'delta' => '1',
+    'theme' => 'marsad',
+    'status' => '1',
+    'weight' => '0',
+    'region' => 'menu',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '<none>',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['nice_menus-2'] = array(
+    'module' => 'nice_menus',
+    'delta' => '2',
     'theme' => 'marsad',
     'status' => '1',
     'weight' => '0',
@@ -548,7 +668,7 @@ function subsite_blocks_default_fe_block_settings() {
     'delta' => '0',
     'theme' => 'marsad',
     'status' => '1',
-    'weight' => '-26',
+    'weight' => '-35',
     'region' => 'user_second',
     'custom' => '0',
     'visibility' => '0',
@@ -638,6 +758,21 @@ function subsite_blocks_default_fe_block_settings() {
     'machine_name' => 'social_media_footer',
   );
 
+  $theme['block-introduction'] = array(
+    'module' => 'block',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => '<front>',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'introduction',
+  );
+
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
     'delta' => 'breadcrumb',
@@ -713,6 +848,36 @@ function subsite_blocks_default_fe_block_settings() {
     'i18n_mode' => '0',
   );
 
+  $theme['menu-menu-main-menu-ar'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-main-menu-ar',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['menu-menu-main-menu-fr'] = array(
+    'module' => 'menu',
+    'delta' => 'menu-main-menu-fr',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
   $theme['menu-menu-parliaments'] = array(
     'module' => 'menu',
     'delta' => 'menu-parliaments',
@@ -731,6 +896,21 @@ function subsite_blocks_default_fe_block_settings() {
   $theme['nice_menus-1'] = array(
     'module' => 'nice_menus',
     'delta' => '1',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '<none>',
+    'cache' => -1,
+    'i18n_mode' => '0',
+  );
+
+  $theme['nice_menus-2'] = array(
+    'module' => 'nice_menus',
+    'delta' => '2',
     'theme' => 'seven',
     'status' => 0,
     'weight' => '0',
