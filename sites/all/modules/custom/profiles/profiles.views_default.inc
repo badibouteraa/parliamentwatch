@@ -26,37 +26,14 @@ function profiles_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access user profiles';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan'] = '-1';
   $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
   $handler->display->display_options['cache']['output_lifespan'] = '-1';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Alle Filter zurücksetzen';
-  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['bef'] = array(
-    'sort' => array(
-      'bef_format' => 'default',
-      'combine' => 1,
-      'reset' => 0,
-      'reset_label' => '',
-    ),
-    'field_user_lname_value' => array(
-      'more_options' => array(
-        'bef_filter_description' => '',
-      ),
-    ),
-    'field_user_gender_value' => array(
-      'bef_format' => 'bef_ul',
-      'more_options' => array(
-        'bef_select_all_none' => 0,
-        'bef_collapsible' => 0,
-        'bef_filter_description' => '',
-      ),
-    ),
-  );
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '21';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -211,7 +188,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['view_user']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['view_user']['element_wrapper_class'] = 'row link-profile';
   $handler->display->display_options['fields']['view_user']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['view_user']['text'] = 'Go to profile';
+  $handler->display->display_options['fields']['view_user']['text'] = 'Consulter le profil';
   /* Field: | more info end */
   $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
@@ -264,19 +241,19 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['operator'] = 'field_user_lname_value_op';
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['identifier'] = 'field_user_lname_value';
   $handler->display->display_options['filters']['field_user_lname_value']['is_grouped'] = TRUE;
-  $handler->display->display_options['filters']['field_user_lname_value']['group_info']['label'] = 'Filter by name';
+  $handler->display->display_options['filters']['field_user_lname_value']['group_info']['label'] = 'Filtrer par nom';
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['identifier'] = 'field_user_lname_value';
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['widget'] = 'radios';
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['group_items'] = array(
     1 => array(
-      'title' => 'Ä',
-      'operator' => 'starts',
-      'value' => 'Ä',
-    ),
-    2 => array(
       'title' => 'A',
       'operator' => 'starts',
       'value' => 'A',
+    ),
+    2 => array(
+      'title' => 'B',
+      'operator' => 'starts',
+      'value' => 'B',
     ),
     3 => array(
       'title' => 'C',
@@ -284,134 +261,119 @@ function profiles_views_default_views() {
       'value' => 'C',
     ),
     4 => array(
-      'title' => 'B',
-      'operator' => 'starts',
-      'value' => 'B',
-    ),
-    5 => array(
-      'title' => 'F',
-      'operator' => 'starts',
-      'value' => 'F',
-    ),
-    6 => array(
-      'title' => 'K',
-      'operator' => 'starts',
-      'value' => 'K',
-    ),
-    7 => array(
-      'title' => 'L',
-      'operator' => 'starts',
-      'value' => 'L',
-    ),
-    8 => array(
-      'title' => 'M',
-      'operator' => 'starts',
-      'value' => 'M',
-    ),
-    9 => array(
-      'title' => 'J',
-      'operator' => 'starts',
-      'value' => 'J',
-    ),
-    10 => array(
-      'title' => 'H',
-      'operator' => 'starts',
-      'value' => 'H',
-    ),
-    11 => array(
-      'title' => 'I',
-      'operator' => 'starts',
-      'value' => 'I',
-    ),
-    12 => array(
-      'title' => 'E',
-      'operator' => 'starts',
-      'value' => 'E',
-    ),
-    13 => array(
       'title' => 'D',
       'operator' => 'starts',
       'value' => 'D',
     ),
-    14 => array(
+    5 => array(
+      'title' => 'E',
+      'operator' => 'starts',
+      'value' => 'E',
+    ),
+    6 => array(
+      'title' => 'F',
+      'operator' => 'starts',
+      'value' => 'F',
+    ),
+    7 => array(
       'title' => 'G',
       'operator' => 'starts',
       'value' => 'G',
     ),
-    15 => array(
+    8 => array(
+      'title' => 'H',
+      'operator' => 'starts',
+      'value' => 'H',
+    ),
+    9 => array(
+      'title' => 'I',
+      'operator' => 'starts',
+      'value' => 'I',
+    ),
+    10 => array(
+      'title' => 'J',
+      'operator' => 'starts',
+      'value' => 'J',
+    ),
+    11 => array(
+      'title' => 'K',
+      'operator' => 'starts',
+      'value' => 'K',
+    ),
+    12 => array(
+      'title' => 'L',
+      'operator' => 'starts',
+      'value' => 'L',
+    ),
+    13 => array(
+      'title' => 'M',
+      'operator' => 'starts',
+      'value' => 'M',
+    ),
+    14 => array(
       'title' => 'N',
       'operator' => 'starts',
       'value' => 'N',
     ),
-    16 => array(
-      'title' => 'S',
-      'operator' => 'starts',
-      'value' => 'S',
-    ),
-    17 => array(
-      'title' => 'Ü',
-      'operator' => 'starts',
-      'value' => 'Ü',
-    ),
-    18 => array(
-      'title' => 'T',
-      'operator' => 'starts',
-      'value' => 'T',
-    ),
-    19 => array(
-      'title' => 'R',
-      'operator' => 'starts',
-      'value' => 'R',
-    ),
-    20 => array(
-      'title' => 'Q',
-      'operator' => 'starts',
-      'value' => 'Q',
-    ),
-    21 => array(
-      'title' => 'W',
-      'operator' => 'starts',
-      'value' => 'W',
-    ),
-    22 => array(
-      'title' => 'Y',
-      'operator' => 'starts',
-      'value' => 'Y',
-    ),
-    23 => array(
-      'title' => 'U',
-      'operator' => 'starts',
-      'value' => 'U',
-    ),
-    24 => array(
+    15 => array(
       'title' => 'O',
       'operator' => 'starts',
       'value' => 'O',
     ),
-    25 => array(
-      'title' => 'Ö',
-      'operator' => 'starts',
-      'value' => 'Ö',
-    ),
-    26 => array(
+    16 => array(
       'title' => 'P',
       'operator' => 'starts',
       'value' => 'P',
     ),
-    27 => array(
-      'title' => 'Z',
+    17 => array(
+      'title' => 'Q',
       'operator' => 'starts',
-      'value' => 'Z',
+      'value' => 'Q',
     ),
-    28 => array(
+    18 => array(
+      'title' => 'R',
+      'operator' => 'starts',
+      'value' => 'R',
+    ),
+    19 => array(
+      'title' => 'S',
+      'operator' => 'starts',
+      'value' => 'S',
+    ),
+    20 => array(
+      'title' => 'T',
+      'operator' => 'starts',
+      'value' => 'T',
+    ),
+    21 => array(
+      'title' => 'U',
+      'operator' => 'starts',
+      'value' => 'U',
+    ),
+    22 => array(
+      'title' => 'W',
+      'operator' => 'starts',
+      'value' => 'W',
+    ),
+    23 => array(
       'title' => 'V',
       'operator' => 'starts',
       'value' => 'V',
     ),
-    29 => array(
+    24 => array(
       'title' => 'X',
       'operator' => 'starts',
       'value' => 'X',
+    ),
+    25 => array(
+      'title' => 'Y',
+      'operator' => 'starts',
+      'value' => 'Y',
+    ),
+    26 => array(
+      'title' => 'Z',
+      'operator' => 'starts',
+      'value' => 'Z',
     ),
   );
   /* Filter criterion: User: Gender (field_user_gender) */
@@ -419,16 +381,16 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_gender_value']['table'] = 'field_data_field_user_gender';
   $handler->display->display_options['filters']['field_user_gender_value']['field'] = 'field_user_gender_value';
   $handler->display->display_options['filters']['field_user_gender_value']['value'] = array(
+    'all' => 'all',
     'm' => 'm',
     'f' => 'f',
   );
   $handler->display->display_options['filters']['field_user_gender_value']['group'] = 1;
   $handler->display->display_options['filters']['field_user_gender_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['operator_id'] = 'field_user_gender_value_op';
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['label'] = 'Filter by gender';
+  $handler->display->display_options['filters']['field_user_gender_value']['expose']['label'] = 'Filtrer par sexe';
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['operator'] = 'field_user_gender_value_op';
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['identifier'] = 'field_user_gender_value';
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['remember_roles'] = array(
     2 => 0,
     1 => 0,
@@ -437,13 +399,28 @@ function profiles_views_default_views() {
     51622513 => 0,
   );
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['reduce'] = TRUE;
-  $handler->display->display_options['filters']['field_user_gender_value']['group_info']['label'] = 'Gender (field_user_gender)';
+  $handler->display->display_options['filters']['field_user_gender_value']['group_info']['label'] = 'Filtrer par sexe';
   $handler->display->display_options['filters']['field_user_gender_value']['group_info']['identifier'] = 'field_user_gender_value';
-  $handler->display->display_options['filters']['field_user_gender_value']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_user_gender_value']['group_info']['widget'] = 'radios';
   $handler->display->display_options['filters']['field_user_gender_value']['group_info']['group_items'] = array(
-    1 => array(),
-    2 => array(),
-    3 => array(),
+    1 => array(
+      'title' => 'Male',
+      'operator' => 'or',
+      'value' => array(
+        'all' => 'all',
+        'm' => 'm',
+        'f' => 'f',
+      ),
+    ),
+    2 => array(
+      'title' => 'Female',
+      'operator' => 'or',
+      'value' => array(
+        'all' => 'all',
+        'm' => 'm',
+        'f' => 'f',
+      ),
+    ),
   );
   $handler->display->display_options['filters']['field_user_gender_value']['reduce_duplicates'] = TRUE;
   /* Filter criterion: User: Roles */
@@ -467,7 +444,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_party_tid']['field'] = 'field_user_party_tid';
   $handler->display->display_options['filters']['field_user_party_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_party_tid']['expose']['operator_id'] = 'field_user_party_tid_op';
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['label'] = 'Filter by politcal party';
+  $handler->display->display_options['filters']['field_user_party_tid']['expose']['label'] = 'Filtrer par parti';
   $handler->display->display_options['filters']['field_user_party_tid']['expose']['operator'] = 'field_user_party_tid_op';
   $handler->display->display_options['filters']['field_user_party_tid']['expose']['identifier'] = 'field_user_party_tid';
   $handler->display->display_options['filters']['field_user_party_tid']['expose']['remember_roles'] = array(
@@ -488,7 +465,6 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['label'] = 'Filter by membership in committees';
   $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['operator'] = 'field_user_commitee_tid_op';
   $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['identifier'] = 'field_user_commitee_tid';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -504,7 +480,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   $handler->display->display_options['filters']['field_user_constituency_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['operator_id'] = 'field_user_constituency_tid_op';
-  $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['label'] = 'Filter by constituency';
+  $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['label'] = 'Filtrer par circonscription';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['operator'] = 'field_user_constituency_tid_op';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['identifier'] = 'field_user_constituency_tid';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['remember_roles'] = array(
@@ -553,47 +529,6 @@ function profiles_views_default_views() {
   $handler->display->display_options['arguments']['field_user_commitee_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_user_commitee_tid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['block_description'] = 'Profile list commitees';
-  $translatables['profile_list'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Alle Filter zurücksetzen'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('term from field_user_parliament'),
-    t('field_user_party'),
-    t('field_user_constituency'),
-    t('term from field_user_constituency'),
-    t('<div class="profiles-list-compact-wrapper">[field_user_picture]'),
-    t('<strong>[field_user_fname]'),
-    t('[field_user_lname],'),
-    t('[field_user_party]</strong>'),
-    t('<div class="element-hidden profile-list-compact-info">'),
-    t('<h3>[field_user_fname_1]'),
-    t('[field_user_lname_1]</h3>'),
-    t('Go to profile'),
-    t('</div>'),
-    t('Name'),
-    t('All'),
-    t('Last name (field_user_lname)'),
-    t('Filter by name'),
-    t('Filter by gender'),
-    t('Gender (field_user_gender)'),
-    t('Filter by politcal party'),
-    t('Filter by membership in committees'),
-    t('Filter by constituency'),
-    t('Profiles list parliament'),
-    t('Sort by Name'),
-    t('Profile list commitees'),
-  );
   $export['profile_list'] = $view;
 
   return $export;
