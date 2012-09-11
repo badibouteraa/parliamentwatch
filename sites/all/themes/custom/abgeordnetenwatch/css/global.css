@@ -289,44 +289,63 @@ h1#page-title {
     margin-bottom: 35px;
 }
 
+
 /* //////////////////////////// search ///////////////////// */
 
-#block-search-form {
+#search-api-page-search-form,
+#search-api-page-search-form-content-search {
     position: relative;
-    padding: 10px;
-    background: #eee;
-    border: 1px solid #dedede;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-
-    -webkit-box-shadow: 0 0 2px 2px #DEDEDE;
-    -moz-box-shadow: 0 0 2px 2px #DEDEDE;
-    box-shadow: 0 0 2px 2px #DEDEDE;
+    margin-bottom: 1em !important;
 }
-#block-search-form .custom-search-box {
+#search-api-page-search-form .form-text,
+#search-api-page-search-form-content-search .form-text {
     width: 100%;
-}
-*+html #block-search-form .custom-search-box { /* IE7 */
-    width: 92%;
-}
-#block-search-form .form-submit {
-    position: absolute;
-    right: 20px;
-    top: 16px;
-}
-#block-search-form .form-text {
     padding: 6px 10px;   
     font-size: 14px;
     line-height: 1em;
     height: auto;
     margin: 0;
 }
-#block-search-form .form-item-custom-search-types {
-    display: block;
+#search-api-page-search-form-content-search .form-text {
+    margin-bottom: 10px;
 }
-#region-content #search-form #edit-submit {
-    margin-bottom: 0.8em;
+*+html #search-api-page-search-form .form-text,
+*+html #search-api-page-search-form-content-search .form-text { /* IE7 */
+    width: 92%;
+}
+#search-api-page-search-form .form-submit,
+#search-api-page-search-form-content-search .form-submit {
+    position: absolute;
+    right: 20px; /* LTR */
+    top: 18px;
+    border: 0;
+    background: url(../images/ic_search.png) no-repeat center;
+    text-indent: -5000em;    
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 18px;
+    height: 18px;
+}
+.search-performance {
+    font-size: inherit;
+    color: #999;
+}
+#region-content ol.search-results,
+#region-content ol.search-results li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#region-content ol.search-results li,
+.search-results article {
+    border-bottom: 1px dotted #f63;
+    padding-bottom: 15px !important;
+    margin-bottom: 26px !important;
+}
+.form-item-pw-search-type {
+    float: left;
+    padding-right: 15px;
 }
 
 /* //////////////////////////// taxonomy /////////////////// */
