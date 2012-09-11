@@ -919,6 +919,10 @@ img.no-outline {
 .poll.legend {
     margin-bottom: 27px;
 }
+.poll-behavior .result {
+    display: inline-block;
+    padding: 0 3px;
+}
 .poll-behavior .yes {
     background: #00cc00;
 }
