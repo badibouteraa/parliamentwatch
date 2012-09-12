@@ -38,8 +38,12 @@
     border-bottom: 0;
 }
 #zone-menu ul.nice-menu li.active-trail,
-#zone-menu ul.nice-menu li:hover {
+#zone-menu ul.nice-menu li:hover,
+#zone-menu ul.nice-menu li a.active {
     background: url("../images/sprite.png") no-repeat scroll center -1641px transparent;
+}
+#zone-menu ul.nice-menu ul li a.active {
+    background: transparent;
 }
 #zone-menu ul.nice-menu ul a {
     padding: 0;
