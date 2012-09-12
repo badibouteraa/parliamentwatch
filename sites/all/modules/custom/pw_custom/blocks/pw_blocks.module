@@ -204,7 +204,7 @@ function pw_blocks_get_chart($nid = NULL, $type = 'total', $raw = NULL){
         }
       }
       $chart = array(
-        '#title'=> '',
+        '#title'=> $party['name'],
         '#type'=>CHART_TYPE_BAR_V,
         '#chart_id'=>$party['id'],
         '#size' => chart_size(200, 200),
