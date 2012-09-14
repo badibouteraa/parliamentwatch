@@ -50,6 +50,7 @@ function pw_committees_views_default_views() {
   $handler->display->display_options['fields']['field_committee_picture']['table'] = 'field_data_field_committee_picture';
   $handler->display->display_options['fields']['field_committee_picture']['field'] = 'field_committee_picture';
   $handler->display->display_options['fields']['field_committee_picture']['label'] = '';
+  $handler->display->display_options['fields']['field_committee_picture']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_committee_picture']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_committee_picture']['element_class'] = 'file-image float-left';
   $handler->display->display_options['fields']['field_committee_picture']['element_label_colon'] = FALSE;
@@ -64,6 +65,7 @@ function pw_committees_views_default_views() {
   $handler->display->display_options['fields']['description']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['description']['field'] = 'description';
   $handler->display->display_options['fields']['description']['label'] = '';
+  $handler->display->display_options['fields']['description']['exclude'] = TRUE;
   $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['description']['element_default_classes'] = FALSE;
   /* Field: Taxonomy term: Term ID */

@@ -18,7 +18,7 @@ function pw_committees_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'users_of_committee' => array(
-      'weight' => '2',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -113,12 +113,10 @@ function pw_committees_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'description',
-        1 => 'users_of_committee',
+        0 => 'users_of_committee',
       ),
     ),
     'fields' => array(
-      'description' => 'ds_content',
       'users_of_committee' => 'ds_content',
     ),
     'classes' => array(),
