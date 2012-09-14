@@ -949,7 +949,8 @@ img.no-outline {
     background: #ff3333;
 }
 .poll-behavior .absent {
-    background: #0033ff;
+    background: none repeat scroll 0 0 #0033FF;
+    color: #FFFFFF;
 }
 .poll-behavior .blank {
     background: #999;
