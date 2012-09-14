@@ -221,11 +221,8 @@ function pw_poll_field_default_fields() {
         ),
         'teaser' => array(
           'label' => 'above',
-          'module' => 'file_entity',
-          'settings' => array(
-            'file_view_mode' => 'default',
-          ),
-          'type' => 'file_rendered',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '11',
         ),
       ),
@@ -308,9 +305,8 @@ function pw_poll_field_default_fields() {
         ),
         'teaser' => array(
           'label' => 'above',
-          'module' => 'viewfield',
           'settings' => array(),
-          'type' => 'viewfield_default',
+          'type' => 'hidden',
           'weight' => '15',
         ),
       ),

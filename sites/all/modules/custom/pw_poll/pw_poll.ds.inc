@@ -168,13 +168,13 @@ function pw_poll_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
-        1 => 'pw_poll_votes_total',
+        1 => 'field_pw_overview_chart',
         2 => 'body',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
-      'pw_poll_votes_total' => 'ds_content',
+      'field_pw_overview_chart' => 'ds_content',
       'body' => 'ds_content',
     ),
     'classes' => array(),

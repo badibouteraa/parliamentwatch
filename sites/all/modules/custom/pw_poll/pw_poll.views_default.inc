@@ -22,7 +22,7 @@ function pw_poll_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Polls';
+  $handler->display->display_options['title'] = 'Votes';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -48,7 +48,7 @@ function pw_poll_views_default_views() {
     <div class="poll-behavior"><span class="icon absent"></span>absent</div>
     <div class="poll-behavior"><span class="icon blank"></span>blank</div>
 </div>';
-  /* Field: Content: Title */
+  /* Field: Contenu: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -59,7 +59,7 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Overview Chart */
+  /* Field: Contenu: Overview Chart */
   $handler->display->display_options['fields']['field_pw_overview_chart']['id'] = 'field_pw_overview_chart';
   $handler->display->display_options['fields']['field_pw_overview_chart']['table'] = 'field_data_field_pw_overview_chart';
   $handler->display->display_options['fields']['field_pw_overview_chart']['field'] = 'field_pw_overview_chart';
@@ -73,7 +73,7 @@ function pw_poll_views_default_views() {
     'image_style' => '',
     'image_link' => 'content',
   );
-  /* Field: Content: Body */
+  /* Field: Contenu: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -86,7 +86,7 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '320',
   );
-  /* Field: Content: Link */
+  /* Field: Contenu: Link */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
@@ -96,7 +96,7 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'Détails du vote';
-  /* Field: Content: Comment count */
+  /* Field: Contenu: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
@@ -106,27 +106,29 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['fields']['comment_count']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['comment_count']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['comment_count']['format_plural'] = TRUE;
+  $handler->display->display_options['fields']['comment_count']['format_plural_singular'] = '1 ';
+  $handler->display->display_options['fields']['comment_count']['format_plural_plural'] = '@count ';
   $handler->display->display_options['fields']['comment_count']['suffix'] = 'commentaires';
-  /* Sort criterion: Content: Post date */
+  /* Sort criterion: Contenu: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Contenu: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Filter criterion: Contenu: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'pw_poll' => 'pw_poll',
   );
-  /* Filter criterion: Content: Langue */
+  /* Filter criterion: Contenu: Langue */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -286,8 +288,14 @@ $term = taxonomy_term_load($view->result[0]-> _field_data[\'uid\'][\'entity\']->
   $handler->display->display_options['fields']['php']['element_wrapper_class'] = 'poll-behavior';
   $handler->display->display_options['fields']['php']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_value'] = '$sql = "SELECT value FROM {votingapi_vote} WHERE entity_id=:nid AND uid=:uid";
-$result  = db_query($sql,array(\':nid\'=>1,\':uid\'=>$row->field_user_fname));
+  $handler->display->display_options['fields']['php']['php_value'] = 'if(is_numeric(arg(1))){
+        $nid = arg(1);
+      }else{
+        $nid = arg(2);
+      }
+
+$sql = "SELECT value FROM {votingapi_vote} WHERE entity_id=:nid AND uid=:uid";
+$result  = db_query($sql,array(\':nid\'=>$nid,\':uid\'=>$row->field_user_fname));
 $record = $result->fetchObject();
 if($record->value == 0){
  return t(\'yes\');
