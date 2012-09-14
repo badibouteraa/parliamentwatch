@@ -31,8 +31,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['cache']['output_lifespan'] = '-1';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['disable_sql_rewrite'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
@@ -47,6 +46,14 @@ function profiles_views_default_views() {
   $handler->display->display_options['style_options']['columns'] = '3';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'No results';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Sorry, no results has been found.';
+  $handler->display->display_options['empty']['area']['format'] = 'managed_content';
   /* Relationship: User: Parliament (field_user_parliament) */
   $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_data_field_user_parliament';
@@ -66,6 +73,10 @@ function profiles_views_default_views() {
   $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_data_field_user_constituency';
   $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   $handler->display->display_options['relationships']['field_user_constituency_tid']['relationship'] = 'reverse_field_user_constituency_user';
+  /* Relationship: User: Entity translation: translations */
+  $handler->display->display_options['relationships']['entity_translations']['id'] = 'entity_translations';
+  $handler->display->display_options['relationships']['entity_translations']['table'] = 'users';
+  $handler->display->display_options['relationships']['entity_translations']['field'] = 'entity_translations';
   /* Field: User: Uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
@@ -496,6 +507,14 @@ function profiles_views_default_views() {
   );
   $handler->display->display_options['filters']['field_user_constituency_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_user_constituency_tid']['vocabulary'] = 'constituency';
+  /* Filter criterion: Entity translation: Langue */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'entity_translation';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['relationship'] = 'entity_translations';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
 
   /* Display: Profiles list parliament */
   $handler = $view->new_display('page', 'Profiles list parliament', 'page');
