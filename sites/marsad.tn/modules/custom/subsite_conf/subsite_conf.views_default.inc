@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * subsite_frontpage.views_default.inc
+ * subsite_conf.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function subsite_frontpage_views_default_views() {
+function subsite_conf_views_default_views() {
   $export = array();
 
   $view = new view();

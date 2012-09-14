@@ -28,7 +28,7 @@ function subsite_conf_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'i18n_string_source_language';
-  $strongarm->value = 'fr';
+  $strongarm->value = 'en';
   $export['i18n_string_source_language'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -82,8 +82,8 @@ function subsite_conf_strongarm() {
     'toggle_node_user_picture' => 1,
     'toggle_comment_user_picture' => 1,
     'toggle_favicon' => 1,
-    'default_logo' => 1,
-    'logo_path' => '',
+    'default_logo' => 0,
+    'logo_path' => 'public://logo_0.png',
     'logo_upload' => '',
     'default_favicon' => 1,
     'favicon_path' => '',
@@ -215,6 +215,16 @@ function subsite_conf_strongarm() {
     'alpha_region_dashboard_main_css' => '',
     'alpha_region_dashboard_main_equal_height_element' => FALSE,
     'alpha_region_dashboard_main_equal_height_container' => 0,
+    'alpha_region_postscript_third_force' => 0,
+    'alpha_region_postscript_third_zone' => NULL,
+    'alpha_region_postscript_third_prefix' => '0',
+    'alpha_region_postscript_third_columns' => '3',
+    'alpha_region_postscript_third_suffix' => '0',
+    'alpha_region_postscript_third_weight' => '3',
+    'alpha_region_postscript_third_position' => '0',
+    'alpha_region_postscript_third_css' => '',
+    'alpha_region_postscript_third_equal_height_element' => FALSE,
+    'alpha_region_postscript_third_equal_height_container' => 0,
     'alpha_zone_user_wrapper' => 1,
     'alpha_zone_user_force' => 0,
     'alpha_zone_user_order' => 0,
@@ -385,7 +395,7 @@ function subsite_conf_strongarm() {
     'alpha_region_sidebar_first_css' => '',
     'alpha_region_sidebar_first_equal_height_element' => 0,
     'alpha_region_sidebar_first_equal_height_container' => 0,
-    'alpha_region_sidebar_second_force' => 0,
+    'alpha_region_sidebar_second_force' => 1,
     'alpha_region_sidebar_second_zone' => 'content',
     'alpha_region_sidebar_second_prefix' => '0',
     'alpha_region_sidebar_second_columns' => '4',
@@ -401,7 +411,7 @@ function subsite_conf_strongarm() {
     'alpha_zone_postscript_section' => 'content',
     'alpha_zone_postscript_weight' => '3',
     'alpha_zone_postscript_columns' => '12',
-    'alpha_zone_postscript_primary' => NULL,
+    'alpha_zone_postscript_primary' => 'postscript_first',
     'alpha_zone_postscript_css' => '',
     'alpha_zone_postscript_wrapper_css' => '',
     'alpha_zone_postscript_equal_height_container' => 0,
@@ -425,16 +435,6 @@ function subsite_conf_strongarm() {
     'alpha_region_postscript_second_css' => '',
     'alpha_region_postscript_second_equal_height_element' => 0,
     'alpha_region_postscript_second_equal_height_container' => 0,
-    'alpha_region_postscript_third_force' => 0,
-    'alpha_region_postscript_third_zone' => NULL,
-    'alpha_region_postscript_third_prefix' => '0',
-    'alpha_region_postscript_third_columns' => '3',
-    'alpha_region_postscript_third_suffix' => '0',
-    'alpha_region_postscript_third_weight' => '3',
-    'alpha_region_postscript_third_position' => '0',
-    'alpha_region_postscript_third_css' => '',
-    'alpha_region_postscript_third_equal_height_element' => 0,
-    'alpha_region_postscript_third_equal_height_container' => 0,
     'alpha_region_postscript_fourth_force' => 1,
     'alpha_region_postscript_fourth_zone' => 'postscript',
     'alpha_region_postscript_fourth_prefix' => '0',

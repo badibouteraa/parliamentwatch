@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Subsite Frontpage feature.
- */
-
-include_once 'subsite_frontpage.features.inc';

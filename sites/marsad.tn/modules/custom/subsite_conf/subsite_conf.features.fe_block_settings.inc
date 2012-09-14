@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * subsite_blocks.features.fe_block_settings.inc
+ * subsite_conf.features.fe_block_settings.inc
  */
 
 /**
  * Implements hook_default_fe_block_settings().
  */
-function subsite_blocks_default_fe_block_settings() {
+function subsite_conf_default_fe_block_settings() {
   $export = array();
 
   // bartik
@@ -58,6 +58,21 @@ function subsite_blocks_default_fe_block_settings() {
     'machine_name' => 'social_media_footer',
   );
 
+  $theme['block-radar'] = array(
+    'module' => 'block',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => '<frontpage>',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'radar',
+  );
+
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
     'delta' => 'breadcrumb',
@@ -100,7 +115,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => '1',
-    'i18n_mode' => '0',
+    'i18n_mode' => '1',
   );
 
   $theme['locale-language'] = array(
@@ -382,7 +397,7 @@ function subsite_blocks_default_fe_block_settings() {
     'module' => 'block',
     'theme' => 'marsad',
     'status' => '1',
-    'weight' => '0',
+    'weight' => '-34',
     'region' => 'postscript_fourth',
     'custom' => '0',
     'visibility' => '0',
@@ -391,6 +406,21 @@ function subsite_blocks_default_fe_block_settings() {
     'cache' => -1,
     'i18n_mode' => '0',
     'machine_name' => 'social_media_footer',
+  );
+
+  $theme['block-radar'] = array(
+    'module' => 'block',
+    'theme' => 'marsad',
+    'status' => '1',
+    'weight' => '-34',
+    'region' => 'content',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => '<frontpage>',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'radar',
   );
 
   $theme['delta_blocks-breadcrumb'] = array(
@@ -428,14 +458,14 @@ function subsite_blocks_default_fe_block_settings() {
     'delta' => 'form',
     'theme' => 'marsad',
     'status' => '1',
-    'weight' => '-25',
+    'weight' => '-35',
     'region' => 'postscript_fourth',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
     'title' => '',
     'cache' => '1',
-    'i18n_mode' => '0',
+    'i18n_mode' => '1',
   );
 
   $theme['locale-language'] = array(
@@ -459,7 +489,7 @@ function subsite_blocks_default_fe_block_settings() {
     'theme' => 'marsad',
     'status' => '1',
     'weight' => '0',
-    'region' => 'postscript_second',
+    'region' => 'postscript_first',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
@@ -502,9 +532,9 @@ function subsite_blocks_default_fe_block_settings() {
     'module' => 'menu',
     'delta' => 'menu-parliaments',
     'theme' => 'marsad',
-    'status' => '1',
+    'status' => 0,
     'weight' => '0',
-    'region' => 'postscript_first',
+    'region' => '',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
@@ -562,9 +592,9 @@ function subsite_blocks_default_fe_block_settings() {
     'module' => 'search',
     'delta' => 'form',
     'theme' => 'marsad',
-    'status' => '1',
-    'weight' => '-30',
-    'region' => 'sidebar_second',
+    'status' => 0,
+    'weight' => '-35',
+    'region' => '',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
@@ -728,6 +758,21 @@ function subsite_blocks_default_fe_block_settings() {
     'machine_name' => 'social_media_footer',
   );
 
+  $theme['block-radar'] = array(
+    'module' => 'block',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '1',
+    'pages' => '<frontpage>',
+    'title' => '',
+    'cache' => -1,
+    'i18n_mode' => '0',
+    'machine_name' => 'radar',
+  );
+
   $theme['delta_blocks-breadcrumb'] = array(
     'module' => 'delta_blocks',
     'delta' => 'breadcrumb',
@@ -770,7 +815,7 @@ function subsite_blocks_default_fe_block_settings() {
     'pages' => '',
     'title' => '',
     'cache' => '1',
-    'i18n_mode' => '0',
+    'i18n_mode' => '1',
   );
 
   $theme['locale-language'] = array(
