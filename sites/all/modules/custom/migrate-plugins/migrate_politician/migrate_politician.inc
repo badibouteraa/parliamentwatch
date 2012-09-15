@@ -154,6 +154,7 @@ class PoliticianMigration extends BasicMigratePolitician {
 	else{
      $entity->field_user_fname['und'][0]['value'] = $this->sourceValues->first_name;
      $entity->field_user_lname['und'][0]['value'] = $this->sourceValues->last_name;
+     $entity->revision = 0;
 	}
 	user_save($entity);
   }
