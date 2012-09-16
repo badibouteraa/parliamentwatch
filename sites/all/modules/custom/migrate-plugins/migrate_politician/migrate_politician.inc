@@ -17,7 +17,7 @@ class PoliticianMigration extends BasicMigratePolitician {
     $query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_user', 'u');
     $query->join('legacy_projects', 'p', 'u.cmd = p.cmd');
-    $query->fields('u', array('id', 'username', 'title', 'first_name', 'first_name_2nd_lang', 'last_name', 'last_name_2nd_lang', 'first_lang', 'second_lang', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'url_picture', 'party'));
+    $query->fields('u', array('id', 'uuid', 'username', 'title', 'nickname', 'first_name', 'first_name_2nd_lang', 'last_name', 'last_name_2nd_lang', 'first_lang', 'second_lang', 'email', 'gender', 'birthday', 'childs', 'job', 'marriage', 'url_picture', 'party', 'links'));
     $query->fields('p', array('project', 'startdate'));
     $query->condition('u.oldest', 1, '=');
 	switch(variable_get('site_name')){
@@ -57,22 +57,19 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->addFieldMapping('created', 'startdate');
     $this->addFieldMapping('status')->defaultValue(1);
     $this->addFieldMapping('field_user_title', 'title');
-    //$this->addFieldMapping('field_user_fname', 'first_name');
-    //$this->addFieldMapping('field_user_lname', 'last_name');
+    $this->addFieldMapping('uuid', 'uuid');
     $this->addFieldMapping('mail', 'email');
     $this->addFieldMapping('field_user_gender', 'gender');
     $this->addFieldMapping('field_user_birthday', 'birthday');
+    $this->addFieldMapping('field_user_pseudonym', 'nickname');
     $this->addFieldMapping('field_user_childs', 'childs');
     $this->addFieldMapping('field_user_job_skills', 'job');
     $this->addFieldMapping('field_user_marriage_status', 'marriage');
-    //$this->addFieldMapping('language','first_lang');
     $this->addFieldMapping('role_names')->defaultValue('politician');
     $this->addFieldMapping('field_user_parliament', 'project')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_user_party', 'party')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_user_picture', 'url_picture');
-    //$arguments = new MigrateLinkFieldHandler();
-    # ::arguments(array('source_field' => 'ext_ref_titles'));
-    //$this->addFieldMapping('field_user_more', 'links')->separator('|');
+    $this->addFieldMapping('field_user_more', 'links')->separator('|');
   }
 
   public function prepareRow($current_row) {
@@ -85,6 +82,7 @@ class PoliticianMigration extends BasicMigratePolitician {
   }
   
   public function complete($current_row){
+
 	$entity = user_load($current_row->uid);
     if($this->sourceValues->second_lang && $this->sourceValues->first_name_2nd_lang){
     
@@ -156,6 +154,7 @@ class PoliticianMigration extends BasicMigratePolitician {
      $entity->field_user_lname['und'][0]['value'] = $this->sourceValues->last_name;
      $entity->revision = 0;
 	}
+	$entity->revision = 0;
 	user_save($entity);
   }
 
