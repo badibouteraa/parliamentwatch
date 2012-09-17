@@ -14,3 +14,6 @@ div.horizontal-tabs .label-inline {
 div.horizontal-tabs .label-inline {
     float: right;
 }
+#region-content .horizontal-tabs ul.horizontal-tabs-list li {
+    float: right;
+}
