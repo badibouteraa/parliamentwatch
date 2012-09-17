@@ -17,6 +17,11 @@ function profiles_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'user';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
+    'question_form_anonymous' => array(
+      'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'field_user_constituency' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
@@ -172,6 +177,20 @@ function profiles_ds_custom_fields_info() {
   );
   $export['go_to_profile'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'question_form_anonymous';
+  $ds_field->label = 'Question form anonymous';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'user' => 'user',
+  );
+  $ds_field->properties = array(
+    'block' => 'webform|client-block-796',
+    'block_render' => '2',
+  );
+  $export['question_form_anonymous'] = $ds_field;
+
   return $export;
 }
 
@@ -195,33 +214,35 @@ function profiles_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'group_audience',
         1 => 'field_user_picture',
-        2 => 'group_user_name',
-        3 => 'field_user_fname',
+        2 => 'field_user_fname',
+        3 => 'group_user_name',
         4 => 'field_user_parliament',
         5 => 'field_user_lname',
-        6 => 'field_user_party',
-        7 => 'group_user_basics',
-        8 => 'field_user_commitee',
-        9 => 'group_user_commitee',
-        10 => 'field_user_more',
-        11 => 'group_user_commitee_tab',
-        12 => 'group_user_basics_basics',
-        13 => 'field_user_job_skills',
-        14 => 'group_user_basics_additional',
-        15 => 'field_user_constituency',
+        6 => 'group_user_basics',
+        7 => 'field_user_party',
+        8 => 'group_user_commitee',
+        9 => 'field_user_commitee',
+        10 => 'question_form_anonymous',
+        11 => 'field_user_more',
+        12 => 'group_user_commitee_tab',
+        13 => 'group_user_basics_basics',
+        14 => 'field_user_job_skills',
+        15 => 'group_user_basics_additional',
+        16 => 'field_user_constituency',
       ),
     ),
     'fields' => array(
       'group_audience' => 'ds_content',
       'field_user_picture' => 'ds_content',
-      'group_user_name' => 'ds_content',
       'field_user_fname' => 'ds_content',
+      'group_user_name' => 'ds_content',
       'field_user_parliament' => 'ds_content',
       'field_user_lname' => 'ds_content',
-      'field_user_party' => 'ds_content',
       'group_user_basics' => 'ds_content',
-      'field_user_commitee' => 'ds_content',
+      'field_user_party' => 'ds_content',
       'group_user_commitee' => 'ds_content',
+      'field_user_commitee' => 'ds_content',
+      'question_form_anonymous' => 'ds_content',
       'field_user_more' => 'ds_content',
       'group_user_commitee_tab' => 'ds_content',
       'group_user_basics_basics' => 'ds_content',

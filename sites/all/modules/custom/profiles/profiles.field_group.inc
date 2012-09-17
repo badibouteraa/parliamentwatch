@@ -109,7 +109,7 @@ function profiles_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Basics',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'group_user_basics_additional',
       1 => 'group_user_basics_basics',
@@ -162,7 +162,7 @@ function profiles_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Commitee Fieldgroup',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'group_user_commitee_tab',
     ),

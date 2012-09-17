@@ -11,11 +11,11 @@ function profiles_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'profile_list';
+  $view->name = 'profile_list_rev';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'users';
-  $view->human_name = 'Profile list';
+  $view->base_table = 'user_revision';
+  $view->human_name = 'Profile List Rev';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -23,60 +23,52 @@ function profiles_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access user profiles';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '-1';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '-1';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['disable_sql_rewrite'] = TRUE;
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser les filtres';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '21';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'suiv';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = 'zurück';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'weiter';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['style_options']['row_class'] = 'profiles-list-compact';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['columns'] = '3';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'No results';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Sorry, no results has been found.';
-  $handler->display->display_options['empty']['area']['format'] = 'managed_content';
-  /* Relationship: User: Parliament (field_user_parliament) */
+  /* Relationship: User (historical data): Parliament (field_user_parliament) */
   $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
-  $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_data_field_user_parliament';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
-  /* Relationship: Taxonomy term: User using Party */
-  $handler->display->display_options['relationships']['reverse_field_user_party_user']['id'] = 'reverse_field_user_party_user';
-  $handler->display->display_options['relationships']['reverse_field_user_party_user']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['relationships']['reverse_field_user_party_user']['field'] = 'reverse_field_user_party_user';
-  $handler->display->display_options['relationships']['reverse_field_user_party_user']['relationship'] = 'field_user_parliament_tid';
-  /* Relationship: Taxonomy term: User using Constituency */
-  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['id'] = 'reverse_field_user_constituency_user';
-  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['field'] = 'reverse_field_user_constituency_user';
-  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['relationship'] = 'field_user_parliament_tid';
-  /* Relationship: User: Constituency (field_user_constituency) */
-  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
-  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_data_field_user_constituency';
-  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
-  $handler->display->display_options['relationships']['field_user_constituency_tid']['relationship'] = 'reverse_field_user_constituency_user';
-  /* Relationship: User: Entity translation: translations */
-  $handler->display->display_options['relationships']['entity_translations']['id'] = 'entity_translations';
-  $handler->display->display_options['relationships']['entity_translations']['table'] = 'users';
-  $handler->display->display_options['relationships']['entity_translations']['field'] = 'entity_translations';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['required'] = TRUE;
+  /* Relationship: User revision: User */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'user_revision';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Field: User: First Name */
+  $handler->display->display_options['fields']['field_user_fname']['id'] = 'field_user_fname';
+  $handler->display->display_options['fields']['field_user_fname']['table'] = 'field_data_field_user_fname';
+  $handler->display->display_options['fields']['field_user_fname']['field'] = 'field_user_fname';
+  $handler->display->display_options['fields']['field_user_fname']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_user_fname']['label'] = '';
+  $handler->display->display_options['fields']['field_user_fname']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_fname']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_fname']['element_default_classes'] = FALSE;
+  /* Field: User: Last name */
+  $handler->display->display_options['fields']['field_user_lname']['id'] = 'field_user_lname';
+  $handler->display->display_options['fields']['field_user_lname']['table'] = 'field_data_field_user_lname';
+  $handler->display->display_options['fields']['field_user_lname']['field'] = 'field_user_lname';
+  $handler->display->display_options['fields']['field_user_lname']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_user_lname']['label'] = '';
+  $handler->display->display_options['fields']['field_user_lname']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_lname']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_lname']['element_default_classes'] = FALSE;
   /* Field: User: Uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
@@ -84,53 +76,62 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['uid']['label'] = '';
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Field: User: Profile picture */
-  $handler->display->display_options['fields']['field_user_picture']['id'] = 'field_user_picture';
-  $handler->display->display_options['fields']['field_user_picture']['table'] = 'field_data_field_user_picture';
-  $handler->display->display_options['fields']['field_user_picture']['field'] = 'field_user_picture';
-  $handler->display->display_options['fields']['field_user_picture']['label'] = '';
-  $handler->display->display_options['fields']['field_user_picture']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_user_picture']['alter']['text'] = '<div class="profiles-list-compact-wrapper">[field_user_picture]';
-  $handler->display->display_options['fields']['field_user_picture']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_picture']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_user_picture']['type'] = 'file_rendered';
-  $handler->display->display_options['fields']['field_user_picture']['settings'] = array(
+  /* Field: | start compact */
+  $handler->display->display_options['fields']['nothing_3']['id'] = 'nothing_3';
+  $handler->display->display_options['fields']['nothing_3']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_3']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_3']['ui_name'] = '| start compact';
+  $handler->display->display_options['fields']['nothing_3']['label'] = '';
+  $handler->display->display_options['fields']['nothing_3']['alter']['text'] = '<div class="profiles-list-compact-wrapper">';
+  $handler->display->display_options['fields']['nothing_3']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing_3']['element_default_classes'] = FALSE;
+  /* Field: User (historical data): Profile picture */
+  $handler->display->display_options['fields']['field_user_picture-revision_id_1']['id'] = 'field_user_picture-revision_id_1';
+  $handler->display->display_options['fields']['field_user_picture-revision_id_1']['table'] = 'field_revision_field_user_picture';
+  $handler->display->display_options['fields']['field_user_picture-revision_id_1']['field'] = 'field_user_picture-revision_id';
+  $handler->display->display_options['fields']['field_user_picture-revision_id_1']['label'] = '';
+  $handler->display->display_options['fields']['field_user_picture-revision_id_1']['alter']['text'] = '[field_user_picture-revision_id_1]';
+  $handler->display->display_options['fields']['field_user_picture-revision_id_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_picture-revision_id_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_picture-revision_id_1']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_user_picture-revision_id_1']['settings'] = array(
     'file_view_mode' => 'pw_file_portrait_m',
   );
-  /* Field: User: First Name */
-  $handler->display->display_options['fields']['field_user_fname']['id'] = 'field_user_fname';
-  $handler->display->display_options['fields']['field_user_fname']['table'] = 'field_data_field_user_fname';
-  $handler->display->display_options['fields']['field_user_fname']['field'] = 'field_user_fname';
-  $handler->display->display_options['fields']['field_user_fname']['label'] = '';
-  $handler->display->display_options['fields']['field_user_fname']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_user_fname']['alter']['text'] = '<strong>[field_user_fname]';
-  $handler->display->display_options['fields']['field_user_fname']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_fname']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_user_fname']['type'] = 'text_plain';
-  $handler->display->display_options['fields']['field_user_fname']['settings'] = array(
-    'trim_length' => '600',
-  );
-  /* Field: User: Last name */
-  $handler->display->display_options['fields']['field_user_lname']['id'] = 'field_user_lname';
-  $handler->display->display_options['fields']['field_user_lname']['table'] = 'field_data_field_user_lname';
-  $handler->display->display_options['fields']['field_user_lname']['field'] = 'field_user_lname';
-  $handler->display->display_options['fields']['field_user_lname']['label'] = '';
-  $handler->display->display_options['fields']['field_user_lname']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_user_lname']['alter']['text'] = '[field_user_lname],';
-  $handler->display->display_options['fields']['field_user_lname']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_lname']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_user_lname']['type'] = 'text_plain';
-  /* Field: User: Party */
-  $handler->display->display_options['fields']['field_user_party']['id'] = 'field_user_party';
-  $handler->display->display_options['fields']['field_user_party']['table'] = 'field_data_field_user_party';
-  $handler->display->display_options['fields']['field_user_party']['field'] = 'field_user_party';
-  $handler->display->display_options['fields']['field_user_party']['label'] = '';
-  $handler->display->display_options['fields']['field_user_party']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_user_party']['alter']['text'] = '[field_user_party]</strong>';
-  $handler->display->display_options['fields']['field_user_party']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_party']['type'] = 'i18n_taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_user_party']['delta_offset'] = '0';
+  /* Field: User (historical data): First Name */
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['id'] = 'field_user_fname-revision_id_1';
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['table'] = 'field_revision_field_user_fname';
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['field'] = 'field_user_fname-revision_id';
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['label'] = '';
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['alter']['text'] = '<strong>[field_user_fname-revision_id_1]';
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['empty'] = '<strong>[field_user_fname]';
+  $handler->display->display_options['fields']['field_user_fname-revision_id_1']['hide_alter_empty'] = FALSE;
+  /* Field: User (historical data): Last name */
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['id'] = 'field_user_lname-revision_id_1';
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['table'] = 'field_revision_field_user_lname';
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['field'] = 'field_user_lname-revision_id';
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['label'] = '';
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['alter']['text'] = '[field_user_lname-revision_id_1], ';
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['empty'] = '[field_user_lname], ';
+  $handler->display->display_options['fields']['field_user_lname-revision_id_1']['hide_alter_empty'] = FALSE;
+  /* Field: User (historical data): Party */
+  $handler->display->display_options['fields']['field_user_party-revision_id']['id'] = 'field_user_party-revision_id';
+  $handler->display->display_options['fields']['field_user_party-revision_id']['table'] = 'field_revision_field_user_party';
+  $handler->display->display_options['fields']['field_user_party-revision_id']['field'] = 'field_user_party-revision_id';
+  $handler->display->display_options['fields']['field_user_party-revision_id']['label'] = '';
+  $handler->display->display_options['fields']['field_user_party-revision_id']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_party-revision_id']['alter']['text'] = '[field_user_party-revision_id]</strong>';
+  $handler->display->display_options['fields']['field_user_party-revision_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_party-revision_id']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_party-revision_id']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_user_party-revision_id']['delta_offset'] = '0';
   /* Field: | more info start */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -139,61 +140,67 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="element-hidden profile-list-compact-info">';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: User: Profile picture */
-  $handler->display->display_options['fields']['field_user_picture_1']['id'] = 'field_user_picture_1';
-  $handler->display->display_options['fields']['field_user_picture_1']['table'] = 'field_data_field_user_picture';
-  $handler->display->display_options['fields']['field_user_picture_1']['field'] = 'field_user_picture';
-  $handler->display->display_options['fields']['field_user_picture_1']['label'] = '';
-  $handler->display->display_options['fields']['field_user_picture_1']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_user_picture_1']['alter']['path'] = 'user/[uid]';
-  $handler->display->display_options['fields']['field_user_picture_1']['alter']['absolute'] = TRUE;
-  $handler->display->display_options['fields']['field_user_picture_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_picture_1']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_user_picture_1']['element_wrapper_class'] = 'profile-image';
-  $handler->display->display_options['fields']['field_user_picture_1']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_user_picture_1']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_user_picture_1']['type'] = 'file_rendered';
-  $handler->display->display_options['fields']['field_user_picture_1']['settings'] = array(
+  /* Field: User (historical data): Profile picture */
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['id'] = 'field_user_picture-revision_id';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['table'] = 'field_revision_field_user_picture';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['field'] = 'field_user_picture-revision_id';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['label'] = '';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['alter']['path'] = 'user/[uid]';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['element_wrapper_class'] = 'profile-image';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['settings'] = array(
     'file_view_mode' => 'pw_file_portrait_l',
   );
-  /* Field: User: First Name */
-  $handler->display->display_options['fields']['field_user_fname_1']['id'] = 'field_user_fname_1';
-  $handler->display->display_options['fields']['field_user_fname_1']['table'] = 'field_data_field_user_fname';
-  $handler->display->display_options['fields']['field_user_fname_1']['field'] = 'field_user_fname';
-  $handler->display->display_options['fields']['field_user_fname_1']['label'] = '';
-  $handler->display->display_options['fields']['field_user_fname_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_user_fname_1']['alter']['text'] = '<h3>[field_user_fname_1]';
-  $handler->display->display_options['fields']['field_user_fname_1']['element_label_colon'] = FALSE;
-  /* Field: User: Last name */
-  $handler->display->display_options['fields']['field_user_lname_1']['id'] = 'field_user_lname_1';
-  $handler->display->display_options['fields']['field_user_lname_1']['table'] = 'field_data_field_user_lname';
-  $handler->display->display_options['fields']['field_user_lname_1']['field'] = 'field_user_lname';
-  $handler->display->display_options['fields']['field_user_lname_1']['label'] = '';
-  $handler->display->display_options['fields']['field_user_lname_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_user_lname_1']['alter']['text'] = '[field_user_lname_1]</h3>';
-  $handler->display->display_options['fields']['field_user_lname_1']['element_label_colon'] = FALSE;
-  /* Field: User: Party */
-  $handler->display->display_options['fields']['field_user_party_1']['id'] = 'field_user_party_1';
-  $handler->display->display_options['fields']['field_user_party_1']['table'] = 'field_data_field_user_party';
-  $handler->display->display_options['fields']['field_user_party_1']['field'] = 'field_user_party';
-  $handler->display->display_options['fields']['field_user_party_1']['label'] = '';
-  $handler->display->display_options['fields']['field_user_party_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_party_1']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_user_party_1']['element_wrapper_class'] = 'row party';
-  $handler->display->display_options['fields']['field_user_party_1']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_user_party_1']['type'] = 'i18n_taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_user_party_1']['delta_offset'] = '0';
-  /* Field: User: Constituency */
-  $handler->display->display_options['fields']['field_user_constituency']['id'] = 'field_user_constituency';
-  $handler->display->display_options['fields']['field_user_constituency']['table'] = 'field_data_field_user_constituency';
-  $handler->display->display_options['fields']['field_user_constituency']['field'] = 'field_user_constituency';
-  $handler->display->display_options['fields']['field_user_constituency']['label'] = '';
-  $handler->display->display_options['fields']['field_user_constituency']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_constituency']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_user_constituency']['element_wrapper_class'] = 'row constituency';
-  $handler->display->display_options['fields']['field_user_constituency']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_user_constituency']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_user_constituency']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Field: User (historical data): First Name */
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['id'] = 'field_user_fname-revision_id';
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['table'] = 'field_revision_field_user_fname';
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['field'] = 'field_user_fname-revision_id';
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['label'] = '';
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['alter']['text'] = '<h3>[field_user_fname-revision_id]';
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['empty'] = '<h3>[field_user_fname]';
+  $handler->display->display_options['fields']['field_user_fname-revision_id']['hide_alter_empty'] = FALSE;
+  /* Field: User (historical data): Last name */
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['id'] = 'field_user_lname-revision_id';
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['table'] = 'field_revision_field_user_lname';
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['field'] = 'field_user_lname-revision_id';
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['label'] = '';
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['alter']['text'] = '[field_user_lname-revision_id]</h3>';
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['empty'] = '[field_user_lname]</h3>';
+  $handler->display->display_options['fields']['field_user_lname-revision_id']['hide_alter_empty'] = FALSE;
+  /* Field: User (historical data): Party */
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['id'] = 'field_user_party-revision_id_1';
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['table'] = 'field_revision_field_user_party';
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['field'] = 'field_user_party-revision_id';
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['label'] = '';
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['element_wrapper_class'] = 'row party';
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_user_party-revision_id_1']['delta_offset'] = '0';
+  /* Field: User (historical data): Constituency */
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['id'] = 'field_user_constituency-revision_id';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['field'] = 'field_user_constituency-revision_id';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['label'] = '';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['element_wrapper_class'] = 'row constituency';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['delta_offset'] = '0';
   /* Field: User: Link */
   $handler->display->display_options['fields']['view_user']['id'] = 'view_user';
   $handler->display->display_options['fields']['view_user']['table'] = 'users';
@@ -203,7 +210,7 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['view_user']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['view_user']['element_wrapper_class'] = 'row link-profile';
   $handler->display->display_options['fields']['view_user']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['view_user']['text'] = 'Consulter le profil';
+  $handler->display->display_options['fields']['view_user']['text'] = 'Profil ansehen';
   /* Field: | more info end */
   $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
@@ -212,113 +219,114 @@ function profiles_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '</div>';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing_1']['element_default_classes'] = FALSE;
   /* Field: | compact end */
-  $handler->display->display_options['fields']['nothing_3']['id'] = 'nothing_3';
-  $handler->display->display_options['fields']['nothing_3']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_3']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_3']['ui_name'] = '| compact end';
-  $handler->display->display_options['fields']['nothing_3']['label'] = '';
-  $handler->display->display_options['fields']['nothing_3']['alter']['text'] = '</div>';
-  $handler->display->display_options['fields']['nothing_3']['element_label_colon'] = FALSE;
-  /* Sort criterion: User: Last name (field_user_lname) */
+  $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
+  $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_2']['ui_name'] = '| compact end';
+  $handler->display->display_options['fields']['nothing_2']['label'] = '';
+  $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '</div>';
+  $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing_2']['element_default_classes'] = FALSE;
+  /* Sort criterion: Taxonomy term: Term ID */
+  $handler->display->display_options['sorts']['tid']['id'] = 'tid';
+  $handler->display->display_options['sorts']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['tid']['field'] = 'tid';
+  $handler->display->display_options['sorts']['tid']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['sorts']['tid']['order'] = 'DESC';
+  /* Sort criterion: User (historical data): Last name (field_user_lname) */
   $handler->display->display_options['sorts']['field_user_lname_value']['id'] = 'field_user_lname_value';
-  $handler->display->display_options['sorts']['field_user_lname_value']['table'] = 'field_data_field_user_lname';
+  $handler->display->display_options['sorts']['field_user_lname_value']['table'] = 'field_revision_field_user_lname';
   $handler->display->display_options['sorts']['field_user_lname_value']['field'] = 'field_user_lname_value';
-  $handler->display->display_options['sorts']['field_user_lname_value']['expose']['label'] = 'Name';
-  /* Contextual filter: Taxonomy term: Name */
-  $handler->display->display_options['arguments']['name']['id'] = 'name';
-  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['arguments']['name']['field'] = 'name';
-  $handler->display->display_options['arguments']['name']['relationship'] = 'field_user_parliament_tid';
-  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['name']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['name']['validate']['type'] = 'taxonomy_term';
-  $handler->display->display_options['arguments']['name']['validate_options']['vocabularies'] = array(
+  /* Contextual filter: User (historical data): Parliament (field_user_parliament) */
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['default_argument_options']['argument'] = 'bundestag';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['validate_options']['vocabularies'] = array(
     'parliaments' => 'parliaments',
   );
-  $handler->display->display_options['arguments']['name']['validate_options']['type'] = 'name';
-  $handler->display->display_options['arguments']['name']['validate_options']['transform'] = TRUE;
-  $handler->display->display_options['arguments']['name']['limit'] = '0';
-  $handler->display->display_options['arguments']['name']['path_case'] = 'lower';
-  $handler->display->display_options['arguments']['name']['transform_dash'] = TRUE;
-  /* Filter criterion: User: Last name (field_user_lname) */
+  $handler->display->display_options['arguments']['field_user_parliament_tid']['validate_options']['type'] = 'convert';
+  /* Filter criterion: User (historical data): Last name (field_user_lname) */
   $handler->display->display_options['filters']['field_user_lname_value']['id'] = 'field_user_lname_value';
-  $handler->display->display_options['filters']['field_user_lname_value']['table'] = 'field_data_field_user_lname';
+  $handler->display->display_options['filters']['field_user_lname_value']['table'] = 'field_revision_field_user_lname';
   $handler->display->display_options['filters']['field_user_lname_value']['field'] = 'field_user_lname_value';
-  $handler->display->display_options['filters']['field_user_lname_value']['operator'] = 'starts';
-  $handler->display->display_options['filters']['field_user_lname_value']['group'] = 1;
   $handler->display->display_options['filters']['field_user_lname_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['operator_id'] = 'field_user_lname_value_op';
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['label'] = 'Last name (field_user_lname)';
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['operator'] = 'field_user_lname_value_op';
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['identifier'] = 'field_user_lname_value';
   $handler->display->display_options['filters']['field_user_lname_value']['is_grouped'] = TRUE;
-  $handler->display->display_options['filters']['field_user_lname_value']['group_info']['label'] = 'Filtrer par nom';
+  $handler->display->display_options['filters']['field_user_lname_value']['group_info']['label'] = 'Last name (field_user_lname)';
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['identifier'] = 'field_user_lname_value';
-  $handler->display->display_options['filters']['field_user_lname_value']['group_info']['widget'] = 'radios';
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['group_items'] = array(
     1 => array(
-      'title' => 'A',
+      'title' => 'R',
       'operator' => 'starts',
-      'value' => 'A',
+      'value' => 'S',
     ),
     2 => array(
-      'title' => 'B',
+      'title' => 'T',
       'operator' => 'starts',
-      'value' => 'B',
+      'value' => 'T',
     ),
     3 => array(
-      'title' => 'C',
+      'title' => 'Q',
       'operator' => 'starts',
-      'value' => 'C',
+      'value' => 'Q',
     ),
     4 => array(
-      'title' => 'D',
+      'title' => 'P',
       'operator' => 'starts',
-      'value' => 'D',
+      'value' => 'P',
     ),
     5 => array(
-      'title' => 'E',
+      'title' => 'O',
       'operator' => 'starts',
-      'value' => 'E',
+      'value' => 'O',
     ),
     6 => array(
-      'title' => 'F',
+      'title' => 'U',
       'operator' => 'starts',
-      'value' => 'F',
+      'value' => 'U',
     ),
     7 => array(
-      'title' => 'G',
+      'title' => 'V',
       'operator' => 'starts',
-      'value' => 'G',
+      'value' => 'V',
     ),
     8 => array(
-      'title' => 'H',
+      'title' => 'Z',
       'operator' => 'starts',
-      'value' => 'H',
+      'value' => 'Z',
     ),
     9 => array(
-      'title' => 'I',
+      'title' => 'Y',
       'operator' => 'starts',
-      'value' => 'I',
+      'value' => 'Y',
     ),
     10 => array(
-      'title' => 'J',
+      'title' => 'X',
       'operator' => 'starts',
-      'value' => 'J',
+      'value' => 'X',
     ),
     11 => array(
-      'title' => 'K',
+      'title' => 'W',
       'operator' => 'starts',
-      'value' => 'K',
+      'value' => 'W',
     ),
     12 => array(
-      'title' => 'L',
+      'title' => 'N',
       'operator' => 'starts',
-      'value' => 'L',
+      'value' => 'N',
     ),
     13 => array(
       'title' => 'M',
@@ -326,158 +334,99 @@ function profiles_views_default_views() {
       'value' => 'M',
     ),
     14 => array(
-      'title' => 'N',
+      'title' => 'L',
       'operator' => 'starts',
-      'value' => 'N',
+      'value' => 'L',
     ),
     15 => array(
-      'title' => 'O',
+      'title' => 'A',
       'operator' => 'starts',
-      'value' => 'O',
+      'value' => 'A',
     ),
     16 => array(
-      'title' => 'P',
+      'title' => 'B',
       'operator' => 'starts',
-      'value' => 'P',
+      'value' => 'B',
     ),
     17 => array(
-      'title' => 'Q',
+      'title' => 'C',
       'operator' => 'starts',
-      'value' => 'Q',
+      'value' => 'C',
     ),
     18 => array(
-      'title' => 'R',
+      'title' => 'D',
       'operator' => 'starts',
-      'value' => 'R',
+      'value' => 'D',
     ),
     19 => array(
-      'title' => 'S',
+      'title' => 'E',
       'operator' => 'starts',
-      'value' => 'S',
+      'value' => 'E',
     ),
     20 => array(
-      'title' => 'T',
+      'title' => 'F',
       'operator' => 'starts',
-      'value' => 'T',
+      'value' => 'F',
     ),
     21 => array(
-      'title' => 'U',
+      'title' => 'G',
       'operator' => 'starts',
-      'value' => 'U',
+      'value' => 'G',
     ),
     22 => array(
-      'title' => 'W',
+      'title' => 'H',
       'operator' => 'starts',
-      'value' => 'W',
+      'value' => 'H',
     ),
     23 => array(
-      'title' => 'V',
+      'title' => 'I',
       'operator' => 'starts',
-      'value' => 'V',
+      'value' => 'I',
     ),
     24 => array(
-      'title' => 'X',
+      'title' => 'J',
       'operator' => 'starts',
-      'value' => 'X',
+      'value' => 'J',
     ),
     25 => array(
-      'title' => 'Y',
+      'title' => 'K',
       'operator' => 'starts',
-      'value' => 'Y',
-    ),
-    26 => array(
-      'title' => 'Z',
-      'operator' => 'starts',
-      'value' => 'Z',
+      'value' => 'K',
     ),
   );
-  /* Filter criterion: User: Gender (field_user_gender) */
+  /* Filter criterion: User (historical data): Gender (field_user_gender) */
   $handler->display->display_options['filters']['field_user_gender_value']['id'] = 'field_user_gender_value';
-  $handler->display->display_options['filters']['field_user_gender_value']['table'] = 'field_data_field_user_gender';
+  $handler->display->display_options['filters']['field_user_gender_value']['table'] = 'field_revision_field_user_gender';
   $handler->display->display_options['filters']['field_user_gender_value']['field'] = 'field_user_gender_value';
-  $handler->display->display_options['filters']['field_user_gender_value']['value'] = array(
-    'all' => 'all',
-    'm' => 'm',
-    'f' => 'f',
-  );
-  $handler->display->display_options['filters']['field_user_gender_value']['group'] = 1;
   $handler->display->display_options['filters']['field_user_gender_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['operator_id'] = 'field_user_gender_value_op';
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['label'] = 'Filtrer par sexe';
+  $handler->display->display_options['filters']['field_user_gender_value']['expose']['label'] = 'Gender (field_user_gender)';
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['operator'] = 'field_user_gender_value_op';
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['identifier'] = 'field_user_gender_value';
   $handler->display->display_options['filters']['field_user_gender_value']['expose']['remember_roles'] = array(
-    2 => 0,
-    1 => 0,
-    3 => 0,
-    181527986 => 0,
-    51622513 => 0,
-  );
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['reduce'] = TRUE;
-  $handler->display->display_options['filters']['field_user_gender_value']['group_info']['label'] = 'Filtrer par sexe';
-  $handler->display->display_options['filters']['field_user_gender_value']['group_info']['identifier'] = 'field_user_gender_value';
-  $handler->display->display_options['filters']['field_user_gender_value']['group_info']['widget'] = 'radios';
-  $handler->display->display_options['filters']['field_user_gender_value']['group_info']['group_items'] = array(
-    1 => array(
-      'title' => 'Male',
-      'operator' => 'or',
-      'value' => array(
-        'all' => 'all',
-        'm' => 'm',
-        'f' => 'f',
-      ),
-    ),
-    2 => array(
-      'title' => 'Female',
-      'operator' => 'or',
-      'value' => array(
-        'all' => 'all',
-        'm' => 'm',
-        'f' => 'f',
-      ),
-    ),
-  );
-  $handler->display->display_options['filters']['field_user_gender_value']['reduce_duplicates'] = TRUE;
-  /* Filter criterion: User: Roles */
-  $handler->display->display_options['filters']['rid']['id'] = 'rid';
-  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
-  $handler->display->display_options['filters']['rid']['field'] = 'rid';
-  $handler->display->display_options['filters']['rid']['value'] = array(
-    181527986 => '181527986',
-  );
-  $handler->display->display_options['filters']['rid']['group'] = 1;
-  /* Filter criterion: User: Active */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'users';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: User: Party (field_user_party) */
-  $handler->display->display_options['filters']['field_user_party_tid']['id'] = 'field_user_party_tid';
-  $handler->display->display_options['filters']['field_user_party_tid']['table'] = 'field_data_field_user_party';
-  $handler->display->display_options['filters']['field_user_party_tid']['field'] = 'field_user_party_tid';
-  $handler->display->display_options['filters']['field_user_party_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['operator_id'] = 'field_user_party_tid_op';
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['label'] = 'Filtrer par parti';
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['operator'] = 'field_user_party_tid_op';
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['identifier'] = 'field_user_party_tid';
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
     181527986 => 0,
     51622513 => 0,
   );
-  $handler->display->display_options['filters']['field_user_party_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_user_party_tid']['vocabulary'] = 'party';
-  /* Filter criterion: User: Commitee (field_user_commitee) */
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Active';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
+  /* Filter criterion: User (historical data): Committee (field_user_commitee) */
   $handler->display->display_options['filters']['field_user_commitee_tid']['id'] = 'field_user_commitee_tid';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['table'] = 'field_data_field_user_commitee';
+  $handler->display->display_options['filters']['field_user_commitee_tid']['table'] = 'field_revision_field_user_commitee';
   $handler->display->display_options['filters']['field_user_commitee_tid']['field'] = 'field_user_commitee_tid';
   $handler->display->display_options['filters']['field_user_commitee_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['operator_id'] = 'field_user_commitee_tid_op';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['label'] = 'Filter by membership in committees';
+  $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['label'] = 'Commitee (field_user_commitee)';
   $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['operator'] = 'field_user_commitee_tid_op';
   $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['identifier'] = 'field_user_commitee_tid';
   $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['remember_roles'] = array(
@@ -489,13 +438,13 @@ function profiles_views_default_views() {
   );
   $handler->display->display_options['filters']['field_user_commitee_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_user_commitee_tid']['vocabulary'] = 'committee';
-  /* Filter criterion: User: Constituency (field_user_constituency) */
+  /* Filter criterion: User (historical data): Constituency (field_user_constituency) */
   $handler->display->display_options['filters']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
-  $handler->display->display_options['filters']['field_user_constituency_tid']['table'] = 'field_data_field_user_constituency';
+  $handler->display->display_options['filters']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
   $handler->display->display_options['filters']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   $handler->display->display_options['filters']['field_user_constituency_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['operator_id'] = 'field_user_constituency_tid_op';
-  $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['label'] = 'Filtrer par circonscription';
+  $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['label'] = 'Constituency (field_user_constituency)';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['operator'] = 'field_user_constituency_tid_op';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['identifier'] = 'field_user_constituency_tid';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['remember_roles'] = array(
@@ -507,52 +456,71 @@ function profiles_views_default_views() {
   );
   $handler->display->display_options['filters']['field_user_constituency_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_user_constituency_tid']['vocabulary'] = 'constituency';
-  /* Filter criterion: Entity translation: Langue */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'entity_translation';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['relationship'] = 'entity_translations';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  /* Filter criterion: User (historical data): Party (field_user_party) */
+  $handler->display->display_options['filters']['field_user_party_tid']['id'] = 'field_user_party_tid';
+  $handler->display->display_options['filters']['field_user_party_tid']['table'] = 'field_revision_field_user_party';
+  $handler->display->display_options['filters']['field_user_party_tid']['field'] = 'field_user_party_tid';
+  $handler->display->display_options['filters']['field_user_party_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_user_party_tid']['expose']['operator_id'] = 'field_user_party_tid_op';
+  $handler->display->display_options['filters']['field_user_party_tid']['expose']['label'] = 'Party (field_user_party)';
+  $handler->display->display_options['filters']['field_user_party_tid']['expose']['operator'] = 'field_user_party_tid_op';
+  $handler->display->display_options['filters']['field_user_party_tid']['expose']['identifier'] = 'field_user_party_tid';
+  $handler->display->display_options['filters']['field_user_party_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    181527986 => 0,
+    51622513 => 0,
   );
+  $handler->display->display_options['filters']['field_user_party_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_user_party_tid']['vocabulary'] = 'party';
 
-  /* Display: Profiles list parliament */
-  $handler = $view->new_display('page', 'Profiles list parliament', 'page');
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: User: Last name (field_user_lname) */
-  $handler->display->display_options['sorts']['field_user_lname_value']['id'] = 'field_user_lname_value';
-  $handler->display->display_options['sorts']['field_user_lname_value']['table'] = 'field_data_field_user_lname';
-  $handler->display->display_options['sorts']['field_user_lname_value']['field'] = 'field_user_lname_value';
-  $handler->display->display_options['sorts']['field_user_lname_value']['expose']['label'] = 'Sort by Name';
   $handler->display->display_options['path'] = 'politicians/%';
-  $handler->display->display_options['menu']['title'] = 'Profile list';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['menu']['context'] = 0;
-
-  /* Display: Profile list commitees */
-  $handler = $view->new_display('block', 'Profile list commitees', 'block_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: User: Commitee (field_user_commitee) */
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['id'] = 'field_user_commitee_tid';
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['table'] = 'field_data_field_user_commitee';
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['field'] = 'field_user_commitee_tid';
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['default_argument_type'] = 'taxonomy_tid';
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['default_argument_options']['node'] = TRUE;
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['default_argument_options']['anyall'] = '+';
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['default_argument_options']['limit'] = TRUE;
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['default_argument_options']['vocabularies'] = array(
-    'committee' => 'committee',
+  $translatables['profile_list_rev'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('zurück'),
+    t('weiter'),
+    t('last »'),
+    t('term from field_user_parliament'),
+    t('Get all revisions from an user.'),
+    t('<div class="profiles-list-compact-wrapper">'),
+    t('[field_user_picture-revision_id_1]'),
+    t('<strong>[field_user_fname-revision_id_1]'),
+    t('<strong>[field_user_fname]'),
+    t('[field_user_lname-revision_id_1], '),
+    t('[field_user_lname], '),
+    t('[field_user_party-revision_id]</strong>'),
+    t('<div class="element-hidden profile-list-compact-info">'),
+    t('<h3>[field_user_fname-revision_id]'),
+    t('<h3>[field_user_fname]'),
+    t('[field_user_lname-revision_id]</h3>'),
+    t('[field_user_lname]</h3>'),
+    t('Profil ansehen'),
+    t('</div>'),
+    t('All'),
+    t('Last name (field_user_lname)'),
+    t('Gender (field_user_gender)'),
+    t('Active'),
+    t('Commitee (field_user_commitee)'),
+    t('Constituency (field_user_constituency)'),
+    t('Party (field_user_party)'),
+    t('Page'),
   );
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_user_commitee_tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['block_description'] = 'Profile list commitees';
-  $export['profile_list'] = $view;
+  $export['profile_list_rev'] = $view;
 
   return $export;
 }
