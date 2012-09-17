@@ -146,6 +146,12 @@ html.js fieldset.collapsed .fieldset-legend {
     background: transparent;
 }
 
+/* forward */
+
+#forward-form #edit-instructions p:first-child {
+    margin: 0 -10px 10px 0;
+}
+
 /* /////////////////////////// content /////////////////// */
 
 /* reset the alpha-reset.css for lists in the content and display them how they appear in the wysiwig */
