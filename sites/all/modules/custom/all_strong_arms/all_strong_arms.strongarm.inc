@@ -28,7 +28,7 @@ function all_strong_arms_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cache';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['cache'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -249,10 +249,8 @@ function all_strong_arms_strongarm() {
 webform-client-form-6
 forward-form
 comment-form
-webform-client-form-48
-webform-client-form-49
-search-api-page-search-form
-search-api-page-search-form-content-search';
+webform-client-form-14
+webform-client-form-796';
   $export['compact_forms_ids'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -733,7 +731,7 @@ search-api-page-search-form-content-search';
   $strongarm->value = array(
     'group_polls_party|node|pw_poll|default' => TRUE,
     'group_fieldset_polls_per_party|node|pw_poll|default' => FALSE,
-    'group_user_name|user|user|user_search' => FALSE,
+    'group_question_forms|user|user|default' => TRUE,
   );
   $export['default_field_group'] = $strongarm;
 
@@ -938,7 +936,7 @@ search-api-page-search-form-content-search';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'features_tools_disable_features_page_js';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['features_tools_disable_features_page_js'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1045,7 +1043,14 @@ search-api-page-search-form-content-search';
     ),
     'extra_fields' => array(
       'form' => array(),
-      'display' => array(),
+      'display' => array(
+        'webform' => array(
+          'default' => array(
+            'weight' => '14',
+            'visible' => FALSE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__page'] = $strongarm;
@@ -1085,10 +1090,6 @@ search-api-page-search-form-content-search';
           'default' => array(
             'weight' => '10',
             'visible' => TRUE,
-          ),
-          'teaser' => array(
-            'weight' => '1',
-            'visible' => FALSE,
           ),
         ),
       ),
@@ -1289,34 +1290,6 @@ search-api-page-search-form-content-search';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'nice_menus_depth_1';
-  $strongarm->value = '-1';
-  $export['nice_menus_depth_1'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nice_menus_menu_1';
-  $strongarm->value = 'menu-main-menu-fr';
-  $export['nice_menus_menu_1'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nice_menus_name_1';
-  $strongarm->value = 'Nice menu FR';
-  $export['nice_menus_name_1'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nice_menus_type_1';
-  $strongarm->value = 'down';
-  $export['nice_menus_type_1'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_page';
   $strongarm->value = array(
     0 => 'status',
@@ -1336,7 +1309,9 @@ search-api-page-search-form-content-search';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_slider_item';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'status',
+  );
   $export['node_options_slider_item'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1452,6 +1427,20 @@ search-api-page-search-form-content-search';
   $strongarm->name = 'page_compression';
   $strongarm->value = 1;
   $export['page_compression'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_separator';
+  $strongarm->value = '-';
+  $export['pathauto_separator'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_user_pattern';
+  $strongarm->value = 'users/[user:name]';
+  $export['pathauto_user_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1580,7 +1569,7 @@ search-api-page-search-form-content-search';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_frontpage';
-  $strongarm->value = 'home';
+  $strongarm->value = 'node/789';
   $export['site_frontpage'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1644,8 +1633,9 @@ search-api-page-search-form-content-search';
   $strongarm->api_version = 1;
   $strongarm->name = 'webform_node_types';
   $strongarm->value = array(
-    0 => 'slider_item',
-    1 => 'webform',
+    0 => 'page',
+    1 => 'slider_item',
+    2 => 'webform',
   );
   $export['webform_node_types'] = $strongarm;
 
