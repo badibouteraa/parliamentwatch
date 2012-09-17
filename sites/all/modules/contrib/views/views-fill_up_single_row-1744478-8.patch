@@ -1,0 +1,13 @@
+diff --git a/theme/theme.inc b/theme/theme.inc
+index 52598d5..4903b64 100644
+--- a/theme/theme.inc
++++ b/theme/theme.inc
+@@ -689,7 +689,7 @@ function template_preprocess_views_view_grid(&$vars) {
+     }
+     if ($row) {
+       // Fill up the last line only if it's configured, but this is default.
+-      if (!empty($handler->options['fill_single_line']) && count($rows)) {
++      if (!empty($handler->options['fill_single_line'])) {
+         for ($i = 0; $i < ($columns - $col_count); $i++) {
+           $row[] = '';
+         }
