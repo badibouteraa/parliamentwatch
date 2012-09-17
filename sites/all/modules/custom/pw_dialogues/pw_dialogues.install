@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Sets the module weight.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function pw_dialogues_enable() {
+  $job_scheduler_weight = db_query('SELECT weight FROM {system} WHERE name = :job_scheduler', array(':job_scheduler' => 'job_scheduler'))->fetchField();
+
+  db_update('system')
+    ->fields(array('weight' => $job_scheduler_weight + 1))
+    ->condition('name', basename(__FILE__, '.install'))
+    ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function pw_dialogues_uninstall() {
+  variable_del('pw_dialogues_last_import');
+}

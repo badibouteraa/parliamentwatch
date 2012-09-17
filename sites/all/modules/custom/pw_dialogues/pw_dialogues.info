@@ -1,0 +1,4 @@
+name = Dialogue importer
+core = 7.x
+dependencies[] = dialogues
+package = Parliamentwatch

@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * @file
+ * Helper module for the dialogue import.
+ */
+
+/**
+ * The XML API URL to import from.
+ */
+define('PW_DIALOGUES_SOURCE', 'http://mod.parliamentwatch.org/piraten/api/dialogue');
+
+/**
+ * A buffer of overlap between the imports in seconds.
+ */
+define('PW_DIALOGUES_IMPORT_BUFFER', 60 * 60);
+
+/**
+ * Implements hook_cron().
+ */
+function pw_dialogues_cron() {
+  $source = PW_DIALOGUES_SOURCE;
+  if ($last_import = variable_get('pw_dialogues_last_import', 0)) {
+    $source .= '?updated_since=' . date('Y-m-d\\TH:i:s', $last_import - PW_DIALOGUES_IMPORT_BUFFER);
+  }
+  variable_set('pw_dialogues_last_import', REQUEST_TIME);
+
+  // Import dialogues.
+  $dialogue_feed = feeds_source('dialogue_importer');
+  $dialogue_feed->addConfig(array(
+    'FeedsHTTPFetcher' => array(
+      'source' => $source,
+    ),
+  ));
+  while (FEEDS_BATCH_COMPLETE != $dialogue_feed->import());
+
+  // Import messages.
+  $message_feed = feeds_source('dialogue_message_importer');
+  $message_feed->addConfig(array(
+    'FeedsHTTPFetcher' => array(
+      'source' => $source,
+    ),
+  ));
+  while (FEEDS_BATCH_COMPLETE != $message_feed->import());
+}
+
+/**
+ * Implements hook_feeds_processor_targets_alter().
+ */
+function pw_dialogues_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
+  if ($bundle_name === NULL) {
+    return;
+  }
+
+  foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
+    $info = field_info_field($name);
+    if ($info['type'] == 'entityreference') {
+      $targets[$name . ':uuid'] = array(
+        'name' => t('@label (by UUID)', array('@label' => $instance['label'])),
+        'callback' => 'pw_dialogues_feeds_set_target',
+      );
+    }
+  }
+}
+
+/**
+ * Performs entity reference mapping by UUID.
+ *
+ * @see entityreference_feeds_set_target().
+ */
+function pw_dialogues_feeds_set_target($source, $entity, $target, $value, $mapping) {
+  if (empty($value)) {
+    return;
+  }
+
+  if (is_array($value)) {
+    $values = $value;
+  }
+  else {
+    $values = array($value);
+  }
+
+  list($target) = explode(':', $target, 2);
+
+  $info = field_info_field($target);
+  $language = isset($mapping['language']) ? $mapping['language'] : LANGUAGE_NONE;
+
+  $entity_ids = db_select('users', 'u')
+    ->fields('u', array('uuid', 'uid'))
+    ->condition('uuid', array_values($values), 'IN')
+    ->execute()
+    ->fetchAllKeyed();
+
+  $iterator = 0;
+  $field = isset($entity->target) ? $entity->target : array();
+  foreach ($entity_ids as $entity_id) {
+    if ($entity_id) {
+      $field[$language][$iterator]['target_id'] = $entity_id;
+    }
+    else {
+      unset($entity->feeds_item->hash);
+    }
+
+    if ($info['cardinality'] == 1) {
+      break;
+    }
+    $iterator++;
+  }
+
+  $entity->{$target} = $field;
+}

@@ -100,7 +100,7 @@ function dialogues_feeds_importer_default() {
           ),
           2 => array(
             'source' => 'xpathparser:2',
-            'target' => 'field_dialogue_recipient',
+            'target' => 'field_dialogue_recipient:uuid',
             'unique' => FALSE,
           ),
           3 => array(
@@ -160,7 +160,7 @@ function dialogues_feeds_importer_default() {
     ),
     'content_type' => '',
     'update' => 0,
-    'import_period' => '900',
+    'import_period' => '-1',
     'expire_period' => 3600,
     'import_on_create' => 1,
     'process_in_background' => 0,
@@ -202,7 +202,6 @@ function dialogues_feeds_importer_default() {
           'xpathparser:14' => '../@id',
           'xpathparser:15' => 'annotation',
           'xpathparser:16' => 'text',
-          'xpathparser:17' => '',
         ),
         'rawXML' => array(
           'xpathparser:1' => 0,
@@ -221,7 +220,6 @@ function dialogues_feeds_importer_default() {
           'xpathparser:14' => 0,
           'xpathparser:15' => 0,
           'xpathparser:16' => 0,
-          'xpathparser:17' => 0,
         ),
         'context' => '//dialogue/message[position()>1]',
         'exp' => array(
@@ -244,7 +242,6 @@ function dialogues_feeds_importer_default() {
             'xpathparser:14' => 0,
             'xpathparser:15' => 0,
             'xpathparser:16' => 0,
-            'xpathparser:17' => 0,
           ),
         ),
         'allow_override' => 0,
@@ -284,7 +281,7 @@ function dialogues_feeds_importer_default() {
           ),
           5 => array(
             'source' => 'xpathparser:6',
-            'target' => 'field_dialogue_recipient',
+            'target' => 'field_dialogue_recipient:uuid',
             'unique' => FALSE,
           ),
           6 => array(
@@ -348,7 +345,7 @@ function dialogues_feeds_importer_default() {
     ),
     'content_type' => '',
     'update' => 0,
-    'import_period' => '900',
+    'import_period' => '-1',
     'expire_period' => 3600,
     'import_on_create' => 1,
     'process_in_background' => 0,
