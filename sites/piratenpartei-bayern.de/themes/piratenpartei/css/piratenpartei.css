@@ -1,4 +1,35 @@
-#zone-menu-wrapper {
+#zone-menu-wrapper,
+button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"],
+a.form-submit {
     background: #F6891F !important;
     filter: none;
+}
+a {
+    color: #F6891F;
+}
+h1,
+h2,
+.h1,
+.h2,
+h1#page-title {
+    color: #F6891F;
+}
+
+.node-blogpost.node-teaser,
+.block-submenutree .view-mode-teaser,
+.views-table tr.odd,
+.views-table tr.even,
+.node-results li,
+.group-result .panel-flexible,
+.pw-list-item,
+hr,
+#region-content ol.search-results li,
+.search-results article {
+    border-bottom: 1px dotted #F6891F;
+}
+#block-delta-blocks-feed-icons .feed-link {
+    color: #F6891F;
 }

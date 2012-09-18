@@ -41,7 +41,9 @@ zones[content] = 'Content'
 zones[postscript] = 'Postscript'
 zones[footer] = 'Footer'
 
-stylesheets[all][] = css/piratenpartei.css
+css[piratenpartei.css][name] = 'Custom styles'
+css[piratenpartei.css][description] = 'Custom theme styles.'
+css[piratenpartei.css][options][weight] = '10'
 
 version = '7.x-3.0'
 project = 'omega'
