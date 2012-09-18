@@ -51,7 +51,7 @@ function pw_basics_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -419,20 +419,16 @@ function pw_basics_field_default_fields() {
       ),
       'module' => 'text',
       'settings' => array(
-        'max_length' => '25',
+        'max_length' => '10',
       ),
       'translatable' => '0',
       'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'constituency',
-      'default_value' => array(
-        0 => array(
-          'value' => '0',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'constituency number or similar identifier ',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -445,7 +441,7 @@ function pw_basics_field_default_fields() {
       'ds_extras_field_template' => '',
       'entity_type' => 'taxonomy_term',
       'field_name' => 'field_constituency_nr',
-      'label' => 'Constituency Nr',
+      'label' => 'Number',
       'required' => 0,
       'settings' => array(
         'better_formats' => array(
@@ -493,10 +489,10 @@ function pw_basics_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => '10',
+          'size' => '5',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '34',
       ),
     ),
   );
@@ -562,7 +558,7 @@ function pw_basics_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '5',
+        'weight' => '33',
       ),
     ),
   );
@@ -630,7 +626,7 @@ function pw_basics_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '4',
+        'weight' => '31',
       ),
     ),
   );
@@ -935,12 +931,13 @@ function pw_basics_field_default_fields() {
   t('Body');
   t('Color');
   t('Committee Type');
-  t('Constituency Nr');
+  t('Number');
   t('Parliament');
   t('Picture');
   t('Valid Date');
   t('Value');
   t('Zipcodes');
+  t('constituency number or similar identifier ');
 
   return $fields;
 }
