@@ -67,7 +67,6 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->addFieldMapping('field_user_job_skills', 'job');
     $this->addFieldMapping('field_user_marriage_status', 'marriage');
     $this->addFieldMapping('role_names')->defaultValue('politician');
-    # $this->addFieldMapping('field_user_parliament', 'project')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_user_party', 'party')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_user_picture', 'url_picture');
     $this->addFieldMapping('field_user_more', 'links')->separator('|');

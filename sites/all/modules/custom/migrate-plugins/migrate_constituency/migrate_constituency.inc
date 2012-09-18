@@ -13,6 +13,8 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
   public function __construct() {
     parent::__construct();
 
+	$this->dependencies = array('ParliamentTerm');
+
     $query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_constituency', 'c');
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
@@ -50,7 +52,7 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
     $this->destination = new MigrateDestinationTerm('constituency');
     $this->addFieldMapping('name', 'constituency');
     $this->addFieldMapping('field_constituency_nr', 'constituency_nr');
-    $this->addFieldMapping('field_parliament', 'project')->arguments(array('create_term' => TRUE));
+    $this->addFieldMapping('field_parliament', 'project');
     $this->addFieldMapping('field_voc_constituency_zip', 'zipcodes')->separator(',')->arguments(array('create_term' => TRUE));
   }
 

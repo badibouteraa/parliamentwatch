@@ -13,6 +13,8 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
   public function __construct() {
     parent::__construct();
 
+	$this->dependencies = array('ParliamentTerm');
+
     $query = Database::getConnection('default', 'parlamentwatch')
             ->select('legacy_committee', 'c');
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
