@@ -35,7 +35,7 @@ function dialogues_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_dialogue';
-  $strongarm->value = '1';
+  $strongarm->value = '2';
   $export['comment_dialogue'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -58,6 +58,26 @@ function dialogues_strongarm() {
   $strongarm->name = 'comment_subject_field_dialogue';
   $strongarm->value = 0;
   $export['comment_subject_field_dialogue'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__dialogue';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '11',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__dialogue'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
