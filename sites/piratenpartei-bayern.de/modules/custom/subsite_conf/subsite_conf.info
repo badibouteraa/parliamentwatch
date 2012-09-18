@@ -50,6 +50,7 @@ features[fe_block_settings][] = system-navigation
 features[fe_block_settings][] = system-powered-by
 features[fe_block_settings][] = text_resize-0
 features[fe_block_settings][] = user-login
+features[fe_block_settings][] = views--exp-profile_list_rev-page
 features[fe_block_settings][] = views-slider-block
 features[features_api][] = api:1
 features[language][] = de
