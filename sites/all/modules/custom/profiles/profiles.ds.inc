@@ -17,8 +17,13 @@ function profiles_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'user';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
+    'questions_and_answers' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'question_form_anonymous' => array(
-      'weight' => '6',
+      'weight' => '7',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -68,7 +73,7 @@ function profiles_ds_field_settings_info() {
         'func' => 'theme_ds_field_expert',
         'ow' => TRUE,
         'ow-el' => 'div',
-        'ow-cl' => 'field-image float-left',
+        'ow-cl' => 'file-image push-bottom-l float-left',
       ),
     ),
   );
@@ -191,6 +196,20 @@ function profiles_ds_custom_fields_info() {
   );
   $export['question_form_anonymous'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'questions_and_answers';
+  $ds_field->label = 'Questions and answers';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'user' => 'user',
+  );
+  $ds_field->properties = array(
+    'block' => 'views|profile_questions_answers-block',
+    'block_render' => '1',
+  );
+  $export['questions_and_answers'] = $ds_field;
+
   return $export;
 }
 
@@ -218,17 +237,18 @@ function profiles_ds_layout_settings_info() {
         3 => 'group_user_name',
         4 => 'field_user_parliament',
         5 => 'field_user_lname',
-        6 => 'group_user_basics',
-        7 => 'field_user_party',
-        8 => 'group_user_commitee',
+        6 => 'field_user_party',
+        7 => 'group_user_basics',
+        8 => 'questions_and_answers',
         9 => 'field_user_commitee',
-        10 => 'question_form_anonymous',
-        11 => 'field_user_more',
-        12 => 'group_user_commitee_tab',
+        10 => 'group_user_commitee',
+        11 => 'question_form_anonymous',
+        12 => 'field_user_more',
         13 => 'group_user_basics_basics',
-        14 => 'field_user_job_skills',
+        14 => 'group_user_commitee_tab',
         15 => 'group_user_basics_additional',
-        16 => 'field_user_constituency',
+        16 => 'field_user_job_skills',
+        17 => 'field_user_constituency',
       ),
     ),
     'fields' => array(
@@ -238,16 +258,17 @@ function profiles_ds_layout_settings_info() {
       'group_user_name' => 'ds_content',
       'field_user_parliament' => 'ds_content',
       'field_user_lname' => 'ds_content',
-      'group_user_basics' => 'ds_content',
       'field_user_party' => 'ds_content',
-      'group_user_commitee' => 'ds_content',
+      'group_user_basics' => 'ds_content',
+      'questions_and_answers' => 'ds_content',
       'field_user_commitee' => 'ds_content',
+      'group_user_commitee' => 'ds_content',
       'question_form_anonymous' => 'ds_content',
       'field_user_more' => 'ds_content',
-      'group_user_commitee_tab' => 'ds_content',
       'group_user_basics_basics' => 'ds_content',
-      'field_user_job_skills' => 'ds_content',
+      'group_user_commitee_tab' => 'ds_content',
       'group_user_basics_additional' => 'ds_content',
+      'field_user_job_skills' => 'ds_content',
       'field_user_constituency' => 'ds_content',
     ),
     'classes' => array(),

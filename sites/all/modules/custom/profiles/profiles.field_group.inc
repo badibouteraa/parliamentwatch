@@ -162,7 +162,7 @@ function profiles_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Commitee Fieldgroup',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'group_user_commitee_tab',
     ),
