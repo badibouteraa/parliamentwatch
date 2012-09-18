@@ -27,6 +27,27 @@ function subsite_conf_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_long';
+  $strongarm->value = 'l, F j, Y - H:i';
+  $export['date_format_long'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_medium';
+  $strongarm->value = 'D, m/d/Y - H:i';
+  $export['date_format_medium'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_short';
+  $strongarm->value = 'd.m.Y';
+  $export['date_format_short'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_count';
   $strongarm->value = 2;
   $export['language_count'] = $strongarm;
@@ -129,6 +150,7 @@ function subsite_conf_strongarm() {
       'alpha-alpha.css' => 'alpha-alpha.css',
       'global.css' => 'global.css',
       'print.css' => 'print.css',
+      'piratenpartei.css' => 'piratenpartei.css',
       'omega-text.css' => 0,
       'omega-branding.css' => 0,
       'omega-menu.css' => 0,
@@ -147,7 +169,6 @@ function subsite_conf_strongarm() {
       'modules/node/node.css' => 0,
       'modules/user/user.css' => 0,
       'sites/all/themes/custom/abgeordnetenwatch/css/horizontal-tabs.css' => 0,
-      'sites/piratenpartei-bayern.de/themes/piratenpartei/css/piratenpartei.css' => 0,
       'misc/vertical-tabs.css' => 0,
       'modules/aggregator/aggregator.css' => 0,
       'modules/block/block.css' => 0,
@@ -411,7 +432,7 @@ function subsite_conf_strongarm() {
     'alpha_zone_postscript_css' => '',
     'alpha_zone_postscript_wrapper_css' => '',
     'alpha_zone_postscript_equal_height_container' => 0,
-    'alpha_region_postscript_first_force' => 0,
+    'alpha_region_postscript_first_force' => 1,
     'alpha_region_postscript_first_zone' => 'postscript',
     'alpha_region_postscript_first_prefix' => '0',
     'alpha_region_postscript_first_columns' => '3',
@@ -421,7 +442,7 @@ function subsite_conf_strongarm() {
     'alpha_region_postscript_first_css' => '',
     'alpha_region_postscript_first_equal_height_element' => 0,
     'alpha_region_postscript_first_equal_height_container' => 0,
-    'alpha_region_postscript_second_force' => 0,
+    'alpha_region_postscript_second_force' => 1,
     'alpha_region_postscript_second_zone' => 'postscript',
     'alpha_region_postscript_second_prefix' => '0',
     'alpha_region_postscript_second_columns' => '3',
@@ -431,7 +452,7 @@ function subsite_conf_strongarm() {
     'alpha_region_postscript_second_css' => '',
     'alpha_region_postscript_second_equal_height_element' => 0,
     'alpha_region_postscript_second_equal_height_container' => 0,
-    'alpha_region_postscript_third_force' => 0,
+    'alpha_region_postscript_third_force' => 1,
     'alpha_region_postscript_third_zone' => 'postscript',
     'alpha_region_postscript_third_prefix' => '0',
     'alpha_region_postscript_third_columns' => '3',
@@ -441,7 +462,7 @@ function subsite_conf_strongarm() {
     'alpha_region_postscript_third_css' => '',
     'alpha_region_postscript_third_equal_height_element' => 0,
     'alpha_region_postscript_third_equal_height_container' => 0,
-    'alpha_region_postscript_fourth_force' => 0,
+    'alpha_region_postscript_fourth_force' => 1,
     'alpha_region_postscript_fourth_zone' => 'postscript',
     'alpha_region_postscript_fourth_prefix' => '0',
     'alpha_region_postscript_fourth_columns' => '3',
