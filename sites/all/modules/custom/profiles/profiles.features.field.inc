@@ -868,7 +868,7 @@ function profiles_field_default_fields() {
   $fields['user-user-field_user_parliament'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_user_parliament',
@@ -931,7 +931,7 @@ function profiles_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(),
-        'type' => 'options_select',
+        'type' => 'options_buttons',
         'weight' => '5',
       ),
     ),

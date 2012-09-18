@@ -265,68 +265,69 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['operator'] = 'field_user_lname_value_op';
   $handler->display->display_options['filters']['field_user_lname_value']['expose']['identifier'] = 'field_user_lname_value';
   $handler->display->display_options['filters']['field_user_lname_value']['is_grouped'] = TRUE;
-  $handler->display->display_options['filters']['field_user_lname_value']['group_info']['label'] = 'Last name (field_user_lname)';
+  $handler->display->display_options['filters']['field_user_lname_value']['group_info']['label'] = 'Last name';
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['identifier'] = 'field_user_lname_value';
+  $handler->display->display_options['filters']['field_user_lname_value']['group_info']['widget'] = 'radios';
   $handler->display->display_options['filters']['field_user_lname_value']['group_info']['group_items'] = array(
     1 => array(
-      'title' => 'R',
+      'title' => 'D',
       'operator' => 'starts',
-      'value' => 'S',
+      'value' => 'D',
     ),
     2 => array(
-      'title' => 'T',
+      'title' => 'E',
       'operator' => 'starts',
-      'value' => 'T',
+      'value' => 'E',
     ),
     3 => array(
-      'title' => 'Q',
+      'title' => 'C',
       'operator' => 'starts',
-      'value' => 'Q',
+      'value' => 'C',
     ),
     4 => array(
-      'title' => 'P',
+      'title' => 'B',
       'operator' => 'starts',
-      'value' => 'P',
+      'value' => 'B',
     ),
     5 => array(
-      'title' => 'O',
+      'title' => 'A',
       'operator' => 'starts',
-      'value' => 'O',
+      'value' => 'A',
     ),
     6 => array(
-      'title' => 'U',
+      'title' => 'F',
       'operator' => 'starts',
-      'value' => 'U',
+      'value' => 'F',
     ),
     7 => array(
-      'title' => 'V',
+      'title' => 'G',
       'operator' => 'starts',
-      'value' => 'V',
+      'value' => 'G',
     ),
     8 => array(
-      'title' => 'Z',
+      'title' => 'K',
       'operator' => 'starts',
-      'value' => 'Z',
+      'value' => 'K',
     ),
     9 => array(
-      'title' => 'Y',
+      'title' => 'J',
       'operator' => 'starts',
-      'value' => 'Y',
+      'value' => 'J',
     ),
     10 => array(
-      'title' => 'X',
+      'title' => 'I',
       'operator' => 'starts',
-      'value' => 'X',
+      'value' => 'I',
     ),
     11 => array(
-      'title' => 'W',
+      'title' => 'H',
       'operator' => 'starts',
-      'value' => 'W',
+      'value' => 'H',
     ),
     12 => array(
-      'title' => 'N',
+      'title' => 'L',
       'operator' => 'starts',
-      'value' => 'N',
+      'value' => 'L',
     ),
     13 => array(
       'title' => 'M',
@@ -334,81 +335,65 @@ function profiles_views_default_views() {
       'value' => 'M',
     ),
     14 => array(
-      'title' => 'L',
+      'title' => 'N',
       'operator' => 'starts',
-      'value' => 'L',
+      'value' => 'N',
     ),
     15 => array(
-      'title' => 'A',
+      'title' => 'R',
       'operator' => 'starts',
-      'value' => 'A',
+      'value' => 'S',
     ),
     16 => array(
-      'title' => 'B',
+      'title' => 'T',
       'operator' => 'starts',
-      'value' => 'B',
+      'value' => 'T',
     ),
     17 => array(
-      'title' => 'C',
+      'title' => 'Q',
       'operator' => 'starts',
-      'value' => 'C',
+      'value' => 'Q',
     ),
     18 => array(
-      'title' => 'D',
+      'title' => 'P',
       'operator' => 'starts',
-      'value' => 'D',
+      'value' => 'P',
     ),
     19 => array(
-      'title' => 'E',
+      'title' => 'O',
       'operator' => 'starts',
-      'value' => 'E',
+      'value' => 'O',
     ),
     20 => array(
-      'title' => 'F',
+      'title' => 'U',
       'operator' => 'starts',
-      'value' => 'F',
+      'value' => 'U',
     ),
     21 => array(
-      'title' => 'G',
+      'title' => 'V',
       'operator' => 'starts',
-      'value' => 'G',
+      'value' => 'V',
     ),
     22 => array(
-      'title' => 'H',
+      'title' => 'Z',
       'operator' => 'starts',
-      'value' => 'H',
+      'value' => 'Z',
     ),
     23 => array(
-      'title' => 'I',
+      'title' => 'Y',
       'operator' => 'starts',
-      'value' => 'I',
+      'value' => 'Y',
     ),
     24 => array(
-      'title' => 'J',
+      'title' => 'X',
       'operator' => 'starts',
-      'value' => 'J',
+      'value' => 'X',
     ),
     25 => array(
-      'title' => 'K',
+      'title' => 'W',
       'operator' => 'starts',
-      'value' => 'K',
+      'value' => 'W',
     ),
-  );
-  /* Filter criterion: User (historical data): Gender (field_user_gender) */
-  $handler->display->display_options['filters']['field_user_gender_value']['id'] = 'field_user_gender_value';
-  $handler->display->display_options['filters']['field_user_gender_value']['table'] = 'field_revision_field_user_gender';
-  $handler->display->display_options['filters']['field_user_gender_value']['field'] = 'field_user_gender_value';
-  $handler->display->display_options['filters']['field_user_gender_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['operator_id'] = 'field_user_gender_value_op';
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['label'] = 'Gender (field_user_gender)';
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['operator'] = 'field_user_gender_value_op';
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['identifier'] = 'field_user_gender_value';
-  $handler->display->display_options['filters']['field_user_gender_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    181527986 => 0,
-    51622513 => 0,
   );
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -420,31 +405,14 @@ function profiles_views_default_views() {
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
   $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
   $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
-  /* Filter criterion: User (historical data): Committee (field_user_commitee) */
-  $handler->display->display_options['filters']['field_user_commitee_tid']['id'] = 'field_user_commitee_tid';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['table'] = 'field_revision_field_user_commitee';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['field'] = 'field_user_commitee_tid';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['operator_id'] = 'field_user_commitee_tid_op';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['label'] = 'Commitee (field_user_commitee)';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['operator'] = 'field_user_commitee_tid_op';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['identifier'] = 'field_user_commitee_tid';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    181527986 => 0,
-    51622513 => 0,
-  );
-  $handler->display->display_options['filters']['field_user_commitee_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_user_commitee_tid']['vocabulary'] = 'committee';
-  /* Filter criterion: User (historical data): Constituency (field_user_constituency) */
+  /* Filter criterion: User: Constituency (field_user_constituency) */
   $handler->display->display_options['filters']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
-  $handler->display->display_options['filters']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['filters']['field_user_constituency_tid']['table'] = 'field_data_field_user_constituency';
   $handler->display->display_options['filters']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
+  $handler->display->display_options['filters']['field_user_constituency_tid']['relationship'] = 'uid';
   $handler->display->display_options['filters']['field_user_constituency_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['operator_id'] = 'field_user_constituency_tid_op';
-  $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['label'] = 'Constituency (field_user_constituency)';
+  $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['label'] = 'Constituency';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['operator'] = 'field_user_constituency_tid_op';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['identifier'] = 'field_user_constituency_tid';
   $handler->display->display_options['filters']['field_user_constituency_tid']['expose']['remember_roles'] = array(
@@ -456,24 +424,6 @@ function profiles_views_default_views() {
   );
   $handler->display->display_options['filters']['field_user_constituency_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_user_constituency_tid']['vocabulary'] = 'constituency';
-  /* Filter criterion: User (historical data): Party (field_user_party) */
-  $handler->display->display_options['filters']['field_user_party_tid']['id'] = 'field_user_party_tid';
-  $handler->display->display_options['filters']['field_user_party_tid']['table'] = 'field_revision_field_user_party';
-  $handler->display->display_options['filters']['field_user_party_tid']['field'] = 'field_user_party_tid';
-  $handler->display->display_options['filters']['field_user_party_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['operator_id'] = 'field_user_party_tid_op';
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['label'] = 'Party (field_user_party)';
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['operator'] = 'field_user_party_tid_op';
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['identifier'] = 'field_user_party_tid';
-  $handler->display->display_options['filters']['field_user_party_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    181527986 => 0,
-    51622513 => 0,
-  );
-  $handler->display->display_options['filters']['field_user_party_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_user_party_tid']['vocabulary'] = 'party';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -513,11 +463,9 @@ function profiles_views_default_views() {
     t('</div>'),
     t('All'),
     t('Last name (field_user_lname)'),
-    t('Gender (field_user_gender)'),
+    t('Last name'),
     t('Active'),
-    t('Commitee (field_user_commitee)'),
-    t('Constituency (field_user_constituency)'),
-    t('Party (field_user_party)'),
+    t('Constituency'),
     t('Page'),
   );
   $export['profile_list_rev'] = $view;
