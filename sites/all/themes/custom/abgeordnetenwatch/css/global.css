@@ -94,6 +94,10 @@ h4 {
 }
 .subtitle {
     font-size: 11px;
+    
+}
+.subline {
+    font: 12px/1.5 Lucida Grande, Helvetica, Arial, sans-serif;
 }
 p {
     margin-bottom: 1em;
@@ -141,10 +145,11 @@ blockquote p:last-child {
 .clear-both {
     clear: both;
 }
-.float-left .file-image {
-    margin-right: 14px;
-    margin-bottom: 14px;
+
+.push-bottom-l {
+    margin-bottom: 28px;
 }
+
 .light,
 a.light {
     color: #999;
@@ -471,16 +476,18 @@ a.tagadelic.level4 {
 }
 
 /* top anchor */
-.field-name-anchor-to-top a {
+
+.anchor-to-top {
+    margin-bottom: 27px;
+    text-align: right;
+}
+.anchor-to-top a {
+    padding-right: 18px;
     background-position: right -2061px;
-    border-top: 1px dotted #FF6633;
     color: #999999;
-    display: block;
+    display: inline-block;
     font-size: 11px;
     line-height: 24px;
-    margin-bottom: 27px;
-    padding-right: 18px;
-    text-align: right;
     font-weight: normal;
 }
 
@@ -829,10 +836,7 @@ textarea:active {
     top: 0;
 }
 .file-image.float-left {
-    margin: 4px 14px 12px 0;
-}
-.file-image img {
-    margin-bottom: 4px;
+    margin-right: 14px;
 }
 .field-name-field-image-copyright {
     color: #666;
@@ -996,6 +1000,7 @@ form:after {
     min-height: 1%;
 }
 textarea,
+select,
 input[type="date"],
 input[type="datetime"],
 input[type="datetime-local"],
@@ -1125,6 +1130,19 @@ a.form-submit:hover {
     display: block;
 }
 
+/* /////////////////////////// question and answers ///////////// */
+
+.field-name-questions-and-answers {
+    margin-bottom: 42px;
+}
+.field-name-questions-and-answers .content {
+    margin-bottom: 18px;
+}
+.answer {
+    padding: 25px 24px;
+}
+
+
 /* /////////////////////////// comment-form ///////////// */
 
 #comments {
@@ -1220,9 +1238,6 @@ a.form-submit:hover {
 
 /* /////////////////////////// node footer /////////////////// */
 
-.comment {
-    margin-bottom: 28px;
-}
 .comment,
 #comment-form,
 #section-content form.compact-form,
@@ -1270,12 +1285,14 @@ a.form-submit:hover {
     background: #fff;
     padding: 5px 10px;
 }
-.comment .submitted .author {
-    font-size: 20px;
-    float: left;
-    color: #333;
+.comment .submitted .author,
+.bubble {
+    min-height: 20px;
     padding-left: 34px;
     background-position: -650px -2847px;
+}
+.comment .submitted .author {
+    float: left;
     margin-bottom: 0;
 }
 .comment-reply {
@@ -1370,6 +1387,7 @@ a.form-submit:hover {
 #region-postscript-fourth a,
 .comment-reply,
 .comment .submitted .author,
+.bubble,
 #block-delta-blocks-feed-icons .content,
 #views_slideshow_cycle_teaser_section_slider-block .icon-share,
 #comment-form #edit-author--2,
@@ -1388,7 +1406,7 @@ a.print-pdf,
 #block-system-user-menu .first a,
 #block-system-user-menu .last a,
 #region-user-second .block h2,
-.field-name-anchor-to-top a,
+.anchor-to-top a,
 .arrow-item,
 .back,
 .read-more a,
