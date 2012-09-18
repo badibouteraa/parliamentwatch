@@ -30,7 +30,8 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '11';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'suiv';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = 'zurück';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'weiter';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'pw-list-item clearfix';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
@@ -48,7 +49,7 @@ function pw_poll_views_default_views() {
     <div class="poll-behavior"><span class="icon absent"></span>absent</div>
     <div class="poll-behavior"><span class="icon blank"></span>blank</div>
 </div>';
-  /* Field: Contenu: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -59,7 +60,7 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Contenu: Overview Chart */
+  /* Field: Content: Overview Chart */
   $handler->display->display_options['fields']['field_pw_overview_chart']['id'] = 'field_pw_overview_chart';
   $handler->display->display_options['fields']['field_pw_overview_chart']['table'] = 'field_data_field_pw_overview_chart';
   $handler->display->display_options['fields']['field_pw_overview_chart']['field'] = 'field_pw_overview_chart';
@@ -73,7 +74,7 @@ function pw_poll_views_default_views() {
     'image_style' => '',
     'image_link' => 'content',
   );
-  /* Field: Contenu: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -86,7 +87,7 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '320',
   );
-  /* Field: Contenu: Link */
+  /* Field: Content: Link */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
@@ -96,7 +97,7 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'Détails du vote';
-  /* Field: Contenu: Comment count */
+  /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
@@ -109,26 +110,26 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['fields']['comment_count']['format_plural_singular'] = '1 ';
   $handler->display->display_options['fields']['comment_count']['format_plural_plural'] = '@count ';
   $handler->display->display_options['fields']['comment_count']['suffix'] = 'commentaires';
-  /* Sort criterion: Contenu: Post date */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Contenu: Published */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Contenu: Type */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'pw_poll' => 'pw_poll',
   );
-  /* Filter criterion: Contenu: Langue */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -140,6 +141,34 @@ function pw_poll_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'votes/%';
+  $translatables['pw_polls_list'] = array(
+    t('Master'),
+    t('Votes'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('zurück'),
+    t('weiter'),
+    t('last »'),
+    t('<div class="poll legend">
+    <div class="poll-behavior"><span class="icon yes"></span>yes</div>
+    <div class="poll-behavior"><span class="icon no"></span>no</div>
+    <div class="poll-behavior"><span class="icon absent"></span>absent</div>
+    <div class="poll-behavior"><span class="icon blank"></span>blank</div>
+</div>'),
+    t('Détails du vote'),
+    t('.'),
+    t(','),
+    t('commentaires'),
+    t('Page'),
+  );
   $export['pw_polls_list'] = $view;
 
   $view = new view();
@@ -165,7 +194,8 @@ function pw_poll_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'suiv';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = 'zurück';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'weiter';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'pw_list_item clearfix';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
@@ -265,7 +295,7 @@ $term = taxonomy_term_load($view->result[0]-> _field_data[\'uid\'][\'entity\']->
   $handler->display->display_options['fields']['field_user_parliament']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_parliament']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_user_parliament']['type'] = 'i18n_taxonomy_term_reference_plain';
-  /* Field: User: Commitee */
+  /* Field: User: Committee */
   $handler->display->display_options['fields']['field_user_commitee']['id'] = 'field_user_commitee';
   $handler->display->display_options['fields']['field_user_commitee']['table'] = 'field_data_field_user_commitee';
   $handler->display->display_options['fields']['field_user_commitee']['field'] = 'field_user_commitee';
@@ -361,6 +391,33 @@ if($record->value == 0){
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'user-constituency';
+  $translatables['user_constituency'] = array(
+    t('Master'),
+    t('User Constituency'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('zurück'),
+    t('weiter'),
+    t('last »'),
+    t('<h3>How did your politicians vote?</h3>'),
+    t('term from field_user_constituency'),
+    t('term from field_user_parliament'),
+    t('<h4>[field_user_fname]'),
+    t('[field_user_lname],'),
+    t('[field_user_party]</h4>'),
+    t('<span class="result [php]">[php]</span>'),
+    t('Consulter le profil'),
+    t('Constituency'),
+    t('Page'),
+  );
   $export['user_constituency'] = $view;
 
   return $export;

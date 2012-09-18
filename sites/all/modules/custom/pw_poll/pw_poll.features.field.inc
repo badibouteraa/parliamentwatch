@@ -88,7 +88,7 @@ function pw_poll_field_default_fields() {
   $fields['node-pw_poll-field_pw_overview_chart'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_pw_overview_chart',
@@ -221,8 +221,11 @@ function pw_poll_field_default_fields() {
         ),
         'teaser' => array(
           'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'file_rendered',
           'weight' => '11',
         ),
       ),
@@ -305,8 +308,9 @@ function pw_poll_field_default_fields() {
         ),
         'teaser' => array(
           'label' => 'above',
+          'module' => 'viewfield',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'viewfield_default',
           'weight' => '15',
         ),
       ),
