@@ -159,6 +159,31 @@ function pw_basics_taxonomy_default_vocabularies() {
         ),
       ),
     ),
+    'subjects' => array(
+      'name' => 'Subjects',
+      'machine_name' => 'subjects',
+      'description' => 'Subjects for question form',
+      'hierarchy' => '1',
+      'module' => 'taxonomy',
+      'weight' => '0',
+      'language' => 'und',
+      'i18n_mode' => '0',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'tags' => array(
       'name' => 'Tags',
       'machine_name' => 'tags',
