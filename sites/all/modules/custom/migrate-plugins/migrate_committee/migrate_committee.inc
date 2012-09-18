@@ -40,6 +40,7 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
                         'id' => array(
                             'type' => 'int',
                             'not null' => TRUE,
+							'alias' => 'c',
                         )
                     ),
                     MigrateDestinationTerm::getKeySchema()
