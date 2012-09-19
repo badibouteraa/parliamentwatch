@@ -96,15 +96,15 @@ table.views-view-grid .row-last td {
 
 /* filters */
 
-#views-exposed-form-profile-list-page .form-item-field-user-lname-value {
+.views-exposed-form .form-item-field-user-lname-value {
     display: block;
-    float: left;
-    margin: 0 5px 5px 0;
+    float: left; /* LTR */
+    margin: 0 5px 5px 0; /* LTR */
 }
-#views-exposed-form-profile-list-page .form-item-field-user-lname-value label {
+.views-exposed-form .form-item-field-user-lname-value label {
     background: #c3c3c3;
     display: block;
-    float: left;
+    float: left; /* LTR */
     color: #fff;
     font-weight: bold;
     min-width: 20px;
@@ -113,18 +113,18 @@ table.views-view-grid .row-last td {
     text-align: center;
     cursor: pointer;
 }
-#views-exposed-form-profile-list-page #edit-field-user-lname-value-all + .option {
+.views-exposed-form #edit-field-user-lname-value-all + .option {
     min-width: 45px;
 }
-#views-exposed-form-profile-list-page .form-item-field-user-lname-value label:hover,
+.views-exposed-form .form-item-field-user-lname-value label:hover,
 .form-radio:checked + .option {
     background: #f4f4f4 !important;
     color: #666 !important;
 }
-#views-exposed-form-profile-list-page #edit-field-user-lname-value .form-radio {
+.views-exposed-form #edit-field-user-lname-value .form-radio {
     display: none;
 }
-#views-exposed-form-profile-list-page .views-exposed-widget {
+.views-exposed-form .views-exposed-widget {
    clear: both;
    margin-bottom: 23px;
 }

@@ -58,10 +58,10 @@ table.views-view-grid td.col-first {
 
 /* filters */
 
-#views-exposed-form-profile-list-page .form-item-field-user-lname-value {
+.views-exposed-form .form-item-field-user-lname-value {
     float: right;
     margin: 0 0 5px 5px;
 }
-#views-exposed-form-profile-list-page .form-item-field-user-lname-value label {
+.views-exposed-form .form-item-field-user-lname-value label {
     float: right;
 }
