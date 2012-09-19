@@ -175,29 +175,29 @@ a.link-profile {
 .link-profile a,
 a.link-profile {
     padding-left: 26px;
-    background-position: -502px -1657px;
+    background-position: -461px -1698px;
 }
 .link-profile a:hover,
 a.link-profile:hover {
-    background-position: -462px -1697px;
+    background-position: -421px -1738px;
 }
 .link-committees a,
 a.link-committees {
     padding-left: 31px;
-    background-position: -335px -1820px;
+    background-position: -294px -1859px;
 }
 .link-committees a:hover,
 a.link-committees:hover {
-    background-position: -295px -1860px;
+    background-position: -254px -1899px;
 }
 .link-poll a,
 a.link-poll {
     padding-left: 26px;
-    background-position: -422px -1739px;
+    background-position: -381px -1778px;
 }
 .link-poll a:hover,
 a.link-poll:hover {
-    background-position: -382px -1779px;
+    background-position: -341px -1818px;
 }
 .read-more a,
 a.read-more {
@@ -1042,6 +1042,12 @@ select {
     box-shadow: inset 0px 0px 1px 1px #ececec;
     border: 1px solid #d3d3d3;
 }
+form .description {
+    color: #999;
+    font-size: 11px;
+    line-height: 16px;
+    margin: -8px 0 6px;
+}
 .resizable-textarea .grippie {
     display: none;
 }
@@ -1163,12 +1169,6 @@ a.form-submit:hover {
     background-position: -568px -417px;
     padding-left: 17px;
     font-weight: bold;
-}
-#comment-form .description {
-    color: #999;
-    font-size: 11px;
-    line-height: 16px;
-    margin: -8px 0 6px;
 }
 #comment-form .form-item-field-newsletter-subscribe-und {
     margin-top: 7px;
