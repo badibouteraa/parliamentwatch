@@ -922,6 +922,9 @@ img.no-outline {
 #forward-form .form-item-recipients {
     margin-bottom: 1em;
 }
+#forward-form .description {
+    margin: 0;
+}
 #forward-form #edit-page,
 #forward-form #edit-subject,
 #forward-form #edit-body {
