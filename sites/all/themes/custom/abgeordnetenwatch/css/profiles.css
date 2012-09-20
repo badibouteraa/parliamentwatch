@@ -20,6 +20,19 @@ table.views-view-grid .row-last td {
     border-bottom: 0;
 }
 
+.block-views-profile-questions-answers-block .link-report {
+    width: 100%;
+    margin-left: -24px;
+    padding: 20px 24px 0;
+    border-top: 1px solid #fff;
+}
+.block-views-profile-questions-answers-block .link-report a,
+.block-views-profile-questions-answers-block a.link-report {
+    background-position: -440px -2220px;
+    font-weight: normal;
+    color: #999;
+}
+
 .user-profile .field-name-field-user-fname,
 .user-profile .field-name-field-user-lname {
     float: left;
@@ -34,6 +47,9 @@ table.views-view-grid .row-last td {
     display: none;
 }
 
+.profiles-list-compact .file-image {
+    margin-bottom: 4px;
+}
 .profiles-list-compact-wrapper {
     position: relative;    
 }

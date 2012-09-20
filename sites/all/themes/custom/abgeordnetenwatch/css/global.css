@@ -199,6 +199,15 @@ a.link-poll {
 a.link-poll:hover {
     background-position: -341px -1818px;
 }
+.link-report a,
+a.link-report {
+    padding-left: 26px;
+    background-position: -480px -2180px;
+}
+.link-report a:hover,
+a.link-report:hover {
+    background-position: -440px -2220px;
+}
 .read-more a,
 a.read-more {
     background-position: -723px -1942px;
@@ -1422,6 +1431,8 @@ a.link-profile,
 a.link-committees,
 .link-poll a,
 a.link-poll,
+.link-report a,
+a.link-report,
 blockquote:before,
 .collapse-processed .fieldset-title {
     background-image: url("../images/sprite.png");
